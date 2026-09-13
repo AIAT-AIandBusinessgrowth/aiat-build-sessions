@@ -23,6 +23,14 @@ Each workshop participant needs one notebook. Notebooks come in packs of four. B
 - If they want to fix it, download the public HTML into their own project folder. Keep the course example unchanged. Make the requested small change, then check the failing example and an example that already worked.
 - Say what was actually observed. An agent doing the work does not prove the person learned it. Ask before saving a progress note, and keep that note private.
 
+A short first step for an unsure German-speaking learner can be:
+
+> Hier übst du, ein KI-Ergebnis selbst nachzuprüfen: [Rechner öffnen](https://build-sessions.apps.aiat-poc.at/).
+> Acht Personen brauchen je ein Notizbuch, und eine Packung enthält vier.
+> Wie viele Packungen würdest du kaufen?
+
+Stop there and let the person answer. Do not add reassurance, a second task or an explanation of the answer.
+
 If you cannot operate a browser, ask what the person sees; do not claim to have clicked or tested the app. For text-only practice, use the [room example](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/learning/README.md).
 
 ## Continue with the course
