@@ -1,6 +1,6 @@
 # Sources
 
-Every external link used in `tracks/`, `diy/`, `exercises/` and `ready-to-build.md`, grouped by site. All links were checked 2026-09-13, unless marked otherwise. The files that use a link give the exact statement it supports.
+External references used in `tracks/`, `diy/`, `exercises/` and `ready-to-build.md`, grouped by site. The files that use a link give the statement it supports and its check date. A link being reachable is not a verification of every claim on the page; loading exceptions are noted below.
 
 Vendor pages change. Open the link before you rely on a price, a limit or a feature. Placeholder addresses on `example.com` are not listed.
 
@@ -21,6 +21,16 @@ Vendor pages change. Open the link before you rely on a price, a limit or a feat
 
 **git-scm.com**
 - https://git-scm.com/docs/git-worktree. Used in: `tracks/08-advanced/03-parallel-agents.md`
+- https://git-scm.com/docs/git-restore. Used in: `tracks/01-first-build/01-your-first-build.md`
+
+**docs.python.org**
+- https://docs.python.org/3/library/http.server.html. Used in: `diy/08-monitoring-and-recovery.md`
+
+**curl.se**
+- https://curl.se/docs/manpage.html. Used in: `diy/08-monitoring-and-recovery.md`
+
+**learn.microsoft.com**
+- https://learn.microsoft.com/en-us/windows/curl/. Used in: `diy/08-monitoring-and-recovery.md`
 
 ## Anthropic and Claude
 
@@ -68,7 +78,7 @@ Vendor pages change. Open the link before you rely on a price, a limit or a feat
 - https://help.openai.com/en/articles/7730893-data-controls-faq. Could not be loaded for the check on 2026-09-13; open it yourself. Used in: `diy/03-data-processing-agreements.md`, `diy/tool-matrix-2026-09.md`
 
 **learn.chatgpt.com**
-- https://learn.chatgpt.com/docs/agent-configuration/agents-md.md. Used in: `tracks/07-second-brain/01-vault-and-agents-md.md`
+- https://learn.chatgpt.com/docs/agent-configuration/agents-md.md. Could not be independently loaded in the learning-product review on 2026-09-13; local Codex instruction loading was exercised separately. Used in: `tracks/07-second-brain/01-vault-and-agents-md.md`
 - https://learn.chatgpt.com/docs/agent-configuration/subagents. Used in: `tracks/08-advanced/03-parallel-agents.md`
 - https://learn.chatgpt.com/docs/codex-manual.md. Used in: `tracks/08-advanced/01-context-engineering.md`, `tracks/08-advanced/02-loop-engineering.md`, `tracks/08-advanced/03-parallel-agents.md`
 - https://learn.chatgpt.com/docs/codex/cli. Used in: `diy/tool-matrix-2026-09.md`, `ready-to-build.md`

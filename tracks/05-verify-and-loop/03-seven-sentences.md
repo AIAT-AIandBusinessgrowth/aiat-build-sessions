@@ -77,3 +77,5 @@ Sentence 4 means your state lives in files and notes. Those files follow the sam
 ## Next
 
 [One work cycle](04-one-work-cycle.md): put the seven sentences together and run one full cycle on your own project.
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

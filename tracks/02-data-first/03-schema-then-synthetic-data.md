@@ -21,7 +21,7 @@ The structure is all the agent needs to build ([Does the AI need this?](01-does-
 
 ### Step 1: Get a local CSV file (3 min)
 
-Practise with `customers.csv` from the [exercise folder](../../exercises/find-the-personal-data/README.md). Later, use a spreadsheet from your own work in exactly the same way.
+Practise locally with `customers.csv` from the [exercise folder](../../exercises/find-the-personal-data/README.md), after your human-only attempt. Do not let an agent read that file for you. Real work files need your organisation's approved process and stay outside this course and agent-visible folders.
 
 If your file is a spreadsheet (`.xlsx`, `.ods`), save it as CSV in the spreadsheet app on your computer: "Save as" or "Download as", then CSV. Do not use an online converter: that is an upload.
 
@@ -29,28 +29,21 @@ If your file is a spreadsheet (`.xlsx`, `.ods`), save it as CSV in the spreadshe
 
 Pick one way.
 
-**With the script** (needs Python 3 on your computer). It runs locally and sends nothing:
+**With the script** (needs Python 3 on your computer). Open a terminal at the top of the downloaded course folder. Run the script yourself; it runs locally and sends nothing:
 
 ```bash
 python3 exercises/find-the-personal-data/extract-schema.py exercises/find-the-personal-data/customers.csv
 ```
 
-The output for the exercise file starts like this:
+The default output uses neutral names such as `column_1` and `column_2`, plus inferred types, counts and hints. It does not print the file's header or cell values. This also prevents an accidentally headerless file from printing its first data row as column names. The script cannot reliably decide whether the first row really is a header; check that yourself.
 
-```text
-Rows (without header): 20
-Columns: 12
+To include original column names, first inspect the header locally and remove names or sensitive details. Only then opt in:
 
-column         type  empty  distinct  hint
-customer_id    text      0        20  every value differs: may identify a row
-company        text      0        20  every value differs: may identify a row
-email          text      1        19  every value differs: may identify a row
-town           text      0         4
-date_of_birth  date      8        12  every value differs: may identify a row
-notes          text      0        20  every value differs: may identify a row; free text: check by hand
+```bash
+python3 exercises/find-the-personal-data/extract-schema.py exercises/find-the-personal-data/customers.csv --include-column-names
 ```
 
-It prints column names, types, counts and hints. It never prints a cell value, not even the smallest or largest one, because the biggest order or the oldest customer can point to one person. Add `--json` if you prefer JSON.
+Add `--json` for JSON output. Invalid quoting, inconsistent row widths or duplicate headers stop with an error. Do not bypass an error by uploading the source to a converter. Counts and distinct-value statistics are **not** proof of anonymisation: for the agent, share only the generic column names and types you need. Rename neutral names by hand using your intended app structure.
 
 **By hand** (no install):
 
@@ -89,7 +82,7 @@ The IP ranges are reserved for documentation ([RFC 5737](https://www.rfc-editor.
 
 - Search for `@`. Every e-mail address must end in `example.com`.
 - Read the names and towns. Anything that sounds like a real person, company or place: ask the agent to replace it.
-- Pick three unusual values from your real file and search for them in the generated data, on your computer. They must not appear.
+- Check that every generated row follows the stated invented-data rules. Do not open a real file in the agent workspace to compare it.
 - If the agent wrote code that generates the data with a library such as Faker, check that the e-mail domain is set to `example.com` in the code. Default settings of such libraries can produce addresses at real mail providers, and those can belong to real people.
 
 ### Step 5: Build with it (7 min)
@@ -101,7 +94,7 @@ Open the preview and check that the app behaves with the edge cases.
 
 ### And the real data?
 
-Not in these tracks. If a tool should one day work with real data, your organisation decides where it may run: which approved tool, which contract, often only on a computer inside the organisation. Because you built and tested with synthetic data, that switch is a decision, not a rebuild.
+Not in these tracks. If a tool should one day work with real data, your organisation decides where it may run: which approved tool, which contract, often only on a computer inside the organisation. Synthetic data makes practice possible; it does not prove that a real-data integration is ready. That can require new design, security and operational checks.
 
 ## Done when
 
@@ -117,3 +110,5 @@ Share the schema and the synthetic rows, never the source file. Keep real source
 ## Next
 
 [If something went wrong](04-if-something-went-wrong.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

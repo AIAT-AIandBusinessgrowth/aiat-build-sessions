@@ -15,7 +15,9 @@ The surprising part: moving up is rarely about knowing more tool features. It is
 
 The ladder is a map, not a ranking. Level 1 is a fine place to be for many tasks. You do not need a technical background to move up: the steps are about checks and habits, not about code.
 
-This ladder is this material's own model. It is not taken from a published study.
+This is the **Build Sessions learner-habits ladder**, model ID `build-sessions-habits-v1` (defined on this page, checked 2026-09-13). It is a local reflection tool, not a published study or qualification.
+
+The [German adoption model](../../modules/de/08-agenten-skalierung.md) describes a different scale, from Gated to AI-native. Its numbers are not equivalent to these learner habits. Record the model ID with your reflection and never compare scores across those scales. Demonstrate individual skills with [learning checkpoints](../../learning/checkpoints.md), not a higher self-rating.
 
 ## Do it
 
@@ -46,6 +48,7 @@ Copy this into a note and fill it in. Keep the note. Repeat the check after a fe
 
 ```text
 Date:
+Model: build-sessions-habits-v1
 My level today (0 to 4):
 One piece of evidence for that level (a real example from the last two weeks):
 What holds me back right now:
@@ -71,3 +74,5 @@ Your evidence examples stay generic. Describe the kind of task ("sorted a table 
 ## Next
 
 [Role archetypes](04-role-archetypes.md): the ladder says how you work with agents, the archetypes say what kind of impact you have.
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

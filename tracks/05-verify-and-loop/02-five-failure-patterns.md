@@ -79,3 +79,5 @@ When you look back through old chats, you may find real data you pasted before y
 ## Next
 
 [Seven sentences](03-seven-sentences.md): seven working rules that prevent most of these patterns, plus a loop prompt to copy.
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

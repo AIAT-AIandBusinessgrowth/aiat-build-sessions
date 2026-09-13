@@ -77,44 +77,54 @@ git config --global user.email "you@example.com"
 
 Anyone who can see the repository can read this address, and on a public repository that is everyone. If you do not want to show your own address, use the noreply address GitHub gives you in your e-mail settings ([source](https://docs.github.com/en/account-and-profile/how-tos/email-preferences/setting-your-commit-email-address), checked 2026-09-13).
 
-**Variant (a): a folder on your laptop, an empty repository on the host**
+Choose the variant that matches what already exists. Do not run both. GitHub Desktop can instead add the existing local folder and **Publish repository**, with **Keep this code private** selected.
+
+**Variant (a): an existing local app, no remote yet**
+
+Open your app folder. If a terminal is already in `playground`, do not run `cd playground` again. Check the state:
 
 ```bash
-cd playground
-git init
-git status
-git add -A
-git commit -m "First commit"
+git status --short
+git remote -v
+```
+
+If Git says this is not a repository, confirm you are in the intended app folder, then run `git init`. If `origin` already has the intended URL, skip adding a remote and use `git push`. If it points somewhere unexpected, stop and check before changing it.
+
+If you have uncommitted changes, inspect them and stage the specific files. This example is for the single-file first build; substitute the filenames you reviewed:
+
+```bash
+git diff -- index.html
+git add index.html
+git diff --cached
+git commit -m "feat: save first working app"
+```
+
+Also commit your reviewed project instructions and `.gitignore` by filename if they exist. Never stage `.env` or credentials. If `git status` is clean and a commit already exists, skip this commit step.
+
+Only when there is **no origin**, connect the empty private repository you created in section 2. Create one now only if you have not already done so. Copy its URL, replacing `<your-user>` below. In this new practice project:
+
+```bash
 git remote add origin https://github.com/<your-user>/playground.git
 git branch -M main
 git push -u origin main
 ```
 
-- Skip `git init` if the folder already uses Git.
-- Read the `git status` output before `git add -A`. It must not list a `.env` file or any key ([Secrets and keys](07-secrets-and-keys.md)).
-- `git remote add` tells the folder where the repository is. Without it, Git answers "No configured push destination".
-- From now on, one change is `git add -A`, `git commit -m "What changed"`, `git push`.
+**Variant (b): a repository on the host, no local folder yet**
 
-**Variant (b): a repository with a README on the host, nothing on your laptop yet**
+From a parent folder with no existing `playground` subfolder:
 
 ```bash
 git clone https://github.com/<your-user>/playground.git
 cd playground
 ```
 
-Work inside that folder. A cloned folder already knows where to push:
-
-```bash
-git add -A
-git commit -m "What changed"
-git push
-```
+A clone already knows where to push. After a change, inspect `git status --short` and `git diff`, stage the filenames you reviewed, commit, then run `git push`. Do not run `git remote add origin` again.
 
 **If the push is rejected**
 
 - Never use `git push --force` to get past a reject. It overwrites what is on the host, and that work is gone.
 - If you created the repository with a README by mistake and have a folder on your laptop: clone the repository into a new folder (variant b), copy your files into it, then commit and push from there.
-- If you pushed from another computer before: run `git pull`, then `git push`.
+- If you pushed from another computer before: first save your local work, then try `git pull --ff-only`. If it reports divergent history, ask for a merge/rebase explanation and inspect both histories; do not force-push.
 - Paste the error text into your agent and ask what it means. Do not paste tokens or keys with it.
 
 Then open the repository page in the browser and check that your last change is there. Only what you can see on that page is safe.

@@ -1,7 +1,9 @@
 
 # Ready to build
 
-Set up your own accounts before your first build. There are two steps: a **minimum start** that is enough for your first app in the browser, and a **full setup** for everything after that. Accounts, licences and hosting are your own. Nobody sets them up for you, and if you attend a session, the session host does not either. That is on purpose: you keep everything you build.
+Set up only what your next task needs. Reading and the [verification lab](exercises/verification-lab/README.md) need no account. For an AI-assisted build, use one approved tool account. Add backup and sharing when you have something to save.
+
+You or your organisation arrange accounts, licences and hosting. These guides help you work through setup; they do not include account provisioning or a support service.
 
 Before you use a personal AI account for work, or install a tool on a work laptop, check your employer's IT rules. Some organisations do not allow it, and they decide.
 
@@ -9,9 +11,9 @@ The [Do it yourself guide](diy/01-accounts-and-2fa.md) explains each step in det
 
 ## Rule one, before any tool: no personal or customer data
 
-Every tool below runs on a personal plan. Personal plans come without a data processing agreement between your organisation and the vendor, and several of them use what you type to improve their models unless you switch that off. So:
+Tool access may come from your own account or an organisation-approved account. Plan names and training settings do not establish permission to use real work data. In these learning exercises:
 
-- Use made-up data, public data or your own data only. Never names, e-mails, customer files, contracts, health or HR data. Not even "just to test".
+- Use invented data or public data that is not about people. Keep personal and customer data out of the course, including prompts, screenshots and logs.
 - Ask the agent to generate fake data for you. That is part of the skill.
 - Switch off model training in the tool's settings where the option exists (see the [tool matrix](diy/tool-matrix-2026-09.md)).
 - If your real job needs real data, talk to your organisation's data protection contact before real data goes into any tool. Why: [Data processing agreements](diy/03-data-processing-agreements.md).
@@ -20,7 +22,7 @@ Every tool below runs on a personal plan. Personal plans come without a data pro
 
 **Browser lane (default, nothing to install).** The tool hosts your app, you share a link. Works on any laptop, no admin rights.
 
-**CLI lane (optional, for people with their own laptop and a terminal).** A coding agent on your machine, code in your own GitHub account. More power, and more things that can break. You fix them yourself, with the vendor's help pages and your agent.
+**Codex or Claude Code lane.** A coding agent works in a project folder on a laptop where installation is allowed. The CLI instructions use a terminal; Codex desktop can open a folder directly. GitHub is needed when you choose remote backup, not to read the course or ask a learning question.
 
 Both lanes need your own accounts with two-factor authentication: [Accounts and 2FA](diy/01-accounts-and-2fa.md). What a plan includes and what it costs: [Plans and licences](diy/02-plans-and-licences.md).
 
@@ -49,13 +51,13 @@ Enough for [Your first build](tracks/01-first-build/01-your-first-build.md) in t
 
 ## Full setup (~75 min)
 
-Do this before [Share and export](tracks/01-first-build/02-share-and-export.md) and the tracks after it.
+Choose one backup method in [Share and export](tracks/01-first-build/02-share-and-export.md). A downloaded file is enough to start; GitHub sync is optional. Do not repeat setup that already works.
 
 1. **Your own mailbox with 2FA.** Not a shared mailbox ([Accounts and 2FA](diy/01-accounts-and-2fa.md)).
 2. **A password manager**, with your recovery codes in it.
-3. **A GitHub account with 2FA** ([Code hosting and backup](diy/04-code-hosting-and-backup.md)).
-4. **Browser lane:** connect your builder to GitHub and let the builder create the private repository, for example `playground`. Do not create it by hand first.
-5. **CLI lane:** install one agent (next section), create a folder called `playground`, and push it to a new, empty private repository. Follow variant (a) in section 4 of [Code hosting and backup](diy/04-code-hosting-and-backup.md).
+3. **For GitHub backup:** a GitHub account with 2FA ([Code hosting and backup](diy/04-code-hosting-and-backup.md)). Skip this if you choose a file export.
+4. **Browser lane:** either export a file, or connect your builder to GitHub and let it create the private repository. Do not create that repository by hand first.
+5. **CLI lane:** install and sign in to one agent (next section). [Your first build](tracks/01-first-build/01-your-first-build.md#cli-lane) creates the project once. [Share and export](tracks/01-first-build/02-share-and-export.md) adds the second copy afterwards. If you already have a `playground` project, reuse it; do not create another inside it.
 
 ## Install a CLI agent (CLI lane)
 
@@ -86,7 +88,7 @@ Full setup:
 
 - [ ] My e-mail account is personal, not shared, and has two-factor authentication.
 - [ ] My passwords and recovery codes are in a password manager.
-- [ ] I have a GitHub account with two-factor authentication.
+- [ ] I chose a backup method: a file export, or GitHub with two-factor authentication.
 - [ ] I connected the builder to GitHub, it created a private repository, and I can see a commit there (or I exported a ZIP).
 - [ ] I opened my app's share link in a private browser window and it works.
 
@@ -96,8 +98,8 @@ Full setup:
 - [ ] `git --version` works (GitHub Desktop is fine too).
 - [ ] I installed one agent from its vendor's install page, and it starts in the terminal.
 - [ ] I logged in with my own account.
-- [ ] In a folder called `playground` I ran `git init` and asked the agent to "create a README.md with three sentences".
-- [ ] I pushed that folder to a new, empty private GitHub repository and can see it on github.com ([Code hosting and backup](diy/04-code-hosting-and-backup.md), section 4, variant a).
+- [ ] I can identify the course folder and the separate folder where I will build my app.
+- [ ] I will create or reuse that app folder once in [Your first build](tracks/01-first-build/01-your-first-build.md#cli-lane), then save a second copy after building.
 - [ ] I switched model training off in my account settings.
 - [ ] I keep API keys in `.env`, never in a commit and never in a prompt: [Secrets and keys](diy/07-secrets-and-keys.md).
 - [ ] I read rule one and I will build with fake data.

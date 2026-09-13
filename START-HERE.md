@@ -1,6 +1,12 @@
 # Start here
 
-Five minutes. Pick one of four reading paths, then open its first link.
+Choose a small result for today, then use a longer path when it helps. Times below are estimates, not deadlines.
+
+- **No account, limited credits or a locked-down laptop:** start with the [learning guide](learning/README.md) and [verification lab](exercises/verification-lab/README.md).
+- **Learn with Codex or Claude Code:** open the course folder and say “Help me learn” or “Quiz me on verification”. The [coach protocol](learning/coach-protocol.md) keeps the next step small and waits for your attempt.
+- **Deutsch:** [Hier beginnen](learning/start-de.md). The main units are in English; an agent can explain a linked unit in German.
+
+Experience and tool are separate choices. A skilled product owner may prefer a browser; a developer may still be new to verifying agent work. Keep your own app in a separate project folder.
 
 All times are estimates from the unit headers. You organise your own accounts, licences and hosting: the [Do it yourself guides](diy/01-accounts-and-2fa.md) show how.
 
@@ -8,7 +14,7 @@ All times are estimates from the unit headers. You organise your own accounts, l
 
 You end with a first app built on fake data, a copy outside the tool, a one-page spec, and the habit of checking results. About 4 h 5 min.
 
-1. [Ready to build](ready-to-build.md): minimum start (~20 min). Do the full setup (~75 min, not counted here) before step 5.
+1. [Ready to build](ready-to-build.md): minimum start (~20 min). Choose a file export or GitHub backup at step 5; you do not need every full-setup item.
 2. [Rule one: no real data](tracks/00-orientation/01-rule-one-no-real-data.md) (~10 min)
 3. [Pick your lane](tracks/00-orientation/02-pick-your-lane.md) (~10 min)
 4. [Your first build](tracks/01-first-build/01-your-first-build.md) (~45 min)
@@ -21,16 +27,16 @@ You end with a first app built on fake data, a copy outside the tool, a one-page
 11. [Spec interview](tracks/03-plan-first/01-spec-interview.md) (~30 min)
 12. [The verification ladder](tracks/05-verify-and-loop/01-verification-ladder.md) (~20 min)
 
-Then continue with Path B from step 2 (you already have your spec).
+Then continue with Path B at the first item you cannot demonstrate. Working alone? Skip the team sprint and continue at step 3. Keep the spec and checks you already made.
 
 ## Path B: I want my own tool in real use
 
-You end with a spec, a checked work cycle, backups, a handover document and a deployed app. About 5 h 40 min, or 4 h 25 min without the team sprint.
+You work toward a spec, a checked work cycle, backups, a handover document and a deployed prototype. Deployment alone is not production readiness. About 5 h 40 min, or 4 h 25 min without the team sprint.
 
 Have you not built anything yet? Do [Rule one](tracks/00-orientation/01-rule-one-no-real-data.md) and [Your first build](tracks/01-first-build/01-your-first-build.md) first.
 
 1. [Spec interview](tracks/03-plan-first/01-spec-interview.md) (~30 min)
-2. [Product sprint](tracks/03-plan-first/02-product-sprint.md) (~75 min, needs a team of 3 to 4)
+2. [Product sprint](tracks/03-plan-first/02-product-sprint.md) (optional, ~75 min, needs a team of 3 to 4). **Solo: skip to step 3 using your spec.**
 3. [The verification ladder](tracks/05-verify-and-loop/01-verification-ladder.md) (~20 min)
 4. [Five failure patterns](tracks/05-verify-and-loop/02-five-failure-patterns.md) (~15 min)
 5. [Seven sentences](tracks/05-verify-and-loop/03-seven-sentences.md) (~15 min)
@@ -46,7 +52,7 @@ Have you not built anything yet? Do [Rule one](tracks/00-orientation/01-rule-one
 
 You can code, but you have not worked with a coding agent in the terminal yet. You end with an agent installed, a spec, a checked work cycle, backups, a handover document and a deployed app. About 6 h 45 min.
 
-1. [Ready to build](ready-to-build.md): CLI lane, full setup (~75 min)
+1. [Ready to build](ready-to-build.md): CLI lane, install and sign in. Create your app folder once in step 4; connect backup later. Setup time varies.
 2. [Rule one: no real data](tracks/00-orientation/01-rule-one-no-real-data.md) (~10 min)
 3. [Pick your lane](tracks/00-orientation/02-pick-your-lane.md) (~10 min)
 4. [Your first build](tracks/01-first-build/01-your-first-build.md), CLI lane section (~45 min)
@@ -64,7 +70,9 @@ You can code, but you have not worked with a coding agent in the terminal yet. Y
 
 ## Path D: I use a CLI agent already
 
-You end with sharper habits for context, verification, notes, loops, parallel agents and operation. About 6 h 35 min.
+You practise context, verification, notes, loops, parallel agents and operation. Plan several sessions; running agents, fixing failures and verifying prerequisites add time.
+
+Before skipping a prerequisite, show its evidence: a mini-spec, a restored backup and a handover someone can follow. If one is missing, do [Keep your work safe](tracks/06-keep-and-ship/01-keep-your-work-safe.md) and [Handover and first users](tracks/06-keep-and-ship/03-handover-and-first-users.md) before the vault or production checklist. For schema work, complete [Data first](tracks/02-data-first/01-does-the-ai-need-this.md).
 
 Rule one applies to you too. If you have not read it, start with [Rule one: no real data](tracks/00-orientation/01-rule-one-no-real-data.md) (~10 min, not counted here).
 
@@ -85,6 +93,14 @@ Rule one applies to you too. If you have not read it, start with [Rule one: no r
 15. [Agents in operation](tracks/08-advanced/04-agents-in-operation.md) (~25 min)
 16. [Always-on assistants with guardrails](tracks/08-advanced/05-always-on-assistants-guardrails.md) (~20 min)
 17. [PoC to production checklist](tracks/08-advanced/06-poc-to-production-checklist.md) (~30 min)
+
+## Follow your chosen path
+
+The “Next” link inside a unit follows the default track order. Return here for your chosen path; you do not need to follow both. If a prerequisite is missing, do it or demonstrate its outcome before continuing. For the verification unit, read [Model, context, agent](tracks/04-the-map/01-model-context-agent.md) if those terms are new.
+
+After a unit, try a relevant [knowledge checkpoint](learning/checkpoints.md). Say what you expect before testing, then explain what the result means. An agent building the artefact is not evidence that you can do this yourself.
+
+At a pause, save your chosen path, unit, evidence and next question using the optional [progress template](learning/progress-template.md). Keep it private. A fresh agent asks a recall question instead of assuming every old checkbox is correct.
 
 ## How to use a unit
 
@@ -109,10 +125,10 @@ Boxes that start with "As of" describe one tool's current commands. They carry a
 
 ## When you are stuck
 
-1. **Ask your agent.** Open this repository with your agent. [AGENTS.md](AGENTS.md) makes it answer from the material and name the file it used. Paste the error text, not a screenshot that might show real data.
+1. **Ask your agent.** Open this repository with your agent. [AGENTS.md](AGENTS.md) instructs it to answer from the material and name the file it used; inspect that source yourself. Share only a short error excerpt after removing personal data, keys and private paths. Screenshots can expose those too.
 2. **Check the guides.** Accounts, plans, data agreements, hosting, deploy, costs and keys are in the [Do it yourself guides](diy/01-accounts-and-2fa.md). Prices and limits are in the [tool matrix](diy/tool-matrix-2026-09.md).
-3. **Start fresh.** After two failed corrections, open a new chat with a better first prompt. See [Five failure patterns](tracks/05-verify-and-loop/02-five-failure-patterns.md).
+3. **Preserve, then restart.** After two failed corrections, save the current attempt and a note: goal, last working state, expected result, observed error, fixes tried and the next single check. Open a fresh chat with that note. See [Five failure patterns](tracks/05-verify-and-loop/02-five-failure-patterns.md).
 4. **Look up a word.** The [glossary](reference/glossary.md) explains terms in plain English.
 5. **Ask the people next to you**, if you work in a Build Session.
 
-Nobody provides setup support: not the authors, not the publisher, not a session host. The vendor's help pages and your own agent are the first stop.
+For installation or account issues, use the vendor help link in the relevant guide. A trainer can help interpret an exercise, but this material does not include account provisioning or a support service. While access is blocked, use the [no-account lab](exercises/verification-lab/README.md).

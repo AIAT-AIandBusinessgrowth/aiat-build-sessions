@@ -19,13 +19,13 @@ That is why rule one comes before any tool.
 
 ## Do it
 
-**Rule one: use only fake data, public data that is not about people, or data about yourself.**
+**Rule one for these exercises: use invented data or public data that is not about people. Keep real personal and customer data out, including your own personal information.**
 
-### 1. Know the three kinds of allowed data (2 min)
+### 1. Know which data belongs in a learning exercise (2 min)
 
 - **Fake data.** Invented for the purpose: "Jordan Sample, jordan.sample@example.com".
 - **Public data that is not about people.** Opening hours of a public library, published statistics, a public holiday calendar. A person's public profile is still personal data.
-- **Data about yourself.** Your own shopping list or your own reading list. Your team's holiday plan is not yours: it is about other people.
+- **For a personal example, invent it too.** A fictional shopping list teaches the same skill without sending your own personal details. A team holiday plan contains data about other people and stays out.
 
 Never names, e-mail addresses, customer files, contracts, health or HR data of other people. Not even "just to test".
 
@@ -84,7 +84,7 @@ Not with a personal plan, and not in these tracks. Real data needs a tool your o
 
 ## Done when
 
-- [ ] I can name the three kinds of allowed data.
+- [ ] I can explain which invented or non-personal public data fits the exercise, and why personal information stays out.
 - [ ] I can name five examples of personal data that do not contain a name.
 - [ ] I can name at least four special categories, or I know where to look them up.
 - [ ] I switched model training off (or noted "no option") in the tool I will use first.
@@ -97,3 +97,5 @@ This unit is the data note for all other units. Each of them repeats it in a lin
 ## Next
 
 [Pick your lane](02-pick-your-lane.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

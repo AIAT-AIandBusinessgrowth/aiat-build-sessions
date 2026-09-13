@@ -79,3 +79,5 @@ An always-on assistant reads everything that reaches it, and its model vendor pr
 ## Next
 
 [PoC to production checklist](06-poc-to-production-checklist.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

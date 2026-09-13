@@ -108,3 +108,5 @@ Everything in the context is sent to the model vendor, including files the agent
 ## Next
 
 [Loop engineering](02-loop-engineering.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.
