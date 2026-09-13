@@ -27,7 +27,9 @@ Use one small step at a time.
 
 [Agent guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md) · [Plain-text index](https://build-sessions.apps.aiat-poc.at/llms.txt)
 
-To work through the full course with a coding agent later:
+You can follow the rest of the course on GitHub and share each lesson link with your agent. No course download is required. Use your current AI chat or app builder for planning and discussion; each lesson names any extra tool it needs.
+
+If you prefer to give a coding agent the whole course as local files:
 
 1. Download this course: on GitHub, choose **Code → Download ZIP** and extract it. If you use Git, you can clone the repository instead.
 2. Open the course folder in Codex, or start Claude Code inside it.
