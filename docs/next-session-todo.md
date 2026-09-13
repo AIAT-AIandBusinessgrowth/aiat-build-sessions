@@ -1,99 +1,63 @@
-# Nächste Session: interaktive Übungsfassung fertigstellen
+# Stand der interaktiven Übungsfassung
 
-Stand 2026-09-13. Arbeitsgrundlage für die Folgesession. Ziel ist eine
-vorführbare Fassung der Verifikationsübung, die neben einem Coding-Agenten
-läuft und nicht an seine Stelle tritt.
+Stand 2026-09-13, abends. Maintainer-Notiz, kein Kursmaterial.
 
-Der Arbeitsstand liegt in `docs/prototypes/verification-lab-v2.html` und ist
-lauffähig (Datei im Browser öffnen). Er ist ein Prototyp, kein Kursmaterial:
-er lädt three.js und die Schrift von einem CDN, siehe TODO 2.
+Die Übung unter `exercises/verification-lab/index.html` ist neu gebaut: fünf
+Runden (8, 9, 12, 5, 15 Personen), Vorhersage vor der Antwort der KI, Punkte,
+freies Probieren nach Runde 5, Kopiersatz für Claude Code oder Codex, eigene
+Reparaturdatei `notebook-calculator.html`, Szene als SVG mit CSS-Animation,
+Design nach ai-at.eu (Geist selbst gehostet, ohne CDN). Der Prototyp
+`docs/prototypes/verification-lab-v2.html` ist damit überholt; er bleibt nur
+als Referenz für die Runden-Idee liegen.
 
 ## Die Leitplanken, an denen sich alles messen lassen muss
 
-1. **Intuitiv.** Ohne Erklärtext verständlich. Wenn eine Seite den Satz
-   „Sieh dir das Bild an" braucht, erklärt das Bild sich nicht selbst.
-2. **Verständlich.** Eine Blickachse von oben nach unten, keine gestapelten
-   Karten, keine Chips, die nichts erklären. Zahlen immer mit Einheit.
+1. **Intuitiv.** Ohne Erklärtext verständlich.
+2. **Verständlich.** Eine Blickachse von oben nach unten, Zahlen mit Einheit.
 3. **Nur visuelle Unterstützung.** Die Person arbeitet mit Claude Code oder
-   Codex. Die Seite zeigt, was der Agent gebaut hat, und liefert den Satz,
-   mit dem die Person den Fehler an den Agenten zurückgibt. Sie ersetzt den
-   Agenten nicht und ist kein eigenständiges Spiel.
-4. **Kursartig.** Die Übung steht in einem Lernpfad, nicht daneben. Sie hat
-   Vorbedingung, Zeitangabe, Ziel und ein „Done when" wie jede andere Einheit.
+   Codex; die Seite liefert den Satz, mit dem sie den Fehler zurückgibt.
+4. **Kursartig.** Die Übung steht in einem Lernpfad (`START-HERE.md`), nicht
+   daneben.
 
-## Die drei Mechaniken, die sich bewährt haben
+## Erledigt am 2026-09-13
 
-- **Die Vorhersage wird erzwungen, nicht empfohlen.** Die eigene Zahl steht
-  fest, bevor die Antwort der KI sichtbar wird. Der Kurs bittet an vielen
-  Stellen darum; hier geht es technisch nicht anders.
-- **Der Beweis ist zählbar, nicht erklärt.** Man sieht die Packung mit ihren
-  vier Büchern, man sieht die Leute in einer Reihe, man sieht, wer nichts
-  bekommt. Zahlen im Text bestätigen nur, was im Bild schon steht.
-- **Gegenbeispiele sind Pflicht.** In drei von fünf Runden liegt die KI
-  richtig. Sonst lernt die Person „KI rechnet falsch" statt „ein Treffer
-  beweist nichts".
+- [x] 1. Kopiersatz mit Kopierknopf und Anleitung zum Einfügen in den Agenten.
+- [x] 2. Keine Abhängigkeiten: Szene in SVG, Schrift als eigene Dateien unter
+      `assets/fonts/` (SIL OFL 1.1, Lizenz liegt daneben).
+- [x] 3. Englische Fassung über `?lang=en`, auch in der Reparaturdatei.
+- [x] 4. Deployment: Allowlist im Infra-Repo ohne das Slide-Deck, Fonts und
+      Reparaturdatei aufgenommen; Live-Stand steht in `/version.json`.
+- [x] 5. Einheit „Choose test values" in Track 05, Schritt in den Pfaden B, C, D.
+- [x] 6. Fünf Vorbedingungen in `START-HERE.md` abgefangen.
+- [x] 7. Stufe 1 und 2 der Übungsentwürfe als „Harder tasks" in der README der
+      Übung; die drei leichteren Einstiegsaufgaben sind noch nicht übernommen.
+- [x] 8. Freies Probieren nach den fünf Runden.
 
-## TODO vor der Vorführung
+## Offen
 
-- [ ] **1. Agenten-Anbindung sichtbar machen.** Der fertige Beschreibungssatz
-      („Bei 9 Personen brauche ich 3 Packungen. Du hast 2 gekauft, damit fehlt
-      eines.") braucht einen Kopierknopf und eine Zeile, die sagt, was damit
-      zu tun ist: in Claude Code oder Codex einfügen, die Datei ändern lassen,
-      danach dasselbe Beispiel und ein vorher richtiges erneut prüfen. Ohne
-      diesen Schritt ist die Seite ein Spiel statt einer Kursübung.
-- [ ] **2. Abhängigkeiten klären.** Die deployte Seite läuft unter
-      `default-src 'self'`; CDN-Nachladen ist damit verboten. three.js
-      minifiziert sind 687 KB, die Schrift 60 KB je Schnitt, die Übung selbst
-      23 KB. Entweder beides ins Repo legen oder die Szene in SVG mit
-      CSS-Übergängen neu bauen (geschätzt 5 KB, ohne WebGL, druckbar, für
-      Screenreader beschriftbar). Empfehlung: SVG. Entscheidung liegt beim
-      Maintainer.
-- [ ] **3. Englische Fassung.** Der Prototyp ist einsprachig deutsch, die
-      bestehende Übung kann beide Sprachen. Ohne EN fällt die Übung hinter
-      den heutigen Stand zurück. Muster: `?lang=en` wie in
-      `exercises/verification-lab/index.html`.
-- [ ] **4. Deployment anstoßen.** `build-sessions.apps.aiat-poc.at` lieferte
-      am 2026-09-13 noch den Stand vor Commit `6b1076a` aus (10.257 gegen
-      11.363 Bytes). Vor der Vorführung prüfen, ob die Live-Seite den
-      Repo-Stand zeigt.
-
-## TODO danach
-
-- [ ] **5. Die eigentliche Lücke des Kurses schließen.** Die
-      Verifikationsleiter nennt als ungewöhnliche Eingaben ein leeres Feld,
-      eine sehr große Zahl und Sonderzeichen
-      (`tracks/05-verify-and-loop/01-verification-ladder.md:27`). Keine davon
-      findet den Fehler der eigenen Einstiegsübung, der nur bei 1, 5, 9 und 13
-      auftritt. Grenzwerte kommen in Track 05 nur einmal als Symptom vor, nie
-      als Methode. Eine Einheit „Prüfwerte wählen" schließt das.
-- [ ] **6. Vorbedingungen reparieren.** Fünf Schritte in den Lernpfaden
-      verlangen eine Lektion, die im selben Pfad nie vorkommt und in keinem
-      Auffangsatz genannt wird. Die gewichtigste: Path D Schritt 16
-      (`tracks/08-advanced/05-always-on-assistants-guardrails.md`) setzt
-      `diy/07-secrets-and-keys.md` voraus. Vollständige Liste in Projekt 41,
-      Issue #50.
-- [ ] **7. Übungsentwürfe einarbeiten.** Drei leichtere Einstiegsaufgaben und
-      vier Aufbaustufen liegen ausformuliert und nachgerechnet vor, jede mit
-      eigener Fehlerklasse. Stufe 1 und 2 passen in den vorhandenen, derzeit
-      zugeklappten Block „Want a harder task?" in
-      `exercises/verification-lab/README.md`.
-- [ ] **8. Freies Probieren anbieten.** Nach den fünf Runden ein Feld für
-      beliebige Zahlen. Wer 1, 5, 9, 13 durchspielt, findet das Muster selbst.
-      Das ist stärker als jede Auflösung.
+- [ ] Drei leichtere Einstiegsaufgaben (Sortierung, Filter, Eingabeprüfung)
+      als eigene Seite, am ehesten zuerst auf Deutsch.
+- [ ] `modules/de/glossar.md`: Einträge „Grenzwert" und „Testwerte" nachziehen.
+- [ ] `learning/tutor-criteria.md` B05: Transfervariante wählen, die nicht
+      schon in der Einheit steht.
+- [ ] `scripts/check_content.py` prüft keine Links in HTML-Dateien; als
+      Erweiterung erfassen.
+- [ ] Stufe 3 und 4 der Übungsentwürfe (Zustandsfehler, Prüfbericht).
 
 ## Prüfliste vor dem Abnehmen
 
-Jede Fassung muss das bestanden haben, bevor sie gezeigt wird. Jeder Punkt
-davon ist heute mindestens einmal gerissen worden.
+Jede Fassung muss das bestanden haben, bevor sie gezeigt wird. Für die Fassung
+vom 2026-09-13 wurde jeder Punkt im Browser gemessen und die Screenshots wurden
+angesehen; die Vertragstests in `tests/test_verification_lab.py` sichern die
+Importer-Bedingungen (Rechenfehler bleibt, keine externen Ressourcen).
 
-- [ ] Kompletter Durchlauf ausschließlich mit der Tastatur, inklusive Neustart.
-- [ ] Leere und ungültige Eingabe erzeugen eine sichtbare Meldung, keinen
+- [x] Kompletter Durchlauf ausschließlich mit der Tastatur, inklusive Neustart.
+- [x] Leere und ungültige Eingabe erzeugen eine sichtbare Meldung, keinen
       stillen Abbruch und kein veraltetes Ergebnis.
-- [ ] Kein horizontaler Überlauf bei 390, 768 und 1440 Pixeln Breite.
-- [ ] Null Kontrastverstöße gegen WCAG AA bei allen drei Breiten.
-- [ ] Singular und Plural stimmen in jedem erzeugten Satz („Ein Notizbuch
-      fehlt", nicht „Es fehlen 1 Notizbücher").
-- [ ] Bei jeder vorkommenden Personenzahl bleibt die Reihe zählbar und
+- [x] Kein horizontaler Überlauf bei 390, 768 und 1440 Pixeln Breite.
+- [x] Null Kontrastverstöße gegen WCAG AA bei allen drei Breiten.
+- [x] Singular und Plural stimmen in jedem erzeugten Satz.
+- [x] Bei jeder vorkommenden Personenzahl bleibt die Reihe zählbar und
       vollständig im Bild, auch auf dem Handy.
-- [ ] Screenshots jedes Zustands wurden angesehen, nicht nur Messwerte
-      geprüft. Zahlen sagen nichts über Verständlichkeit.
+- [x] Screenshots jedes Zustands wurden angesehen, nicht nur Messwerte
+      geprüft.

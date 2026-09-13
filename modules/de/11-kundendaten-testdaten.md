@@ -131,6 +131,8 @@ Vereinbart im Team, wer reagiert, wie schnell eine erste Rückmeldung kommt und 
 
 Bei einem Verdacht: weitere Weitergabe stoppen, Zeitpunkt und betroffenen Speicherort notieren und den vorgesehenen Meldeweg nutzen. Die zuständige Stelle entscheidet über weitere Schritte und mögliche gesetzliche Meldepflichten.
 
+**Warum schnelles Melden zählt: die 72-Stunden-Frist.** Bei einer Verletzung des Schutzes personenbezogener Daten meldet der Verantwortliche sie der Aufsichtsbehörde unverzüglich und möglichst binnen 72 Stunden, nachdem sie ihm bekannt wurde; die Meldung entfällt nur, wenn die Verletzung voraussichtlich nicht zu einem Risiko für die Rechte und Freiheiten natürlicher Personen führt (Art. 33 DSGVO). Die Frist läuft für die verantwortliche Stelle, nicht für dich — sie kann sie aber nur einhalten, wenn sie rechtzeitig von dir erfährt. *(Quelle: Verordnung (EU) 2016/679, Art. 33, https://eur-lex.europa.eu/eli/reg/2016/679/oj, abgerufen 2026-09-13.)*
+
 ## 9. Fünf Sätze für den Alltag
 
 > 1. **Vor personenbezogenen Kundendaten kläre ich Auftrag, Vertrag und erlaubte Umgebung.**

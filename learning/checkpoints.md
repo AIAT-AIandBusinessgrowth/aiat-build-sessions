@@ -46,6 +46,14 @@ What would you tell the new agent so it can continue from there?
 
 [Help: one work cycle](../tracks/05-verify-and-loop/04-one-work-cycle.md)
 
+### B05 — Which group sizes would you try?
+
+A pack holds four notebooks, and an invented calculator works out how many packs a group needs. You tried eight people and everyone got a notebook.
+
+Which group sizes would you try next, and why those?
+
+[Help: choose test values](../tracks/05-verify-and-loop/05-choosing-test-values.md)
+
 ## Intermediate
 
 <a id="i01--turn-a-wish-into-an-acceptance-check"></a>

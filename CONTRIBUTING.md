@@ -44,7 +44,7 @@ git diff --check
 
 The checker validates local Markdown targets, anchors and unit structure. The tests exercise malformed CSV, safe schema output, the fictional exercise fixture and the checker. They use the Python standard library; no package installation is required. GitHub Actions runs them for pull requests and pushes.
 
-These checks do not prove that external prices are current, a vendor UI still matches, an agent follows every instruction, or a person has learned. Verify the relevant source or behaviour separately and record limitations. The [verification lab](exercises/verification-lab/README.md) intentionally retains its calculation defect; fix a learner's copy, not the course fixture.
+These checks do not prove that external prices are current, a vendor UI still matches, an agent follows every instruction, or a person has learned. Verify the relevant source or behaviour separately and record limitations. The [verification lab](exercises/verification-lab/README.md) runs five rounds and intentionally retains its calculation defect, both on the guided page and in the `notebook-calculator.html` learners download and repair; fix a learner's copy, not the course fixture.
 
 ## Check the learning behaviour
 

@@ -2,7 +2,7 @@
 
 **[Deutsch starten](learning/start-de.md)**
 
-For a first taste, try the [notebook calculator](https://build-sessions.apps.aiat-poc.at/), in English or German. Allow about five minutes for a first try; fixing it can take longer. It opens in your browser without an account or download. You learn how to check a tool instead of accepting its answer. [Paper option](exercises/verification-lab/README.md).
+For a first taste, try the [notebook calculator](https://build-sessions.apps.aiat-poc.at/), in English or German. Five short rounds, about ten minutes: you say how many packs you expect, then the page shows what the tool bought and who is left without a notebook. Fixing it can take longer. It opens in your browser without an account or download. You learn how to check a tool instead of accepting its answer. [Paper option](exercises/verification-lab/README.md).
 
 Want to keep going? Choose a path below. You can stop after any lesson and come back another day; the times are only estimates.
 
@@ -12,6 +12,13 @@ Want to keep going? Choose a path below. You can stop after any lesson and come 
 | Improve a tool you have already built | [Path B](#path-b-i-want-my-own-tool-in-real-use) |
 | Try coding agents when you already know how to code | [Path C](#path-c-i-am-a-developer-new-to-cli-agents) |
 | Get more out of an agent you already use | [Path D](#path-d-i-use-a-cli-agent-already) |
+
+**Where you are**
+
+1. Rounds 1 to 5 on the live page: say what you expect, then compare.
+2. The free-try field on the page, then the [harder calculator tasks](exercises/verification-lab/README.md#harder-tasks).
+3. [Choose test values](tracks/05-verify-and-loop/05-choosing-test-values.md): decide which numbers would show a mistake.
+4. Your own tool: pick a path above and work on something you use.
 
 Use made-up data in every exercise: [the data rule](tracks/00-orientation/01-rule-one-no-real-data.md). Keep your own app in a separate folder from this course.
 
@@ -31,6 +38,7 @@ Start with a small app and save a copy. The later lessons help you write down wh
 10. [Model, context, agent](tracks/04-the-map/01-model-context-agent.md)
 11. [Spec interview](tracks/03-plan-first/01-spec-interview.md): let the agent help you write a short plan.
 12. [Check an agent's work](tracks/05-verify-and-loop/01-verification-ladder.md): check your app yourself.
+13. [Harder calculator tasks](exercises/verification-lab/README.md#harder-tasks): two longer versions of the notebook calculator.
 
 Then move to Path B. Keep the plan and checks you have already made; start with the first lesson you have not tried. If you work alone, skip the team sprint.
 
@@ -38,7 +46,9 @@ Then move to Path B. Keep the plan and checks you have already made; start with 
 
 Work on a tool you have already built. You will check it, save a backup, write notes for its next user and put it online. A working link is one step; you will still need to check that the tool is ready for people to rely on.
 
-Nothing built yet? Do [Rule one](tracks/00-orientation/01-rule-one-no-real-data.md) and [Your first build](tracks/01-first-build/01-your-first-build.md) first, including that lesson's setup.
+Whatever you have built, start with [Rule one: no real data](tracks/00-orientation/01-rule-one-no-real-data.md). Steps 1 and 2 also assume [Schema first, then synthetic data](tracks/02-data-first/03-schema-then-synthetic-data.md). Nothing built yet? Also do [Your first build](tracks/01-first-build/01-your-first-build.md) first, including that lesson's setup.
+
+Steps 12 to 14 use your own hosting account; set one up with [Accounts and 2FA](diy/01-accounts-and-2fa.md) first.
 
 1. [Spec interview](tracks/03-plan-first/01-spec-interview.md)
 2. [Product sprint](tracks/03-plan-first/02-product-sprint.md): optional, for a team of 3 to 4. **Working alone? Go to step 3 with your plan.**
@@ -46,16 +56,20 @@ Nothing built yet? Do [Rule one](tracks/00-orientation/01-rule-one-no-real-data.
 4. [Five failure patterns](tracks/05-verify-and-loop/02-five-failure-patterns.md)
 5. [Seven sentences](tracks/05-verify-and-loop/03-seven-sentences.md)
 6. [One work cycle](tracks/05-verify-and-loop/04-one-work-cycle.md): make and check one change from start to finish.
-7. [Keep your work safe](tracks/06-keep-and-ship/01-keep-your-work-safe.md)
-8. [From prototype to product](tracks/06-keep-and-ship/02-prototype-to-product.md)
-9. [Handover and first users](tracks/06-keep-and-ship/03-handover-and-first-users.md)
-10. [Code hosting and backup](diy/04-code-hosting-and-backup.md)
-11. [Secrets and keys](diy/07-secrets-and-keys.md)
-12. [Deploy and share](diy/05-deploy-and-share.md): allow time to try the steps, beyond reading them.
+7. [Choose test values](tracks/05-verify-and-loop/05-choosing-test-values.md): decide which numbers would show a mistake.
+8. [Harder calculator tasks](exercises/verification-lab/README.md#harder-tasks): two longer versions of the notebook calculator.
+9. [Keep your work safe](tracks/06-keep-and-ship/01-keep-your-work-safe.md)
+10. [From prototype to product](tracks/06-keep-and-ship/02-prototype-to-product.md)
+11. [Handover and first users](tracks/06-keep-and-ship/03-handover-and-first-users.md)
+12. [Code hosting and backup](diy/04-code-hosting-and-backup.md)
+13. [Secrets and keys](diy/07-secrets-and-keys.md)
+14. [Deploy and share](diy/05-deploy-and-share.md): allow time to try the steps, beyond reading them.
 
 ## Path C: I am a developer, new to CLI agents
 
 Use Claude Code or Codex on a small project, then check and save the work before putting it online. You can use the same project throughout.
+
+Steps 15 to 17 use your own hosting account; set one up with [Accounts and 2FA](diy/01-accounts-and-2fa.md) first.
 
 1. [Ready to build](ready-to-build.md): follow the coding-agent installation and sign-in steps. Create your app folder once in **Your first build** below; add backup later.
 2. [Rule one: no real data](tracks/00-orientation/01-rule-one-no-real-data.md)
@@ -66,21 +80,23 @@ Use Claude Code or Codex on a small project, then check and save the work before
 7. [Five failure patterns](tracks/05-verify-and-loop/02-five-failure-patterns.md)
 8. [Seven sentences](tracks/05-verify-and-loop/03-seven-sentences.md)
 9. [One work cycle](tracks/05-verify-and-loop/04-one-work-cycle.md)
-10. [Keep your work safe](tracks/06-keep-and-ship/01-keep-your-work-safe.md)
-11. [From prototype to product](tracks/06-keep-and-ship/02-prototype-to-product.md)
-12. [Handover and first users](tracks/06-keep-and-ship/03-handover-and-first-users.md)
-13. [Code hosting and backup](diy/04-code-hosting-and-backup.md)
-14. [Secrets and keys](diy/07-secrets-and-keys.md)
-15. [Deploy and share](diy/05-deploy-and-share.md)
+10. [Choose test values](tracks/05-verify-and-loop/05-choosing-test-values.md): decide which numbers would show a mistake.
+11. [Harder calculator tasks](exercises/verification-lab/README.md#harder-tasks): two longer versions of the notebook calculator.
+12. [Keep your work safe](tracks/06-keep-and-ship/01-keep-your-work-safe.md)
+13. [From prototype to product](tracks/06-keep-and-ship/02-prototype-to-product.md)
+14. [Handover and first users](tracks/06-keep-and-ship/03-handover-and-first-users.md)
+15. [Code hosting and backup](diy/04-code-hosting-and-backup.md)
+16. [Secrets and keys](diy/07-secrets-and-keys.md)
+17. [Deploy and share](diy/05-deploy-and-share.md)
 
 ## Path D: I use a CLI agent already
 
 Choose the parts that would help with your current work: better instructions, useful notes, longer tasks or several agents. You do not need to start again at the beginning.
 
-Before the notes-vault lesson or production checklist, make sure you have actually restored a backup and written instructions someone else can follow. If you have not, try [Keep your work safe](tracks/06-keep-and-ship/01-keep-your-work-safe.md) and [Handover and first users](tracks/06-keep-and-ship/03-handover-and-first-users.md) first. For exercises involving tables, work through [Data first](tracks/02-data-first/01-does-the-ai-need-this.md).
+Before the notes-vault lesson or production checklist, make sure you have actually restored a backup and written instructions someone else can follow. If you have not, try [Keep your work safe](tracks/06-keep-and-ship/01-keep-your-work-safe.md) and [Handover and first users](tracks/06-keep-and-ship/03-handover-and-first-users.md) first. For exercises involving tables, work through [Data first](tracks/02-data-first/01-does-the-ai-need-this.md). Step 17 assumes you have read [Secrets and keys](diy/07-secrets-and-keys.md); do that first if you have not.
 
 1. [Model, context, agent](tracks/04-the-map/01-model-context-agent.md)
-2. [Which tool for what](tracks/04-the-map/02-which-tool-for-what.md)
+2. [Which tool for what](tracks/04-the-map/02-which-tool-for-what.md): if you have not chosen between a browser builder and a CLI agent, skim [Pick your lane](tracks/00-orientation/02-pick-your-lane.md) first.
 3. [The adoption ladder](tracks/04-the-map/03-adoption-ladder.md)
 4. [Role archetypes](tracks/04-the-map/04-role-archetypes.md)
 5. [Spec interview](tracks/03-plan-first/01-spec-interview.md): write a short plan before trying **One work cycle**.
@@ -88,14 +104,15 @@ Before the notes-vault lesson or production checklist, make sure you have actual
 7. [Five failure patterns](tracks/05-verify-and-loop/02-five-failure-patterns.md)
 8. [Seven sentences](tracks/05-verify-and-loop/03-seven-sentences.md)
 9. [One work cycle](tracks/05-verify-and-loop/04-one-work-cycle.md)
-10. [A vault and AGENTS.md](tracks/07-second-brain/01-vault-and-agents-md.md)
-11. [Notes as a graph](tracks/07-second-brain/02-notes-as-a-graph.md)
-12. [Context engineering](tracks/08-advanced/01-context-engineering.md)
-13. [Loop engineering](tracks/08-advanced/02-loop-engineering.md)
-14. [Parallel agents](tracks/08-advanced/03-parallel-agents.md)
-15. [Agents in operation](tracks/08-advanced/04-agents-in-operation.md)
-16. [Always-on assistants with guardrails](tracks/08-advanced/05-always-on-assistants-guardrails.md)
-17. [PoC to production checklist](tracks/08-advanced/06-poc-to-production-checklist.md)
+10. [Choose test values](tracks/05-verify-and-loop/05-choosing-test-values.md): decide which numbers would show a mistake.
+11. [A vault and AGENTS.md](tracks/07-second-brain/01-vault-and-agents-md.md)
+12. [Notes as a graph](tracks/07-second-brain/02-notes-as-a-graph.md)
+13. [Context engineering](tracks/08-advanced/01-context-engineering.md)
+14. [Loop engineering](tracks/08-advanced/02-loop-engineering.md)
+15. [Parallel agents](tracks/08-advanced/03-parallel-agents.md)
+16. [Agents in operation](tracks/08-advanced/04-agents-in-operation.md)
+17. [Always-on assistants with guardrails](tracks/08-advanced/05-always-on-assistants-guardrails.md)
+18. [PoC to production checklist](tracks/08-advanced/06-poc-to-production-checklist.md)
 
 ## Follow your chosen path
 

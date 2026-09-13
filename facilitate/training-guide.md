@@ -8,7 +8,7 @@ Finish this sentence: “After this session, participants can ___.” For exampl
 
 | Starting point | Try this | What to look for |
 |---|---|---|
-| First time | [Notebook calculator](../exercises/verification-lab/README.md) or [paper room example](../learning/README.md) | Can they explain how many notebooks are needed or which rooms fit? |
+| First time | [Notebook calculator](../exercises/verification-lab/README.md): five short rounds, then the downloaded `notebook-calculator.html` to repair — or the [paper room example](../learning/README.md) | Can they explain how many notebooks are needed or which rooms fit? |
 | Has built a prototype | [Check an agent's work](../tracks/05-verify-and-loop/01-verification-ladder.md) | Do they try the feature themselves? |
 | Already uses several agents | [Parallel agents](../tracks/08-advanced/03-parallel-agents.md) | Can they divide the work and check that the pieces work together? |
 

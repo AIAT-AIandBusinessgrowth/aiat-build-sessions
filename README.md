@@ -8,9 +8,9 @@ These exercises work with Claude Code, Codex or an AI app builder. You do not ne
 
 ## Try this first
 
-An AI-made tool can look finished and still give a wrong answer. Try this small calculator: work out one answer yourself and see whether everyone gets a notebook. You learn to spot a mistake and explain what needs to change.
+An AI-made tool can look finished and still give a wrong answer. Try this small calculator: in five short rounds you say how many packs a group needs, then see what the tool bought and whether everyone gets a notebook. You learn to spot a mistake and explain what needs to change.
 
-**[Open the notebook calculator](https://build-sessions.apps.aiat-poc.at/)** — in English or German. Allow about five minutes for a first try, longer if you want to fix it. Try it directly in your browser. No account, installation or download needed. [Paper and offline options](exercises/verification-lab/README.md).
+**[Open the notebook calculator](https://build-sessions.apps.aiat-poc.at/)** — in English or German. Allow about ten minutes for the five rounds, longer if you want to fix it. After the rounds you can try any group size you like. Try it directly in your browser. No account, installation or download needed. [Paper and offline options](exercises/verification-lab/README.md).
 
 Use invented examples throughout the course. Keep real personal and customer data, including your own details, out of prompts, uploads and screenshots. [More about this rule](tracks/00-orientation/01-rule-one-no-real-data.md).
 
@@ -21,7 +21,7 @@ Already have Codex, Claude Code or a browser chat? Give it this prompt:
 ```text
 Help me try https://build-sessions.apps.aiat-poc.at/ and read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
 Briefly explain that I will learn to check AI-generated work myself.
-Ask only how many packs I expect for eight people, then wait for my answer; we will try the calculator afterwards.
+The page has five short rounds. Ask only how many packs I expect for eight people, then wait for my answer; we will try the calculator afterwards.
 ```
 
 If the AI asks too much at once, say: “Please ask only one question and wait for my answer.”
@@ -89,12 +89,14 @@ You or your organisation arrange accounts and hosting. Prices and limits change;
 ### More material
 
 - [Notebook calculator](exercises/verification-lab/README.md): a short exercise in finding a mistake.
+- [Harder tasks](exercises/verification-lab/README.md#harder-tasks): two longer versions of the calculator, once the five rounds feel easy.
+- [Choose test values](tracks/05-verify-and-loop/05-choosing-test-values.md): pick the few numbers that find a mistake.
 - [Find the personal data](exercises/find-the-personal-data/README.md): work through a fictional customer list yourself, then compare with the solutions. Keep this exercise out of AI tools.
 - [Templates](templates/): starting points for a plan, project notes and session cards.
 - [Run a Build Session](facilitate/run-a-build-session.md): bring the exercises to a team, class or meetup.
 - [Glossary](reference/glossary.md): look up an unfamiliar word.
 - [Sources](reference/sources.md): where the material comes from.
-- [German reference material](modules/de/): longer explanations of working with agents.
+- [German reference material](modules/de/README.md): longer explanations of working with agents.
 
 </details>
 

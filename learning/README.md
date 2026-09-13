@@ -1,10 +1,10 @@
 # Try one small thing
 
-**[Start with the calculator](https://build-sessions.apps.aiat-poc.at/)** — work out an answer yourself, then see what the AI-made tool says. You learn to spot a mistake and explain it. No account or download needed.
+**[Start with the calculator](https://build-sessions.apps.aiat-poc.at/)** — five short rounds: work out an answer yourself, then see what the AI-made tool says and who is left without a notebook. You learn to spot a mistake and explain it. No account or download needed.
 
 [Deutsch](start-de.md)
 
-Set aside about five minutes to start.
+Set aside about ten minutes for the five rounds.
 
 ## Get help with your answer
 
@@ -13,7 +13,7 @@ If you already use Codex, Claude Code or a browser chat, paste this:
 ```text
 Help me try https://build-sessions.apps.aiat-poc.at/ and read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
 Briefly explain that I will learn to check AI-generated work myself.
-Ask only how many packs I expect for eight people, then wait for my answer; we will try the calculator afterwards.
+The page has five short rounds. Ask only how many packs I expect for eight people, then wait for my answer; we will try the calculator afterwards.
 ```
 
 If the AI asks too much at once, say: “Please ask only one question and wait for my answer.”
@@ -45,6 +45,8 @@ For help in a chat, copy the room description, table and your answer into it. As
 ## When you want to continue
 
 - [Try the notebook calculator](../exercises/verification-lab/README.md): click through a small app and find what goes wrong.
+- [Harder tasks](../exercises/verification-lab/README.md#harder-tasks): two longer versions of the calculator, if the five rounds were easy.
+- [Choose test values](../tracks/05-verify-and-loop/05-choosing-test-values.md): work out which numbers make a mistake visible.
 - [Build your first app](../tracks/01-first-build/01-your-first-build.md): turn a small task from your day into a tool.
 - [Check an agent's work](../tracks/05-verify-and-loop/01-verification-ladder.md), or [try more questions](checkpoints.md).
 

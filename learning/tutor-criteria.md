@@ -28,6 +28,12 @@ Source: [One work cycle](../tracks/05-verify-and-loop/04-one-work-cycle.md).
 
 Look for the goal or scope, verified current state, remaining failure and one next check. Distinguish observations from guesses. The learner need not paste the full transcript. For transfer, add a failed attempted fix and ask what belongs in the note so it is not repeated blindly.
 
+## B05
+
+Source: [Choose test values](../tracks/05-verify-and-loop/05-choosing-test-values.md).
+
+The learner names values and says why each one is worth trying: the zero case, both sides of a step in the rule such as 3, 4, 5 or 7, 8, 9, the value that was already correct so it can be tried again after a change, and an impossible input such as an empty field or the word “twelve”. A longer list of numbers without reasons does not demonstrate the skill, and “try something bigger” misses this mistake, which sits between ordinary values rather than far away from them. Look for an expected answer per value, decided before the tool is opened. For transfer, change the pack size to six so the steps move, and ask which values the learner would keep and which no longer test anything.
+
 ## I01
 
 Source: [Spec interview](../tracks/03-plan-first/01-spec-interview.md).

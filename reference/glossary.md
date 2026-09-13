@@ -17,6 +17,7 @@ Look up a word when you meet it in an exercise or guide. You do not need to lear
 ## B and C
 
 - **Backup:** a second copy of your work in a place that does not fail together with the first. Test that you can restore it before relying on it. [Keep your work safe](../tracks/06-keep-and-ship/01-keep-your-work-safe.md)
+- **Boundary value:** an input where the answer changes, for example the fourth person when notebooks come in packs of four. Try the value itself and one on each side of it, because a mistake usually sits at the step and not far away from it. [Choose test values](../tracks/05-verify-and-loop/05-choosing-test-values.md)
 - **Branch:** a separate line of changes in a Git repository. Work on a branch does not touch the main line until you merge it. [Parallel agents](../tracks/08-advanced/03-parallel-agents.md)
 - **Chat assistant:** a chat window with a model, such as Claude, ChatGPT or Gemini. For a plain chat task, you ask questions and work with the answers; some assistants also offer tools. [Which tool for what](../tracks/04-the-map/02-which-tool-for-what.md)
 - **CI/CD minutes:** time that a code host's servers spend running automatic checks and deployments for you (continuous integration and continuous delivery). Check how many minutes your plan includes and what happens when they run out. [Code hosting and backup](../diy/04-code-hosting-and-backup.md)
@@ -94,6 +95,7 @@ Look up a word when you meet it in an exercise or guide. You do not need to lear
 
 ## T to W
 
+- **Test values:** the few inputs you choose on purpose to find a mistake: zero, both sides of each boundary value, one impossible input, and one large but realistic number. Write down the answer you expect before you try them, and use invented numbers. [Choose test values](../tracks/05-verify-and-loop/05-choosing-test-values.md)
 - **Token (usage unit):** a piece of a word. Context windows are measured in tokens, pay-per-use prices count them, and some builders count your free allowance in tokens. [Model, context, agent](../tracks/04-the-map/01-model-context-agent.md), [Costs, limits and spend caps](../diy/06-costs-limits-spend-caps.md)
 - **Token (access token):** a different meaning: a long secret that works like a password, for example a personal access token for GitHub. Treat it like a key. [Code hosting and backup](../diy/04-code-hosting-and-backup.md)
 - **Usage window:** the period in which a subscription measures your use. When it ends, the limit resets. [Costs, limits and spend caps](../diy/06-costs-limits-spend-caps.md)

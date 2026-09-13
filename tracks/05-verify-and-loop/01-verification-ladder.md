@@ -32,6 +32,8 @@ Do not write "done" for anything you did not actually check.
 
 Read the check output. If the agent cannot run a check, try it yourself. Extra agent requests may use credits.
 
+How to pick the values that actually find a mistake is in [Choose test values](05-choosing-test-values.md).
+
 ### Rung 2: Demand evidence and look at it yourself (8 min)
 
 Open the preview or the exported file. Check what it actually contains.

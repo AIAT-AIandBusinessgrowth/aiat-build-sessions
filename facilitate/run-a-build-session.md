@@ -40,6 +40,8 @@ Use this as an example sequence, not a published schedule. Change it when people
 | 9 | Show and tell for everyone: [show-and-tell.md](show-and-tell.md) | Longer round, shorter build |
 | 10 | [Closing card](../templates/closing-card.md) | Hand it out instead of the retro card |
 
+**Variant: nine sessions with a 15-minute input.** Some series run nine sessions and give the input about 15 minutes, because people try the demonstration in the room instead of only watching it. To adapt, merge two neighbouring weeks above, for example weeks 7 and 8, or hand out the closing card in week 9, and take the extra five minutes from the build block: roughly 3 + 15 + 29 + 8 + 5 minutes in the 60-minute version. These numbers are estimates. If the build block falls below about half an hour, use the 75-minute version instead, and keep the reason behind the 10-minute figure in view: every extra minute of input is a minute nobody spends building.
+
 ## Before the session
 
 Check the necessary setup before the session. If someone cannot get access in time, have a paper task or paired activity ready so they can still take part.
