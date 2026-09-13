@@ -133,3 +133,5 @@ Links make relations visible, and relations can be personal data too: "who decid
 ## Next
 
 [Context engineering](../08-advanced/01-context-engineering.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

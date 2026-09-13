@@ -73,3 +73,5 @@ The question covers more than tables: screenshots with names in the corner, past
 ## Next
 
 [Exercise: find the personal data](02-exercise-find-the-personal-data.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

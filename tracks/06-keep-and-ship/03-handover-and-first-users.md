@@ -57,7 +57,7 @@ The section "What it must never do" is the one people skip. It is the most impor
 
 ### 2. Set up a test with three real users (5 min to plan)
 
-This unit sets the test up. The tests themselves happen over the following days, when your users have time.
+This unit prepares the test. The tests themselves happen later, when users have time. No deployed link yet? Use a local walkthrough with your fictional-data app, or complete [Secrets and keys](../../diy/07-secrets-and-keys.md) and [Deploy and share](../../diy/05-deploy-and-share.md) before sending a remote invitation. Preparation can be complete while user validation remains pending.
 
 Pick three people who actually have the problem. Friends who will say "nice" do not count.
 
@@ -108,9 +108,12 @@ When you fix something a user reported, tell them in one line. People who see th
 
 - [ ] The handover artefact has: what it does, for whom, how to run it, who to ask, what it must never do, where data and backups live, known limits, how to switch it off.
 - [ ] One person followed it without asking you, or you added the answers to their questions.
-- [ ] Three real users agreed to a test with fake data, and each of them has the task, the link and a day.
+- [ ] I prepared a fictional-data test task and a usable way to run it (a working link or local walkthrough instructions).
+- [ ] I recorded user validation as pending until real people agree and try it. If working alone, I can continue the course with that limitation visible.
 
-After the tests, over the following days:
+To complete user validation, over the following days:
+
+- [ ] Three real users agreed to a test with fake data and received the task, access instructions and a day. The suggested count is an exercise target, not proof of market demand.
 
 - [ ] Three real users tried the product with fake data, and you have their notes without names.
 - [ ] Their feedback is a task list grouped into blocker, annoying, idea, each with a "done when" line.
@@ -123,3 +126,5 @@ Handover documents live in repositories, and repositories get copied. Use roles 
 ## Next
 
 [A vault and AGENTS.md](../07-second-brain/01-vault-and-agents-md.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

@@ -85,3 +85,5 @@ Everything you put into the context window leaves your laptop and goes to the ve
 ## Next
 
 [Which tool for what](02-which-tool-for-what.md): chat assistant, browser builder, CLI agent or editor, matched to the task.
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

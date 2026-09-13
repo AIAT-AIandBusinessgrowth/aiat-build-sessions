@@ -51,7 +51,7 @@ You organise your own accounts, plans and hosting. Nobody sets them up for you. 
 
 **CLI lane**
 
-- [ ] Everything from the browser lane list
+- [ ] One approved agent account, with two-factor authentication and training settings reviewed. A browser builder account is not required.
 - [ ] A terminal you can open (macOS: Terminal; Windows: PowerShell). Claude Code and Codex both install natively on Windows from PowerShell; WSL is optional ([Claude Code setup](https://code.claude.com/docs/en/setup), [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), checked 2026-09-13).
 - [ ] `git --version` prints a version
 - [ ] One agent installed, and `<agent> --version` prints a version
@@ -61,7 +61,7 @@ The full self-check for both lanes is in [Ready to build](../../ready-to-build.m
 
 ### 4. Write it down (1 min)
 
-One line each: lane, tool, account, where the tool shows your remaining limit, training setting.
+One line each: lane, tool, whether access works, where to check remaining usage, training setting. Do not write an e-mail address, account identifier or credentials into the learning record.
 
 ## Done when
 
@@ -77,3 +77,5 @@ Use an account in your own name, not a shared login. When a tool asks for access
 ## Next
 
 [Your first build](../01-first-build/01-your-first-build.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

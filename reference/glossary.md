@@ -76,7 +76,7 @@ Terms used in the tracks and the Do it yourself guides, in plain English. Each e
 - **Restore test:** getting a backup back into a new place and checking it against a known fact. An untested backup is a guess. [Keep your work safe](../tracks/06-keep-and-ship/01-keep-your-work-safe.md)
 - **Role archetypes:** five kinds of impact on a product: Prototyper, Builder, Sweeper, Grower and Maintainer. Hats you wear, not job titles. [Role archetypes](../tracks/04-the-map/04-role-archetypes.md)
 - **Rotate (a key):** create a new key, put it where the old one was used, and revoke the old key so it stops working. [Secrets and keys](../diy/07-secrets-and-keys.md)
-- **Rule one:** use only fake data, public data that is not about people, or data about yourself. [Rule one: no real data](../tracks/00-orientation/01-rule-one-no-real-data.md)
+- **Rule one:** use invented data or public data that is not about people. Keep real personal data, including your own, out of these exercises. [Rule one: no real data](../tracks/00-orientation/01-rule-one-no-real-data.md)
 
 ## S
 

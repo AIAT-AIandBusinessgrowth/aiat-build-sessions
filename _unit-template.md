@@ -64,6 +64,15 @@ Tool-specific details go into a dated box, one per tool:
 > - One fact per line. ([source](https://vendor.example.com/docs))
 -->
 
+## Check your understanding
+
+<!-- Ask for a prediction or explanation before revealing an answer. Then change
+one condition and ask for transfer. Link a relevant learning/checkpoints.md ID.
+Keep the human-only personal-data exercise exception. Reading or AI-generated
+work alone does not demonstrate learning. -->
+
+What do you predict will happen in <new situation>, and how would you check?
+
 ## Done when
 
 <!--
@@ -85,4 +94,4 @@ risk (screenshots, logs, exports, pasted feedback). Link to rule one:
 
 ## Next
 
-<!-- One link to the next unit, optionally with half a sentence why. -->
+<!-- Link to the default next unit. Add a link back to START-HERE.md for readers following a different path, and a relevant knowledge checkpoint. -->

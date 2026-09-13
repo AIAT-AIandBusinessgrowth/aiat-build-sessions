@@ -28,17 +28,18 @@ If in doubt, run one agent and a second one only for review.
 
 ### 2. Give each agent its own working copy (5 min)
 
-A **worktree** is a second folder of the same Git repository, on its own branch. Agents in different worktrees cannot overwrite each other's files. They share history, so merging later is normal Git work.
+A **worktree** is a second folder of the same Git repository, on its own branch. Each has separate checked-out files, reducing accidental overwrites. This does not restrict where an agent can write; scope and permissions still matter. Worktrees share history, so merging later is normal Git work.
 
 Commit your work first. Then:
 
 ```bash
 git worktree add -b feature/export ../room-planner-export   # new branch in a new folder
 git worktree list                                          # show all worktrees
-git worktree remove ../room-planner-export                 # clean up; the branch stays
 ```
 
-These are standard Git commands ([source](https://git-scm.com/docs/git-worktree), checked 2026-09-13). Start one agent session in each folder.
+These are standard Git commands ([source](https://git-scm.com/docs/git-worktree), checked 2026-09-13). Check `git worktree list` first if resuming: reuse your existing branch/folder or pick unused names. Do not remove an active worktree to make the command succeed.
+
+Start one agent session in each folder. Worktrees separate working files; shared services, ports, Git history and external accounts still need coordination. Never stop a process just because it occupies the port you wanted.
 
 > **As of 2026-09-13 in Claude Code** (checked 2026-09-13)
 > - `claude --worktree <name>` (or `-w <name>`) creates a worktree and starts Claude in it. By default it is created under `.claude/worktrees/<name>`. ([source](https://code.claude.com/docs/en/worktrees))
@@ -88,6 +89,21 @@ Every result goes through the same gate, one at a time:
 3. **Fresh reviewer:** a new session or subagent that sees only the diff and the "done when" line. Tell it: "Only report issues that affect correctness or the stated requirements." A reviewer asked to find problems will always find some; this keeps it from inventing work.
 4. **Merge one result**, then run the checks again on the combined state before merging the next.
 
+After the result is reviewed, committed and integrated, stop **your own** agent in that worktree. Confirm its state before cleanup:
+
+```bash
+git -C ../room-planner-export status --short
+git worktree list
+```
+
+Only if there is no remaining work and you no longer need the folder:
+
+```bash
+git worktree remove ../room-planner-export
+```
+
+The branch remains. If Git refuses because the folder is dirty or in use, investigate; do not force removal.
+
 ### 6. Watch the costs (2 min)
 
 Each agent uses its own context, so usage grows with every agent you add.
@@ -117,3 +133,5 @@ More agents means more copies of your code and data in more places: worktrees on
 ## Next
 
 [Agents in operation](04-agents-in-operation.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

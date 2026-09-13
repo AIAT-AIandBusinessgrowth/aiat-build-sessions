@@ -139,3 +139,5 @@ The vault is on your computer, but the agent reads it, and the agent's vendor pr
 ## Next
 
 [Notes as a graph](02-notes-as-a-graph.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

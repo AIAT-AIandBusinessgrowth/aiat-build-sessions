@@ -113,3 +113,5 @@ The interview asks about data. Describe its shape only: field names, types and v
 ## Next
 
 [Product sprint](02-product-sprint.md): do the same as a team of three or four, and add sample data, a picture, a name and a 60-second pitch.
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

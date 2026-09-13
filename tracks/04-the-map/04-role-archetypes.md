@@ -69,3 +69,5 @@ When you describe examples for your self-check, describe the kind of work, not r
 ## Next
 
 [The verification ladder](../05-verify-and-loop/01-verification-ladder.md): whatever hat you wear, checking the agent's work is the habit that lets you trust it.
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

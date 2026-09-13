@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop kit planner — verification practice</title>
+<style>
+:root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+body { margin: 0; background: #f3f5f3; color: #18342e; line-height: 1.6; }
+main { max-width: 46rem; margin: 3rem auto; padding: 1.5rem; }
+header { border-top: .4rem solid #087f69; padding-top: 1rem; }
+h1 { line-height: 1.15; font-size: clamp(2rem, 6vw, 3rem); margin: .5rem 0 1rem; }
+.tag { text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; font-weight: 700; }
+.card { padding: 1.5rem; background: #fff; border: 1px solid #c6d5ce; border-radius: .6rem; margin: 1.5rem 0; }
+label { display: block; font-weight: 700; margin-bottom: .5rem; }
+input, button { font: inherit; padding: .6rem .8rem; border-radius: .3rem; }
+input { width: 9rem; max-width: 80%; border: 2px solid #617c70; background: white; color: #18342e; }
+button { background: #086d5b; color: white; border: 2px solid #086d5b; cursor: pointer; margin: .5rem 0 .5rem .4rem; }
+:focus-visible { outline: 3px solid #b36000; outline-offset: 3px; }
+output { display: block; font-size: 1.5rem; font-weight: 700; margin-top: 1rem; }
+.note { border-left: .25rem solid #b36000; padding-left: 1rem; }
+a { color: #075f50; }
+footer { font-size: .9rem; }
+@media (prefers-color-scheme: dark) { body { background: #14251f; color: #e6f2eb; } .card { background: #1c342b; border-color: #617c70; } a { color: #8de0c4; } }
+</style>
+</head>
+<body>
+<main>
+<header><span class="tag">AI:AT Build Sessions · Practice lab</span>
+<h1>How many kits<br>does a workshop need?</h1>
+<p>A local exercise in checking an agent's work. No account, upload or connection needed.</p></header>
+<p class="note"><strong>Deliberately unfinished:</strong> this practice app contains one calculation defect. Predict a result before you try it. Do not use it for real ordering.</p>
+<section class="card" aria-labelledby="spec"><h2 id="spec">The requirement</h2>
+<p>Each participant needs one kit. Kits come in sealed packs of four. Buy enough whole packs for everyone, with as few spare kits as possible. With zero participants, buy zero packs.</p>
+<form id="planner">
+<label for="participants">Invented participant count</label>
+<input id="participants" name="participants" type="number" min="0" max="1000" step="1" value="8" required aria-describedby="input-help">
+<button type="submit">Calculate packs</button>
+<p id="input-help">Enter a whole number from 0 to 1000. These limits are part of this exercise.</p>
+<output id="result" for="participants" aria-live="polite">Predict the answer, then calculate.</output>
+</form></section>
+<section aria-labelledby="practice"><h2 id="practice">You are the reviewer</h2>
+<ol><li>Write a prediction using the requirement.</li><li>Try a count that is not a multiple of four.</li><li>Explain any difference before asking an agent for a fix.</li><li>After a fix, repeat both the failing example and one earlier working example.</li></ol>
+<p>The agent's handover says: “I tried eight participants and got two packs. Ready for every workshop.” Decide what that evidence actually proves.</p>
+<noscript><p>JavaScript is off. Do the same exercise on paper: the supplied implementation rounds participant count divided by four to the nearest whole number. Compare that behavior to the requirement.</p></noscript>
+</section>
+<footer>All quantities are fictional. Nothing is stored; reload resets the form. Course material: <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions">AI:AT Build Sessions</a>. <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a>.</footer>
+</main>
+<script>
+// Intentional practice defect: the learner must compare this rule to the requirement.
+function packsFor(participants) {
+  return Math.round(participants / 4);
+}
+document.getElementById('planner').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const input = document.getElementById('participants');
+  if (!input.reportValidity()) return;
+  const count = Number(input.value);
+  const packs = packsFor(count);
+  document.getElementById('result').textContent = packs + (packs === 1 ? ' pack' : ' packs') + ' · ' + (packs * 4) + ' kits';
+});
+</script>
+</body>
+</html>

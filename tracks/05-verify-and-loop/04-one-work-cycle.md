@@ -130,3 +130,5 @@ The cycle log, the state note and the open-items list are files that others may 
 ## Next
 
 [Keep your work safe](../06-keep-and-ship/01-keep-your-work-safe.md): make sure what you just finished exists twice.
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

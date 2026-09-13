@@ -84,3 +84,5 @@ Do not paste examples of the leaked data into your report, and do not paste them
 ## Next
 
 [Spec interview](../03-plan-first/01-spec-interview.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

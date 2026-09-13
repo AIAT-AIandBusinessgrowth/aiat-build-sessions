@@ -34,7 +34,7 @@ Before you say it is done:
 Do not write "done" for anything you did not actually check.
 ```
 
-This costs nothing and works for every task, in every tool. Watch the answer for the last point: "what I could not check" is where the real gaps are.
+This does not require another service, but an extra model request can use credits. Ask for actual test output or perform a check yourself when the agent cannot run one. Watch the answer for the last point: "what I could not check" is where the real gaps are.
 
 ### Rung 2: Demand evidence and look at it yourself (8 min)
 
@@ -77,9 +77,11 @@ Take the top findings back to the builder, one at a time, and check each fix on 
 
 | Risk if it is wrong | Climb to |
 |---|---|
-| Low: a draft for yourself, a throwaway experiment | Rung 1 |
+| Low: a draft for yourself, a throwaway experiment | Rung 1 plus one observed check; a claim alone never counts |
 | Medium: something others will use or read | Rung 2 |
 | High: numbers people decide on, something that is hard to undo | Rung 3 |
+
+This is a teaching sequence: define a check, inspect evidence, then add independent review. The [German verification mechanisms](../../modules/de/07-agenten-grundlagen.md) distinguish prompts, session rules, deterministic checks and independent review. Those are enforcement mechanisms, not equivalent rung numbers. Both require observed evidence. An independent agent review can still be wrong.
 
 ## Done when
 
@@ -95,3 +97,5 @@ A reviewer needs the same fake data as the builder. When you paste results into 
 ## Next
 
 [Five failure patterns](02-five-failure-patterns.md): the habits that make checking harder, and how to spot them in your own work.
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

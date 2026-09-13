@@ -1,3 +1,13 @@
 .DS_Store
 .env
 *.local
+
+# Local learning progress and maintainer sessions
+learning/local/
+.claude/
+.codex/
+.cursor/
+.orchestrator/*
+!.orchestrator/bootstrap.lock
+__pycache__/
+*.py[cod]

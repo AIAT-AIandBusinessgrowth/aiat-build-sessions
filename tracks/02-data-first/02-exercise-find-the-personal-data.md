@@ -70,3 +70,5 @@ Every value in `customers.csv` is fictional: addresses on reserved example domai
 ## Next
 
 [Schema first, then synthetic data](03-schema-then-synthetic-data.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

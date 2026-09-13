@@ -91,3 +91,5 @@ Operational agents often sit next to real systems, which usually means real data
 ## Next
 
 [Always-on assistants with guardrails](05-always-on-assistants-guardrails.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

@@ -26,7 +26,7 @@ Fifteen minutes now make sure your work exists twice and that other people can o
    - Private windows blocked, for example on a work browser your organisation manages? Open the link in another browser where you are not logged in to the builder, or send it to a colleague and ask what they see.
 4. Paste the link. A private window has no login and no stored data, so you see what other people see.
 5. Check: does the app load, and does it look like your preview? Entries you saved in your own browser will not be there. That is expected.
-6. Check who can open it. Many share links work for anyone who has the link. With fake data, that is fine.
+6. Check who can open it. Many share links work for anyone who has the link. Check that the code and settings contain no secrets before publishing, even with fake data.
 
 **CLI lane:** your app runs on your laptop, so there is no link yet. Sharing a CLI-lane app is covered in [deploy and share](../../diy/05-deploy-and-share.md). Go on with Part B.
 
@@ -41,13 +41,16 @@ Pick one way:
 - **Download or export.** Look for Export, Download or Download ZIP in the project menu and save the file in a folder that is backed up.
 - **Copy the code.** If the tool has neither (some chat canvases), copy the code into a file on your computer and put the date in the file name.
 
-**CLI lane:** create an empty private repository on github.com (without a README), then in your `playground` folder:
+**CLI lane:** either copy your project folder to a separate backed-up location, or connect a private GitHub repository. For GitHub, stay in your existing `playground` and first inspect:
 
 ```bash
-git remote add origin https://github.com/<your-user>/playground.git
-git branch -M main
-git push -u origin main
+git status --short
+git remote -v
 ```
+
+If `origin` already points to your intended private repository, keep it and run `git push`. Do not add it again. If a different destination appears, stop and identify the project before changing anything.
+
+Only when there is **no origin yet**, create an empty private repository on github.com (without a README), then follow [Code hosting and backup, variant (a)](../../diy/04-code-hosting-and-backup.md#4-tell-git-who-you-are-then-push-and-check).
 
 GitHub Desktop works too: choose "Publish repository" and keep "Keep this code private" ticked.
 
@@ -70,8 +73,10 @@ Do this at the end of every work session, from now on: **push or export, then op
 
 ## Data note
 
-A public link and a public repository are visible to anyone. That is one more reason for rule one: with fake data, a sharing mistake costs nothing. Never put passwords or API keys into code you sync ([secrets and keys](../../diy/07-secrets-and-keys.md)).
+A public link and a public repository are visible to anyone. That is one more reason for rule one: invented data reduces exposure, but a sharing mistake can still expose keys, private code or paid resources. Never put passwords or API keys into code you sync ([secrets and keys](../../diy/07-secrets-and-keys.md)).
 
 ## Next
 
 [Does the AI need this?](../02-data-first/01-does-the-ai-need-this.md)
+
+Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

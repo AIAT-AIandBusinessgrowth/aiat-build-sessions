@@ -1,8 +1,12 @@
 # AI:AT Build Sessions
 
-Build your own tools with agents. Every week.
+Learn to build, check and hand over your own tools with agents.
 
-This repository is the self-paced material of the Build Sessions. Short units take you from a first app in the browser to agents whose work you can check, keep and hand over. In every unit you build something, with made-up data.
+This repository is the self-paced material of the Build Sessions. Short units take you from a first app in the browser to agents whose work you can check, keep and hand over. Each unit leads to a small action or observable check, using made-up data.
+
+**Start with one small step:** [Learn with an agent or on paper](learning/README.md). [Deutsch starten](learning/start-de.md). No account is needed for the first exercise.
+
+This is public, reusable learning material from AI:AT, the AI Factory Austria. You can study independently or use it in separately organised training. It is not registration for an internal working group or a promise of scheduled sessions.
 
 ## Who it is for
 
@@ -25,8 +29,9 @@ Want to run a session yourself? See [facilitate/run-a-build-session.md](facilita
 
 ## Start here
 
-1. [START-HERE.md](START-HERE.md): five minutes, four reading paths.
-2. [ready-to-build.md](ready-to-build.md): the self-check before your first build.
+1. [Learning guide](learning/README.md): a small first step, knowledge checks and a way to continue next time.
+2. [START-HERE.md](START-HERE.md): four longer paths once you know your next skill.
+3. [ready-to-build.md](ready-to-build.md): set up only what your chosen lane needs.
 
 ## Tracks
 
@@ -46,7 +51,7 @@ Want to run a session yourself? See [facilitate/run-a-build-session.md](facilita
 
 ## Do it yourself: accounts, licences, hosting
 
-You organise your own accounts, licences, plans and hosting. Nobody sets them up for you, and there is no setup support. That is on purpose: what you build stays yours.
+You or your organisation arrange accounts, licences, plans and hosting. The guides explain setup and common recovery steps. This repository does not provide accounts or a support service.
 
 | Guide | What it covers |
 |---|---|
@@ -57,6 +62,7 @@ You organise your own accounts, licences, plans and hosting. Nobody sets them up
 | [Deploy and share](diy/05-deploy-and-share.md) | Where your app can run, and what to check before you share the link |
 | [Costs, limits and spend caps](diy/06-costs-limits-spend-caps.md) | Usage windows, credits, caps that stop and alerts that do not |
 | [Secrets and keys](diy/07-secrets-and-keys.md) | Keeping API keys out of code, repositories and prompts |
+| [Monitoring and recovery](diy/08-monitoring-and-recovery.md) | Practising failure, checking alert delivery and proving a restore |
 | [Tool matrix, September 2026](diy/tool-matrix-2026-09.md) | Free tiers, prices, hosting, export and data notes, with a source and a date per row |
 
 Prices and limits change. Open the vendor link before you pay.
@@ -66,6 +72,7 @@ Prices and limits change. Open the vendor link before you pay.
 | Path | What |
 |---|---|
 | [exercises/find-the-personal-data/](exercises/find-the-personal-data/README.md) | A fake customer list with hidden personal data, two solutions and a schema script |
+| [exercises/verification-lab/](exercises/verification-lab/README.md) | An offline app with a deliberate defect: predict, check, explain and transfer, at three levels |
 | [templates/](templates/) | Fill-in files: spec, MVP, AGENTS.md starter, product README, loop prompt, cards, weekly AI news |
 | [facilitate/](facilitate/run-a-build-session.md) | For anyone who wants to run a Build Session: format, agenda, table anchors, show and tell |
 | [reference/glossary.md](reference/glossary.md) | Terms in plain English, each with a link to the unit that explains it |
@@ -74,25 +81,33 @@ Prices and limits change. Open the vendor link before you pay.
 
 ## Use it with an agent
 
-1. Clone or download the repository: `git clone https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions.git`
-2. Open the folder with your agent (Claude Code, Codex or similar). Start the agent inside that folder, at the top level of the repository.
-3. Ask questions. For example: "I have 30 minutes and use a browser builder. Which unit should I do?" or "Explain the verification ladder with an example from my tool."
+1. On GitHub, choose **Code → Download ZIP**, then extract the ZIP. Or, if you use Git, run `git clone https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions.git`.
+2. Open the extracted or cloned **aiat-build-sessions** folder in Codex, or start Claude Code inside it. This is the course folder. Build your own app in a separate folder.
+3. Start a learning conversation:
 
-Do not paste the exercise file into any AI tool, and do not ask the agent to solve it. The exercise is meant to be done by you, without AI: [exercises/find-the-personal-data/](exercises/find-the-personal-data/README.md).
+```text
+Help me learn from this repository. I have 20 minutes and use <tool or no tool>.
+Ask me one question at a time. Let me try before giving hints or answers.
+Use the material and cite the file. Start with one small step.
+```
 
-[AGENTS.md](AGENTS.md) makes the agent a guide. It answers from this material, names the file it used, says when the material does not cover your question, and never asks for real data. Codex and other agents read `AGENTS.md` directly. Claude Code reads [CLAUDE.md](CLAUDE.md), which imports `AGENTS.md` with the line `@AGENTS.md`.
+For active knowledge checks, say **“Quiz me on verification”** or **“Prüfe mich zu Context Engineering”**. For a later session, say **“Continue from learning/local/progress.md”** if you chose to save a local record. [Learning guide](learning/README.md) explains the modes and limitations.
 
-No CLI agent? Read the units on GitHub, or paste one unit into a chat assistant and ask about it.
+[AGENTS.md](AGENTS.md) is the shared guide contract. [CLAUDE.md](CLAUDE.md) imports it for Claude Code. No plugin is required. For a new app, copy [project-AGENTS.md](templates/project-AGENTS.md) into the app folder as `AGENTS.md`, not the course's tutor instructions.
+
+No coding agent? Read on GitHub. You can do the [verification lab](exercises/verification-lab/README.md) on paper or in a browser without an account. A chat assistant only knows files you provide; use the copyable prompt in the [learning guide](learning/README.md).
+
+The [personal-data exercise](exercises/find-the-personal-data/README.md) stays human-only. Do it yourself, then compare with its supplied solutions.
 
 ## Rule one: no real personal data
 
-Before any tool: use made-up data, public data that is not about people, or data about yourself. No names, e-mail addresses, customer files, contracts, health or HR data of other people. Not even to test.
+Before any tool: use invented data or public data that is not about people. Keep real personal and customer data out of these exercises, including your own personal information. No customer files, contracts, health or HR records, even to test.
 
 Why, and how to get fake data from the agent: [Rule one: no real data](tracks/00-orientation/01-rule-one-no-real-data.md).
 
 ## Contributing
 
-Corrections and additions are welcome as pull requests.
+Corrections and additions are welcome as pull requests. See [CONTRIBUTING.md](CONTRIBUTING.md) for local checks and [the training guide](facilitate/training-guide.md) for facilitation and learning evidence.
 
 - New units follow [_unit-template.md](_unit-template.md).
 - No personal data, no credentials, no internal hostnames. Use `example.com` addresses and roles instead of names.
@@ -105,4 +120,4 @@ Text and materials: [CC BY-SA 4.0](LICENSE). You may share and adapt them if you
 
 ## Publisher
 
-AI:AT is the AI Factory Austria: https://ai-at.eu. Contact: aiandbusinessgrowth@ai-at.eu
+AI:AT is the AI Factory Austria: [ai-at.eu](https://ai-at.eu). Contact: aiandbusinessgrowth@ai-at.eu
