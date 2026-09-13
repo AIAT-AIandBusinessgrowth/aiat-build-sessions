@@ -1,61 +1,72 @@
 # My learning progress
 
-Copy this template to `learning/local/progress.md` in your course copy, or to a private note outside this repository. `learning/local/` is ignored by Git. Do not force-add it or include it in a pull request. Ignored files still need their own backup if you want to keep them.
+This note is optional. Use it if you want to pick up where you left off another day. Four lines are enough:
 
-Use only fictional examples. Do not include your name, employer, account details, customer records, secrets or screenshots with personal data. The coach needs your chosen task and evidence, not your identity.
+```text
+What I tried:
+What worked:
+What is still open:
+Next time:
+```
+
+Name the exercise or page so you can find it again. Keep the note private, with invented examples and no names, customer details or keys. In your course copy, save it as `learning/local/progress.md`; Git ignores that folder. Do not add it to a public contribution. Keep a separate backup if you need one.
+
+## Resume prompt
+
+Give an agent the note, or tell it which local file it may read:
+
+```text
+Help me continue from this note: <paste it or name the file>.
+Use learning/coach-protocol.md.
+Ask me a short question about where I stopped, then help me take the next step.
+```
+
+The agent should check with you before updating the note. A previous “passed” entry is something to revisit, not a new test result.
+
+<details>
+<summary>Optional: a more detailed record for a coach</summary>
+
+Use this only when keeping individual attempts will help you plan the next exercise. Ask the learner before saving it. The short note above is enough for everyday use.
 
 ## Current route
 
-- Path or next unit: `<relative course path>`
-- Goal for this session: `<one observable skill>`
-- Tool or paper: `<optional>`
-- Language: `<optional>`
-- Last session: `<date, optional>`
-- Resume with: `<one question or bounded next activity>`
+- Exercise or source page:
+- Tool or paper:
+- Next question:
 
 ## What a status means
 
 | Status | Meaning |
 |---|---|
-| `unverified` | No current evidence, or an old/self-reported claim has not been checked in this session |
-| `not demonstrated` | The attempt or generated artefact does not yet show this skill; record what to practise |
-| `mastered` | This named checkpoint was explained and applied to a different scenario without an answer being supplied; record the actual evidence and observer |
-| `skip` | Chosen to skip; no claim that the skill has been learned |
+| `unverified` | Not checked here yet. This includes old notes and reports you have not revisited. |
+| `not demonstrated` | The attempt does not yet show the skill. Note what to practise. |
+| `mastered` | The learner explained the answer and applied it to a new example without being given the answer. Record what you observed. |
+| `skip` | The learner chose to move on. The question has not been passed. |
 
-`mastered` is local to the stated checkpoint and practice context. It is not a certificate, an overall score or production approval. Attendance, confidence and an agent completing a task are not enough.
+`mastered` applies to this question and practice context. It is not a certificate or permission to put an app into production. An agent solving the task does not show that the learner can solve it.
 
 ## One entry per checkpoint attempt
 
-Copy this block for a new attempt. Keep earlier attempts so a fresh coach can see what changed.
+Copy this block when you need a detailed entry. Keep earlier attempts so the next coach can see what changed.
 
 ```markdown
 ### <checkpoint ID> — <date or attempt label>
 
 - Source unit: <relative course path and heading>
-- Skill and scope: <what this attempt checks>
+- Skill and scope: <what the learner is practising>
 - Status: unverified / not demonstrated / mastered / skip
-- Learner's claim: <their explanation, in their own words>
-- Evidence: <specific result or a path to a fake-data artefact; no private URL needed>
+- Learner's claim: <their answer, in their own words>
+- Evidence: <specific result or a path to the invented-data example>
 - Observation: self-reported / coach observed explanation / coach inspected artefact or output
 - What was actually checked: <action, expected result, observed result>
 - Help used: none / source pointer / clue / worked explanation / agent implemented
-- Transfer attempt: <different scenario and observed reasoning, or not attempted>
-- Still uncertain: <one gap, or none observed in this narrow check>
-- Next retrieval check: <one future question using a changed example>
+- Transfer attempt: <new example and the learner's explanation, or not attempted>
+- Still uncertain: <what needs more practice>
+- Next retrieval check: <one question to revisit next time>
 ```
 
-Only choose one status in an actual entry. A supplied answer needs a new independent transfer attempt before `mastered`. If an artefact is unavailable, say so; do not treat a path or an old “passed” statement as fresh evidence.
+Choose one status. If you supplied the answer, use a new example before considering the skill `mastered`. Note whether you saw a check run, inspected its output, or heard the learner describe it. If you cannot access a result, leave that check unverified.
 
-## Resume prompt
+When resuming, read only the entry the learner has shared or named and the relevant lesson. An old entry records past work. Ask a short question before deciding which material to skip; do not silently promote a previous status.
 
-Give the coach this prompt and only the relevant entry. If it has file access, name this file explicitly.
-
-```text
-Continue my learning using learning/coach-protocol.md.
-Here is the progress entry I want to resume from: <entry or approved local path>.
-Read its source unit and matching checkpoint only.
-Treat the recorded status as history, not a new observation.
-Ask one retrieval question before deciding what I can skip. Wait for my answer.
-```
-
-The agent may propose an updated entry. You decide whether to save it. It must not silently mark skipped or agent-completed work as learned.
+</details>

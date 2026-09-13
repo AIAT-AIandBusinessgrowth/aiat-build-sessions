@@ -16,15 +16,15 @@ Delete all comments before you open a pull request.
 |---|---|
 | **Prerequisites** | None, or links to one or two units, separated by " · " |
 | **Time** | ~NN min |
-| **Outcome** | After this unit you can ... |
+| **Outcome** | The thing you will make or check |
 | **Last verified** | YYYY-MM-DD |
 
 <!--
 Prerequisites: relative links from the unit's own folder,
 for example ../00-orientation/01-rule-one-no-real-data.md
 Time: the time for doing the unit, not for reading it. Round to 5 minutes.
-Outcome: one sentence, starting "After this unit you can". Name things you can
-see or show, not "understand".
+Outcome: name the result in a short sentence, for example "An exported CSV
+that keeps every row." Use concrete words instead of a formula about learning.
 Last verified: the date you checked every command, link and number.
 Optional line below the table for advanced units:
 "This track is optional. It assumes you work with a command-line agent such as Claude Code or Codex."
@@ -33,18 +33,21 @@ Optional line below the table for advanced units:
 ## Why this matters
 
 <!--
-Two to four short paragraphs. The problem, in the reader's words.
-What goes wrong without this habit. No history, no hype.
+One or two short sentences, if a reason is needed. Then get to the first action.
+Describe the problem in the reader's words. No history, no hype.
 Quotes from vendors or public talks get a link and "checked YYYY-MM-DD".
 -->
 
 ## Do it
 
 <!--
-Numbered steps as ### headings, each with a time in brackets.
+Put a useful first action near the top. Name its object: "Open the exported
+CSV" or "Try saving an empty form". Explain technical terms when first needed.
+Use numbered steps as ### headings; add time estimates where they help.
 Give the steps for both lanes where they differ: browser lane and CLI lane.
 Prompts and commands go into fenced code blocks (```text or ```bash) so they
-can be copied. Use tables for comparisons.
+can be copied. Keep setup details beside the step that needs them, or link
+to the relevant guide. Use tables when readers need to compare options.
 -->
 
 ### 1. First step (N min)
@@ -66,18 +69,20 @@ Tool-specific details go into a dated box, one per tool:
 
 ## Check your understanding
 
-<!-- Ask for a prediction or explanation before revealing an answer. Then change
-one condition and ask for transfer. Link a relevant learning/checkpoints.md ID.
-Keep the human-only personal-data exercise exception. Reading or AI-generated
-work alone does not demonstrate learning. -->
+<!-- Ask one concrete question about the example, before giving its answer.
+Later, change an input and let the reader try again. Link a relevant question
+in learning/checkpoints.md if it helps. Rubrics and status codes belong in
+the coach's notes, not in the learner's task. The personal-data search exercise
+is done without an agent. -->
 
-What do you predict will happen in <new situation>, and how would you check?
+Before trying <a specific input>, what do you expect to happen?
 
 ## Done when
 
 <!--
-Three to six checkboxes. Each one is observable: a file exists, a link works,
-a note is written. Never "I understand".
+Keep only the checks needed to finish this task. Name what the reader can see:
+the file opens, the saved entry returns, the changed calculation gives the
+expected answer. Do not require a separate report for every small exercise.
 -->
 
 - [ ] Something you can see or show.
@@ -87,8 +92,8 @@ a note is written. Never "I understand".
 ## Data note
 
 <!--
-Two to four sentences: how rule one applies in this unit. Name the specific
-risk (screenshots, logs, exports, pasted feedback). Link to rule one:
+One or two sentences on the risk in this task, such as a screenshot or upload.
+Put an essential warning beside the action too. Link to rule one:
 ../00-orientation/01-rule-one-no-real-data.md
 -->
 
