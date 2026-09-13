@@ -2,11 +2,27 @@
 
 **[Hier geht es zur ersten Übung](https://build-sessions.apps.aiat-poc.at/)** — überlege dir selbst eine Antwort und vergleiche sie mit dem KI-Rechner. So lernst du, einen Fehler zu erkennen und der KI zu sagen, was sie verbessern soll. Ohne Account oder Download.
 
-Lieber auf Papier? Probiere die Raumaufgabe unten.
+Nimm dir zum Start etwa fünf Minuten.
 
-Nimm dir zum Start etwa fünf Minuten. Papier reicht; du brauchst keinen Account.
+## Lass dir bei deiner Antwort helfen
+
+Wenn du bereits Codex, Claude Code oder einen Chat im Browser nutzt, kopiere diesen Text hinein:
+
+```text
+Hilf mir auf Deutsch bei https://build-sessions.apps.aiat-poc.at/
+Lies zuerst https://build-sessions.apps.aiat-poc.at/agent-guide.md.
+Erkläre kurz, was ich dabei lerne. Lass mich erst selbst probieren,
+bevor du Hinweise oder die Antwort gibst.
+Gehe einen kleinen Schritt nach dem anderen und warte auf meine Antwort.
+```
+
+Dafür brauchst du keine Kursdateien. Kann dein Chat den Link nicht öffnen, kopiere den Text aus dem [Agent-Guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md) hinein.
+
+**Optional:** Wenn du den Kurs lieber als lokale Dateien nutzt, lade ihn auf der [GitHub-Startseite](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions) unter **Code → Download ZIP** herunter und entpacke ihn. Öffne den Kursordner in Codex oder starte Claude Code darin.
 
 ## Welche Räume passen?
+
+Lieber auf Papier oder nur im Chat? Probiere diese Alternative. Papier reicht; du brauchst keinen Account.
 
 Die erfundene App Room Board soll alle Räume anzeigen, in die eine angefragte Gruppe passt.
 
@@ -22,17 +38,7 @@ Anfragen müssen ganze Zahlen größer als null sein. Bei leeren oder ungültige
 
 Schreib deine Antwort auf, bevor du eine AI fragst. Du darfst auf die Tabelle schauen.
 
-## Lass dir bei deiner Antwort helfen
-
-**Codex oder Claude Code:** Lade auf der [GitHub-Startseite](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions) unter **Code → Download ZIP** den Kurs herunter und entpacke ihn. Öffne den Kursordner in Codex oder starte Claude Code darin. Schreibe:
-
-```text
-Hilf mir auf Deutsch bei der Raumaufgabe in learning/start-de.md.
-Stelle eine Frage nach der anderen und warte auf meine Antwort.
-Wenn ich nicht weiterkomme, gib mir zuerst einen kleinen Hinweis.
-```
-
-**Chat im Browser:** Kopiere die Raumbeschreibung, Tabelle und den Text aus dem Kasten in den Chat. Schreib deine Antwort dazu, wenn du schon eine hast. Du kannst sie auch mit einer anderen Person besprechen.
+Für Hilfe im Chat kopiere die Raumbeschreibung, Tabelle und deine Antwort hinein. Bitte um eine Frage nach der anderen und zuerst um einen kleinen Hinweis, wenn du nicht weiterkommst. Du kannst die Aufgabe auch mit einer anderen Person besprechen.
 
 ## Wenn du weitermachen möchtest
 

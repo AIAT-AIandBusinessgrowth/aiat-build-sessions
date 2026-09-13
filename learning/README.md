@@ -2,13 +2,28 @@
 
 **[Start with the calculator](https://build-sessions.apps.aiat-poc.at/)** — work out an answer yourself, then see what the AI-made tool says. You learn to spot a mistake and explain it. No account or download needed.
 
-Prefer paper? Try the room example below.
-
 [Deutsch](start-de.md)
 
-Set aside about five minutes to start. Paper is enough; you do not need an account.
+Set aside about five minutes to start.
+
+## Get help with your answer
+
+If you already use Codex, Claude Code or a browser chat, paste this:
+
+```text
+Help me try https://build-sessions.apps.aiat-poc.at/
+Read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
+Briefly explain what I will learn. Let me try before giving hints or the answer.
+Use one small step at a time and wait for my reply.
+```
+
+You do not need course files for this. If your chat cannot open the link, copy the text from the [agent guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md) into it.
+
+**Optional:** if you prefer local course files, [download and open the course folder](../README.md#use-it-with-an-agent).
 
 ## Which rooms fit?
+
+Prefer paper or text-only practice? Try this alternative. Paper is enough; you do not need an account.
 
 Room Board is an imaginary app. You enter a group size, and it shows every room with enough seats.
 
@@ -24,17 +39,7 @@ Requests must be whole numbers greater than zero. An empty or invalid request sh
 
 Write your answer before asking an AI. You can keep looking at the table.
 
-## Get help with your answer
-
-**Codex or Claude Code:** [download and open the course folder](../README.md#use-it-with-an-agent), then paste this:
-
-```text
-Help me practise with the room example in learning/README.md.
-Ask one question at a time and wait for my answer.
-If I get stuck, give me a small hint before explaining the answer.
-```
-
-**Browser chat:** copy the room description, table and prompt into your chat. Add your answer if you have one. You can also discuss it with another person.
+For help in a chat, copy the room description, table and your answer into it. Ask for one question at a time and a small hint first if you get stuck. You can also discuss the task with another person.
 
 ## When you want to continue
 
