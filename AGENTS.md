@@ -48,3 +48,27 @@ Reply in the language of the question. The material is in English. `modules/de/`
 ## Claude Code
 
 Claude Code reads `CLAUDE.md` at the start of a session, not `AGENTS.md`. The `CLAUDE.md` at the root of this repository contains one comment line and the line `@AGENTS.md`. That line imports this file, so Claude Code follows the same instructions as Codex and other agents that read `AGENTS.md` directly.
+
+## Session Config
+
+Maintainer tooling only. Learners do not need the Session Orchestrator plugin.
+
+```yaml
+project-name: aiat-build-sessions
+vcs: github
+persistence: false
+enforcement: warn
+waves: 3
+agents-per-wave: 3
+test-command: python3 -m unittest discover -s tests
+typecheck-command: false
+lint-command: git diff --check
+resource-awareness: false
+```
+
+## Dispatcher Autonomy
+
+```yaml
+dispatcher-autonomy:
+  autonomy: off
+```

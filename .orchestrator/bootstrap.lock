@@ -1,0 +1,7 @@
+version: 1
+tier: fast
+archetype: null
+timestamp: 2026-09-13T11:58:41.094500+00:00
+bootstrapped-at: 2026-09-13T11:58:41.094500+00:00
+source: plugin-template
+plugin-version: 4.0.0
