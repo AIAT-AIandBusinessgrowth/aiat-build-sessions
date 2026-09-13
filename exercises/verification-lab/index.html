@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reicht es für alle? · AI:AT Build Sessions</title>
+<meta name="description" content="Lerne, eine KI-Arbeit selbst zu prüfen: ausprobieren, einen Fehler erkennen und der KI sagen, was sie verbessern soll. Ohne Account oder Installation.">
+<link rel="canonical" href="https://build-sessions.apps.aiat-poc.at/">
+<link rel="alternate" type="text/markdown" href="agent-guide.md" title="Guide for Codex and Claude">
 <style>
 :root { font-family: system-ui, sans-serif; color: #183b32; background: #f5f5ef; line-height: 1.6; }
 * { box-sizing: border-box; }
@@ -44,7 +47,8 @@ footer { margin-top: 2rem; font-size: .85rem; color: #4a6055; }
 <main>
 <div class="top"><span>AI:AT Build Sessions</span><nav aria-label="Sprache / Language"><a href="?lang=de" lang="de" aria-current="page">Deutsch</a><a href="?lang=en" lang="en">English</a></nav></div>
 <h1 data-copy="title">Reicht es für alle?</h1>
-<p class="intro" data-copy="intro">Du planst einen Workshop. Jede Person soll ein Notizbuch bekommen. Du kannst nur ganze Packungen kaufen.</p>
+<p class="intro" data-copy="purpose">KI-Ergebnisse können richtig aussehen und trotzdem falsch sein. Hier übst du, sie mit einem eigenen Beispiel zu prüfen und einen Fehler konkret zu beschreiben.</p>
+<p data-copy="intro">Du planst einen Workshop. Jede Person soll ein Notizbuch bekommen. Du kannst nur ganze Packungen kaufen.</p>
 <div class="pack"><div class="books" aria-hidden="true"><span class="book"></span><span class="book"></span><span class="book"></span><span class="book"></span></div><span data-copy="pack">Eine Packung = vier Notizbücher</span></div>
 <section class="exercise" aria-label="Rechner ausprobieren" data-label="exercise">
 <p data-copy="task">Die KI hat dafür einen Rechner gebaut. Überlege zuerst selbst, wie viele Packungen du brauchst. Probiere ihn dann aus.</p>
@@ -56,15 +60,16 @@ footer { margin-top: 2rem; font-size: .85rem; color: #4a6055; }
 </section>
 <p class="aside" data-copy="note">Nur zum Üben: Im Rechner steckt ein Fehler. Es wird nichts gespeichert.</p>
 <details><summary data-copy="hint-title">Ich komme nicht weiter</summary><p data-copy="hint">Probiere eine Personenzahl zwischen 8 und 12. Zähle nach: Wie viele Notizbücher stecken in den vorgeschlagenen Packungen?</p></details>
-<details><summary data-copy="found-title">Ich habe einen Fehler gefunden</summary><p data-copy="found">Halte kurz fest: Bei ___ Personen brauche ich ___ Packungen. Der Rechner zeigt aber ___. Damit kannst du der KI genau sagen, was sie ändern soll.</p><p data-copy="another">Probiere danach eine andere Zahl. Ein richtiges Ergebnis allein sagt noch wenig über den Rechner aus.</p></details>
-<details><summary data-copy="build-title">Mit Codex oder Claude weiterbauen</summary><p data-copy="copy">Kopiere diese HTML-Datei zuerst in einen eigenen Übungsordner. Öffne diesen Ordner im Agenten. So bleibt der Fehler im Kurs für die nächste Person erhalten.</p><p data-copy="prompt">Sag der KI: „Bei dieser Personenzahl stimmt das Ergebnis nicht: ___. Ich erwarte ___. Ändere nur die Berechnung. Zeig mir danach, ob mein Beispiel und ein bisher richtiges Beispiel funktionieren.“</p><p><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/README.md" data-copy="more">Weitere Aufgaben für diese Übung</a></p></details>
+<details><summary data-copy="found-title">Ich habe einen Fehler gefunden</summary><p data-copy="found">Beschreibe den Fehler mit deinem Beispiel: „Bei ___ Personen brauche ich ___ Packungen. Der Rechner zeigt aber ___.“ Damit kann die KI gezielt nachbessern.</p><p data-copy="another">Bei deinem eigenen Tool hilft dieselbe Prüfung: Ein sichtbarer Export-Button zeigt noch nicht, ob die Datei den richtigen Inhalt hat. Schau dir das Ergebnis selbst an.</p></details>
+<details><summary data-copy="build-title">Mit Codex oder Claude weiterbauen</summary><p data-copy="copy">Lade die Übungsdatei herunter und speichere sie in einem eigenen Ordner. Öffne diesen Ordner in Codex oder Claude Code. Dort kannst du den Rechner mit der KI verbessern.</p><p><a href="index.html" download="notebook-calculator.html" data-copy="download">Übungsdatei herunterladen</a></p><p data-copy="prompt">Sag der KI: „Bei dieser Personenzahl stimmt das Ergebnis nicht: ___. Ich erwarte ___. Ändere nur die Berechnung. Zeig mir danach, ob mein Beispiel und ein bisher richtiges Beispiel funktionieren.“</p><p><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/README.md" data-copy="more">Weitere Aufgaben für diese Übung</a></p></details>
 <noscript><p>Ohne JavaScript: Überlege auf Papier, wie viele Viererpacks du für 8, 9 und 12 Personen brauchst. Der eingebaute Rechner teilt die Personenzahl durch vier und rundet zur nächsten ganzen Zahl. Vergleiche beide Ergebnisse.</p><p lang="en">Without JavaScript: work out how many packs of four you need for 8, 9 and 12 people. The supplied calculator divides the number of people by four and rounds to the nearest whole number. Compare the results.</p></noscript>
-<footer><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="course">Mehr ausprobieren</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a></footer>
+<footer><a href="agent-guide.md" data-copy="agent-guide">Anleitung für Codex und Claude</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="course">Mehr ausprobieren</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a></footer>
 </main>
 <script>
 const english = new URLSearchParams(location.search).get('lang') === 'en';
 const copy = {
   title: 'Enough notebooks for everyone?',
+  purpose: 'AI results can look right and still be wrong. Here you practise checking them with your own example and describing a mistake clearly.',
   intro: 'You are planning a workshop. Each person needs a notebook. You can only buy whole packs.',
   pack: 'One pack = four notebooks',
   task: 'AI built a calculator for this. Work out how many packs you need first. Then try it.',
@@ -75,12 +80,14 @@ const copy = {
   'hint-title': 'I need a hint',
   hint: 'Try a number of people between 8 and 12. Count how many notebooks you would get in the suggested packs.',
   'found-title': 'I found a mistake',
-  found: 'Make a short note: For ___ people I need ___ packs, but the calculator says ___. Now you can tell the AI exactly what needs to change.',
-  another: 'Then try a different number. One correct answer does not tell you much about the rest.',
+  found: 'Describe the mistake with your example: “For ___ people I need ___ packs, but the calculator says ___.” This gives the AI something specific to fix.',
+  another: 'Use the same check on your own tool: a visible Export button does not show whether the file contains the right information. Look at the result yourself.',
   'build-title': 'Fix it with Codex or Claude',
-  copy: 'Copy this HTML file into your own practice folder first. Open that folder in your agent. This keeps the course example ready for the next person.',
+  copy: 'Download the exercise file into your own folder. Open that folder in Codex or Claude Code. There you can improve the calculator with your agent.',
+  download: 'Download the exercise file',
   prompt: 'Tell the AI: “This number of people gives the wrong result: ___. I expect ___. Change only the calculation. Then show whether my example and an earlier working example both work.”',
   more: 'More things to try with this exercise',
+  'agent-guide': 'Guide for Codex and Claude',
   course: 'Try another exercise'
 };
 if (english) {

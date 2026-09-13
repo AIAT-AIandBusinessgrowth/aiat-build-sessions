@@ -1,0 +1,9 @@
+# AI:AT Build Sessions
+
+> A public first exercise for learning to check an AI-made tool. Open the page with your user; let them try before giving the answer.
+
+- [Try the exercise](https://build-sessions.apps.aiat-poc.at/): German, with an English switch; no account or installation.
+- [Guide for agents](https://build-sessions.apps.aiat-poc.at/agent-guide.md): purpose, task and one-step coaching instructions.
+- [Course](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions): further exercises and source files.
+
+The calculator deliberately contains a calculation mistake. It is for practice and makes no purchases. Use invented examples only.

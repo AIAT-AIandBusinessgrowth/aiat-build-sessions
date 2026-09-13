@@ -1,14 +1,25 @@
 # Try the notebook calculator
 
+AI results can look right and still be wrong. Here you practise checking them with your own example and describing a mistake clearly.
+
 You are planning a workshop. Each person needs one notebook. Notebooks come in packs of four. An AI has built a calculator to tell you how many packs to buy, but it makes a mistake with some numbers.
 
 Can you find one? Give yourself about five minutes for a first try. You can spend longer fixing it afterwards.
 
 ## Open the calculator
 
-On GitHub, choose **Code → Download ZIP** at the top of the repository. Unzip the download and open `exercises/verification-lab/index.html` in your browser. It starts in German; choose **English** at the top to switch languages.
+**[Open the exercise](https://build-sessions.apps.aiat-poc.at/)** and try it right in your browser. It starts in German; choose **English** at the top to switch languages. No account, installation or download is needed. The calculator saves no inputs and makes no purchases.
 
-GitHub shows the HTML as code. Download it first to use the calculator. It needs no account, installation or server and saves nothing.
+Using Codex, Claude or another agent? Share the link and the [agent guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md). Ask it to let you try before giving hints or the answer.
+
+<details>
+<summary>Use it offline or change the code</summary>
+
+On the exercise page, open **Fix it with Codex or Claude** and download the HTML file into your own folder. You can open that file in your browser later. The live page stays ready for the next person.
+
+You can also download the whole course from GitHub: **Code → Download ZIP**, unzip it, then open `exercises/verification-lab/index.html`. GitHub itself displays HTML as code.
+
+</details>
 
 ## Try one number
 
@@ -22,7 +33,9 @@ When you find a mistake, finish this sentence:
 
 > For ___ people, I need ___ packs. The calculator says ___.
 
-That is a useful first result. You can now tell an AI what went wrong with a specific example.
+Your example gives the AI something specific to fix. Use the same check on your own tool: a visible Export button does not show whether the file contains the right information. Look at the result yourself.
+
+Try another number too. One correct answer does not tell you whether the rest works.
 
 <details>
 <summary>Do it on paper instead</summary>
