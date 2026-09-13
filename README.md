@@ -19,11 +19,12 @@ Use invented examples throughout the course. Keep real personal and customer dat
 Already have Codex, Claude Code or a browser chat? Give it this prompt:
 
 ```text
-Help me try https://build-sessions.apps.aiat-poc.at/
-Read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
-Explain what I will learn. Let me try before giving hints or the answer.
-Use one small step at a time.
+Help me try https://build-sessions.apps.aiat-poc.at/ and read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
+Briefly explain that I will learn to check AI-generated work myself.
+Ask only how many packs I expect for eight people, then wait for my answer; we will try the calculator afterwards.
 ```
+
+If the AI asks too much at once, say: “Please ask only one question and wait for my answer.”
 
 [Agent guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md) · [Plain-text index](https://build-sessions.apps.aiat-poc.at/llms.txt)
 

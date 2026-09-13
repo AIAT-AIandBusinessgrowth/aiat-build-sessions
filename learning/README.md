@@ -11,11 +11,12 @@ Set aside about five minutes to start.
 If you already use Codex, Claude Code or a browser chat, paste this:
 
 ```text
-Help me try https://build-sessions.apps.aiat-poc.at/
-Read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
-Briefly explain what I will learn. Let me try before giving hints or the answer.
-Use one small step at a time and wait for my reply.
+Help me try https://build-sessions.apps.aiat-poc.at/ and read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
+Briefly explain that I will learn to check AI-generated work myself.
+Ask only how many packs I expect for eight people, then wait for my answer; we will try the calculator afterwards.
 ```
+
+If the AI asks too much at once, say: “Please ask only one question and wait for my answer.”
 
 You do not need course files for this. If your chat cannot open the link, copy the text from the [agent guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md) into it.
 

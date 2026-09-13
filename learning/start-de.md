@@ -9,12 +9,12 @@ Nimm dir zum Start etwa fünf Minuten.
 Wenn du bereits Codex, Claude Code oder einen Chat im Browser nutzt, kopiere diesen Text hinein:
 
 ```text
-Hilf mir auf Deutsch bei https://build-sessions.apps.aiat-poc.at/
-Lies zuerst https://build-sessions.apps.aiat-poc.at/agent-guide.md.
-Erkläre kurz, was ich dabei lerne. Lass mich erst selbst probieren,
-bevor du Hinweise oder die Antwort gibst.
-Gehe einen kleinen Schritt nach dem anderen und warte auf meine Antwort.
+Hilf mir auf Deutsch bei https://build-sessions.apps.aiat-poc.at/ und lies zuerst https://build-sessions.apps.aiat-poc.at/agent-guide.md.
+Erkläre kurz, dass ich hier lerne, KI-Arbeit selbst zu prüfen.
+Frage nur, wie viele Packungen ich für acht Personen erwarte, und warte auf meine Antwort; den Rechner probieren wir danach.
 ```
+
+Falls die KI zu viel auf einmal fragt: „Bitte nur eine Frage und warte auf meine Antwort.“
 
 Dafür brauchst du keine Kursdateien. Kann dein Chat den Link nicht öffnen, kopiere den Text aus dem [Agent-Guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md) hinein.
 
