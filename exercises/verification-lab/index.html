@@ -6,7 +6,7 @@
 <title>Reicht es für alle? · AI:AT Build Sessions</title>
 <meta name="description" content="Lerne, eine KI-Arbeit selbst zu prüfen: ausprobieren, einen Fehler erkennen und der KI sagen, was sie verbessern soll. Ohne Account oder Installation.">
 <link rel="canonical" href="https://build-sessions.apps.aiat-poc.at/">
-<link rel="alternate" type="text/markdown" href="agent-guide.md" title="Guide for Codex and Claude">
+<link rel="alternate" type="text/markdown" href="https://build-sessions.apps.aiat-poc.at/agent-guide.md" title="Guide for Codex and Claude">
 <style>
 :root { font-family: system-ui, sans-serif; color: #183b32; background: #f5f5ef; line-height: 1.6; }
 * { box-sizing: border-box; }
@@ -61,12 +61,13 @@ footer { margin-top: 2rem; font-size: .85rem; color: #4a6055; }
 <p class="aside" data-copy="note">Nur zum Üben: Im Rechner steckt ein Fehler. Es wird nichts gespeichert.</p>
 <details><summary data-copy="hint-title">Ich komme nicht weiter</summary><p data-copy="hint">Probiere eine Personenzahl zwischen 8 und 12. Zähle nach: Wie viele Notizbücher stecken in den vorgeschlagenen Packungen?</p></details>
 <details><summary data-copy="found-title">Ich habe einen Fehler gefunden</summary><p data-copy="found">Beschreibe den Fehler mit deinem Beispiel: „Bei ___ Personen brauche ich ___ Packungen. Der Rechner zeigt aber ___.“ Damit kann die KI gezielt nachbessern.</p><p data-copy="another">Bei deinem eigenen Tool hilft dieselbe Prüfung: Ein sichtbarer Export-Button zeigt noch nicht, ob die Datei den richtigen Inhalt hat. Schau dir das Ergebnis selbst an.</p></details>
-<details><summary data-copy="build-title">Mit Codex oder Claude weiterbauen</summary><p data-copy="copy">Lade die Übungsdatei herunter und speichere sie in einem eigenen Ordner. Öffne diesen Ordner in Codex oder Claude Code. Dort kannst du den Rechner mit der KI verbessern.</p><p><a href="index.html" download="notebook-calculator.html" data-copy="download">Übungsdatei herunterladen</a></p><p data-copy="prompt">Sag der KI: „Bei dieser Personenzahl stimmt das Ergebnis nicht: ___. Ich erwarte ___. Ändere nur die Berechnung. Zeig mir danach, ob mein Beispiel und ein bisher richtiges Beispiel funktionieren.“</p><p><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/README.md" data-copy="more">Weitere Aufgaben für diese Übung</a></p></details>
+<details><summary data-copy="build-title">Mit Codex oder Claude weiterbauen</summary><p data-copy="copy">Lade die Übungsdatei herunter und speichere sie in einem eigenen Ordner. Öffne diesen Ordner in Codex oder Claude Code. Dort kannst du den Rechner mit der KI verbessern.</p><p><a href="https://build-sessions.apps.aiat-poc.at/index.html" download="notebook-calculator.html" data-copy="download">Übungsdatei herunterladen</a></p><p data-copy="prompt">Sag der KI: „Bei dieser Personenzahl stimmt das Ergebnis nicht: ___. Ich erwarte ___. Ändere nur die Berechnung. Zeig mir danach, ob mein Beispiel und ein bisher richtiges Beispiel funktionieren.“</p><p><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/README.md" data-copy="more">Weitere Aufgaben für diese Übung</a></p></details>
 <noscript><p>Ohne JavaScript: Überlege auf Papier, wie viele Viererpacks du für 8, 9 und 12 Personen brauchst. Der eingebaute Rechner teilt die Personenzahl durch vier und rundet zur nächsten ganzen Zahl. Vergleiche beide Ergebnisse.</p><p lang="en">Without JavaScript: work out how many packs of four you need for 8, 9 and 12 people. The supplied calculator divides the number of people by four and rounds to the nearest whole number. Compare the results.</p></noscript>
-<footer><a href="agent-guide.md" data-copy="agent-guide">Anleitung für Codex und Claude</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="course">Mehr ausprobieren</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a></footer>
+<footer><a href="https://build-sessions.apps.aiat-poc.at/agent-guide.md" data-copy="agent-guide">Anleitung für Codex und Claude</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="course">Mehr ausprobieren</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a></footer>
 </main>
 <script>
 const english = new URLSearchParams(location.search).get('lang') === 'en';
+if (location.protocol === 'file:') document.querySelector('[download]').hidden = true;
 const copy = {
   title: 'Enough notebooks for everyone?',
   purpose: 'AI results can look right and still be wrong. Here you practise checking them with your own example and describing a mistake clearly.',

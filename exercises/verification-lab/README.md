@@ -47,7 +47,7 @@ Use the same workshop example. The calculator divides the number of people by fo
 <details>
 <summary>Fix it with Codex or Claude</summary>
 
-Copy `index.html` into your own practice folder and open that folder in the agent. Keep the course example as it is so the next person can try it. Use the [project instructions](../../templates/project-AGENTS.md) if you are starting a new project.
+Open the folder containing your downloaded `notebook-calculator.html` in the agent. If you downloaded the whole course instead, copy `exercises/verification-lab/index.html` into your own practice folder and open that folder. Keep the course example as it is so the next person can try it. Use the [project instructions](../../templates/project-AGENTS.md) if you are starting a new project.
 
 Tell the AI the number you tried, what you expected and what the calculator showed. Ask it to change only the calculation. Then try your example again and check a number that worked before. Read the result yourself.
 
