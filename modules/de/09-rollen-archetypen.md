@@ -1,6 +1,8 @@
 # Modul 9 — Rollen-Archetypen im agentischen Arbeiten
 
 > Deutsche Fassung · Stand 2026-09-13 · Englischer Lernpfad: [START-HERE](../../START-HERE.md)
+>
+> Öffentliche Fassung eines intern gepflegten Moduls: gekürzt und für ein allgemeines Publikum überarbeitet; fortgeschrieben und gepflegt wird der interne Text (Stand 2026-09-13).
 
 ⏱ ~10 min · **Danach kannst du:** benennen, welche Arbeit dein Projekt gerade braucht und welche Aufgaben ein Agent dabei übernehmen kann.
 

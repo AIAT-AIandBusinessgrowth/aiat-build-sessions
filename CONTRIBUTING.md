@@ -62,7 +62,7 @@ Use a fresh conversation opened at the course root. Test at least the level your
 
 Also try a correct answer, a different example using the same idea and a pause/resume with a consenting learner. Agent simulations reveal instruction failures; they do not replace watching real participants. Use the [training guide](facilitate/training-guide.md) to check learning without collecting personal data.
 
-The [2026-09-13 validation record](docs/validation/2026-09-13-learning-product.md) shows the actual checks, corrected failures and remaining limits of the first learning-product review.
+A learning-product review keeps this kind of evidence — the checks actually run, failures found and fixed, and remaining limits — in the pull request that introduces the change, not in a separate validation file in this repository.
 
 ## Maintain source claims
 

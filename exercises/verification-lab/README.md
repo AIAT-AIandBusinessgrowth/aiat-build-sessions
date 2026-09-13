@@ -38,7 +38,7 @@ Your example gives the AI something specific to fix. Use the same check on your 
 Try another number too. One correct answer does not tell you whether the rest works.
 
 <details>
-<summary>Do it on paper instead</summary>
+<summary>Do it on paper instead (this one names the calculator's rule)</summary>
 
 Use the same workshop example. The calculator divides the number of people by four and rounds to the nearest whole number. Try its rule on paper and compare the answer with the packs you would actually need.
 

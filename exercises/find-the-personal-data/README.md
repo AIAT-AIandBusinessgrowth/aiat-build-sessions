@@ -14,7 +14,7 @@ Find everything in the file that is still personal data.
 
 1. **Do not upload or paste the file into any AI tool.** Not to find the traps, not to summarise it, not to "just check". With a real file, that upload would already be the leak. Practise the habit here, where nothing can go wrong.
 2. Work on your own computer, or read the file on GitHub.
-3. **CLI lane:** do not start a coding agent in this folder. It would read the file.
+3. **CLI lane:** solve this one without a coding agent. An agent running anywhere in the course folder can read `customers.csv`; the folder is not a barrier and nothing in this repository stops it. You only learn from the exercise by finding the traps yourself.
 4. Do not open the solution files until you have finished your list.
 
 ## About the file
@@ -64,7 +64,7 @@ Stuck? Look in four places: whole columns, the notes, the file names, and column
 
 ## Run the schema script after the exercise
 
-Finish your own findings first. This script describes structure; it does not find the traps for you.
+Finish your own findings first. This script describes structure; it does not find the traps for you. Run it yourself in a terminal: no agent is needed for this step, and one started at the repository root can read the exercise file.
 
 Open a terminal in the downloaded or cloned `aiat-build-sessions` folder, the folder containing the main `README.md`. With Python installed, run:
 

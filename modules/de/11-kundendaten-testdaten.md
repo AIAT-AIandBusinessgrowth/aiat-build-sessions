@@ -1,6 +1,8 @@
 # Modul 11 — Kundendaten & Testdaten (echte Daten raus, synthetische rein)
 
 > Deutsche Fassung · Stand 2026-09-13 · Englischer Lernpfad: [START-HERE](../../START-HERE.md)
+>
+> Öffentliche Fassung eines intern gepflegten Moduls: gekürzt und für ein allgemeines Publikum überarbeitet; fortgeschrieben und gepflegt wird der interne Text (Stand 2026-09-13).
 
 > Rechtsstand EU/Österreich, Stand 07/2026. Arbeitsgrundlage für Prototypen und PoCs, kein Rechtsrat. Im Zweifel fragst du beim Kunden bzw. dessen Datenschutzbeauftragten nach, nicht bei einem Agenten.
 

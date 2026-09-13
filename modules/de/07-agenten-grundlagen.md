@@ -1,6 +1,8 @@
 # Modul 7 — Agenten-Grundlagen (CLI vs MCP, Claude Code/Codex)
 
 > Deutsche Fassung · Stand 2026-09-13 · Englischer Lernpfad: [START-HERE](../../START-HERE.md)
+>
+> Öffentliche Fassung eines intern gepflegten Moduls: gekürzt und für ein allgemeines Publikum überarbeitet; fortgeschrieben und gepflegt wird der interne Text (Stand 2026-09-13).
 
 ⏱ ~40 min mit Vertiefungen · **Danach kannst du:** einem Agenten einen begrenzten Auftrag geben, seine Änderungen prüfen und bei Fehlern sinnvoll weiterarbeiten. Die späteren Abschnitte erklären Tools, Verbindungen und Befehle genauer.
 

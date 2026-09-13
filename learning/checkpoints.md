@@ -134,4 +134,4 @@ Help: [loop engineering](../tracks/08-advanced/02-loop-engineering.md), [always-
 
 Talk through your answer, then try a different example. If you want to continue later, leave yourself a [short note](progress-template.md). You can also choose another question or return to [the learning guide](README.md).
 
-For coaches: use the [tutor criteria](tutor-criteria.md) after the learner has tried. Follow the [coach protocol](coach-protocol.md) and keep the answer out of the opening question.
+For coaches: use the [tutor criteria](tutor-criteria.md) after the learner has tried. It also lists suggested follow-up variants, so invent a fresh one if the learner has read that file. Follow the [coach protocol](coach-protocol.md) and keep the answer out of the opening question.

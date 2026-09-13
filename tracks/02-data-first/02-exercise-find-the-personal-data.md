@@ -24,7 +24,7 @@ Go to [exercises/find-the-personal-data](../../exercises/find-the-personal-data/
 Open `customers.csv` in a way that involves no AI:
 
 - **Browser lane:** read it on GitHub (the file page shows it as a table), or download it with the "Download raw file" button and open it in a spreadsheet app on your computer.
-- **CLI lane:** open it in a text editor or spreadsheet app. Do not start your coding agent in the exercise folder: it would read the file into its context.
+- **CLI lane:** open it in a text editor or spreadsheet app. Do not use a coding agent for this step: an agent running anywhere in the course folder can read the file, so the folder is not a barrier.
 
 **Do not upload or paste the file into any AI tool**, including to ask it to find personal data. The file is invented, but this exercise is for you to practise. With a real file, the AI would receive the personal data before it could identify it for you.
 

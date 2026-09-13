@@ -33,6 +33,7 @@ button { border: 2px solid #16654e; background: #16654e; color: white; padding: 
 .result { border-top: 1px solid #dce3da; margin-top: 1.25rem; padding-top: 1rem; }
 .result[hidden] { display: none; }
 output { display: block; font-size: 1.3rem; font-weight: 700; }
+output.pending { font-size: 1rem; font-weight: 400; color: #4a6055; }
 .result p { margin-bottom: 0; }
 .aside { color: #4a6055; font-size: .85rem; margin: .75rem 0 1.5rem; }
 details { border-bottom: 1px solid #ccd8cd; padding: .9rem 0; }
@@ -55,14 +56,14 @@ footer { margin-top: 2rem; font-size: .85rem; color: #4a6055; }
 <form id="planner">
 <label for="participants" data-copy="label">Wie viele Personen kommen?</label>
 <div class="controls"><input id="participants" name="participants" type="number" min="0" max="1000" step="1" value="8" required><button type="submit" data-copy="button">Ausrechnen</button></div>
-<div class="result" id="result-panel" hidden><output id="result" for="participants" aria-live="polite"></output><p data-copy="compare">Reicht das für alle, ohne eine Packung zu viel zu kaufen?</p></div>
+<div class="result" id="result-panel" hidden><output id="result" for="participants" aria-live="polite"></output><p id="stale-note" data-copy="stale" hidden>Die Eingabe hat sich geändert. Klick auf „Ausrechnen“, um das Ergebnis zu aktualisieren.</p><p data-copy="compare">Reicht das für alle, ohne eine Packung zu viel zu kaufen?</p></div>
 </form>
 </section>
 <p class="aside" data-copy="note">Nur zum Üben: Im Rechner steckt ein Fehler. Es wird nichts gespeichert.</p>
 <details><summary data-copy="hint-title">Ich komme nicht weiter</summary><p data-copy="hint">Probiere eine Personenzahl zwischen 8 und 12. Zähle nach: Wie viele Notizbücher stecken in den vorgeschlagenen Packungen?</p></details>
 <details><summary data-copy="found-title">Ich habe einen Fehler gefunden</summary><p data-copy="found">Beschreibe den Fehler mit deinem Beispiel: „Bei ___ Personen brauche ich ___ Packungen. Der Rechner zeigt aber ___.“ Damit kann die KI gezielt nachbessern.</p><p data-copy="another">Bei deinem eigenen Tool hilft dieselbe Prüfung: Ein sichtbarer Export-Button zeigt noch nicht, ob die Datei den richtigen Inhalt hat. Schau dir das Ergebnis selbst an.</p></details>
 <details><summary data-copy="build-title">Mit Codex oder Claude weiterbauen</summary><p data-copy="copy">Lade die Übungsdatei herunter und speichere sie in einem eigenen Ordner. Öffne diesen Ordner in Codex oder Claude Code. Dort kannst du den Rechner mit der KI verbessern.</p><p><a href="https://build-sessions.apps.aiat-poc.at/index.html" download="notebook-calculator.html" data-copy="download">Übungsdatei herunterladen</a></p><p data-copy="prompt">Sag der KI: „Bei dieser Personenzahl stimmt das Ergebnis nicht: ___. Ich erwarte ___. Ändere nur die Berechnung. Zeig mir danach, ob mein Beispiel und ein bisher richtiges Beispiel funktionieren.“</p><p><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/README.md" data-copy="more">Weitere Aufgaben für diese Übung</a></p></details>
-<noscript><p>Ohne JavaScript: Überlege auf Papier, wie viele Viererpacks du für 8, 9 und 12 Personen brauchst. Der eingebaute Rechner teilt die Personenzahl durch vier und rundet zur nächsten ganzen Zahl. Vergleiche beide Ergebnisse.</p><p lang="en">Without JavaScript: work out how many packs of four you need for 8, 9 and 12 people. The supplied calculator divides the number of people by four and rounds to the nearest whole number. Compare the results.</p></noscript>
+<noscript><p>Ohne JavaScript: Überlege auf Papier, wie viele Viererpacks du für 8, 9 und 12 Personen brauchst, und schreib deine drei Zahlen auf. Vergleiche sie mit dem, was der Rechner vorschlägt, sobald du ihn ausprobieren kannst.</p><p lang="en">Without JavaScript: work out on paper how many packs of four you need for 8, 9 and 12 people, and write your three numbers down. Compare them with what the calculator suggests once you can try it.</p></noscript>
 <footer><a href="https://build-sessions.apps.aiat-poc.at/agent-guide.md" data-copy="agent-guide">Anleitung für Codex und Claude</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="course">Mehr ausprobieren</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a></footer>
 </main>
 <script>
@@ -76,6 +77,7 @@ const copy = {
   task: 'AI built a calculator for this. Work out how many packs you need first. Then try it.',
   label: 'How many people are coming?',
   button: 'Calculate',
+  stale: 'Your entry has changed. Choose “Calculate” to update the result.',
   compare: 'Is there enough for everyone, without buying an extra pack?',
   note: 'For practice only: the calculator has a bug. Nothing is saved.',
   'hint-title': 'I need a hint',
@@ -103,15 +105,31 @@ if (english) {
 function packsFor(people) {
   return Math.round(people / 4);
 }
+const field = document.getElementById('participants');
+const panel = document.getElementById('result-panel');
+const output = document.getElementById('result');
+// The note lives in the markup as a hidden paragraph, like every other German
+// string on this page, so the language swap above translates it too. Read it
+// here, after that swap, and keep the paragraph: removing it empties the note.
+const staleNote = document.getElementById('stale-note').textContent;
+// Once the panel is in the page it stays there: a live region that appears
+// together with its text is often not announced. Only the result text is
+// replaced, so no result can outlive the number it belongs to.
+function clearResult() {
+  if (panel.hidden || output.textContent === staleNote) return;
+  output.textContent = staleNote;
+  output.classList.add('pending');
+}
+field.addEventListener('input', clearResult);
 document.getElementById('planner').addEventListener('submit', function (event) {
   event.preventDefault();
-  const input = document.getElementById('participants');
-  if (!input.reportValidity()) return;
-  const packs = packsFor(Number(input.value));
+  if (!field.reportValidity()) { clearResult(); return; }
+  const packs = packsFor(Number(field.value));
   const packWord = english ? (packs === 1 ? 'pack' : 'packs') : (packs === 1 ? 'Packung' : 'Packungen');
   const notebookWord = english ? 'notebooks' : 'Notizbücher';
-  document.getElementById('result-panel').hidden = false;
-  document.getElementById('result').textContent = packs + ' ' + packWord + ' · ' + (packs * 4) + ' ' + notebookWord;
+  panel.hidden = false;
+  output.classList.remove('pending');
+  output.textContent = packs + ' ' + packWord + ' · ' + (packs * 4) + ' ' + notebookWord;
 });
 </script>
 </body>

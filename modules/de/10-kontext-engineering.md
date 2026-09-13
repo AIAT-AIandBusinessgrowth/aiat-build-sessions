@@ -1,6 +1,8 @@
 # Modul 10 — Kontext-Engineering (die Disziplinen hinter dem Skalieren)
 
 > Deutsche Fassung · Stand 2026-09-13 · Englischer Lernpfad: [START-HERE](../../START-HERE.md)
+>
+> Öffentliche Fassung eines intern gepflegten Moduls: gekürzt und für ein allgemeines Publikum überarbeitet; fortgeschrieben und gepflegt wird der interne Text (Stand 2026-09-13).
 
 ⏱ ~15 min · **Danach kannst du:** einem Agenten die nötigen Informationen geben, veraltete Anweisungen erkennen und einen Auftrag mit klaren Grenzen und einer passenden Prüfung formulieren.
 

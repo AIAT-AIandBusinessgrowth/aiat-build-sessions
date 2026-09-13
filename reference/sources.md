@@ -47,7 +47,7 @@ Vendor pages change. Open the link before you rely on a price, a limit or a feat
 - https://claude.com/pricing. Used in: `diy/02-plans-and-licences.md`, `diy/06-costs-limits-spend-caps.md`, `diy/tool-matrix-2026-09.md`
 
 **code.claude.com**
-- https://code.claude.com/docs/en/best-practices. Used in: `tracks/03-plan-first/01-spec-interview.md`, `tracks/04-the-map/01-model-context-agent.md`, `tracks/05-verify-and-loop/01-verification-ladder.md`, `tracks/05-verify-and-loop/02-five-failure-patterns.md`, `tracks/05-verify-and-loop/04-one-work-cycle.md`
+- https://code.claude.com/docs/en/best-practices. Used in: `tracks/03-plan-first/01-spec-interview.md`, `tracks/04-the-map/01-model-context-agent.md`, `tracks/05-verify-and-loop/02-five-failure-patterns.md`, `tracks/05-verify-and-loop/04-one-work-cycle.md`
 - https://code.claude.com/docs/en/commands. Used in: `tracks/08-advanced/01-context-engineering.md`, `tracks/08-advanced/03-parallel-agents.md`
 - https://code.claude.com/docs/en/costs. Used in: `tracks/08-advanced/01-context-engineering.md`, `tracks/08-advanced/03-parallel-agents.md`
 - https://code.claude.com/docs/en/goal. Used in: `tracks/08-advanced/02-loop-engineering.md`
@@ -133,7 +133,7 @@ Vendor pages change. Open the link before you rely on a price, a limit or a feat
 - https://github.blog/news-insights/company-news/updates-to-github-copilot-interaction-data-usage-policy/. Used in: `diy/03-data-processing-agreements.md`, `diy/tool-matrix-2026-09.md`
 
 **github.com**
-- https://github.com/ (the start of the repository address `https://github.com/<your-user>/playground.git`). Used in: `tracks/01-first-build/02-share-and-export.md`, `diy/04-code-hosting-and-backup.md`
+- https://github.com/ (the start of the repository address `https://github.com/<your-user>/playground.git`). Used in: `diy/04-code-hosting-and-backup.md`
 - https://github.com/features/copilot/plans. Used in: `diy/02-plans-and-licences.md`, `diy/06-costs-limits-spend-caps.md`, `diy/tool-matrix-2026-09.md`
 - https://github.com/git-ecosystem/git-credential-manager. Used in: `diy/04-code-hosting-and-backup.md`
 - https://github.com/openclaw/openclaw. Used in: `tracks/08-advanced/05-always-on-assistants-guardrails.md`
@@ -240,7 +240,7 @@ Vendor pages change. Open the link before you rely on a price, a limit or a feat
 
 **simonwillison.net**
 - https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/. Used in: `tracks/08-advanced/05-always-on-assistants-guardrails.md`
-- https://simonwillison.net/2025/Oct/7/vibe-engineering/. Used in: `tracks/05-verify-and-loop/01-verification-ladder.md`
+- https://simonwillison.net/2025/Oct/7/vibe-engineering/ (the terms "vibe engineering" and "vibe coding"). No file links it. The German material names Willison and both terms in the text: `modules/de/07-agenten-grundlagen.md`, `modules/de/glossar.md`.
 
 **x.com**
 - https://x.com/bcherny/status/2071379474277613732. Used in: `tracks/04-the-map/04-role-archetypes.md`

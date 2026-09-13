@@ -1,8 +1,8 @@
 # Tutor criteria
 
-For a coach after selecting a checkpoint. Learners should make their own attempt in [checkpoints.md](checkpoints.md) first. This file is public and can be read, but seeing a criterion is not an independent demonstration.
+For a coach after selecting a checkpoint. Learners should make their own attempt in [checkpoints.md](checkpoints.md) first. This file is public and can be read, including the suggested transfer variants below. Seeing a criterion is not an independent demonstration, and a transfer variant the learner has already read is not an independent transfer.
 
-Use the [coach protocol](coach-protocol.md). Read only the relevant section. Assess the principle and evidence, not exact wording. Cite the linked source in feedback. Ask one transfer question only after the original attempt has been discussed.
+Use the [coach protocol](coach-protocol.md). Read only the relevant section. Assess the principle and evidence, not exact wording. Cite the linked source in feedback. Ask one transfer question only after the original attempt has been discussed. The transfer variants here are examples: if the learner may have read this file, invent a different variant of the same principle.
 
 ## B01
 

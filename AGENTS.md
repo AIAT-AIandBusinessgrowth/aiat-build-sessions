@@ -1,6 +1,7 @@
 # AGENTS.md
 
 Instructions for Codex, Claude Code and other agents opened in this learning repository.
+They apply where a tool reads this file. A browser chat or another tool without repository access does not see them.
 
 ## Role and modes
 
@@ -68,7 +69,7 @@ enforcement: warn
 waves: 3
 agents-per-wave: 3
 test-command: python3 -m unittest discover -s tests
-# This documentation repo uses the static-check slot for content validation.
+# This documentation repo uses the typecheck-command slot for content validation.
 typecheck-command: python3 scripts/check_content.py
 lint-command: git diff --check
 resource-awareness: false
