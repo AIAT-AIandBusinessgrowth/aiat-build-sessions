@@ -54,3 +54,13 @@ Some conversations still searched more public course context than requested or d
 ## Before scaling a training
 
 Use the [training guide](../../facilitate/training-guide.md) with consenting learners across the three starting levels. Observe setup on their actual devices, an independent explanation, transfer and later retrieval. Record the material revision, help used and concrete stumbling points without participant identifiers. Validate alert delivery, production controls and organisational access separately when a real product needs them. Agent simulations cannot complete those checks for the trainer.
+
+## Plain-language follow-up
+
+After feedback that the entry was hard to follow, the calculator now opens in German with an English switch. It uses notebooks instead of abstract kits, puts the first attempt before the explanation and keeps hints and agent-assisted fixing in optional panels. Entry pages and checkpoint questions use concrete situations. Progress notes are optional and start with four lines. The review exercise accepts a review with no findings.
+
+The updated browser UI was exercised through a loopback server: German and English entry, language switching, result display, expanded hints, keyboard submission, 8 and 0 people, the deliberate wrong result for 9 people, and rejection of negative and fractional input. At a 375-pixel viewport, measured document and content widths were both 375 pixels. No direct-file browser test was added; the limitation above still applies.
+
+Four fresh CLI calls used the current public-course copy: a German beginner without an account and an unsupported export claim, once in each tool. Both beginner replies used a small room example and left the answer to the learner. Codex corrected the export claim briefly. Claude initially asked three questions in one reply. After clarifying that ordinary understanding questions also use the coach protocol, one fresh Claude retest corrected the claim and asked one question. These five calls are separate observations, not a repeat of the earlier suite or a human usability study. Some broad searches of public course material remain; no private or human-only solution reads were observed in these traces.
+
+The 31 unit tests, content checker and whitespace check passed again after the changes. No new vendor claims or internal training details were added.

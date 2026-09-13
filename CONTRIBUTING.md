@@ -6,6 +6,16 @@ This repository is a learning product. Improve the learner's next action, the ev
 
 Read [AGENTS.md](AGENTS.md) and the unit you are changing. New units follow [_unit-template.md](_unit-template.md). Check existing paths before adding another guide for the same task.
 
+## Write for the person trying it
+
+Put the next action before the explanation of your teaching method. Use a familiar example: “four notebooks in a pack” is easier to picture than “sealed kits”. A newcomer should see what to try without first learning words such as “artefact”, “evidence”, “transfer” or “checkpoint”. Introduce a technical term when it helps with the task.
+
+Give one question at a time. Put extra explanations and harder tasks after the first attempt, or behind a clearly named optional section. Keep detailed grading and recordkeeping in the coach material. A brief note for next time should be enough for someone studying alone.
+
+Read the text aloud. Remove generic praise, slogans, repeated cautions and sentences that only announce the next paragraph. Keep the concrete facts and the checks that help someone notice a mistake. Simplifying the language must not turn an untested result into a pass.
+
+## Keep the material consistent
+
 - Keep English core material in one place. A German entry or explanation may link it; do not claim the entire course is translated.
 - Treat [START-HERE.md](START-HERE.md) as the route map. Make prerequisites and solo alternatives explicit.
 - Label time budgets and exercise quantities as estimates or fictional examples. Vendor prices, limits and commands need a primary source and check date.

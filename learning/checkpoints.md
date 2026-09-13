@@ -1,113 +1,137 @@
-# Checkpoints: show what you can do
+<a id="checkpoints-show-what-you-can-do"></a>
 
-These scenarios check a particular skill, not your overall ability. Use them on paper, with a partner, or through the [coach protocol](coach-protocol.md). Ask for one ID at a time. The time needed depends on the discussion and the evidence you choose.
+# Questions to try
 
-Try before reading the source. Open the source when you need help and note that help in your [progress record](progress-template.md). These are invented scenarios; the numbers are exercise inputs, not vendor limits.
+Pick a question and give it a try. If you get stuck, open the linked lesson. You can answer on paper, talk it through with someone, or ask an agent: “Ask me B02.” It should wait for your answer before helping.
+
+All examples below are invented. Choose a different question or skip one whenever you want.
 
 ## Beginner
 
-### B01 — Describe data without sending the real file
+<a id="b01--describe-data-without-sending-the-real-file"></a>
 
-Tags: `data`, `scope`. Source: [Schema first, then synthetic data](../tracks/02-data-first/03-schema-then-synthetic-data.md).
+### B01 — Describe the spreadsheet
 
-You want an app like a customer spreadsheet used at work. An agent asks you to upload the spreadsheet so it can see an example. No file has been shared.
+You want to turn a customer spreadsheet into an app. The agent asks you to upload the file so it can see an example. You have not shared it.
 
-**Question:** What would you give the agent instead, so it can build a useful first version?
+What would you give the agent instead?
 
-### B02 — Predict before checking
+[Help: schema first, then synthetic data](../tracks/02-data-first/03-schema-then-synthetic-data.md)
 
-Tags: `verification`, `acceptance`. Source: [Verification ladder](../tracks/05-verify-and-loop/01-verification-ladder.md).
+<a id="b02--predict-before-checking"></a>
 
-A fictional Room Board should show rooms with at least the requested number of seats. Cedar has four seats and Maple has eight. The agent says its filter is finished.
+### B02 — Which rooms should appear?
 
-**Question:** What single input and expected result would you write down to check that claim?
+A room finder should show every room big enough for a group. Cedar has four seats and Maple has eight. The agent says the app is ready.
 
-### B03 — A link is not a saved project
+Choose a group size to try. Which rooms should appear?
 
-Tags: `sharing`, `backup`. Source: [Share and export](../tracks/01-first-build/02-share-and-export.md).
+[Help: checking an app](../tracks/05-verify-and-loop/01-verification-ladder.md)
 
-You built a tool with fake data. Its public link works on your laptop. The source exists only in the builder account, and you have not exported or synced it.
+<a id="b03--a-link-is-not-a-saved-project"></a>
 
-**Question:** What action and observation would convince you that the project has a second usable copy?
+### B03 — Save a second copy
+
+Your app's public link works. Its code exists only in your builder account; you have not saved a copy anywhere else.
+
+What would you save, and how would you check that the copy contains your latest work?
+
+[Help: share and export](../tracks/01-first-build/02-share-and-export.md)
 
 ### B04 — Continue in a fresh chat
 
-Tags: `context`, `handover`. Source: [One work cycle](../tracks/05-verify-and-loop/04-one-work-cycle.md).
+Yesterday your app listed rooms correctly, but an empty search still failed. Today you are opening a new chat.
 
-Yesterday you built a fictional room filter. It lists rooms correctly, but the empty input still fails. Today you must continue in a fresh chat.
+What would you tell the new agent so it can continue from there?
 
-**Question:** What would you put in a short state note so the new agent can take the next useful step?
+[Help: one work cycle](../tracks/05-verify-and-loop/04-one-work-cycle.md)
 
 ## Intermediate
 
-### I01 — Turn a wish into an acceptance check
+<a id="i01--turn-a-wish-into-an-acceptance-check"></a>
 
-Tags: `scope`, `acceptance`. Source: [Spec interview](../tracks/03-plan-first/01-spec-interview.md).
+### I01 — What does “make booking easy” mean?
 
-Your prototype lists fictional rooms. The next task says “make booking easy”, but booking is currently in the spec's OUT list. There is no definition of “easy”.
+Your app lists rooms. Booking was deliberately left out of the first version. Someone now asks you to “make booking easy”, without explaining what should change.
 
-**Question:** How would you resolve that task into one agreed, checkable next step before the agent edits anything?
+What needs to be agreed before the agent starts changing the app?
 
-### I02 — Evaluate evidence, not confidence
+[Help: spec interview](../tracks/03-plan-first/01-spec-interview.md)
 
-Tags: `verification`, `review`. Source: [Verification ladder](../tracks/05-verify-and-loop/01-verification-ladder.md).
+<a id="i02--evaluate-evidence-not-confidence"></a>
 
-A builder says: “CSV export works; I checked the button.” Your requirement says the exported file must preserve every fictional row and its accented characters. You have seen only a screenshot of the button.
+### I02 — Did the export keep everything?
 
-**Question:** What evidence would you inspect to decide whether that export meets the requirement?
+Your app exports a list of invented rooms to CSV. Every row and every accented character must be kept. The agent says it works and shows you a screenshot of the Export button.
 
-### I03 — Restore something you can identify
+What would you look at before calling the export ready?
 
-Tags: `backup`, `recovery`. Source: [Keep your work safe](../tracks/06-keep-and-ship/01-keep-your-work-safe.md).
+[Help: checking an app](../tracks/05-verify-and-loop/01-verification-ladder.md)
 
-You have a code ZIP and a separate fake-data export. The tool's database has a new test booking that you can identify, but you do not know whether the export includes it.
+<a id="i03--restore-something-you-can-identify"></a>
 
-**Question:** How would you test what you can actually recover without changing the current working project?
+### I03 — Can you recover the latest booking?
 
-### I04 — Separate the checked result from the next promise
+You have a ZIP of your code and a separate export of the app's invented data. The running app has a recent test booking, but you do not know whether the export includes it.
 
-Tags: `handover`, `users`. Source: [Handover and first users](../tracks/06-keep-and-ship/03-handover-and-first-users.md).
+How would you find out whether you can recover that booking while keeping the working app safe?
 
-An agent drafted a README saying setup is tested and user feedback is positive. You have run the tool yourself, but nobody else has followed the README or tried the product.
+[Help: keep your work safe](../tracks/06-keep-and-ship/01-keep-your-work-safe.md)
 
-**Question:** What would you change or collect before treating this as a checked handover?
+<a id="i04--separate-the-checked-result-from-the-next-promise"></a>
+
+### I04 — Can someone else follow the README?
+
+The agent wrote a README saying setup has been tested and users like the app. You have run it yourself, but nobody else has followed the README or tried the app.
+
+What would you correct or check before handing this README to someone else?
+
+[Help: handover and first users](../tracks/06-keep-and-ship/03-handover-and-first-users.md)
 
 ## Expert
 
-### E01 — Decide what can run in parallel
+<a id="e01--decide-what-can-run-in-parallel"></a>
 
-Tags: `delegation`, `integration`. Source: [Parallel agents](../tracks/08-advanced/03-parallel-agents.md).
+### E01 — Two agents want to change the same file
 
-Two agent tasks are ready. One adds CSV export; the other changes booking validation. Both propose editing the shared data schema. Each has passing tests for its own change.
+One agent will add CSV export. Another will change booking validation. Both need to edit the file that defines the booking data. Each has passing tests for its own change.
 
-**Question:** How would you organise this work so the combined result has a clear owner and meaningful verification?
+How would you divide and check the work before merging both changes?
 
-### E02 — Reconstruct state from conflicting evidence
+[Help: parallel agents](../tracks/08-advanced/03-parallel-agents.md)
 
-Tags: `context`, `evidence`. Sources: [Context engineering](../tracks/08-advanced/01-context-engineering.md), [One work cycle](../tracks/05-verify-and-loop/04-one-work-cycle.md).
+<a id="e02--reconstruct-state-from-conflicting-evidence"></a>
 
-A state note says the fake-data migration is complete. The plan marks it open, and the repository contains no recorded migration check. You join as a fresh agent coordinator.
+### E02 — The notes disagree about what is finished
 
-**Question:** What would you verify and record before choosing the next implementation task?
+You are taking over a project. One note says the test data has been migrated to the new format. The task list says the migration is still open. You cannot find any output showing it was checked.
 
-### E03 — A plan is not operational evidence
+What would you check, and what would you leave in the project notes for the next agent?
 
-Tags: `operation`, `readiness`. Source: [PoC to production checklist](../tracks/08-advanced/06-poc-to-production-checklist.md).
+Help: [context engineering](../tracks/08-advanced/01-context-engineering.md), [one work cycle](../tracks/05-verify-and-loop/04-one-work-cycle.md)
 
-Your prototype has a README saying access control and restore tests will be added next week. The owner asks whether that documentation is enough evidence to mark those controls complete today.
+<a id="e03--a-plan-is-not-operational-evidence"></a>
 
-**Question:** What decision would you make from the current evidence, and what would change that decision?
+### E03 — Can these checks be marked complete?
 
-### E04 — Bound an unattended loop
+The README says access controls and backup recovery will be tested next week. The project owner wants to mark both as complete today because the plan is written down.
 
-Tags: `automation`, `stop`, `evidence`. Sources: [Loop engineering](../tracks/08-advanced/02-loop-engineering.md), [Always-on assistants with guardrails](../tracks/08-advanced/05-always-on-assistants-guardrails.md).
+What would need to happen before you could mark those checks complete?
 
-An agent is asked to “keep improving this fake-data project until it is good”. It repeats the same failed check, adds dependencies, and has no agreed action boundary or stop condition.
+[Help: PoC to production checklist](../tracks/08-advanced/06-poc-to-production-checklist.md)
 
-**Question:** How would you rewrite its brief so a run has a bounded task, a verifiable finish and a usable handover if it fails?
+<a id="e04--bound-an-unattended-loop"></a>
+
+### E04 — An agent keeps repeating a failed test
+
+You asked an agent to “keep improving this practice app until it is good”. It keeps failing the same test and installing more packages. You have not agreed what it may change or when it should stop.
+
+What would you write in its next instruction so it can work on one task and stop at the right point?
+
+Help: [loop engineering](../tracks/08-advanced/02-loop-engineering.md), [always-on assistants](../tracks/08-advanced/05-always-on-assistants-guardrails.md)
 
 ## After an attempt
 
-Explain your reasoning, then try a changed scenario chosen by your coach. Record the evidence and any help used in [progress-template.md](progress-template.md). You can choose a different level or return to [the learning entry](README.md).
+Talk through your answer, then try a different example. If you want to continue later, leave yourself a [short note](progress-template.md). You can also choose another question or return to [the learning guide](README.md).
 
-Coaches assess attempts using the separate [tutor criteria](tutor-criteria.md). Do not show those criteria as the answer alongside a checkpoint question.
+For coaches: use the [tutor criteria](tutor-criteria.md) after the learner has tried. Follow the [coach protocol](coach-protocol.md) and keep the answer out of the opening question.

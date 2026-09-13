@@ -1,63 +1,109 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Workshop kit planner — verification practice</title>
+<title>Reicht es für alle? · AI:AT Build Sessions</title>
 <style>
-:root { color-scheme: light dark; font-family: system-ui, sans-serif; }
-body { margin: 0; background: #f3f5f3; color: #18342e; line-height: 1.6; }
-main { max-width: 46rem; margin: 3rem auto; padding: 1.5rem; }
-header { border-top: .4rem solid #087f69; padding-top: 1rem; }
-h1 { line-height: 1.15; font-size: clamp(2rem, 6vw, 3rem); margin: .5rem 0 1rem; }
-.tag { text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; font-weight: 700; }
-.card { padding: 1.5rem; background: #fff; border: 1px solid #c6d5ce; border-radius: .6rem; margin: 1.5rem 0; }
-label { display: block; font-weight: 700; margin-bottom: .5rem; }
-input, button { font: inherit; padding: .6rem .8rem; border-radius: .3rem; }
-input { width: 9rem; max-width: 80%; border: 2px solid #617c70; background: white; color: #18342e; }
-button { background: #086d5b; color: white; border: 2px solid #086d5b; cursor: pointer; margin: .5rem 0 .5rem .4rem; }
-:focus-visible { outline: 3px solid #b36000; outline-offset: 3px; }
-output { display: block; font-size: 1.5rem; font-weight: 700; margin-top: 1rem; }
-.note { border-left: .25rem solid #b36000; padding-left: 1rem; }
-a { color: #075f50; }
-footer { font-size: .9rem; }
-@media (prefers-color-scheme: dark) { body { background: #14251f; color: #e6f2eb; } .card { background: #1c342b; border-color: #617c70; } a { color: #8de0c4; } }
+:root { font-family: system-ui, sans-serif; color: #183b32; background: #f5f5ef; line-height: 1.6; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; }
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem; font-size: .85rem; }
+nav { display: flex; gap: .75rem; }
+a { color: #145f4b; text-underline-offset: .2em; }
+nav a[aria-current="page"] { color: inherit; font-weight: 700; text-decoration: none; }
+h1 { font-size: clamp(2rem, 7vw, 2.8rem); line-height: 1.15; letter-spacing: -.03em; margin: 2rem 0 1rem; }
+p { margin: .75rem 0; }
+.intro { font-size: 1.15rem; max-width: 34rem; }
+.pack { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin: 1.25rem 0; }
+.books { display: flex; gap: .3rem; padding: .6rem; border: 1px dashed #7d9c86; border-radius: .4rem; }
+.book { display: block; width: 1.7rem; height: 2.2rem; border-radius: .1rem .2rem .2rem .1rem; background: #cdddac; border: 1px solid #4e715b; border-left: .3rem solid #477158; }
+.exercise { background: white; border: 1px solid #ccd8cd; border-radius: .75rem; padding: 1.5rem; margin-top: 1.5rem; }
+.exercise > p:first-child { margin-top: 0; }
+label { display: block; font-weight: 700; margin: 1rem 0 .5rem; }
+.controls { display: flex; flex-wrap: wrap; gap: .75rem; }
+input, button { font: inherit; border-radius: .35rem; min-height: 3rem; }
+input { width: 7rem; padding: .5rem .75rem; border: 2px solid #6c8876; color: inherit; background: white; }
+button { border: 2px solid #16654e; background: #16654e; color: white; padding: .5rem 1.25rem; cursor: pointer; }
+:focus-visible { outline: 3px solid #ac6400; outline-offset: 3px; }
+.result { border-top: 1px solid #dce3da; margin-top: 1.25rem; padding-top: 1rem; }
+.result[hidden] { display: none; }
+output { display: block; font-size: 1.3rem; font-weight: 700; }
+.result p { margin-bottom: 0; }
+.aside { color: #4a6055; font-size: .85rem; margin: .75rem 0 1.5rem; }
+details { border-bottom: 1px solid #ccd8cd; padding: .9rem 0; }
+summary { cursor: pointer; font-weight: 600; }
+details p { margin-left: 1.15rem; }
+code { font-size: .9em; }
+footer { margin-top: 2rem; font-size: .85rem; color: #4a6055; }
+@media (max-width: 380px) { .exercise { padding: 1rem; } .controls button { flex: 1; } }
 </style>
 </head>
 <body>
 <main>
-<header><span class="tag">AI:AT Build Sessions · Practice lab</span>
-<h1>How many kits<br>does a workshop need?</h1>
-<p>A local exercise in checking an agent's work. No account, upload or connection needed.</p></header>
-<p class="note"><strong>Deliberately unfinished:</strong> this practice app contains one calculation defect. Predict a result before you try it. Do not use it for real ordering.</p>
-<section class="card" aria-labelledby="spec"><h2 id="spec">The requirement</h2>
-<p>Each participant needs one kit. Kits come in sealed packs of four. Buy enough whole packs for everyone, with as few spare kits as possible. With zero participants, buy zero packs.</p>
+<div class="top"><span>AI:AT Build Sessions</span><nav aria-label="Sprache / Language"><a href="?lang=de" lang="de" aria-current="page">Deutsch</a><a href="?lang=en" lang="en">English</a></nav></div>
+<h1 data-copy="title">Reicht es für alle?</h1>
+<p class="intro" data-copy="intro">Du planst einen Workshop. Jede Person soll ein Notizbuch bekommen. Du kannst nur ganze Packungen kaufen.</p>
+<div class="pack"><div class="books" aria-hidden="true"><span class="book"></span><span class="book"></span><span class="book"></span><span class="book"></span></div><span data-copy="pack">Eine Packung = vier Notizbücher</span></div>
+<section class="exercise" aria-label="Rechner ausprobieren" data-label="exercise">
+<p data-copy="task">Die KI hat dafür einen Rechner gebaut. Überlege zuerst selbst, wie viele Packungen du brauchst. Probiere ihn dann aus.</p>
 <form id="planner">
-<label for="participants">Invented participant count</label>
-<input id="participants" name="participants" type="number" min="0" max="1000" step="1" value="8" required aria-describedby="input-help">
-<button type="submit">Calculate packs</button>
-<p id="input-help">Enter a whole number from 0 to 1000. These limits are part of this exercise.</p>
-<output id="result" for="participants" aria-live="polite">Predict the answer, then calculate.</output>
-</form></section>
-<section aria-labelledby="practice"><h2 id="practice">You are the reviewer</h2>
-<ol><li>Write a prediction using the requirement.</li><li>Try a count that is not a multiple of four.</li><li>Explain any difference before asking an agent for a fix.</li><li>After a fix, repeat both the failing example and one earlier working example.</li></ol>
-<p>The agent's handover says: “I tried eight participants and got two packs. Ready for every workshop.” Decide what that evidence actually proves.</p>
-<noscript><p>JavaScript is off. Do the same exercise on paper: the supplied implementation rounds participant count divided by four to the nearest whole number. Compare that behavior to the requirement.</p></noscript>
+<label for="participants" data-copy="label">Wie viele Personen kommen?</label>
+<div class="controls"><input id="participants" name="participants" type="number" min="0" max="1000" step="1" value="8" required><button type="submit" data-copy="button">Ausrechnen</button></div>
+<div class="result" id="result-panel" hidden><output id="result" for="participants" aria-live="polite"></output><p data-copy="compare">Reicht das für alle, ohne eine Packung zu viel zu kaufen?</p></div>
+</form>
 </section>
-<footer>All quantities are fictional. Nothing is stored; reload resets the form. Course material: <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions">AI:AT Build Sessions</a>. <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a>.</footer>
+<p class="aside" data-copy="note">Nur zum Üben: Im Rechner steckt ein Fehler. Es wird nichts gespeichert.</p>
+<details><summary data-copy="hint-title">Ich komme nicht weiter</summary><p data-copy="hint">Probiere eine Personenzahl zwischen 8 und 12. Zähle nach: Wie viele Notizbücher stecken in den vorgeschlagenen Packungen?</p></details>
+<details><summary data-copy="found-title">Ich habe einen Fehler gefunden</summary><p data-copy="found">Halte kurz fest: Bei ___ Personen brauche ich ___ Packungen. Der Rechner zeigt aber ___. Damit kannst du der KI genau sagen, was sie ändern soll.</p><p data-copy="another">Probiere danach eine andere Zahl. Ein richtiges Ergebnis allein sagt noch wenig über den Rechner aus.</p></details>
+<details><summary data-copy="build-title">Mit Codex oder Claude weiterbauen</summary><p data-copy="copy">Kopiere diese HTML-Datei zuerst in einen eigenen Übungsordner. Öffne diesen Ordner im Agenten. So bleibt der Fehler im Kurs für die nächste Person erhalten.</p><p data-copy="prompt">Sag der KI: „Bei dieser Personenzahl stimmt das Ergebnis nicht: ___. Ich erwarte ___. Ändere nur die Berechnung. Zeig mir danach, ob mein Beispiel und ein bisher richtiges Beispiel funktionieren.“</p><p><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/README.md" data-copy="more">Weitere Aufgaben für diese Übung</a></p></details>
+<noscript><p>Ohne JavaScript: Überlege auf Papier, wie viele Viererpacks du für 8, 9 und 12 Personen brauchst. Der eingebaute Rechner teilt die Personenzahl durch vier und rundet zur nächsten ganzen Zahl. Vergleiche beide Ergebnisse.</p><p lang="en">Without JavaScript: work out how many packs of four you need for 8, 9 and 12 people. The supplied calculator divides the number of people by four and rounds to the nearest whole number. Compare the results.</p></noscript>
+<footer><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="course">Mehr ausprobieren</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a></footer>
 </main>
 <script>
-// Intentional practice defect: the learner must compare this rule to the requirement.
-function packsFor(participants) {
-  return Math.round(participants / 4);
+const english = new URLSearchParams(location.search).get('lang') === 'en';
+const copy = {
+  title: 'Enough notebooks for everyone?',
+  intro: 'You are planning a workshop. Each person needs a notebook. You can only buy whole packs.',
+  pack: 'One pack = four notebooks',
+  task: 'AI built a calculator for this. Work out how many packs you need first. Then try it.',
+  label: 'How many people are coming?',
+  button: 'Calculate',
+  compare: 'Is there enough for everyone, without buying an extra pack?',
+  note: 'For practice only: the calculator has a bug. Nothing is saved.',
+  'hint-title': 'I need a hint',
+  hint: 'Try a number of people between 8 and 12. Count how many notebooks you would get in the suggested packs.',
+  'found-title': 'I found a mistake',
+  found: 'Make a short note: For ___ people I need ___ packs, but the calculator says ___. Now you can tell the AI exactly what needs to change.',
+  another: 'Then try a different number. One correct answer does not tell you much about the rest.',
+  'build-title': 'Fix it with Codex or Claude',
+  copy: 'Copy this HTML file into your own practice folder first. Open that folder in your agent. This keeps the course example ready for the next person.',
+  prompt: 'Tell the AI: “This number of people gives the wrong result: ___. I expect ___. Change only the calculation. Then show whether my example and an earlier working example both work.”',
+  more: 'More things to try with this exercise',
+  course: 'Try another exercise'
+};
+if (english) {
+  document.documentElement.lang = 'en';
+  document.title = copy.title + ' · AI:AT Build Sessions';
+  document.querySelectorAll('[data-copy]').forEach(element => { element.textContent = copy[element.dataset.copy]; });
+  document.querySelector('[data-label="exercise"]').setAttribute('aria-label', 'Try the calculator');
+  document.querySelector('nav a[lang="de"]').removeAttribute('aria-current');
+  document.querySelector('nav a[lang="en"]').setAttribute('aria-current', 'page');
+}
+// Intentional exercise bug. Learners fix their own copy of this file.
+function packsFor(people) {
+  return Math.round(people / 4);
 }
 document.getElementById('planner').addEventListener('submit', function (event) {
   event.preventDefault();
   const input = document.getElementById('participants');
   if (!input.reportValidity()) return;
-  const count = Number(input.value);
-  const packs = packsFor(count);
-  document.getElementById('result').textContent = packs + (packs === 1 ? ' pack' : ' packs') + ' · ' + (packs * 4) + ' kits';
+  const packs = packsFor(Number(input.value));
+  const packWord = english ? (packs === 1 ? 'pack' : 'packs') : (packs === 1 ? 'Packung' : 'Packungen');
+  const notebookWord = english ? 'notebooks' : 'Notizbücher';
+  document.getElementById('result-panel').hidden = false;
+  document.getElementById('result').textContent = packs + ' ' + packWord + ' · ' + (packs * 4) + ' ' + notebookWord;
 });
 </script>
 </body>

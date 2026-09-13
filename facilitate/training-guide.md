@@ -1,90 +1,61 @@
-# Run a repeatable training with learning checks
+# Run a training people can follow
 
-Use this guide when the material becomes a repeated internal training or a course for a new group. It complements [Run a Build Session](run-a-build-session.md), which covers the room, agenda and tool fallbacks.
-
-Public materials can support self-paced learning and independently organised training. They are not an invitation or registration for a private working group. Keep internal cohort plans, invitations, rosters and feedback in their approved internal locations. No public exercise requires access to them.
+Choose one task people can try themselves. This guide helps you teach it; [Run a Build Session](run-a-build-session.md) covers the room and agenda.
 
 ## Choose an outcome before an agenda
 
-For each training, write one observable outcome and select a linked unit plus a [checkpoint](../learning/checkpoints.md). Use the same skill at different levels when a group is mixed.
+Finish this sentence: “After this session, participants can ___.” For example: “spot a wrong calculation and show how to reproduce it.” Then choose an activity:
 
-| Learner's starting point | Practice | Observe |
+| Starting point | Try this | What to look for |
 |---|---|---|
-| New to building | [Paper starter](../learning/README.md), then a first build when setup is ready | Can predict a result and choose a check: B02 |
-| Already has a prototype | [Verification ladder](../tracks/05-verify-and-loop/01-verification-ladder.md) | Can inspect evidence tied to a requirement: I02 |
-| Already delegates to agents | [Parallel agents](../tracks/08-advanced/03-parallel-agents.md) | Can scope work and verify the combined result: E01 |
+| First time | [Notebook calculator](../exercises/verification-lab/README.md) or [paper room example](../learning/README.md) | Can they explain how many notebooks are needed or which rooms fit? |
+| Has built a prototype | [Check an agent's work](../tracks/05-verify-and-loop/01-verification-ladder.md) | Do they try the feature themselves? |
+| Already uses several agents | [Parallel agents](../tracks/08-advanced/03-parallel-agents.md) | Can they divide the work and check that the pieces work together? |
 
-Ask about the task, not job titles. A developer may need the beginner verification activity. An experienced product owner can work at a high level in a browser. Learners may switch or skip; record what was observed rather than ranking them.
+Ask what people have tried before. Let them change activities if one is too easy or too much. For more questions, use [checkpoints](../learning/checkpoints.md) B02, I02 and E01 respectively.
 
 ## Prepare a run someone else can repeat
 
-- Record the course commit or release used, linked unit, checkpoint ID, intended outcome and chosen fallback. Tool behaviour changes; follow the dated vendor sources in the [setup material](../ready-to-build.md).
-- Do the activity yourself in the tools participants will use. Test the starting link or file and its recovery route. Record an unresolved blocker rather than promising the tool will work.
-- Send the relevant minimum setup, not every guide. Follow organisational tool/account rules. Do not promise accounts, licences, setup support or access to private sessions.
-- Prepare the [paper starter](../learning/README.md) or paired review for people without an available tool. An account problem need not prevent practising the skill.
-- Keep course material separate from each learner's project. Use invented data for the demo and the checks.
+Try the activity on the tools participants will use. Check the opening link and keep a paper alternative ready. Send only the [setup instructions](../ready-to-build.md) they need; follow your organisation's account and tool rules.
+
+Keep the course separate from people's own project folders. Use invented data. Record which course version you used so the next host can repeat the activity.
 
 ## Roles
 
-| Role | Responsibility |
-|---|---|
-| Host | Chooses the outcome, keeps time, ensures a usable fallback, records material defects |
-| Table anchor or partner | Uses the [anchor questions](table-anchor.md), observes without taking the keyboard |
-| Learner | Predicts, tries, explains and decides what they need next |
-| Agent | Applies the [coach protocol](../learning/coach-protocol.md), asks one question at a time and supports the bounded task |
-
-Small groups can combine host and anchor. Nobody shares credentials or logs in for someone else. The learner controls their project and progress note.
+The host chooses the task and keeps time. A partner or [table anchor](table-anchor.md) can help, but leaves the keyboard with the learner. An agent follows the [coach instructions](../learning/coach-protocol.md): one question, then time to answer.
 
 ## A suggested session
 
-Use the existing [60 or 75 minute formats](run-a-build-session.md#the-format-60-to-75-minutes). These are planning estimates, not a promise that every task completes in that time. Place the learning checks inside the existing blocks:
+Fit these steps into the existing [60 or 75 minute formats](run-a-build-session.md#the-format-60-to-75-minutes):
 
-1. **Opening:** state the outcome and data rule. Ask one short diagnostic question from the selected checkpoint. Let people answer before the demonstration.
-2. **Input:** show one principle from the linked unit. Do not show the answer to the diagnostic scenario.
-3. **Build:** learners predict and test a result. The anchor or agent gives a source pointer, then a clue, then an explanation only as needed.
-4. **Round:** ask a changed scenario that uses the same principle. Have the learner explain their decision, with evidence where the task requires it.
-5. **Close:** record a narrow observation, any help used and the next useful check. Learners keep their own [progress note](../learning/progress-template.md).
+1. **Try:** show the task and let people work out an answer before the demo.
+2. **Compare:** run it. Ask what matches their expectation and what surprises them.
+3. **Help:** give a small clue if needed. Explain the answer when a clue is not enough.
+4. **Try again:** change the example and let them attempt it without the answer supplied.
+5. **Close:** ask what they want to try next. A [short private note](../learning/progress-template.md) is optional.
 
-For the [find-the-personal-data exercise](../exercises/find-the-personal-data/README.md), people work without AI. Reveal links to the supplied solutions only after their own list exists. Do not ask an agent to process the CSV or generate the debrief answer list.
+The [personal-data search exercise](../exercises/find-the-personal-data/README.md) is different: participants solve it without AI and open the solutions after their own attempt.
 
 ## Assess the skill without an attendance score
 
-Use the relevant [tutor criteria](../learning/tutor-criteria.md) after an attempt. Do not distribute the answer criteria beside the opening question. A small observation is enough:
+Listen to how someone reached an answer. If they needed the solution, give them a different example to try themselves. A copied answer or attendance alone does not show that they can do it.
 
-| Observed situation | Record | Next step |
-|---|---|---|
-| Learner attended or read the unit; no attempt observed | `unverified` | Ask a small scenario |
-| Learner gives an answer copied from the agent or needs the solution explained | `not demonstrated` | Practise with a different example |
-| Learner explains the decision and applies it to a changed scenario without the answer supplied | `mastered`, limited to this checkpoint and context | Schedule a future retrieval check |
-| Learner chooses to move on | `skip` | Offer a suitable next activity |
+For a practical task, watch the check or inspect its output. Say what you saw: “You tried nine people and spotted that one notebook was missing.” Avoid broad labels such as “expert”. The [coach criteria](../learning/tutor-criteria.md) help with formal checkpoint records; keep them out of the opening task.
 
-For a practical skill, also record the real check and its result. “Tests passed” in a draft README is a claim. Inspection of output or a watched action is evidence. Note the difference between a learner's report and the coach's observation.
-
-Do not give a blanket score or certificate from these observations. A completed training does not approve a product for operational use; use the [production checklist](../tracks/08-advanced/06-poc-to-production-checklist.md) and the organisation's own decisions.
+These exercises do not certify a person or approve their app for real use. For that, use the [production checklist](../tracks/08-advanced/06-poc-to-production-checklist.md) and your organisation's process.
 
 ## Language and access
 
-Ask participants which language they want for discussion. Start German-speaking newcomers at [learning/start-de.md](../learning/start-de.md). The core tracks are English; [modules/de/](../modules/de/) contains selected German reference texts, not a complete translation.
-
-A coach or agent can explain a linked unit in the chosen language while keeping the original path. Ask the learner to explain the key decision in their own words so a translation problem becomes visible. Accept spoken, typed or paper answers. Do not require a camera, public repository or public progress record as evidence of learning.
+Accept spoken, typed or paper answers. German-speaking newcomers can [start here](../learning/start-de.md). Most course units are English; an agent can explain them in German. No one needs to publish their work or learning notes.
 
 ## Improve the next run
 
-Keep an internal run note without participant identifiers:
+Keep three short notes, without names:
 
-```markdown
-# Training run
-- Material revision:
-- Unit and checkpoint:
-- Intended outcome:
-- Tool or paper route actually used:
-- Where learners got stuck:
-- Help or fallback that worked:
-- Evidence observed in this task:
-- Material defect to fix:
-- One change for the next run:
-```
+- Where did people get stuck?
+- What helped?
+- What will we change next time?
 
-Use these observations with the existing [retro card](../templates/retro-card.md). Count useful patterns if the group permits it; do not publish individual learning records or quotes that identify people. A repeated question may reveal a missing explanation, prerequisite or example. Recheck the revised activity before the next run.
+The [retro card](../templates/retro-card.md) has more prompts if useful. Try a revised activity yourself before the next run.
 
-For public corrections, report the problem in the material with an invented reproduction. Keep private training schedules and cohort details in the internal system.
+Public course material is separate from private working groups. Keep cohort plans, invitations and feedback in your approved internal system; this course neither enrols people in those groups nor needs access to them. Public corrections should describe the material problem with an invented example.
