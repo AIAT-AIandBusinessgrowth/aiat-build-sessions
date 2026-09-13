@@ -1,0 +1,244 @@
+{
+  "version": "3",
+  "language": "en",
+  "mainSlides": 5,
+  "slides": [
+    {
+      "type": "results",
+      "eyebrow": "AI:AT Build Sessions · Summer 2026",
+      "title": "What we built and learned together",
+      "lead": "Nine sessions, working on our own projects and helping each other along the way.",
+      "metrics": [
+        [
+          "39",
+          "repositories created",
+          "Places to keep project code and files"
+        ],
+        [
+          "1,597",
+          "commits",
+          "Recorded versions of our work"
+        ],
+        [
+          "170",
+          "merge requests merged",
+          "Proposed changes brought into a project"
+        ]
+      ],
+      "example": "Our projects gave us practical experience to share with the next person.",
+      "takeaway": "I’d like to make what we learned easier for others to try.",
+      "footnote": "GitLab activity snapshot: 7 Jul–7 Sep 2026 · Includes experiments, not just finished products"
+    },
+    {
+      "type": "flow",
+      "eyebrow": "Sharing what helps",
+      "title": "Sharing what we’ve learned",
+      "lead": "From trying things in our projects to helping others get started.",
+      "steps": [
+        [
+          "Working group",
+          "We try things on our own projects.",
+          "The existing group keeps exploring."
+        ],
+        [
+          "Internal Academy",
+          "We write down what we learn.",
+          "Our shared knowledge and ways of working."
+        ],
+        [
+          "Public Build Sessions",
+          "You try the basics for yourself.",
+          "Short exercises you can follow at your own pace."
+        ]
+      ],
+      "takeaway": "Your questions help us make the material clearer.",
+      "footnote": "The Academy stays internal. The Build Sessions learning material is public."
+    },
+    {
+      "type": "practice",
+      "eyebrow": "What you can learn",
+      "title": "A first exercise to try together",
+      "steps": [
+        [
+          "Work out what you expect",
+          "Choose a group size. How many packs of four notebooks do you need?"
+        ],
+        [
+          "Try the calculator",
+          "Enter your number of people and compare the result."
+        ],
+        [
+          "Describe what you notice",
+          "Compare what you expected with what you got."
+        ]
+      ],
+      "takeaway": "A useful habit: check a result before relying on it.",
+      "footnote": "First exercise: open in your browser · No account or installation · AI-generated illustration"
+    },
+    {
+      "type": "session",
+      "eyebrow": "My proposal",
+      "title": "An hour to learn together",
+      "duration": "60",
+      "unit": "minutes",
+      "lead": "Bring your laptop.",
+      "body": "We open the exercise. You try it, ask questions and compare notes.",
+      "takeaway": "Time set aside to make a start.",
+      "continuation": "If it works for us, we can add two more weekly sessions.",
+      "footnote": "First session proposed · Date and room to be confirmed · AI-generated illustration"
+    },
+    {
+      "type": "invite",
+      "eyebrow": "AI:AT Build Sessions",
+      "title": "You’re welcome to join",
+      "lead": "Try the first exercise. Let me know if you’d like to continue together.",
+      "body": "I can bring the material and what I’ve learned in practice. Bring your questions.",
+      "action": "Try the first exercise",
+      "url": "https://build-sessions.apps.aiat-poc.at/?lang=en",
+      "repoLabel": "build-sessions.apps.aiat-poc.at",
+      "closing": "We’ll try the guided sessions internally first, then see what works for a wider audience.",
+      "footnote": "Proposed first session · Date to follow after internal agreement"
+    },
+    {
+      "type": "history",
+      "eyebrow": "Backup 1 · Working group #1",
+      "title": "What we covered in the first series",
+      "lead": "We used our own projects to practise these topics.",
+      "topics": [
+        [
+          "Getting started",
+          "Five roles, setup and a first build"
+        ],
+        [
+          "Working with agents in GitLab",
+          "Issues, responsibilities and real needs"
+        ],
+        [
+          "A place for your project",
+          "Repositories, sandbox setup and a personal knowledge vault"
+        ],
+        [
+          "Choosing the right tool",
+          "Models, context, agents and our starting points"
+        ],
+        [
+          "Safe data use",
+          "What AI may see, followed by a product sprint"
+        ],
+        [
+          "Beyond the first prototype",
+          "Project structure and working in teams"
+        ],
+        [
+          "A complete work cycle",
+          "Review, agree scope, build and finish"
+        ],
+        [
+          "Looking back and continuing",
+          "Results, feedback and a knowledge-vault mini-hackathon"
+        ]
+      ],
+      "footnote": "9 sessions held · Topics grouped for this overview"
+    },
+    {
+      "type": "future",
+      "eyebrow": "Backup 2 · Working group #2",
+      "title": "The next topics for the existing group",
+      "lead": "More work on our projects, with short talks and examples.",
+      "topics": [
+        [
+          "01",
+          "Knowledge vaults, agent rules and project goals"
+        ],
+        [
+          "02",
+          "OpenClaw: a personal assistant with guardrails"
+        ],
+        [
+          "03",
+          "Agents at work: websites and research"
+        ],
+        [
+          "04",
+          "Context and repeatable work cycles"
+        ],
+        [
+          "05",
+          "Connected notes and agent memory"
+        ],
+        [
+          "06",
+          "Checking results and fixing mistakes"
+        ],
+        [
+          "07",
+          "From prototype to approval"
+        ],
+        [
+          "08",
+          "Safe automation: data and product checks"
+        ],
+        [
+          "09",
+          "Deployment and involving real users"
+        ],
+        [
+          "10",
+          "Review: keep running or archive"
+        ],
+        [
+          "11",
+          "Backups and a restore exercise"
+        ]
+      ],
+      "footnote": "Proposed topics for the existing group · Scope may change"
+    },
+    {
+      "type": "details",
+      "eyebrow": "Backup 3 · The first hour",
+      "title": "What we would do, and what to bring",
+      "agenda": [
+        [
+          "5 min",
+          "Introduce the task and why we check results"
+        ],
+        [
+          "10 min",
+          "Open the page and work out an answer"
+        ],
+        [
+          "8 min",
+          "Try the calculator and compare"
+        ],
+        [
+          "25 min",
+          "Explore more examples; optional AI-assisted edit"
+        ],
+        [
+          "7 min",
+          "Compare notes with a colleague"
+        ],
+        [
+          "5 min",
+          "Choose where to continue"
+        ]
+      ],
+      "essentials": [
+        [
+          "Bring your laptop",
+          "Open the exercise in your browser. No account or installation needed."
+        ],
+        [
+          "Want to try an AI-assisted edit?",
+          "Use an organisation-approved tool and a copy in your own project folder."
+        ],
+        [
+          "Use invented data",
+          "Keep personal, customer and internal data out of the exercises."
+        ]
+      ],
+      "takeaway": "Leave with a way to check results in your own work.",
+      "footnote": "Suggested timing · First browser exercise provided; AI accounts and laptops arranged separately"
+    }
+  ]
+}
