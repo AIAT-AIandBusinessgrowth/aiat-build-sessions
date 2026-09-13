@@ -4,133 +4,845 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reicht es für alle? · AI:AT Build Sessions</title>
-<meta name="description" content="Lerne, eine KI-Arbeit selbst zu prüfen: ausprobieren, einen Fehler erkennen und der KI sagen, was sie verbessern soll. Ohne Account oder Installation.">
+<meta name="description" content="Prüfe eine KI-Arbeit mit einem eigenen Beispiel: erst selbst schätzen, dann mit dem Rechner der KI vergleichen. Fünf Runden, ohne Account oder Installation.">
 <link rel="canonical" href="https://build-sessions.apps.aiat-poc.at/">
 <link rel="alternate" type="text/markdown" href="https://build-sessions.apps.aiat-poc.at/agent-guide.md" title="Guide for Codex and Claude">
 <style>
-:root { font-family: system-ui, sans-serif; color: #183b32; background: #f5f5ef; line-height: 1.6; }
-* { box-sizing: border-box; }
-body { margin: 0; }
-main { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; }
-.top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem; font-size: .85rem; }
-nav { display: flex; gap: .75rem; }
-a { color: #145f4b; text-underline-offset: .2em; }
-nav a[aria-current="page"] { color: inherit; font-weight: 700; text-decoration: none; }
-h1 { font-size: clamp(2rem, 7vw, 2.8rem); line-height: 1.15; letter-spacing: -.03em; margin: 2rem 0 1rem; }
-p { margin: .75rem 0; }
-.intro { font-size: 1.15rem; max-width: 34rem; }
-.pack { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin: 1.25rem 0; }
-.books { display: flex; gap: .3rem; padding: .6rem; border: 1px dashed #7d9c86; border-radius: .4rem; }
-.book { display: block; width: 1.7rem; height: 2.2rem; border-radius: .1rem .2rem .2rem .1rem; background: #cdddac; border: 1px solid #4e715b; border-left: .3rem solid #477158; }
-.exercise { background: white; border: 1px solid #ccd8cd; border-radius: .75rem; padding: 1.5rem; margin-top: 1.5rem; }
-.exercise > p:first-child { margin-top: 0; }
-label { display: block; font-weight: 700; margin: 1rem 0 .5rem; }
-.controls { display: flex; flex-wrap: wrap; gap: .75rem; }
-input, button { font: inherit; border-radius: .35rem; min-height: 3rem; }
-input { width: 7rem; padding: .5rem .75rem; border: 2px solid #6c8876; color: inherit; background: white; }
-button { border: 2px solid #16654e; background: #16654e; color: white; padding: .5rem 1.25rem; cursor: pointer; }
-:focus-visible { outline: 3px solid #ac6400; outline-offset: 3px; }
-.result { border-top: 1px solid #dce3da; margin-top: 1.25rem; padding-top: 1rem; }
-.result[hidden] { display: none; }
-output { display: block; font-size: 1.3rem; font-weight: 700; }
-output.pending { font-size: 1rem; font-weight: 400; color: #4a6055; }
-.result p { margin-bottom: 0; }
-.aside { color: #4a6055; font-size: .85rem; margin: .75rem 0 1.5rem; }
-details { border-bottom: 1px solid #ccd8cd; padding: .9rem 0; }
-summary { cursor: pointer; font-weight: 600; }
-details p { margin-left: 1.15rem; }
-code { font-size: .9em; }
-footer { margin-top: 2rem; font-size: .85rem; color: #4a6055; }
-@media (max-width: 380px) { .exercise { padding: 1rem; } .controls button { flex: 1; } }
+@font-face{font-family:Geist;src:url(assets/fonts/Geist-Regular.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Geist;src:url(assets/fonts/Geist-Medium.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Geist Mono";src:url(assets/fonts/GeistMono-Regular.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --primary:#005AF0; --primary-soft:#DDE8FC; --primary-light:#F3F6FD;
+  --accent:#C6F2B8; --band:#F0F0F0; --hairline:#C9C9C9; --muted:#616161;
+  --ok:#0E7A3C; --bad:#C9330A; --pip:#8E8E8E;
+  --font-sans:Geist,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;background:#fff;color:#000;font:400 16px/1.55 var(--font-sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1{font:400 clamp(32px,7vw,48px)/1.12 var(--font-sans);letter-spacing:-.01em;margin:28px 0 10px}
+h2{font:400 clamp(20px,2.6vw,25px)/1.28 var(--font-sans);margin:0 0 10px}
+p{margin:10px 0}
+a{color:var(--primary);text-underline-offset:.2em}
+.mono{font-family:var(--font-mono)}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:3px solid #000;outline-offset:3px}
+.site-foot :focus-visible{outline-color:#fff}
+
+/* ---------- Kopf ---------- */
+.site-head{display:flex;align-items:center;gap:12px;max-width:960px;margin:0 auto;padding:14px 20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;padding:5px 6px;margin-left:-6px;border-radius:6px;color:#000;text-decoration:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand-word{font:400 11px/1.25 var(--font-mono);letter-spacing:.04em;color:#000;text-transform:uppercase}
+.brand-sub{font:400 15px/1 var(--font-sans);color:var(--muted);padding-left:12px;border-left:1px solid var(--hairline)}
+.lang{margin-left:auto;display:flex;gap:4px}
+.lang a{font:400 15px/1 var(--font-sans);min-height:44px;min-width:44px;padding:0 12px;border-radius:4px;background:var(--band);color:#000;text-decoration:none;display:grid;place-items:center}
+.lang a[aria-current="page"]{background:#000;color:#fff}
+
+/* ---------- Aufgabe ---------- */
+.lede{font-size:19px;max-width:36em;color:#000;margin-bottom:22px}
+.task-line{font-size:19px;max-width:36em}
+.task-line b{font-weight:500}
+.rule{display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted);margin:12px 0 0}
+.rule svg{flex:none}
+.progress{display:flex;align-items:center;gap:12px;margin:18px 0 4px;font:400 14px/1 var(--font-mono);color:var(--muted)}
+.pips{display:flex;gap:5px}
+.pips i{display:block;width:26px;height:5px;border-radius:3px;background:var(--pip)}
+.pips i.now{background:var(--primary)}
+.pips i.ok{background:var(--ok)}
+.pips i.bad{background:var(--bad)}
+.score b{font-weight:500;color:#000}
+
+/* ---------- Band + Karte ---------- */
+.band{background:var(--band);padding:26px 0 30px;margin:36px 0}
+.card{background:#fff;border:0;border-radius:22px;padding:24px}
+.card section+section{margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline)}
+/* Die Überschrift bekommt den Fokus nach der Auswertung: der Ring soll den Text
+   umfassen, nicht die ganze Kartenbreite — sonst sieht er aus wie ein Eingabefeld. */
+#h-sum{width:max-content;max-width:100%}
+
+/* ---------- Bühne ---------- */
+.stage{background:linear-gradient(180deg,#fff,#FAFAFA);border-radius:14px;padding:4px 0}
+svg.scene{display:block;width:100%;max-width:900px;height:auto;margin:0 auto}
+.caption{font:400 13px/1.5 var(--font-mono);color:var(--muted);margin:10px 0 0;text-align:center}
+
+/* ---------- Formular ---------- */
+form{margin:0}
+label{display:block;font-weight:500;margin:0 0 8px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px;padding:10px 12px;text-align:center;border:2px solid #000;border-radius:8px;background:#fff;color:#000}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:500 17px/1 var(--font-sans);background:var(--primary);color:#fff;border:2px solid var(--primary);border-radius:30px;padding:10px 20px;min-height:48px;cursor:pointer}
+.btn:hover{background:#0048C0;border-color:#0048C0}
+.btn-2{background:var(--accent);border-color:var(--accent);color:#000}
+.btn-2:hover{background:#B4EAA2;border-color:#B4EAA2}
+.mini{font-size:14px;color:var(--muted);max-width:46em}
+#download-line a{display:inline-flex;align-items:center;min-height:24px}
+.err{font-size:15px;font-weight:500;color:var(--bad);margin:10px 0 0;max-width:46em}
+.err[hidden]{display:none}
+
+/* ---------- Auswertung ---------- */
+.tally{display:flex;border-top:1px solid var(--hairline);margin:2px 0 16px;max-width:520px}
+.tally div{flex:1;padding:10px 6px 4px;text-align:center;border-right:1px solid var(--hairline)}
+.tally div:last-child{border-right:0}
+.tally .l{display:block;min-height:2.6em;font:400 12px/1.3 var(--font-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.tally .v{font:400 30px/1.2 var(--font-sans);font-variant-numeric:tabular-nums}
+.tally .v.ok{color:var(--ok)}
+.tally .v.bad{color:var(--bad)}
+.verdict{background:var(--primary-light);border-left:4px solid var(--primary);border-radius:0 14px 14px 0;padding:14px 18px;max-width:52em}
+.verdict[hidden]{display:none}
+.verdict.short{background:#FDF0EA;border-left-color:var(--bad)}
+.verdict.enough{background:#EFF8EC;border-left-color:var(--ok)}
+.verdict p{margin:0}
+.verdict .points{margin-top:8px;font:500 15px/1 var(--font-sans);color:var(--muted)}
+.say{margin-top:16px;max-width:52em}
+.say[hidden]{display:none}
+.say .quote{font:400 15px/1.6 var(--font-mono);background:var(--band);border-radius:14px;padding:12px 14px;margin:8px 0}
+.say .acts{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.copied{font-size:15px;font-weight:500;color:var(--ok)}
+.actions{margin-top:18px}
+
+/* ---------- Fuß ---------- */
+.site-foot{background:var(--primary);color:#fff;margin-top:40px;padding:30px 0 34px}
+.site-foot .wrap{display:grid;gap:14px}
+.foot-brand{display:flex;align-items:center;gap:10px}
+.foot-brand svg{width:40px;height:40px}
+.foot-brand span{font:400 11px/1.25 var(--font-mono);letter-spacing:.04em;text-transform:uppercase}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+.foot-links a{color:#fff;font-size:15px;min-height:24px;display:inline-flex;align-items:center}
+.foot-fine{margin:0;font:400 12px/16px var(--font-sans);color:#fff}
+
+/* ---------- Bewegung ---------- */
+.fly{animation:fly .85s cubic-bezier(.32,.72,.3,1) both;animation-delay:calc(var(--i) * 110ms)}
+@keyframes fly{
+  0%{transform:translate(var(--x0),var(--y0)) rotate(0deg)}
+  55%{transform:translate(var(--mx),var(--my)) rotate(-12deg)}
+  100%{transform:translate(var(--x1),var(--y1)) rotate(0deg)}
+}
+.pulse{animation:pulse 1.9s ease-in-out infinite;animation-delay:calc(var(--i) * 110ms + .9s)}
+@keyframes pulse{0%,100%{opacity:.6;stroke-width:3}50%{opacity:1;stroke-width:4.5}}
+.pop{animation:pop .45s ease-out both;animation-delay:calc(var(--i) * 45ms)}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion: reduce){
+  .fly{animation:none;transform:translate(var(--x1),var(--y1))}
+  .pulse{animation:none;opacity:1}
+  .pop{animation:none;opacity:1;transform:none}
+}
+
+@media (max-width:600px){
+  .wrap{padding:0 12px}
+  .site-head{padding:12px}
+  .card{padding:16px 12px}
+  .stage{margin-left:-12px;margin-right:-12px}
+  .tally .v{font-size:25px}
+  .row .btn{flex:1;justify-content:center}
+}
+
+/* ---------- Druck ---------- */
+/* Browser drucken Hintergründe standardmäßig nicht: der blaue Fuß käme weiß auf
+   weiß heraus, die Fortschritts-Balken unsichtbar. Die Bühne bleibt, wie sie ist. */
+@media print{
+  .site-foot{background:#fff;color:#000;margin-top:24px;padding:14px 0 0;border-top:1px solid var(--hairline)}
+  .site-foot a,.foot-fine{color:#000}
+  .foot-brand svg g{fill:#000}
+  .pips i{border:1px solid #000}
+  #copy-btn{display:none}
+}
 </style>
 </head>
 <body>
+
+<header class="site-head">
+  <a class="brand" href="https://ai-at.eu/" aria-label="AI:AT – AI Factory Austria">
+    <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+      <g fill="#005AF0">
+        <path d="M7,0 H8 A7,7 0 0 1 15,7 V13 A2,2 0 0 1 13,15 H7 A7,7 0 0 1 0,8 V7 A7,7 0 0 1 7,0 Z"/>
+        <path d="M2,13 H17 A7,7 0 0 1 24,20 V21 A7,7 0 0 1 17,28 H7 A7,7 0 0 1 0,21 V15 A2,2 0 0 1 2,13 Z"/>
+        <path d="M26,11 H27 A7,7 0 0 1 34,18 V27 A7,7 0 0 1 27,34 H21 A2,2 0 0 1 19,32 V18 A7,7 0 0 1 26,11 Z"/>
+      </g>
+    </svg>
+    <span class="brand-word">AI Factory<br>Austria</span>
+  </a>
+  <span class="brand-sub">Build Sessions</span>
+  <nav class="lang" aria-label="Sprache / Language">
+    <a href="?lang=de" lang="de" aria-current="page">DE</a><a href="?lang=en" lang="en">EN</a>
+  </nav>
+</header>
+
 <main>
-<div class="top"><span>AI:AT Build Sessions</span><nav aria-label="Sprache / Language"><a href="?lang=de" lang="de" aria-current="page">Deutsch</a><a href="?lang=en" lang="en">English</a></nav></div>
-<h1 data-copy="title">Reicht es für alle?</h1>
-<p class="intro" data-copy="purpose">KI-Ergebnisse können richtig aussehen und trotzdem falsch sein. Hier übst du, sie mit einem eigenen Beispiel zu prüfen und einen Fehler konkret zu beschreiben.</p>
-<p data-copy="intro">Du planst einen Workshop. Jede Person soll ein Notizbuch bekommen. Du kannst nur ganze Packungen kaufen.</p>
-<div class="pack"><div class="books" aria-hidden="true"><span class="book"></span><span class="book"></span><span class="book"></span><span class="book"></span></div><span data-copy="pack">Eine Packung = vier Notizbücher</span></div>
-<section class="exercise" aria-label="Rechner ausprobieren" data-label="exercise">
-<p data-copy="task">Die KI hat dafür einen Rechner gebaut. Überlege zuerst selbst, wie viele Packungen du brauchst. Probiere ihn dann aus.</p>
-<form id="planner">
-<label for="participants" data-copy="label">Wie viele Personen kommen?</label>
-<div class="controls"><input id="participants" name="participants" type="number" min="0" max="1000" step="1" value="8" required><button type="submit" data-copy="button">Ausrechnen</button></div>
-<div class="result" id="result-panel" hidden><output id="result" for="participants" aria-live="polite"></output><p id="stale-note" data-copy="stale" hidden>Die Eingabe hat sich geändert. Klick auf „Ausrechnen“, um das Ergebnis zu aktualisieren.</p><p data-copy="compare">Reicht das für alle, ohne eine Packung zu viel zu kaufen?</p></div>
-</form>
-</section>
-<p class="aside" data-copy="note">Nur zum Üben: Im Rechner steckt ein Fehler. Es wird nichts gespeichert.</p>
-<details><summary data-copy="hint-title">Ich komme nicht weiter</summary><p data-copy="hint">Probiere eine Personenzahl zwischen 8 und 12. Zähle nach: Wie viele Notizbücher stecken in den vorgeschlagenen Packungen?</p></details>
-<details><summary data-copy="found-title">Ich habe einen Fehler gefunden</summary><p data-copy="found">Beschreibe den Fehler mit deinem Beispiel: „Bei ___ Personen brauche ich ___ Packungen. Der Rechner zeigt aber ___.“ Damit kann die KI gezielt nachbessern.</p><p data-copy="another">Bei deinem eigenen Tool hilft dieselbe Prüfung: Ein sichtbarer Export-Button zeigt noch nicht, ob die Datei den richtigen Inhalt hat. Schau dir das Ergebnis selbst an.</p></details>
-<details><summary data-copy="build-title">Mit Codex oder Claude weiterbauen</summary><p data-copy="copy">Lade die Übungsdatei herunter und speichere sie in einem eigenen Ordner. Öffne diesen Ordner in Codex oder Claude Code. Dort kannst du den Rechner mit der KI verbessern.</p><p><a href="https://build-sessions.apps.aiat-poc.at/index.html" download="notebook-calculator.html" data-copy="download">Übungsdatei herunterladen</a></p><p data-copy="prompt">Sag der KI: „Bei dieser Personenzahl stimmt das Ergebnis nicht: ___. Ich erwarte ___. Ändere nur die Berechnung. Zeig mir danach, ob mein Beispiel und ein bisher richtiges Beispiel funktionieren.“</p><p><a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/README.md" data-copy="more">Weitere Aufgaben für diese Übung</a></p></details>
-<noscript><p>Ohne JavaScript: Überlege auf Papier, wie viele Viererpacks du für 8, 9 und 12 Personen brauchst, und schreib deine drei Zahlen auf. Vergleiche sie mit dem, was der Rechner vorschlägt, sobald du ihn ausprobieren kannst.</p><p lang="en">Without JavaScript: work out on paper how many packs of four you need for 8, 9 and 12 people, and write your three numbers down. Compare them with what the calculator suggests once you can try it.</p></noscript>
-<footer><a href="https://build-sessions.apps.aiat-poc.at/agent-guide.md" data-copy="agent-guide">Anleitung für Codex und Claude</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="course">Mehr ausprobieren</a> · <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a></footer>
+<div class="wrap">
+  <h1 data-copy="title">Reicht es für alle?</h1>
+  <p class="lede" data-copy="lede">Hier prüfst du eine KI-Arbeit mit einem eigenen Beispiel: erst selbst rechnen, dann mit der Zahl der KI vergleichen.</p>
+
+  <section aria-labelledby="h-task">
+    <h2 id="h-task" data-copy="h-task">Die Aufgabe</h2>
+    <p class="task-line" id="task-line">Für den Workshop kommen <b>8 Personen</b>. Jede Person soll ein Notizbuch bekommen.</p>
+    <p class="rule">
+      <svg width="112" height="46" viewBox="0 0 130 54" aria-hidden="true" focusable="false">
+        <path d="M0 18 L110 18 L110 50 L0 50 Z" fill="#E6E0D4" stroke="#8E8574" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M0 18 L14 2 L124 2 L110 18 Z" fill="#EFEADF" stroke="#8E8574" stroke-width="2" stroke-linejoin="round"/>
+        <g fill="#005AF0"><rect x="13" y="22" width="22" height="24" rx="2"/><rect x="35" y="22" width="22" height="24" rx="2"/><rect x="57" y="22" width="22" height="24" rx="2"/><rect x="79" y="22" width="22" height="24" rx="2"/></g>
+        <g fill="#003FA8"><rect x="13" y="22" width="6" height="24" rx="2"/><rect x="35" y="22" width="6" height="24" rx="2"/><rect x="57" y="22" width="6" height="24" rx="2"/><rect x="79" y="22" width="6" height="24" rx="2"/></g>
+      </svg>
+      <span data-copy="rule">Notizbücher gibt es nur in Packungen zu vier Stück.</span>
+    </p>
+    <p class="progress">
+      <span class="pips" id="pips" role="img" aria-label="Runde 1 von 5"><i class="now"></i><i></i><i></i><i></i><i></i></span>
+      <span class="score"><b id="score">0</b> <span data-copy="points">Punkte</span></span>
+    </p>
+  </section>
+</div>
+
+<div class="band">
+<div class="wrap">
+<div class="card">
+
+  <section aria-labelledby="h-scene">
+    <h2 id="h-scene" data-copy="h-scene">Wer bekommt ein Notizbuch?</h2>
+    <div class="stage">
+      <svg class="scene" id="scene" role="img" aria-labelledby="scene-title" focusable="false"><title id="scene-title">8 Personen warten. Noch ist nichts geliefert.</title></svg>
+    </div>
+    <p class="scene-note mini" id="scene-note" data-copy="scene-note" hidden>Ab 25 Personen wird das Bild unübersichtlich. Die Zahlen darunter gelten trotzdem.</p>
+    <p class="caption" id="caption">8 Personen warten · noch nichts geliefert</p>
+  </section>
+
+  <section id="sum-sec" aria-labelledby="h-sum" hidden>
+    <h2 id="h-sum" data-copy="h-sum" tabindex="-1">Was du gesehen hast</h2>
+    <p id="sum-text"></p>
+    <p id="sum-score"></p>
+    <p class="actions"><button type="button" class="btn btn-2" id="restart"><span data-copy="restart">Noch einmal</span><span class="arrow" aria-hidden="true">→</span></button></p>
+  </section>
+
+  <section aria-labelledby="h-you">
+    <h2 id="h-you" data-copy="h-you">Deine Antwort</h2>
+    <form id="round-form" novalidate>
+      <label for="guess" data-copy="label-guess">Wie viele Packungen kaufst du?</label>
+      <div class="row">
+        <input id="guess" name="guess" type="number" inputmode="numeric" autocomplete="off" aria-describedby="guess-error guess-hint">
+        <button type="submit" class="btn"><span data-copy="submit-guess">Festlegen</span><span class="arrow" aria-hidden="true">→</span></button>
+      </div>
+      <p class="err" id="guess-error" hidden></p>
+      <p class="mini" id="guess-hint" data-copy="guess-hint">Erst deine Zahl, dann die der KI. In dieser Reihenfolge, sonst übernimmst du ihre.</p>
+    </form>
+    <form id="free-form" novalidate hidden>
+      <label for="free" data-copy="label-free">Wie viele Personen kommen?</label>
+      <div class="row">
+        <input id="free" name="free" type="number" inputmode="numeric" autocomplete="off" aria-describedby="free-error free-hint">
+        <button type="submit" class="btn"><span data-copy="submit-free">Ausrechnen</span><span class="arrow" aria-hidden="true">→</span></button>
+      </div>
+      <p class="err" id="free-error" hidden></p>
+      <p class="mini" id="free-hint" data-copy="free-hint">Eine Zahl von 0 bis 1000. Probiere auch 1, 4 und 13.</p>
+    </form>
+    <p id="locked" hidden></p>
+  </section>
+
+  <section aria-labelledby="h-ai">
+    <h2 id="h-ai" data-copy="h-ai">Die Antwort der KI</h2>
+    <p class="mini" id="ai-wait">Sie erscheint, sobald du deine Zahl festgelegt hast.</p>
+    <div class="tally" id="tally" hidden>
+      <div><span class="l" id="tally-l1">Du kaufst</span><br><span class="v" id="tally-v1">–</span></div>
+      <div><span class="l" data-copy="tally-2">Die KI kauft</span><br><span class="v" id="tally-v2">–</span></div>
+      <div><span class="l" data-copy="tally-3">Nötig wären</span><br><span class="v" id="tally-v3">–</span></div>
+    </div>
+    <div class="verdict" id="verdict" hidden><p id="verdict-text"></p><p class="points" id="verdict-points" hidden></p></div>
+    <div class="say" id="say" hidden>
+      <p data-copy="say-lead">So sagst du es der KI:</p>
+      <p class="quote" id="say-text"></p>
+      <p class="acts">
+        <button type="button" class="btn btn-2" id="copy-btn"><span data-copy="copy-btn">Kopieren</span></button>
+        <span class="copied" id="copied"></span>
+      </p>
+      <p class="mini" data-copy="say-note">Füge den Satz in Claude Code oder Codex ein und bitte darum, nur die Berechnung in deiner heruntergeladenen Datei notebook-calculator.html zu ändern. Prüfe danach diese Zahl noch einmal und eine, die vorher richtig war.</p>
+    </div>
+    <p class="actions"><button type="button" class="btn" id="next" hidden><span id="next-label">Nächste Runde</span><span class="arrow" aria-hidden="true">→</span></button></p>
+  </section>
+
+</div>
+</div>
+</div>
+
+<div class="wrap">
+  <section aria-labelledby="h-next">
+    <h2 id="h-next" data-copy="h-next">Nächster Schritt</h2>
+    <p data-copy="download-intro">Die Datei unten ist der reine Rechner mit demselben Fehler, ohne alles andere auf dieser Seite. Lade sie in einen eigenen Ordner, öffne diesen Ordner in Claude Code oder Codex und repariere den Rechner dort.</p>
+    <p id="download-line"><a href="notebook-calculator.html" download data-copy="download-link">notebook-calculator.html herunterladen</a></p>
+    <p data-copy="prompt-line">Nimm den Satz von oben als Auftrag. Lass danach dieselbe Zahl noch einmal rechnen und dazu eine, die vorher schon richtig war.</p>
+  </section>
+</div>
+
+<noscript>
+  <div class="wrap">
+    <p>Ohne JavaScript: Rechne auf Papier, wie viele Viererpackungen du für 8, 9 und 12 Personen brauchst, und schreib deine drei Zahlen auf. Vergleiche sie später mit dem, was der Rechner vorschlägt.</p>
+    <p lang="en">Without JavaScript: work out on paper how many packs of four you need for 8, 9 and 12 people, and write your three numbers down. Compare them later with what the calculator suggests.</p>
+  </div>
+</noscript>
+
+<p class="sr" id="announce" role="status" aria-live="polite"></p>
 </main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span class="foot-brand">
+      <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+        <g fill="#fff">
+          <path d="M7,0 H8 A7,7 0 0 1 15,7 V13 A2,2 0 0 1 13,15 H7 A7,7 0 0 1 0,8 V7 A7,7 0 0 1 7,0 Z"/>
+          <path d="M2,13 H17 A7,7 0 0 1 24,20 V21 A7,7 0 0 1 17,28 H7 A7,7 0 0 1 0,21 V15 A2,2 0 0 1 2,13 Z"/>
+          <path d="M26,11 H27 A7,7 0 0 1 34,18 V27 A7,7 0 0 1 27,34 H21 A2,2 0 0 1 19,32 V18 A7,7 0 0 1 26,11 Z"/>
+        </g>
+      </svg>
+      <span>AI Factory<br>Austria</span>
+    </span>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="https://build-sessions.apps.aiat-poc.at/agent-guide.md" data-copy="foot-guide">Anleitung für Codex und Claude</a>
+      <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="foot-more">Mehr ausprobieren</a>
+      <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a>
+      <a href="https://ai-at.eu/impressum/" lang="de">Impressum</a>
+    </nav>
+    <p class="foot-fine">AI Factory Austria AI:AT · Karl-Farkas-Gasse 22, 1030 Wien</p>
+  </div>
+</footer>
+
 <script>
-const english = new URLSearchParams(location.search).get('lang') === 'en';
-if (location.protocol === 'file:') document.querySelector('[download]').hidden = true;
-const copy = {
+(function () {
+'use strict';
+
+var english = new URLSearchParams(location.search).get('lang') === 'en';
+
+/* ---------- Statische Texte: Deutsch steht im Markup, Englisch hier ---------- */
+var copy = {
   title: 'Enough notebooks for everyone?',
-  purpose: 'AI results can look right and still be wrong. Here you practise checking them with your own example and describing a mistake clearly.',
-  intro: 'You are planning a workshop. Each person needs a notebook. You can only buy whole packs.',
-  pack: 'One pack = four notebooks',
-  task: 'AI built a calculator for this. Work out how many packs you need first. Then try it.',
-  label: 'How many people are coming?',
-  button: 'Calculate',
-  stale: 'Your entry has changed. Choose “Calculate” to update the result.',
-  compare: 'Is there enough for everyone, without buying an extra pack?',
-  note: 'For practice only: the calculator has a bug. Nothing is saved.',
-  'hint-title': 'I need a hint',
-  hint: 'Try a number of people between 8 and 12. Count how many notebooks you would get in the suggested packs.',
-  'found-title': 'I found a mistake',
-  found: 'Describe the mistake with your example: “For ___ people I need ___ packs, but the calculator says ___.” This gives the AI something specific to fix.',
-  another: 'Use the same check on your own tool: a visible Export button does not show whether the file contains the right information. Look at the result yourself.',
-  'build-title': 'Fix it with Codex or Claude',
-  copy: 'Download the exercise file into your own folder. Open that folder in Codex or Claude Code. There you can improve the calculator with your agent.',
-  download: 'Download the exercise file',
-  prompt: 'Tell the AI: “This number of people gives the wrong result: ___. I expect ___. Change only the calculation. Then show whether my example and an earlier working example both work.”',
-  more: 'More things to try with this exercise',
-  'agent-guide': 'Guide for Codex and Claude',
-  course: 'Try another exercise'
+  lede: 'Here you check an AI result with your own example: work it out yourself first, then compare it with the AI’s number.',
+  'h-task': 'The task',
+  rule: 'Notebooks only come in packs of four.',
+  points: 'points',
+  'h-scene': 'Who gets a notebook?',
+  'scene-note': 'From 25 people on, the picture gets crowded. The numbers below still hold.',
+  'h-sum': 'What you saw',
+  restart: 'Play again',
+  'h-you': 'Your answer',
+  'label-guess': 'How many packs do you buy?',
+  'submit-guess': 'Lock it in',
+  'guess-hint': 'Your number first, then the AI’s. In that order — otherwise you just adopt its answer.',
+  'label-free': 'How many people are coming?',
+  'submit-free': 'Calculate',
+  'free-hint': 'Any number from 0 to 1000. Try 1, 4 and 13 as well.',
+  'h-ai': 'The AI’s answer',
+  'tally-2': 'The AI buys',
+  'tally-3': 'Actually needed',
+  'say-lead': 'Say it to the AI like this:',
+  'copy-btn': 'Copy',
+  'say-note': 'Paste the sentence into Claude Code or Codex and ask it to change only the calculation in your downloaded copy of notebook-calculator.html. Then check this number again, and one that was right before.',
+  'h-next': 'Next step',
+  'download-intro': 'The file below is the plain calculator with the same mistake, without anything else from this page. Download it into a folder of your own, open that folder in Claude Code or Codex and fix the calculator there.',
+  'download-link': 'Download notebook-calculator.html',
+  'prompt-line': 'Use the sentence above as your instruction. Then run the same number again, plus one that was already right before.',
+  'foot-guide': 'Guide for Codex and Claude',
+  'foot-more': 'Try another exercise'
 };
+
+/* ---------- Sätze, die aus Zahlen entstehen ---------- */
+var count = function (n, one, many) { return n + ' ' + (n === 1 ? one : many); };
+var LANG = {
+  de: {
+    people: function (n) { return count(n, 'Person', 'Personen'); },
+    packs: function (n) { return count(n, 'Packung', 'Packungen'); },
+    books: function (n) { return count(n, 'Notizbuch', 'Notizbücher'); },
+    task: function (n) { return 'Für den Workshop ' + (n === 1 ? 'kommt ' : 'kommen ') + this.people(n) + '. Jede Person soll ein Notizbuch bekommen.'; },
+    taskFree: 'Jetzt bestimmst du die Zahl. Der Rechner rechnet weiter wie bisher.',
+    waiting: function (n) { return n === 0 ? 'Niemand kommt.' : this.people(n) + (n === 1 ? ' wartet' : ' warten') + '. Noch ist nichts geliefert.'; },
+    waitCaption: function (n) { return n === 0 ? 'niemand wartet · noch nichts geliefert' : this.people(n) + (n === 1 ? ' wartet' : ' warten') + ' · noch nichts geliefert'; },
+    delivered: function (n, packs, books, missing) {
+      return this.packs(packs) + ' geliefert · ' + this.books(books) + ' für ' + this.people(n) + ' · ' +
+        (missing === 0 ? 'es reicht' : missing === 1 ? 'eine Person geht leer aus' : missing + ' Personen gehen leer aus');
+    },
+    result: function (n, packs, books, missing, need) {
+      return this.people(n) + ' → die KI kauft ' + this.packs(packs) + ' = ' + this.books(books) + '. ' +
+        (missing === 0 ? 'Es reicht für alle.' : missing === 1 ? 'Eine Person bekommt keines.' : missing + ' Personen bekommen keines.') +
+        ' ' + (need === 1 ? 'Nötig wäre 1 Packung.' : 'Nötig wären ' + need + ' Packungen.');
+    },
+    sentence: function (n, packs, need, missing) {
+      return 'Bei ' + this.people(n) + ' brauche ich ' + this.packs(need) + '. Der Rechner kauft ' + packs +
+        ', damit ' + (missing === 1 ? 'fehlt eines' : 'fehlen ' + missing) + '.';
+    },
+    locked: function (n) { return 'Du hast dich festgelegt: ' + this.packs(n) + '.'; },
+    aiWait: 'Sie erscheint, sobald du deine Zahl festgelegt hast.',
+    aiWaitFree: 'Sie erscheint, sobald du eine Zahl ausrechnen lässt.',
+    tallyYou: 'Du kaufst',
+    tallyPeople: 'Personen',
+    next: 'Nächste Runde',
+    result5: 'Auswertung',
+    points: function (p) { return p === 0 ? 'Keine Punkte in dieser Runde.' : '+' + p + ' Punkte'; },
+    round: function (i, all) { return 'Runde ' + i + ' von ' + all; },
+    roundNews: function (i, all, n) { return this.round(i, all) + ': ' + this.people(n) + '.'; },
+    again: 'Von vorn.',
+    pipsSoFar: 'Bisher:',
+    pipOk: 'richtig',
+    pipBad: 'falsch',
+    pipsFree: 'Freies Probieren',
+    hitYou: 'Du hattest recht, die KI nicht.',
+    hitBoth: 'Ihr lagt beide richtig.',
+    hitAi: 'Die KI lag richtig, deine Zahl nicht.',
+    hitNone: 'Die KI lag daneben, deine Zahl auch.',
+    summary: function (wrong) {
+      return 'Der Rechner war nicht kaputt, er war nur manchmal falsch. Bei ' + wrong.join(' und ') +
+        ' Personen hat er zu wenig gekauft, in den anderen Runden genau richtig. Genau das macht solche Fehler gefährlich: Wer zwei richtige Antworten sieht, hört auf zu prüfen. Ein Treffer beweist nichts.';
+    },
+    summaryScore: function (p) { return 'Dein Ergebnis: ' + p + (p === 1 ? ' Punkt' : ' Punkte') + ' aus fünf Runden.'; },
+    copied: 'Kopiert',
+    copyFail: 'Nicht kopiert — der Satz ist jetzt markiert.',
+    errEmpty: 'Trag zuerst eine Zahl ein. Auch eine falsche Zahl zählt, geschätzt wird vorher.',
+    errEmptyFree: 'Trag eine Zahl ein, zum Beispiel 9.',
+    errWhole: 'Bitte eine ganze Zahl ohne Komma eintragen.',
+    errLow: 'Bitte eine Zahl ab 0 eintragen.',
+    errHigh: function (max) { return 'Bitte eine Zahl bis ' + max + ' eintragen. Größere Zahlen rechnet diese Übung nicht.'; }
+  },
+  en: {
+    people: function (n) { return count(n, 'person', 'people'); },
+    packs: function (n) { return count(n, 'pack', 'packs'); },
+    books: function (n) { return count(n, 'notebook', 'notebooks'); },
+    task: function (n) { return this.people(n) + (n === 1 ? ' is' : ' are') + ' coming to the workshop. Each of them needs a notebook.'; },
+    taskFree: 'Now you choose the number. The calculator works exactly as before.',
+    waiting: function (n) { return n === 0 ? 'Nobody is coming.' : this.people(n) + ' waiting. Nothing has been delivered yet.'; },
+    waitCaption: function (n) { return n === 0 ? 'nobody waiting · nothing delivered yet' : this.people(n) + ' waiting · nothing delivered yet'; },
+    delivered: function (n, packs, books, missing) {
+      return this.packs(packs) + ' delivered · ' + this.books(books) + ' for ' + this.people(n) + ' · ' +
+        (missing === 0 ? 'enough for everyone' : missing === 1 ? 'one person gets none' : missing + ' people get none');
+    },
+    result: function (n, packs, books, missing, need) {
+      return this.people(n) + ' → the AI buys ' + this.packs(packs) + ' = ' + this.books(books) + '. ' +
+        (missing === 0 ? 'That is enough for everyone.' : missing === 1 ? 'One person gets none.' : missing + ' people get none.') +
+        ' ' + this.packs(need) + (need === 1 ? ' is' : ' are') + ' needed.';
+    },
+    sentence: function (n, packs, need, missing) {
+      return 'For ' + this.people(n) + ' I need ' + this.packs(need) + '. The calculator buys ' + packs +
+        ', so ' + (missing === 1 ? 'one notebook is missing' : missing + ' notebooks are missing') + '.';
+    },
+    locked: function (n) { return 'You locked in ' + this.packs(n) + '.'; },
+    aiWait: 'It appears as soon as you lock your number in.',
+    aiWaitFree: 'It appears as soon as you calculate a number.',
+    tallyYou: 'You buy',
+    tallyPeople: 'People',
+    next: 'Next round',
+    result5: 'See the result',
+    points: function (p) { return p === 0 ? 'No points this round.' : '+' + p + ' points'; },
+    round: function (i, all) { return 'Round ' + i + ' of ' + all; },
+    roundNews: function (i, all, n) { return this.round(i, all) + ': ' + this.people(n) + '.'; },
+    again: 'Starting over.',
+    pipsSoFar: 'So far:',
+    pipOk: 'right',
+    pipBad: 'wrong',
+    pipsFree: 'Free practice',
+    hitYou: 'You were right, the AI was not.',
+    hitBoth: 'You were both right.',
+    hitAi: 'The AI was right, your number was not.',
+    hitNone: 'The AI was wrong, and so was your number.',
+    summary: function (wrong) {
+      return 'The calculator was not broken, it was only sometimes wrong. For ' + wrong.join(' and ') +
+        ' people it bought too few packs; in the other rounds it was exactly right. That is what makes this kind of mistake dangerous: after two right answers people stop checking. One hit proves nothing.';
+    },
+    summaryScore: function (p) { return 'Your result: ' + p + (p === 1 ? ' point' : ' points') + ' out of five rounds.'; },
+    copied: 'Copied',
+    copyFail: 'Not copied — the sentence is selected now.',
+    errEmpty: 'Enter a number first. Even a wrong number counts — the guess comes before the answer.',
+    errEmptyFree: 'Enter a number, for example 9.',
+    errWhole: 'Please enter a whole number, without a decimal point.',
+    errLow: 'Please enter 0 or more.',
+    errHigh: function (max) { return 'Please enter a number up to ' + max + '. This exercise does not calculate larger numbers.'; }
+  }
+};
+var T = english ? LANG.en : LANG.de;
+
 if (english) {
   document.documentElement.lang = 'en';
   document.title = copy.title + ' · AI:AT Build Sessions';
-  document.querySelectorAll('[data-copy]').forEach(element => { element.textContent = copy[element.dataset.copy]; });
-  document.querySelector('[data-label="exercise"]').setAttribute('aria-label', 'Try the calculator');
-  document.querySelector('nav a[lang="de"]').removeAttribute('aria-current');
-  document.querySelector('nav a[lang="en"]').setAttribute('aria-current', 'page');
+  document.querySelectorAll('[data-copy]').forEach(function (node) {
+    if (copy[node.dataset.copy] !== undefined) node.textContent = copy[node.dataset.copy];
+  });
+  document.querySelector('nav.lang a[lang="de"]').removeAttribute('aria-current');
+  document.querySelector('nav.lang a[lang="en"]').setAttribute('aria-current', 'page');
+  /* Die gespeicherte Datei trägt keine Abfrage mehr — sie hat oben eigene
+     Sprachschalter. Die Abfrage hier hilft, wer den Rechner erst im Tab öffnet. */
+  document.querySelector('#download-line a').setAttribute('href', 'notebook-calculator.html?lang=en');
 }
+
+/* ---------- Der Fehler, den die Lernenden finden sollen ---------- */
 // Intentional exercise bug. Learners fix their own copy of this file.
 function packsFor(people) {
   return Math.round(people / 4);
 }
-const field = document.getElementById('participants');
-const panel = document.getElementById('result-panel');
-const output = document.getElementById('result');
-// The note lives in the markup as a hidden paragraph, like every other German
-// string on this page, so the language swap above translates it too. Read it
-// here, after that swap, and keep the paragraph: removing it empties the note.
-const staleNote = document.getElementById('stale-note').textContent;
-// Once the panel is in the page it stays there: a live region that appears
-// together with its text is often not announced. Only the result text is
-// replaced, so no result can outlive the number it belongs to.
-function clearResult() {
-  if (panel.hidden || output.textContent === staleNote) return;
-  output.textContent = staleNote;
-  output.classList.add('pending');
+var PER_PACK = 4;
+var ROUNDS = [8, 9, 12, 5, 15];
+var SCENE_MAX = 24;
+function packsNeeded(people) { return Math.ceil(people / PER_PACK); }
+
+/* ---------- Szene ---------- */
+var CELL_W = 94, CELL_H = 142, PACK_W = 118, PACK_H = 96, FIG_W = 50, FIG_H = 110;
+var scene = document.getElementById('scene');
+var sceneNote = document.getElementById('scene-note');
+var lastCols = 0, lastState = null;
+
+var SYMBOLS =
+  '<defs><symbol id="figure" viewBox="0 0 50 110">' +
+    '<rect x="2" y="99" width="46" height="9" rx="3" fill="currentColor" opacity=".3"/>' +
+    '<rect x="12" y="85" width="9" height="16" rx="3" fill="currentColor"/>' +
+    '<rect x="29" y="85" width="9" height="16" rx="3" fill="currentColor"/>' +
+    '<rect x="8" y="33" width="34" height="52" rx="15" fill="currentColor"/>' +
+    '<circle cx="25" cy="19" r="15" fill="currentColor" opacity=".85"/>' +
+  '</symbol></defs>';
+
+function book() {
+  return '<rect width="22" height="30" rx="2" fill="#005AF0"/><rect width="6" height="30" rx="2" fill="#003FA8"/>';
 }
-field.addEventListener('input', clearResult);
-document.getElementById('planner').addEventListener('submit', function (event) {
-  event.preventDefault();
-  if (!field.reportValidity()) { clearResult(); return; }
-  const packs = packsFor(Number(field.value));
-  const packWord = english ? (packs === 1 ? 'pack' : 'packs') : (packs === 1 ? 'Packung' : 'Packungen');
-  const notebookWord = english ? 'notebooks' : 'Notizbücher';
-  panel.hidden = false;
-  output.classList.remove('pending');
-  output.textContent = packs + ' ' + packWord + ' · ' + (packs * 4) + ' ' + notebookWord;
+function pack(x, y, withBooks) {
+  var s = '<g transform="translate(' + x + ',' + y + ')">' +
+    '<path d="M0 18 L110 18 L110 86 L0 86 Z" fill="#E6E0D4" stroke="#8E8574" stroke-width="2" stroke-linejoin="round"/>' +
+    '<path d="M6 18 L104 18 L104 30 L6 30 Z" fill="#D5CCBA"/>' +
+    '<path d="M0 18 L14 2 L124 2 L110 18 Z" fill="#EFEADF" stroke="#8E8574" stroke-width="2" stroke-linejoin="round"/>';
+  if (withBooks) for (var i = 0; i < PER_PACK; i++) s += '<g transform="translate(' + (13 + i * 22) + ',22)">' + book() + '</g>';
+  return s + '</g>';
+}
+function maxPerRow() { return innerWidth < 600 ? 5 : 9; }
+function rowSplit(n) {
+  var max = maxPerRow();
+  var rows = Math.max(1, Math.ceil(n / max));
+  var base = Math.floor(n / rows), rest = n % rows, out = [];
+  for (var r = 0; r < rows; r++) out.push(base + (r < rest ? 1 : 0));
+  return out;
+}
+
+/* Aussen sitzt die Position als transform-Attribut, innen die Animation als
+   Klasse. Eine CSS-Animation auf demselben Element überschreibt das Attribut
+   und zieht jede Figur auf (0,0). */
+function drawScene(n, packs) {
+  var deliver = packs !== null;
+  lastState = { n: n, packs: packs };
+  if (n > SCENE_MAX) {
+    sceneNote.hidden = false;
+    scene.style.display = 'none';
+    /* Leeren, sonst trägt die versteckte Bühne noch den Titel und die Figuren
+       der letzten kleinen Zahl mit sich. */
+    scene.innerHTML = '<title id="scene-title">' + sceneNote.textContent + '</title>';
+    lastCols = 0;
+    return;
+  }
+  sceneNote.hidden = true;
+  scene.style.display = '';
+
+  var rows = n > 0 ? rowSplit(n) : [];
+  var cols = rows.length ? Math.max.apply(null, rows) : 0;
+  var vbW = Math.max(cols * CELL_W, 470);
+  var perPackRow = Math.max(1, Math.floor((vbW - 16) / PACK_W));
+  var packCount = deliver ? packs : 0;
+  var packRows = packCount > 0 ? Math.ceil(packCount / perPackRow) : 0;
+  var topH = packRows > 0 ? packRows * PACK_H + 16 : 18;
+  var vbH = topH + rows.length * CELL_H + 14;
+
+  var people = [];
+  rows.forEach(function (inRow, r) {
+    var offX = (vbW - inRow * CELL_W) / 2;
+    for (var c = 0; c < inRow; c++) people.push({ x: offX + c * CELL_W + CELL_W / 2, y: topH + r * CELL_H + 114 });
+  });
+
+  var s = SYMBOLS, sources = [];
+  for (var p = 0; p < packCount; p++) {
+    var rowIndex = Math.floor(p / perPackRow);
+    var inThisRow = Math.min(packCount - rowIndex * perPackRow, perPackRow);
+    var offX = (vbW - inThisRow * PACK_W) / 2;
+    var px = offX + (p % perPackRow) * PACK_W, py = 6 + rowIndex * PACK_H;
+    s += pack(px, py, false);
+    for (var j = 0; j < PER_PACK; j++) sources.push({ x: px + 13 + j * 22, y: py + 22 });
+  }
+
+  var delivered = packCount * PER_PACK;
+  rows.forEach(function (inRow, r) {
+    var offX = (vbW - inRow * CELL_W) / 2;
+    var y = topH + r * CELL_H + 128;
+    s += '<path d="M' + (offX + 8) + ' ' + y + ' H' + (offX + inRow * CELL_W - 8) + '" fill="none" stroke="#C9C9C9" stroke-width="2"/>';
+  });
+  people.forEach(function (pos, i) {
+    var empty = deliver && i >= delivered;
+    var style = empty ? 'color:#fff;stroke:#C9330A;stroke-width:3;stroke-dasharray:5 4' : 'color:#2A2F36';
+    s += '<g transform="translate(' + pos.x + ',' + pos.y + ')"><g class="pop" style="--i:' + i + '">' +
+      '<use href="#figure" x="' + (-FIG_W / 2) + '" y="' + (-FIG_H + 12) + '" width="' + FIG_W + '" height="' + FIG_H + '" style="' + style + '"/>' +
+      '</g></g>';
+    if (empty) s += '<circle class="pulse" style="--i:' + i + '" cx="' + pos.x + '" cy="' + (pos.y - 88) + '" r="22" fill="none" stroke="#C9330A" stroke-width="3"/>';
+  });
+  if (deliver) sources.forEach(function (src, k) {
+    if (k >= n) { s += '<g transform="translate(' + src.x + ',' + src.y + ')" opacity=".45">' + book() + '</g>'; return; }
+    var target = people[k], x1 = target.x - 11, y1 = target.y - 62;
+    s += '<g class="fly" style="--i:' + k + ';--x0:' + src.x + 'px;--y0:' + src.y + 'px;--mx:' + ((src.x + x1) / 2) +
+      'px;--my:' + (Math.min(src.y, y1) - 46) + 'px;--x1:' + x1 + 'px;--y1:' + y1 + 'px">' + book() + '</g>';
+  });
+
+  var missing = Math.max(0, n - delivered);
+  var title = deliver ? T.delivered(n, packCount, delivered, missing) : T.waiting(n);
+  lastCols = cols;
+  scene.setAttribute('viewBox', '0 0 ' + vbW + ' ' + vbH);
+  scene.innerHTML = '<title id="scene-title">' + title + '</title>' + s;
+}
+
+var resizeTimer;
+addEventListener('resize', function () {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function () {
+    if (!lastState) return;
+    var cols = lastState.n > 0 && lastState.n <= SCENE_MAX ? Math.max.apply(null, rowSplit(lastState.n)) : 0;
+    if (cols !== lastCols) drawScene(lastState.n, lastState.packs);
+  }, 140);
 });
+
+/* ---------- Seite ---------- */
+var $ = function (id) { return document.getElementById(id); };
+var el = {
+  taskLine: $('task-line'), pips: $('pips'), score: $('score'), caption: $('caption'),
+  sumSec: $('sum-sec'), sumHead: $('h-sum'), sumText: $('sum-text'), sumScore: $('sum-score'),
+  roundForm: $('round-form'), guess: $('guess'), guessError: $('guess-error'), locked: $('locked'),
+  freeForm: $('free-form'), free: $('free'), freeError: $('free-error'),
+  youHead: $('h-you'), aiWait: $('ai-wait'), tally: $('tally'),
+  l1: $('tally-l1'), v1: $('tally-v1'), v2: $('tally-v2'), v3: $('tally-v3'),
+  verdict: $('verdict'), verdictText: $('verdict-text'), verdictPoints: $('verdict-points'),
+  say: $('say'), sayText: $('say-text'), copyBtn: $('copy-btn'), copied: $('copied'),
+  next: $('next'), nextLabel: $('next-label'), restart: $('restart'), announce: $('announce')
+};
+
+var round = 0, score = 0, phase = 'guess';
+
+function announce(text) {
+  el.announce.textContent = '';
+  setTimeout(function () { el.announce.textContent = text; }, 60);
+}
+/* Die Balken sind ein Bild: der Name muss sagen, was man sieht — die laufende
+   Runde und die Farben der schon gespielten. */
+function setPipsLabel() {
+  var done = [];
+  [].forEach.call(el.pips.children, function (pip) {
+    if (pip.dataset.done) done.push(pip.dataset.done === 'ok' ? T.pipOk : T.pipBad);
+  });
+  el.pips.setAttribute('aria-label', T.round(round + 1, ROUNDS.length) + '.' +
+    (done.length ? ' ' + T.pipsSoFar + ' ' + done.join(', ') : ''));
+}
+function setValue(node, value, state) {
+  node.textContent = value;
+  node.className = 'v' + (state ? ' ' + state : '');
+}
+function showError(input, box, message) {
+  box.textContent = message;
+  box.hidden = false;
+  input.setAttribute('aria-invalid', 'true');
+  input.focus();
+  announce(message);
+}
+function clearError(input, box) {
+  box.hidden = true;
+  box.textContent = '';
+  input.removeAttribute('aria-invalid');
+}
+/* Eine Stelle prüft alles: das Formular trägt novalidate, damit der Browser
+   nicht vorher abbricht und seine eigene Meldung in seiner eigenen Sprache zeigt. */
+function readNumber(input, box, max, emptyMessage) {
+  var raw = input.value.trim();
+  if (raw === '') { showError(input, box, emptyMessage); return null; }
+  var value = Number(raw);
+  if (!isFinite(value) || !Number.isInteger(value)) { showError(input, box, T.errWhole); return null; }
+  if (value < 0) { showError(input, box, T.errLow); return null; }
+  if (value > max) { showError(input, box, T.errHigh(max)); return null; }
+  clearError(input, box);
+  return value;
+}
+/* Vor der Auswertung steht unter "Die Antwort der KI" nur ein Satz, keine leere
+   Zahlenzeile: drei Striche sehen aus wie ein Ergebnis, das nicht geladen hat. */
+function hideResult() {
+  el.verdict.hidden = true;
+  el.verdictPoints.hidden = true;
+  el.say.hidden = true;
+  el.copied.textContent = '';
+  el.tally.hidden = true;
+  el.aiWait.hidden = false;
+}
+function showTally() {
+  el.aiWait.hidden = true;
+  el.tally.hidden = false;
+}
+
+function showRound() {
+  var n = ROUNDS[round];
+  phase = 'guess';
+  el.taskLine.textContent = T.task(n);
+  el.guess.value = '';
+  clearError(el.guess, el.guessError);
+  hideResult();
+  el.aiWait.textContent = T.aiWait;
+  setValue(el.v1, '–'); setValue(el.v2, '–'); setValue(el.v3, '–');
+  el.l1.textContent = T.tallyYou;
+  el.roundForm.hidden = false;
+  el.locked.hidden = true;
+  el.next.hidden = true;
+  [].forEach.call(el.pips.children, function (pip, i) {
+    pip.className = i < round ? (pip.dataset.done || '') : (i === round ? 'now' : '');
+  });
+  setPipsLabel();
+  el.caption.textContent = T.waitCaption(n);
+  drawScene(n, null);
+}
+
+function reveal() {
+  var n = ROUNDS[round];
+  var you = readNumber(el.guess, el.guessError, 300, T.errEmpty);
+  if (you === null) return;
+
+  var ai = packsFor(n), need = packsNeeded(n);
+  var delivered = ai * PER_PACK, missing = Math.max(0, n - delivered);
+  drawScene(n, ai);
+  el.caption.textContent = T.delivered(n, ai, delivered, missing);
+  setValue(el.v1, you, you === need ? 'ok' : 'bad');
+  setValue(el.v2, ai, ai === need ? 'ok' : 'bad');
+  setValue(el.v3, need);
+  showTally();
+
+  var youRight = you === need, aiWrong = ai !== need;
+  var points = (youRight ? 10 : 0) + (youRight && aiWrong ? 25 : 0);
+  score += points;
+  el.score.textContent = score;
+  var pip = el.pips.children[round];
+  pip.className = youRight ? 'ok' : 'bad';
+  pip.dataset.done = pip.className;
+  setPipsLabel();
+
+  var lead = youRight && aiWrong ? T.hitYou : youRight ? T.hitBoth : aiWrong ? T.hitNone : T.hitAi;
+  var result = T.result(n, ai, delivered, missing, need);
+  el.verdict.className = 'verdict ' + (missing > 0 ? 'short' : 'enough');
+  el.verdictText.textContent = lead + ' ' + result;
+  el.verdict.hidden = false;
+  el.verdictPoints.textContent = T.points(points);
+  el.verdictPoints.hidden = false;
+
+  if (aiWrong) {
+    el.sayText.textContent = T.sentence(n, ai, need, missing);
+    el.say.hidden = false;
+  }
+  el.roundForm.hidden = true;
+  el.locked.textContent = T.locked(you);
+  el.locked.hidden = false;
+  el.nextLabel.textContent = round + 1 >= ROUNDS.length ? T.result5 : T.next;
+  el.next.hidden = false;
+  phase = 'next';
+  el.next.focus();
+  /* T.points endet mal mit Punkt ("Keine Punkte in dieser Runde."), mal ohne
+     ("+10 Punkte") — ohne diese Prüfung liest die Ansage zwei Punkte vor. */
+  var spoken = T.points(points);
+  announce(lead + ' ' + result + ' ' + spoken + (/[.!?]$/.test(spoken) ? '' : '.'));
+}
+
+function toFreeMode() {
+  var wrong = ROUNDS.filter(function (n) { return packsFor(n) !== packsNeeded(n); });
+  el.sumText.textContent = T.summary(wrong);
+  el.sumScore.textContent = T.summaryScore(score);
+  el.sumSec.hidden = false;
+  el.roundForm.hidden = true;
+  el.freeForm.hidden = false;
+  el.locked.hidden = true;
+  el.next.hidden = true;
+  el.youHead.textContent = english ? 'Try your own number' : 'Selbst ausprobieren';
+  el.taskLine.textContent = T.taskFree;
+  el.l1.textContent = T.tallyPeople;
+  el.free.value = '';
+  clearError(el.free, el.freeError);
+  hideResult();
+  el.aiWait.textContent = T.aiWaitFree;
+  /* Bild und Bildunterschrift der letzten Runde bleiben stehen: eine leere Bühne
+     unter der Auswertung sähe nach einem Fehler aus. Die Zahlenzeile gehört ab
+     hier zur eigenen Zahl und kommt erst mit ihr zurück. */
+  setValue(el.v1, '–'); setValue(el.v2, '–'); setValue(el.v3, '–');
+  [].forEach.call(el.pips.children, function (pip) { pip.className = pip.dataset.done || ''; });
+  el.pips.setAttribute('aria-label', T.pipsFree);
+  phase = 'free';
+  el.sumHead.focus();
+  announce(el.sumText.textContent + ' ' + el.sumScore.textContent);
+}
+
+function freeRun() {
+  var n = readNumber(el.free, el.freeError, 1000, T.errEmptyFree);
+  /* Nach einer abgelehnten Zahl darf die Bildunterschrift nicht weiter die
+     letzte gültige Zahl behaupten: leere Bühne, leerer Satz. */
+  if (n === null) { el.caption.textContent = T.waitCaption(0); drawScene(0, null); return; }
+  var ai = packsFor(n), need = packsNeeded(n);
+  var delivered = ai * PER_PACK, missing = Math.max(0, n - delivered);
+  drawScene(n, ai);
+  el.caption.textContent = T.delivered(n, ai, delivered, missing);
+  setValue(el.v1, n); setValue(el.v2, ai, ai === need ? 'ok' : 'bad'); setValue(el.v3, need);
+  showTally();
+  var result = T.result(n, ai, delivered, missing, need);
+  el.verdict.className = 'verdict ' + (missing > 0 ? 'short' : 'enough');
+  el.verdictText.textContent = result;
+  el.verdict.hidden = false;
+  el.verdictPoints.hidden = true;
+  if (ai !== need) {
+    el.sayText.textContent = T.sentence(n, ai, need, missing);
+    el.say.hidden = false;
+  } else {
+    el.say.hidden = true;
+  }
+  announce(result);
+}
+
+el.roundForm.addEventListener('submit', function (event) { event.preventDefault(); if (phase === 'guess') reveal(); });
+el.freeForm.addEventListener('submit', function (event) { event.preventDefault(); freeRun(); });
+el.guess.addEventListener('input', function () { clearError(el.guess, el.guessError); });
+/* Kein Ergebnis darf die Zahl überleben, zu der es gehört. */
+el.free.addEventListener('input', function () {
+  clearError(el.free, el.freeError);
+  hideResult();
+  setValue(el.v1, '–'); setValue(el.v2, '–'); setValue(el.v3, '–');
+  var raw = el.free.value.trim(), value = Number(raw);
+  if (raw !== '' && Number.isInteger(value) && value >= 0 && value <= 1000) {
+    el.caption.textContent = T.waitCaption(value);
+    drawScene(value, null);
+  }
+});
+el.next.addEventListener('click', function () {
+  round++;
+  if (round >= ROUNDS.length) { toFreeMode(); return; }
+  showRound();
+  announce(T.roundNews(round + 1, ROUNDS.length, ROUNDS[round]));
+  el.guess.focus();
+});
+el.restart.addEventListener('click', function () {
+  round = 0; score = 0;
+  el.score.textContent = '0';
+  [].forEach.call(el.pips.children, function (pip) { pip.className = ''; delete pip.dataset.done; });
+  el.sumSec.hidden = true;
+  el.freeForm.hidden = true;
+  el.locked.hidden = true;
+  el.youHead.textContent = english ? copy['h-you'] : 'Deine Antwort';
+  showRound();
+  announce(T.again + ' ' + T.roundNews(1, ROUNDS.length, ROUNDS[0]));
+  el.guess.focus();
+});
+el.copyBtn.addEventListener('click', function () {
+  var text = el.sayText.textContent;
+  var done = function () { el.copied.textContent = T.copied; announce(T.copied + '.'); setTimeout(function () { el.copied.textContent = ''; }, 4000); };
+  var fallback = function () {
+    var range = document.createRange();
+    range.selectNodeContents(el.sayText);
+    var selection = getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (error) { ok = false; }
+    if (ok) { done(); return; }
+    el.copied.textContent = T.copyFail;
+    announce(T.copyFail);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else fallback();
+});
+
+if (location.protocol === 'file:') $('download-line').hidden = true;
+showRound();
+})();
 </script>
 </body>
 </html>

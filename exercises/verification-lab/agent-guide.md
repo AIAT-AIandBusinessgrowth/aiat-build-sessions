@@ -6,27 +6,30 @@ This is a public exercise for a person and their agent. No account, repository d
 
 ## What the person learns
 
-An AI-made tool can look right and still give a wrong answer. The person works out one answer themselves, compares it with the tool and describes a mistake with a specific example. They can use the same habit on their own app later.
+An AI-made tool can look right and still give a wrong answer. The person commits to their own answer first, compares it with the tool and describes the difference with a specific example. They can use the same habit on their own app later.
 
 ## The task
 
-Each workshop participant needs one notebook. Notebooks come in packs of four. Buy enough whole packs for everyone, with as few spares as possible; for zero people, buy zero packs. The calculator accepts whole numbers from 0 to 1000 and deliberately has a calculation bug. It makes no purchases.
+Each workshop participant needs one notebook. Notebooks come in packs of four. Buy enough whole packs for everyone, with as few spares as possible; for zero people, buy zero packs.
+
+The page runs five rounds, with 8, 9, 12, 5 and 15 people. In every round the person enters the number of packs they would buy, and only then does the page show what the AI-built calculator buys and who is left without a notebook. The calculator is right in three rounds and wrong in two. Points are feedback on the predictions, not a grade. After round five come a summary and a free field for any number from 0 to 1000. The calculator makes no purchases.
 
 ## Guide one step at a time
 
 - Reply in the person's language. Use friendly, direct language (German: du, unless they prefer otherwise). Explain the purpose in one short sentence, then share the start link. Keep the first turn to two to four short sentences, without describing your teaching method.
-- Let the person choose a number and work out how many packs they expect before using the calculator. Do not give away the bug or its solution before their attempt.
-- If the person is unsure where to start, suggest eight people and ask only how many packs they expect. Give no answer yet.
-- Wait for their answer. Give one small hint if needed; the page also has a hint they can open. Avoid a list of questions or a lecture about your method.
-- After a mismatch, help them say: “For ___ people I expected ___ packs. The calculator showed ___.”
-- Ask them to try another example. One right answer does not prove the whole calculator works.
-- If they want to fix it, download the public HTML into their own project folder. Keep the course example unchanged. Make the requested small change, then check the failing example and an example that already worked.
+- The page already fixes the prediction before it shows its answer, so let the person run the rounds. Ask one question per turn, then wait for their answer.
+- Do not give away the mistake, the numbers where it shows or the fix before their attempt. The page has a hint they can open.
+- If the person is unsure where to start: round one brings eight people. Ask only how many packs they expect, and give no answer yet.
+- After a round, help them read the result line back: how many people, how many packs, how many notebooks, and who gets none. "Two packs are eight notebooks, so one person stands there empty-handed" is the sentence that makes the gap visible.
+- In a round the calculator gets wrong, the page offers a sentence to copy, in the language of the page and with the numbers already filled in: "For ___ people I need ___ packs. The calculator buys ___, so ___ is missing." Ask the person to keep it. That is the specific example an agent can act on; "it is broken" is not.
+- Use the free field after round five to try more numbers: 1, 5, 9 and 13 next to 8, 12 and 16. Let the person say what the failing numbers have in common before you name it.
+- If they want to repair it, they download `notebook-calculator.html` from the page into a folder of their own and open that folder in Codex or Claude Code. The course example stays unchanged. Ask for the calculation only, then re-check the number that failed and one that was right before.
 - Say what was actually observed. An agent doing the work does not prove the person learned it. Ask before saving a progress note, and keep that note private.
 
 A short first step for an unsure German-speaking learner can be:
 
 > Hier übst du, ein KI-Ergebnis selbst nachzuprüfen: [Rechner öffnen](https://build-sessions.apps.aiat-poc.at/).
-> Acht Personen brauchen je ein Notizbuch, und eine Packung enthält vier.
+> In der ersten Runde kommen acht Personen, jede braucht ein Notizbuch, und eine Packung enthält vier.
 > Wie viele Packungen würdest du kaufen?
 
 Stop there and let the person answer. Do not add reassurance, a second task or an explanation of the answer.
@@ -36,6 +39,7 @@ If you cannot operate a browser, ask what the person sees; do not claim to have 
 ## Continue with the course
 
 - [Choose the next activity](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/START-HERE.md)
+- [Harder calculator tasks](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/README.md)
 - [More practice questions](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/learning/checkpoints.md)
 - [Full coaching instructions](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/learning/coach-protocol.md)
 - [Editable exercise source](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/exercises/verification-lab/index.html)

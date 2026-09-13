@@ -11,3 +11,6 @@ learning/local/
 !.orchestrator/bootstrap.lock
 __pycache__/
 *.py[cod]
+
+# Maintainer audit notes from orchestrated sessions; never published.
+docs/audits/

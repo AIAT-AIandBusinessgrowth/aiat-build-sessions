@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notizbuch-Rechner</title>
+<meta name="description" content="Kleiner Rechner für eine Übung: wie viele Viererpackungen Notizbücher braucht ein Workshop?">
+<style>
+:root{--primary:#005AF0;--muted:#616161;--bad:#C9330A;--hairline:#C9C9C9;--band:#F0F0F0;
+  --font-sans:system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#000;font:400 16px/1.55 var(--font-sans)}
+.topbar{display:flex;align-items:center;gap:10px;max-width:38rem;margin:0 auto;padding:22px 20px 0}
+.topbar svg{width:30px;height:30px;flex:none}
+.topbar span{font:400 10px/1.25 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.04em;text-transform:uppercase}
+.lang{margin-left:auto;display:flex;gap:4px}
+.lang a{font:400 15px/1 var(--font-sans);min-height:44px;min-width:44px;padding:0 12px;border-radius:4px;background:var(--band);color:#000;text-decoration:none;display:grid;place-items:center}
+.lang a[aria-current="page"]{background:#000;color:#fff}
+main{max-width:38rem;margin:0 auto;padding:20px 20px 40px}
+h1{font:400 clamp(28px,6vw,40px)/1.15 var(--font-sans);margin:0 0 10px}
+p{margin:10px 0}
+a{color:var(--primary);text-underline-offset:.2em}
+label{display:block;font-weight:500;margin:22px 0 8px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px;padding:10px 12px;text-align:center;border:2px solid #000;border-radius:8px;background:#fff;color:#000}
+button{font:500 17px/1 var(--font-sans);background:var(--primary);color:#fff;border:2px solid var(--primary);border-radius:30px;padding:10px 20px;min-height:48px;cursor:pointer}
+button:hover{background:#0048C0;border-color:#0048C0}
+:focus-visible{outline:3px solid #000;outline-offset:3px}
+.err{font-size:15px;font-weight:500;color:var(--bad);margin:12px 0 0}
+.err[hidden]{display:none}
+#result{display:block;font-size:19px;margin-top:20px;min-height:1.55em}
+footer{margin-top:32px;padding-top:14px;border-top:1px solid var(--hairline);font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+    <g fill="#005AF0">
+      <path d="M7,0 H8 A7,7 0 0 1 15,7 V13 A2,2 0 0 1 13,15 H7 A7,7 0 0 1 0,8 V7 A7,7 0 0 1 7,0 Z"/>
+      <path d="M2,13 H17 A7,7 0 0 1 24,20 V21 A7,7 0 0 1 17,28 H7 A7,7 0 0 1 0,21 V15 A2,2 0 0 1 2,13 Z"/>
+      <path d="M26,11 H27 A7,7 0 0 1 34,18 V27 A7,7 0 0 1 27,34 H21 A2,2 0 0 1 19,32 V18 A7,7 0 0 1 26,11 Z"/>
+    </g>
+  </svg>
+  <span>AI Factory<br>Austria</span>
+  <nav class="lang" aria-label="Sprache / Language">
+    <a href="?lang=de" lang="de" aria-current="page">DE</a><a href="?lang=en" lang="en">EN</a>
+  </nav>
+</header>
+<main>
+  <h1 data-copy="title">Notizbuch-Rechner</h1>
+  <p data-copy="intro">Für einen Workshop soll jede Person ein Notizbuch bekommen. Notizbücher gibt es nur in Packungen zu vier Stück.</p>
+  <form id="calc" novalidate>
+    <label for="people" data-copy="label">Wie viele Personen kommen?</label>
+    <div class="row">
+      <input id="people" name="people" type="number" inputmode="numeric" autocomplete="off" aria-describedby="error">
+      <button type="submit" data-copy="button">Ausrechnen</button>
+    </div>
+    <p class="err" id="error" hidden></p>
+    <output id="result" for="people" role="status" aria-live="polite"></output>
+  </form>
+  <footer><a href="https://build-sessions.apps.aiat-poc.at/" data-copy="back">Zurück zur Übung</a></footer>
+</main>
+<script>
+(function () {
+'use strict';
+var english = new URLSearchParams(location.search).get('lang') === 'en';
+var copy = {
+  title: 'Notebook calculator',
+  intro: 'Everyone at a workshop should get a notebook. Notebooks only come in packs of four.',
+  label: 'How many people are coming?',
+  button: 'Calculate',
+  back: 'Back to the exercise'
+};
+var LANG = {
+  de: {
+    people: function (n) { return n + (n === 1 ? ' Person' : ' Personen'); },
+    packs: function (n) { return n + (n === 1 ? ' Packung' : ' Packungen'); },
+    books: function (n) { return n + (n === 1 ? ' Notizbuch' : ' Notizbücher'); },
+    result: function (n, packs, books) { return this.people(n) + ' → ' + this.packs(packs) + ' = ' + this.books(books) + '.'; },
+    errEmpty: 'Trag eine Zahl ein, zum Beispiel 9.',
+    errWhole: 'Bitte eine ganze Zahl ohne Komma eintragen.',
+    errLow: 'Bitte eine Zahl ab 0 eintragen.',
+    errHigh: 'Bitte eine Zahl bis 1000 eintragen.'
+  },
+  en: {
+    people: function (n) { return n + (n === 1 ? ' person' : ' people'); },
+    packs: function (n) { return n + (n === 1 ? ' pack' : ' packs'); },
+    books: function (n) { return n + (n === 1 ? ' notebook' : ' notebooks'); },
+    result: function (n, packs, books) { return this.people(n) + ' → ' + this.packs(packs) + ' = ' + this.books(books) + '.'; },
+    errEmpty: 'Enter a number, for example 9.',
+    errWhole: 'Please enter a whole number, without a decimal point.',
+    errLow: 'Please enter 0 or more.',
+    errHigh: 'Please enter a number up to 1000.'
+  }
+};
+var T = english ? LANG.en : LANG.de;
+if (english) {
+  document.documentElement.lang = 'en';
+  document.title = copy.title;
+  document.querySelectorAll('[data-copy]').forEach(function (node) { node.textContent = copy[node.dataset.copy]; });
+  document.querySelector('nav.lang a[lang="de"]').removeAttribute('aria-current');
+  document.querySelector('nav.lang a[lang="en"]').setAttribute('aria-current', 'page');
+}
+
+// Intentional exercise bug. Learners fix their own copy of this file.
+function packsFor(people) {
+  return Math.round(people / 4);
+}
+
+var field = document.getElementById('people');
+var errorBox = document.getElementById('error');
+var result = document.getElementById('result');
+
+function fail(message) {
+  errorBox.textContent = message;
+  errorBox.hidden = false;
+  field.setAttribute('aria-invalid', 'true');
+  result.textContent = '';
+  field.focus();
+}
+field.addEventListener('input', function () {
+  errorBox.hidden = true;
+  field.removeAttribute('aria-invalid');
+  result.textContent = '';
+});
+document.getElementById('calc').addEventListener('submit', function (event) {
+  event.preventDefault();
+  var raw = field.value.trim();
+  if (raw === '') return fail(T.errEmpty);
+  var people = Number(raw);
+  if (!isFinite(people) || !Number.isInteger(people)) return fail(T.errWhole);
+  if (people < 0) return fail(T.errLow);
+  if (people > 1000) return fail(T.errHigh);
+  errorBox.hidden = true;
+  field.removeAttribute('aria-invalid');
+  var packs = packsFor(people);
+  result.textContent = T.result(people, packs, packs * 4);
+});
+})();
+</script>
+</body>
+</html>
