@@ -1,0 +1,142 @@
+# Your first build
+
+| | |
+|---|---|
+| **Prerequisites** | [Rule one: no real data](../00-orientation/01-rule-one-no-real-data.md), [Pick your lane](../00-orientation/02-pick-your-lane.md), the self-check in [Ready to build](../../ready-to-build.md) |
+| **Time** | ~45 min |
+| **Outcome** | After this unit you can turn a small annoyance from your own work into a running prototype with fake data, and improve it in three small rounds. |
+| **Last verified** | 2026-09-13 |
+
+## Why this matters
+
+The fastest way to learn what these tools can and cannot do is to build something small today, before reading more theory. Setup without building burns the time and the motivation.
+
+Pick something from your own work. You know the task, so you can judge the result in seconds. A generic demo app cannot teach you that.
+
+## Do it
+
+### Step 1: Pick one small annoyance (5 min)
+
+Good candidates happen at least once a week, fit on one screen, and can be tried with invented data.
+
+- **A list you keep in a spreadsheet:** equipment on loan, who has sent the weekly report, which room is booked when.
+- **A text you write every week:** a status update built from bullet points, a meeting summary in the same shape.
+- **A calculation you repeat:** travel costs from distance and a rate, hours into working days, a price with discount and tax.
+
+Not for today: anything with a login, payments, sending e-mails, or a connection to another system.
+
+Finish this sentence on paper: *"Every week I ___, and it annoys me because ___."*
+
+### Step 2: Paste the starter prompt (5 min)
+
+Copy this into the chat of your app builder. Replace everything in `<...>`.
+
+```text
+Build a small web app for me. Keep it to one screen.
+
+What it is for: <one sentence, e.g. "I track which team members have sent their weekly report">.
+How I do it today: <e.g. "a spreadsheet with one row per week and one column per person">.
+
+The app should:
+- <thing 1, e.g. "show a table of weeks and people">
+- <thing 2, e.g. "let me tick a box when a report arrives">
+
+Data: use made-up sample data only. Invent 8 to 10 rows.
+People must be obviously fictional. E-mail addresses must end in @example.com.
+
+Keep it simple: no login, no database, no payments. Data may stay in the browser.
+When you are done, explain in three sentences what you built and how I try it.
+```
+
+### Step 3: Run it in the preview (5 min)
+
+Open the preview panel of your builder. Try it like a user: add an entry, change a value, reload the page.
+
+Note one thing that works and one thing that does not.
+
+### Step 4: Improve it in three rounds (20 min)
+
+**Count your credits before you iterate.** Free plans of browser builders give you only a few messages or credits per day or per month, and each message you send may use one. The [tool matrix](../../diy/tool-matrix-2026-09.md) lists the free tier per tool (checked 2026-09-13). Check how many you have left before you start the rounds. If you run out, continue tomorrow or switch to the other lane.
+
+**Change one thing per round.** Several changes at once make it hard to see what broke. Use this shape:
+
+```text
+Change only this: <one change>.
+Keep everything else as it is.
+```
+
+After each round: run it in the preview, check the new thing, and check that one old thing still works.
+
+Ideas if you are stuck:
+
+- **Round 1, what you see:** "Add a column for the due date." or "Sort the list by date, newest first."
+- **Round 2, what it does:** "Show the total at the bottom." or "Highlight rows older than seven days."
+- **Round 3, keep it:** "Keep my entries when I reload the page, stored in the browser." or "Add a button that downloads the list as a CSV file."
+
+When a round breaks something, describe what you see, not what you think the fix is: *"When I click Save, nothing happens and the list is empty."* If two attempts fail, go back to the previous version (most builders have a version history) and ask for a smaller change.
+
+### Step 5: Write three lines (5 min)
+
+1. What I built.
+2. What surprised me.
+3. What I would change next.
+
+### CLI lane
+
+Open a terminal and create an empty folder with version control:
+
+```bash
+mkdir playground
+cd playground
+git init
+```
+
+Tell git who you are, once for this folder. Replace the placeholders. Every checkpoint shows this name and e-mail, so if the project may become public, use the no-reply address GitHub offers in your e-mail settings ([GitHub docs](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address), checked 2026-09-13).
+
+```bash
+git config user.name "Your Name"
+git config user.email "you@example.com"
+```
+
+Start your agent inside that folder (for example `claude` for Claude Code or `codex` for Codex, whichever you installed). Only ever start it inside `playground`: an agent can read and change the files in the folder where you start it.
+
+> **Approve with care**
+>
+> - Read every command the agent proposes before you approve it. If you do not understand it, ask the agent what it does first.
+> - Do not turn on auto-approve or auto mode in a folder that contains anything other than this project.
+> - Keep keys, passwords and personal files out of the folder.
+> - Give the agent project rules from the start: copy the [AGENTS.md template](../../templates/AGENTS.md) into the folder.
+>
+> **Claude Code users:** on Pro, Max and Team plans, Claude Code starts in auto mode from v2.1.228 (native Windows: v2.1.233). In auto mode a second model approves actions instead of you. While you learn, press `Shift+Tab` once: the status bar then shows manual mode, and Claude Code asks you before it edits files or runs commands ([permission modes](https://code.claude.com/docs/en/permission-modes), checked 2026-09-13).
+
+Paste the same starter prompt and add one line:
+
+```text
+Build it as a single index.html file that opens in a browser without installing anything.
+```
+
+Open `index.html` in your browser (double-click it in your file manager). That is your preview.
+
+After each round, save a checkpoint:
+
+```bash
+git add -A
+git commit -m "Round 1: add due date column"
+```
+
+When a round breaks something, `git diff` shows what changed since the last checkpoint, and `git restore .` throws away all changes since then.
+
+## Done when
+
+- [ ] My app runs in the preview, or `index.html` opens in my browser.
+- [ ] I made three rounds of changes, one thing per round.
+- [ ] Every piece of data in the app is invented.
+- [ ] I wrote my three lines.
+
+## Data note
+
+The starter prompt asks for invented data. If you want the app to look like your real list, do not paste the list. Describe the columns in words and let the agent invent the rows. [Schema first, then synthetic data](../02-data-first/03-schema-then-synthetic-data.md) shows the full method.
+
+## Next
+
+[Share and export](02-share-and-export.md)
