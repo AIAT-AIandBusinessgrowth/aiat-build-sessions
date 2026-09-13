@@ -8,15 +8,26 @@ These exercises work with Claude Code, Codex or an AI app builder. You do not ne
 
 ## Try this first
 
-A small calculator works out how many packs of notebooks a workshop needs. Try it with made-up numbers and see whether everyone gets a notebook.
+An AI-made tool can look finished and still give a wrong answer. Try this small calculator: work out one answer yourself and see whether everyone gets a notebook. You learn to spot a mistake and explain what needs to change.
 
-**[Try the notebook calculator](exercises/verification-lab/README.md)** — in English or German. Allow about five minutes for a first try, longer if you want to fix it. You can use a browser or paper. No account or paid tool needed.
+**[Open the notebook calculator](https://build-sessions.apps.aiat-poc.at/)** — in English or German. Allow about five minutes for a first try, longer if you want to fix it. Try it directly in your browser. No account, installation or download needed. [Paper and offline options](exercises/verification-lab/README.md).
 
 Use invented examples throughout the course. Keep real personal and customer data, including your own details, out of prompts, uploads and screenshots. [More about this rule](tracks/00-orientation/01-rule-one-no-real-data.md).
 
 ## Use it with an agent
 
-Already have Codex or Claude Code? It can guide you through an exercise and ask questions as you go.
+Already have Codex, Claude Code or a browser chat? Give it this prompt:
+
+```text
+Help me try https://build-sessions.apps.aiat-poc.at/
+Read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
+Explain what I will learn. Let me try before giving hints or the answer.
+Use one small step at a time.
+```
+
+[Agent guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md) · [Plain-text index](https://build-sessions.apps.aiat-poc.at/llms.txt)
+
+To work through the full course with a coding agent later:
 
 1. Download this course: on GitHub, choose **Code → Download ZIP** and extract it. If you use Git, you can clone the repository instead.
 2. Open the course folder in Codex, or start Claude Code inside it.

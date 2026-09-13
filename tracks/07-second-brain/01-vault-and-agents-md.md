@@ -4,16 +4,14 @@
 |---|---|
 | **Prerequisites** | [Rule one: no real data](../00-orientation/01-rule-one-no-real-data.md), [Keep your work safe](../06-keep-and-ship/01-keep-your-work-safe.md) |
 | **Time** | ~45 min |
-| **Outcome** | After this unit you can set up a folder of notes that an agent reads under two hard rules, write your first project note, ask the agent what it knows and what is missing, and back the folder up. |
+| **Outcome** | You can save project notes, give an agent only the notes it needs and recover the folder from a second copy. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-A chat forgets. When the thread is gone, so are the decisions, the prompts that worked, and the reasons behind them. Your notes stay.
+Create a new folder called `notes-vault`. Put one note about an invented project in it. You will ask an agent to answer from that note and check its answer against the file.
 
-A **vault** is simply a folder of Markdown files that you own. When an agent can read that folder, your notes become a second brain: the agent starts each session knowing your projects, your rules, and what you learned last time.
-
-Two things make it safe: rules the agent reads first, and a backup. You set up both today.
+A **vault** is a folder of text notes. Here the notes use **Markdown**, plain text with simple formatting such as `#` for a heading. Saving decisions in files lets a fresh session read them without the old chat. You will add data rules and a backup; instructions alone do not prevent an agent from accessing the wrong files.
 
 ## Do it
 
@@ -29,16 +27,16 @@ notes-vault/
   rules/       longer rules the agent opens when needed
 ```
 
-You do not need a special app. Any folder of Markdown files works, and any text editor can open them. [Obsidian](https://obsidian.md) is an optional free editor that shows links between notes. If you use it, choose "open folder as vault" and select this folder.
+You do not need a special app. Any text editor can open Markdown files. [Obsidian](https://obsidian.md) is an optional editor that can show links between notes. If you use it, choose "open folder as vault" and select this folder.
 
 A folder synced to a cloud drive is convenient, but sync is not a backup: when you delete a file, the deletion syncs too. Step 5 covers the backup.
 
 ### 2. Give the agent rules (10 min)
 
-Open a terminal in the vault folder and start your agent (Claude Code or Codex). Give it this prompt:
+Open a terminal in this new folder and start Claude Code or Codex. Use only the invented notes you created for this exercise. Do not point the agent at an existing personal notes folder. Give it this prompt:
 
 ```text
-Read this folder. It is my personal notes vault.
+Read only this exercise folder. It contains notes about an invented project.
 Write an AGENTS.md with:
 - three sentences on what this vault is for,
 - the folders and what goes into each,
@@ -49,9 +47,9 @@ Before you write, ask me what I want to use the vault for.
 Short, plain English, no filler.
 ```
 
-Read the result. Delete anything that is not true for you. Keep the file short: every line is something the agent reads at the start of every session.
+Read the result. Remove anything that does not match the folder. `AGENTS.md` holds the project's instructions; the tool-specific box below explains how to load them.
 
-A good AGENTS.md for a vault is often under twenty lines:
+This example is under twenty lines:
 
 ```markdown
 # AGENTS.md
@@ -98,26 +96,31 @@ A link to a note that does not exist yet, like `[[learnings/first-restore-test]]
 Give the agent this prompt:
 
 ```text
-Read the vault. Tell me in five points what you know about my project
-and what is missing. Name the file each point comes from.
+Read projects/<your-project>.md. Summarise what the note says about the
+project and list any unanswered questions. Name the file and section for
+each statement. Do not treat a written plan as proof that work is complete.
 ```
 
 Then check:
 
-- Does every point name a real file? Open two of them.
-- Did the agent add facts that are not in your notes? That is guessing, not knowing. Tell it so.
+- Does each statement point to the section that supports it? Open the note and compare two statements with their source sections.
+- Did the agent add facts that are not in your notes? Ask it to remove them or label them as unverified.
 
-Every missing item becomes a new short note in `inbox/`. That is the loop: you write, the agent reads and finds gaps, you write the gaps down.
+If a question matters to your project, add it to `inbox/`. You can leave irrelevant questions out. Then change one fact in the project note and ask again: does the answer reflect the updated file?
 
 ### 5. Back it up (5 min)
 
-A vault that exists once is not a second brain. It is a risk.
+Save a second copy so that losing this folder does not lose the notes. Run the commands below from the new `notes-vault` folder. Review every file you stage; use your actual project-note filename:
 
 ```bash
 git init
-git add .
+git status --short
+git add AGENTS.md projects/room-planner.md
+git diff --cached
 git commit -m "Start vault"
 ```
+
+If you created `CLAUDE.md`, review it and add it explicitly before the commit too. Empty folders are not stored by Git; they appear in a clone once they contain tracked notes. Do not add private files or secrets.
 
 Then push it to a **private** repository you control. Check the visibility setting before the first push. Options and how to keep a second copy are in [Code hosting and backup](../../diy/04-code-hosting-and-backup.md).
 
@@ -129,12 +132,12 @@ Finish with a restore test from [Keep your work safe](../06-keep-and-ship/01-kee
 - [ ] `AGENTS.md` states the purpose, the folders and the two hard rules, and you edited it yourself.
 - [ ] Your tool actually reads it (Claude Code: `CLAUDE.md` imports `@AGENTS.md`).
 - [ ] One project note answers what, for whom, where, and what is open.
-- [ ] The agent listed what it knows with file names, and the gaps are notes in `inbox/`.
+- [ ] You compared the agent's answer with the note and checked that it noticed an updated fact. Useful open questions are saved in `inbox/`.
 - [ ] The vault is pushed to a private repository and you cloned it once into a new folder.
 
 ## Data note
 
-The vault is on your computer, but the agent reads it, and the agent's vendor processes what it reads. Individual subscriptions often come without a data processing agreement (see [Data processing agreements](../../diy/03-data-processing-agreements.md)). That is why the two hard rules exist. Write meeting notes with roles, not names. Never paste a password or key into a note "just for now": the backup will keep it forever.
+The folder is on your computer, but a cloud model service receives content the agent sends to it. Use invented projects and roles, with no personal or customer data. Keep passwords and keys out of notes: deleting them later does not remove earlier Git versions or backups. Account and contract requirements are covered in [Data processing agreements](../../diy/03-data-processing-agreements.md).
 
 ## Next
 

@@ -1,23 +1,23 @@
 # Your first build
 
+Build a small app with made-up data, then change it in three rounds. You will practise telling the AI what you want and checking whether its changes work.
+
 | | |
 |---|---|
 | **Prerequisites** | [Rule one: no real data](../00-orientation/01-rule-one-no-real-data.md), [Pick your lane](../00-orientation/02-pick-your-lane.md), the self-check in [Ready to build](../../ready-to-build.md) |
 | **Time** | ~45 min |
-| **Outcome** | After this unit you can turn a small annoyance from your own work into a running prototype with fake data, and improve it in three small rounds. |
+| **Outcome** | A first app you can open, with three changes you have tried yourself. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-The fastest way to learn what these tools can and cannot do is to build something small today, before reading more theory. Setup without building burns the time and the motivation.
-
-Pick a small task you know from your own work, described without real records. Familiarity helps you judge the result. If choosing an idea is holding you up, start with the supplied [verification lab](../../exercises/verification-lab/README.md), then transfer the same checking habit to your own example.
+Use a task you understand so you can judge the result. Describe it without real records. If you cannot choose an idea yet, try the [notebook calculator](../../exercises/verification-lab/README.md) first. It gives you something small to check without setting up an account.
 
 ## Do it
 
 ### Step 1: Pick one small annoyance (5 min)
 
-Good candidates happen at least once a week, fit on one screen, and can be tried with invented data.
+Choose a task that comes up at least once a week, fits on one screen and can use invented data.
 
 - **A list you keep in a spreadsheet:** equipment on loan, who has sent the weekly report, which room is booked when.
 - **A text you write every week:** a status update built from bullet points, a meeting summary in the same shape.
@@ -56,7 +56,7 @@ Note one thing that works and one thing that does not.
 
 ### Step 4: Improve it in three rounds (20 min)
 
-**Count your credits before you iterate.** Free plans of browser builders give you only a few messages or credits per day or per month, and each message you send may use one. The [tool matrix](../../diy/tool-matrix-2026-09.md) lists the free tier per tool (checked 2026-09-13). Check how many you have left before you start the rounds. If you run out, continue tomorrow or switch to the other lane.
+**Check your remaining credits first.** Browser builders limit how many messages or credits a free plan includes. A new request can use part of that allowance. The [tool matrix](../../diy/tool-matrix-2026-09.md) lists each tool's free tier (checked 2026-09-13). If you run out, wait for the reset shown in your account, or use the CLI lane if you already have access to it.
 
 **Change one thing per round.** Several changes at once make it hard to see what broke. Use this shape:
 
@@ -73,7 +73,7 @@ Ideas if you are stuck:
 - **Round 2, what it does:** "Show the total at the bottom." or "Highlight rows older than seven days."
 - **Round 3, keep it:** "Keep my entries when I reload the page, stored in the browser." or "Add a button that downloads the list as a CSV file."
 
-When a round breaks something, describe what you see, not what you think the fix is: *"When I click Save, nothing happens and the list is empty."* If two attempts fail, go back to the previous version (most builders have a version history) and ask for a smaller change.
+When something breaks, give the AI the action you took and what happened: *"When I click Save, nothing happens and the list is empty."* If two attempts fail, return to the previous version using the builder's version history, where available. Then ask for a smaller change.
 
 ### Step 5: Write three lines (5 min)
 
@@ -95,7 +95,7 @@ cd playground
 git init
 ```
 
-Tell git who you are, once for this folder. Replace the placeholders. Every Git commit includes this name and e-mail, so if the project may become public, use the no-reply address GitHub offers in your e-mail settings ([GitHub docs](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address), checked 2026-09-13).
+Set the author name and e-mail once for this folder. Replace the placeholders. Every Git commit includes these details. If the project may become public, use GitHub's no-reply address from your e-mail settings ([GitHub docs](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address), checked 2026-09-13).
 
 ```bash
 git config user.name "Your Name"
@@ -133,7 +133,7 @@ git diff --cached
 git commit -m "feat: add due date column"
 ```
 
-Read the staged diff before committing; include other files only when you intended their changes. A checkpoint stores the files you staged, not everything on your laptop.
+Read the staged diff: it shows the changes selected for this commit. Include other files only when you intended their changes. The commit saves only the files you staged.
 
 When a round breaks something, save a copy of the failed attempt outside the project first. Then inspect `git status --short` and `git diff -- index.html`. If you choose to discard only the **unstaged edits to index.html**, run this separate recovery command:
 

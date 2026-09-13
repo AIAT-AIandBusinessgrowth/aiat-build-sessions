@@ -1,9 +1,12 @@
 # Retro card
 
+Use this optional note at the end of a work session to choose your next step. Answer only what is useful. Keep completed cards in an agreed private place, outside the public repository.
+
 <!--
 For the last five minutes of a session, or the end of a work block on your own.
-One card per person, on paper or in a form. No name needed. Hosts count the cards on the same day and change one thing
-for the next session. See ../facilitate/run-a-build-session.md
+On paper or in a form. No name needed. Hosts read volunteered feedback and
+change the next session when it reveals a useful improvement.
+See ../facilitate/run-a-build-session.md
 -->
 
 Date: ________
@@ -12,7 +15,7 @@ Date: ________
 
 ________________________________________________
 
-**2. What got in my way?** One thing: a tool, a step, a missing piece of material.
+**2. What got in my way, if anything?** For example a tool, a step or missing instructions.
 
 ________________________________________________
 

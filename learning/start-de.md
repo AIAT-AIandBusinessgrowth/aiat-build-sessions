@@ -1,5 +1,9 @@
 # Probier eine kleine Aufgabe
 
+**[Hier geht es zur ersten Übung](https://build-sessions.apps.aiat-poc.at/)** — überlege dir selbst eine Antwort und vergleiche sie mit dem KI-Rechner. So lernst du, einen Fehler zu erkennen und der KI zu sagen, was sie verbessern soll. Ohne Account oder Download.
+
+Lieber auf Papier? Probiere die Raumaufgabe unten.
+
 Nimm dir zum Start etwa fünf Minuten. Papier reicht; du brauchst keinen Account.
 
 ## Welche Räume passen?

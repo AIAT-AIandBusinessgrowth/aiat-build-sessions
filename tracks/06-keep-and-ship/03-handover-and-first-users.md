@@ -4,22 +4,20 @@
 |---|---|
 | **Prerequisites** | [From prototype to product](02-prototype-to-product.md) |
 | **Time** | ~25 min |
-| **Outcome** | After this unit you can write a handover artefact someone else can follow without you, set up a first test with three real users, and turn their feedback into a task list once the tests are done. |
+| **Outcome** | You can write instructions for someone else to use the tool, prepare a user test and turn observed problems into clear tasks. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-A product that only works while you are in the room is still a script with an audience. The day you are sick, on holiday, or busy with the next thing, nobody knows how to start it, whom to ask, or what it must never do.
+Open your README and try following its starting instructions from a clean folder or fresh account. Add any missing step. These instructions are your **handover document**, sometimes called a handover artefact.
 
-A handover artefact fixes that. It is a short document that answers the questions people would otherwise ask you.
-
-First users do the second half of the job. They show you what is really missing. Their feedback only helps if it ends up as tasks, not as a vague feeling that "people liked it".
+It helps someone use the tool when you are unavailable. You will also prepare a short user test. Watching someone try a task shows where the tool or its instructions need work.
 
 ## Do it
 
 ### 1. Write the handover artefact (10 min)
 
-Start from the [product README template](../../templates/README-product.md). Make sure these sections exist and are true today:
+Start from the [product README template](../../templates/README-product.md). The example below is fictional; replace its link, file paths and claimed checks with your actual project details. Include only checks you ran:
 
 ```markdown
 # Room planner
@@ -51,15 +49,15 @@ Start from the [product README template](../../templates/README-product.md). Mak
 - Export the bookings, delete the hosted app, revoke its API key.
 ```
 
-The section "What it must never do" is the one people skip. It is the most important one for anyone who takes over, including an agent that works on the code later.
+Keep "What it must never do" specific. It tells a person or agent maintaining the project which changes need extra care.
 
-**The test:** give the document to one person and watch them follow it. Every time they ask you something, the answer belongs in the document.
+**The test:** give the document to a willing person and watch them follow it. If they need help, improve the relevant instruction or app behaviour. If nobody is available, try a clean setup yourself and leave the check with another person pending.
 
 ### 2. Set up a test with three real users (5 min to plan)
 
 This unit prepares the test. The tests themselves happen later, when users have time. No deployed link yet? Use a local walkthrough with your fictional-data app, or complete [Secrets and keys](../../diy/07-secrets-and-keys.md) and [Deploy and share](../../diy/05-deploy-and-share.md) before sending a remote invitation. Preparation can be complete while user validation remains pending.
 
-Pick three people who actually have the problem. Friends who will say "nice" do not count.
+For this exercise, aim for three people who have the problem the tool addresses. Three is a practice target, not evidence of demand. Start with one if that is who is available.
 
 Ask each of them for fifteen minutes with a real task, using fake data:
 
@@ -80,10 +78,10 @@ real names. Could you try it this week? Link: https://rooms.example.com
 
 ### 3. Turn feedback into a task list (10 min, after the tests)
 
-Do this step when the notes from the tests are in. Try the prompt now with two invented notes, so you know it works. Collect all raw notes in one place first. Remove names and anything personal. Then ask the agent to structure them. The same prompt works in Claude Code, Codex, or the chat of a browser app builder:
+Do this step after the tests. For practice now, use two invented notes. Keep actual feedback in an approved private place and rewrite each problem with fictional details before giving it to an agent. You can use this prompt in Claude Code, Codex or a browser app builder:
 
 ```text
-Here are raw feedback notes from three test users (no names).
+Here are feedback notes rewritten with fictional details and no personal data.
 Turn them into tasks. For each task write:
 - a short title,
 - the user problem in one sentence,
@@ -96,18 +94,18 @@ Then decide, yourself:
 
 - **Blockers** go into the next work cycle.
 - **Annoying** items get a date or get dropped.
-- **Ideas** go onto a later list. Most of them stay there, and that is fine.
+- **Ideas** go onto a later list unless you decide they solve a more urgent problem.
 
 Store the list where you will see it again: an issue tracker, a `TASKS.md` in the repository, or a note in your second brain.
 
 ### 4. Close the loop with users
 
-When you fix something a user reported, tell them in one line. People who see their feedback land keep giving it.
+When you fix something a user reported, tell them what changed and how to try it. Send the message yourself, or explicitly authorise an agent to send it.
 
 ## Done when
 
-- [ ] The handover artefact has: what it does, for whom, how to run it, who to ask, what it must never do, where data and backups live, known limits, how to switch it off.
-- [ ] One person followed it without asking you, or you added the answers to their questions.
+- [ ] The handover document has: what it does, for whom, how to run it, who to ask, what it must never do, where data and backups live, known limits, how to switch it off.
+- [ ] You tried the instructions from a clean setup and corrected missing steps. A check by another person is complete or clearly pending.
 - [ ] I prepared a fictional-data test task and a usable way to run it (a working link or local walkthrough instructions).
 - [ ] I recorded user validation as pending until real people agree and try it. If working alone, I can continue the course with that limitation visible.
 
@@ -117,7 +115,7 @@ To complete user validation, over the following days:
 
 - [ ] Three real users tried the product with fake data, and you have their notes without names.
 - [ ] Their feedback is a task list grouped into blocker, annoying, idea, each with a "done when" line.
-- [ ] You told at least one user what changed because of their feedback.
+- [ ] If you changed something because of feedback, you told the person who reported it.
 
 ## Data note
 

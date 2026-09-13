@@ -1,5 +1,7 @@
 # Sources
 
+Look up the source behind a course statement here. Search for a provider, law or topic with Ctrl+F or Cmd+F; you do not need to read this list before starting an exercise.
+
 External references used in `tracks/`, `diy/`, `exercises/` and `ready-to-build.md`, grouped by site. The files that use a link give the statement it supports and its check date. A link being reachable is not a verification of every claim on the page; loading exceptions are noted below.
 
 Vendor pages change. Open the link before you rely on a price, a limit or a feature. Placeholder addresses on `example.com` are not listed.

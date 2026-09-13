@@ -4,14 +4,14 @@
 |---|---|
 | **Prerequisites** | [Loop engineering](02-loop-engineering.md), [The verification ladder](../05-verify-and-loop/01-verification-ladder.md) |
 | **Time** | ~25 min |
-| **Outcome** | After this unit you can decide when parallel agents help, give each one its own working copy and file scope, use subagents for side tasks, and review results before they are merged. |
+| **Outcome** | You can split two independent tasks between agents, keep their files separate and check the combined result. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-Two agents can do twice the work. They can also overwrite each other's files, double your review load and double your bill. Parallel work multiplies output, not trust.
+Pick two small changes and write the files each one needs. If they need the same file or one depends on the other's result, do them in order. Otherwise, try one agent on each task.
 
-It pays off when tasks are truly independent and your checks are good enough that you review results, not every keystroke. See [The adoption ladder](../04-the-map/03-adoption-ladder.md) for where this step sits.
+Working in parallel can save time on independent tasks. It also creates two results to review and uses more of your account allowance. You will separate the work, review it and check that both changes work together. See [The adoption ladder](../04-the-map/03-adoption-ladder.md) for where this fits in the course.
 
 ## Do it
 
@@ -30,7 +30,7 @@ If in doubt, run one agent and a second one only for review.
 
 A **worktree** is a second folder of the same Git repository, on its own branch. Each has separate checked-out files, reducing accidental overwrites. This does not restrict where an agent can write; scope and permissions still matter. Worktrees share history, so merging later is normal Git work.
 
-Commit your work first. Then:
+From your own project's main folder, check `git status` and commit the files you have reviewed. Then create the separate folder:
 
 ```bash
 git worktree add -b feature/export ../room-planner-export   # new branch in a new folder
@@ -47,11 +47,11 @@ Start one agent session in each folder. Worktrees separate working files; shared
 > **As of 2026-09-13 in Codex** (checked 2026-09-13)
 > - The Codex app can run tasks in a dedicated Git worktree. ([source](https://learn.chatgpt.com/docs/environments/git-worktrees))
 
-In a browser app builder there are no worktrees. The closest pattern is to duplicate the project, try the change in the copy, and carry over what works.
+If your browser app builder does not offer Git worktrees, use a project copy for an experiment. Review and carry over the change yourself; a copied project does not merge changes automatically.
 
 ### 3. Split the file scope before you start (5 min)
 
-Worktrees prevent collisions while agents work. Conflicts come back at merge time if two agents changed the same file. Prevent that on paper first:
+Separate folders stop edits from landing in the same working file. When you **merge**, you combine the branches. Changes to the same code can still conflict then. Assign the files before starting:
 
 | Agent | Task | May change | Must not touch |
 |---|---|---|---|
@@ -71,7 +71,7 @@ Done when: tests in tests/export/ pass and you show the output.
 
 ### 4. Use subagents for side tasks (5 min)
 
-A **subagent** is a helper inside one session. It runs in its own context window and returns only a summary. Use it for work that would flood your main conversation: searching a large codebase, reading long logs, or reviewing a diff with fresh eyes.
+A **subagent** is another agent given a bounded task by the main session. It uses a separate context and returns a report. Use it to investigate one question or review a change without adding all its search output to the main conversation. Give it a file scope too; separate context does not imply separate files or permissions.
 
 > **As of 2026-09-13 in Claude Code** (checked 2026-09-13)
 > - Each subagent runs in its own context window. ([source](https://code.claude.com/docs/en/sub-agents))
@@ -82,11 +82,11 @@ A **subagent** is a helper inside one session. It runs in its own context window
 
 ### 5. Review before merge (5 min)
 
-Every result goes through the same gate, one at a time:
+Check each result before combining it:
 
 1. **Read the diff.** Does it stay inside its file scope?
 2. **Run the checks** in that worktree and look at the output.
-3. **Fresh reviewer:** a new session or subagent that sees only the diff and the "done when" line. Tell it: "Only report issues that affect correctness or the stated requirements." A reviewer asked to find problems will always find some; this keeps it from inventing work.
+3. **Fresh reviewer:** give a new session or subagent the changed files and the "done when" line. Ask: "Report only problems you can show. Label anything untested. If you find no problems, say so and name what you could not check." Confirm findings before fixing them.
 4. **Merge one result**, then run the checks again on the combined state before merging the next.
 
 After the result is reviewed, committed and integrated, stop **your own** agent in that worktree. Confirm its state before cleanup:
@@ -115,12 +115,12 @@ Start with two agents. Check usage after the first round before adding a third. 
 
 ### Exercise (included in the time above)
 
-Take a small change that splits into two independent parts. Write the scope table, create two worktrees, run one agent in each, review both results with a fresh reviewer, and merge one after the other.
+Take a small change that splits into two independent parts. Write the file assignments, create a separate worktree for each and run one agent in each. Review both results and merge one at a time. If you do not have enough tool allowance, plan the split now and leave the actual parallel run untested.
 
 ## Done when
 
 - [ ] You can name one task where parallel helps and one where it hurts.
-- [ ] Two agents worked in two separate worktrees.
+- [ ] Two agents worked in two separate worktrees. Planning the split alone leaves this check open.
 - [ ] Each agent had a written file scope, and neither left it.
 - [ ] Each result was reviewed (diff, checks, fresh reviewer) before merge.
 - [ ] Checks ran again after each merge.
@@ -128,7 +128,7 @@ Take a small change that splits into two independent parts. Write the scope tabl
 
 ## Data note
 
-More agents means more copies of your code and data in more places: worktrees on disk, context sent to the vendor, logs. Keep fake data only. A worktree is a fresh checkout, so files your `.gitignore` excludes, such as `.env`, are not in it unless you copy them. Claude Code copies them only when you list them in `.worktreeinclude` ([source](https://code.claude.com/docs/en/worktrees), checked 2026-09-13). Do not spread keys into every worktree. Use one key with a spend cap instead, see [Secrets and keys](../../diy/07-secrets-and-keys.md).
+More agents create more copies in worktrees, model input and logs. Keep fictional data only. A worktree is a fresh checkout, so untracked files ignored by `.gitignore`, such as `.env`, are not in it unless copied separately. Claude Code can copy files listed in `.worktreeinclude` ([source](https://code.claude.com/docs/en/worktrees), checked 2026-09-13). Do not copy keys into every worktree. Keep any needed key in the approved secret store and use a spend cap; see [Secrets and keys](../../diy/07-secrets-and-keys.md).
 
 ## Next
 

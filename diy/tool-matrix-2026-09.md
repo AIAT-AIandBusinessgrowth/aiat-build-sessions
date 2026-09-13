@@ -1,5 +1,7 @@
 # Tool matrix, September 2026
 
+Use this as a lookup table when choosing a tool. Find one candidate, check whether you can save your work, then open its price and data-handling sources. You do not need to compare every row before trying an exercise.
+
 | | |
 |---|---|
 | **Prerequisites** | [Rule one: no real data](../tracks/00-orientation/01-rule-one-no-real-data.md) |

@@ -9,11 +9,13 @@
 
 ## Why this matters
 
-An export button can look finished while the downloaded CSV is empty. Try the feature and look at what it produces. This unit shows three ways to check an agent's work.
+Open something you built, or try the [notebook calculator](../../exercises/verification-lab/README.md). Write one sentence saying what should happen. You will ask the agent to check it, try it yourself, and ask a fresh session to review it.
+
+An export button can look finished while the downloaded CSV is empty. These checks help you find the difference between a feature that appears complete and one that does the requested job.
 
 ## Do it
 
-Open something you built, or try the [notebook calculator](../../exercises/verification-lab/README.md). Write one sentence saying what should happen. For example: “The CSV should contain every row currently shown in the table.” Use that sentence for the checks below.
+For example: “The CSV should contain every row currently shown in the table.” Use your sentence for the checks below.
 
 ### Rung 1: Put the check inside the prompt (5 min)
 
@@ -34,15 +36,15 @@ Read the check output. If the agent cannot run a check, try it yourself. Extra a
 
 Open the preview or the exported file. Check what it actually contains.
 
-| Lane | What counts as evidence |
+| Your tool | What to look at |
 |---|---|
-| Browser builder | You click through the preview yourself, with the edge-case inputs from rung 1. You screenshot what breaks. |
+| Browser builder | Click through the preview with the unusual inputs from rung 1. Keep a screenshot if it helps explain a problem. |
 | Chat assistant | You copy the result into its real place (the spreadsheet, the document) and try it there. |
 | CLI agent | The agent runs the check and shows the actual output: test results, the command and what it printed, the changed files. You read the output, not the summary. |
 
 Use it once as its intended user would. Check the sentence you wrote at the start.
 
-Write down what you found in two lines: what worked, what did not.
+If you need to return to this later, note what worked and what remains open.
 
 ### Rung 3: Get a second opinion (7 min)
 
@@ -70,7 +72,7 @@ Check whether the findings hold up. Take confirmed problems back to the builder,
 
 ### Which rung for which task
 
-| Risk if it is wrong | Climb to |
+| Risk if it is wrong | Checks to use |
 |---|---|
 | Low: a draft for yourself, a throwaway experiment | Rung 1 plus one observed check; a claim alone never counts |
 | Medium: something others will use or read | Rung 2 |
@@ -88,7 +90,7 @@ The [German verification mechanisms](../../modules/de/07-agenten-grundlagen.md) 
 ## Done when
 
 - [ ] You added a check to a prompt and got an answer that says how it was checked and what was not.
-- [ ] You looked at real evidence yourself, including at least one edge-case input, and wrote down two lines of findings.
+- [ ] You tried the result yourself, including one unusual input, and can explain what the check showed.
 - [ ] You ran a fresh review and checked its findings, or recorded that it found no problems and what remained unchecked.
 - [ ] You can say which rung a given task needs, and why.
 

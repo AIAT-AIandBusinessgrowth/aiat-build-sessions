@@ -2,31 +2,33 @@
 
 > Deutsche Fassung · Stand 2026-09-13 · Englischer Lernpfad: [START-HERE](../../START-HERE.md)
 
-⏱ ~40 min · **Danach kannst du:** einen Agenten-Loop von einem Chatbot unterscheiden, für eine konkrete Aufgabe zwischen CLI und MCP wählen und einen MCP-Server hinzufügen, im Plan Mode arbeiten statt sofort ändern zu lassen, und die fünf benannten Failure-Patterns erkennen, bevor sie dich eine Stunde kosten.
+⏱ ~40 min mit Vertiefungen · **Danach kannst du:** einem Agenten einen begrenzten Auftrag geben, seine Änderungen prüfen und bei Fehlern sinnvoll weiterarbeiten. Die späteren Abschnitte erklären Tools, Verbindungen und Befehle genauer.
 
-**Setzt voraus:** [Ready to build](../../ready-to-build.md) (englisch): ein installierter, angemeldeter Agent, sonst nichts.
+**Setzt voraus:** zum Lesen keine Programmierkenntnisse. Für die Terminal-Beispiele brauchst du einen installierten, angemeldeten Agenten: [Ready to build](../../ready-to-build.md) (englisch).
 
 ## Worum es geht
 
-Was ist eigentlich ein „Coding-Agent", warum ist das **kein Chatbot**, und wie unterscheidet sich das Terminal-Werkzeug (**CLI**) vom Andock-Standard für externe Tools (**MCP**)? Dazu: was Claude Code und Codex sind, wie auch ein:e Nicht-Dev „KI-Fragen" an ein Repo stellen kann — und wo „OpenCode" einzuordnen ist.
+Du möchtest ein Projekt verstehen oder eine kleine Änderung machen. Ein Coding-Agent kann Dateien lesen, Änderungen vorschlagen und sie mit deiner Erlaubnis ausführen. Du beschreibst, was du erreichen willst, und prüfst danach, was tatsächlich passiert ist.
 
-Dieses Modul ist bewusst **voraussetzungsarm**: jedes Konzept kommt zuerst als Alltags-Analogie mit einem **Merksatz für Nicht-Devs**, danach folgt die präzise technische Ebene für alle, die tiefer wollen. Das Modul richtet sich an **alle Rollen** — auch PM, Analyst:innen und Nicht-Devs steuern Agenten über denselben Loop.
+**Erster Versuch, wenn dein Agent bereits eingerichtet ist:** Öffne eine eigene Kopie dieses öffentlichen Repos und bitte Claude Code oder Codex: „Lies die README.md. Erkläre mir in drei Sätzen, wozu dieses Projekt dient, und zeige die passenden Textstellen. Ändere keine Dateien." Lies die Stellen selbst nach: Passt die Erklärung? Nur deine eigene Antwort zeigt, was du verstanden hast; das kann der Agent nicht für dich bestätigen.
 
-> **Für Einsteiger:innen:** Starte zuerst mit [Ready to build](../../ready-to-build.md) (englisch): Tool wählen, installieren, anmelden. Danach hier weiterlesen.
+Verwende ab der ersten Toolnutzung nur erfundene Daten oder öffentliche Inhalte ohne Personenbezug. Keine echten Kundenlisten, persönlichen Angaben oder Zugangsdaten in Prompts und Übungsdateien.
 
-**Warum das wichtig ist:** Teams nutzen KI heute in einem großen Teil ihrer Arbeit, können aber nur einen kleinen Teil der Aufgaben wirklich *voll* an Agenten delegieren: die **„Delegation-Gap"**. Das Tooling ist da, die *Arbeitsweise* fehlt. Genau um diese Lücke geht es hier: nicht „was kann das Tool", sondern „wie delegiere ich sicher und verantwortet mehr". *(Quelle: Anthropic, 2026 Agentic Coding Trends Report, https://resources.anthropic.com/2026-agentic-coding-trends-report, Download nach Registrierung, abgerufen 2026-09-13. Prozentwerte nennen wir nicht, weil sie ohne Registrierung nicht nachprüfbar sind.)*
+Für den Einstieg reichen Abschnitte 1, 4 und 6. MCP-Verbindungen, Modelltabellen und eigene Subagents sind zum Nachschlagen da; dafür musst du jetzt nichts zusätzlich einrichten.
+
+Der Hintergrund ist die Frage, welche Aufgaben sich sinnvoll delegieren lassen. Anthropic nennt den Abstand zwischen häufiger KI-Nutzung und vollständig delegierten Aufgaben eine **„Delegation-Gap"**. Die Bezeichnung beschreibt eine Beobachtung, keine Pflicht, mehr Aufgaben abzugeben. *(Quelle: Anthropic, 2026 Agentic Coding Trends Report, https://resources.anthropic.com/2026-agentic-coding-trends-report, Download nach Registrierung, abgerufen 2026-09-13. Prozentwerte nennen wir nicht, weil sie ohne Registrierung nicht nachprüfbar sind.)*
 
 ---
 
 ## 1. Was ist ein „Agent"? — der Loop
 
-Ein **Chatbot** antwortet und wartet: du fragst, er schreibt zurück, fertig. Ein **Coding-Agent** ist anders — er **arbeitet, während du zusiehst und lenkst**: er liest Dateien, führt Befehle aus, ändert Code, prüft das Ergebnis und macht weiter. Du bist nicht im Frage-Antwort-Pingpong, sondern lenkst einen Mitarbeiter bei der Arbeit.
+Bei einer einfachen Chat-Aufgabe bekommst du eine Antwort. Mit Werkzeugen kann ein Agent zusätzlich handeln: Dateien lesen, Befehle ausführen, Code ändern und Ergebnisse prüfen. Auch Chat-Produkte können solche Agentenfunktionen anbieten; entscheidend sind die verfügbaren Werkzeuge und Rechte.
 
-> **Merksatz für Nicht-Devs:** Ein Agent ist kein Auskunftsschalter, sondern ein:e *Praktikant:in mit Händen* — er tippt selbst, klickt selbst, probiert selbst. Du gibst die Richtung vor und schaust drüber.
+Gib zuerst eine kleine Aufgabe und klare Grenzen vor. Ein Agent kann überzeugend erklären, dass etwas erledigt sei, obwohl noch ein Fehler vorhanden ist. Probiere das Ergebnis deshalb selbst aus.
 
 ### Der Loop — präzise
 
-Das eine Kernkonzept, das alle Tool-Wechsel überlebt, ist der **agentische Loop**:
+**Loop** heißt hier: mehrere Arbeitsschritte wiederholen. Ein typischer Durchgang sieht so aus:
 
 **Context sammeln → planen → handeln (Edit / Run) → verifizieren → wiederholen.**
 
@@ -36,35 +38,31 @@ Das eine Kernkonzept, das alle Tool-Wechsel überlebt, ist der **agentische Loop
 | **Planen** | Agent überlegt die nächsten Schritte | kurz überlegen, bevor man loslegt |
 | **Handeln** | Agent ändert Dateien, führt Befehle aus | tatsächlich arbeiten |
 | **Verifizieren** | Agent prüft das Ergebnis (Test laufen lassen, Output ansehen) | gegenprüfen, nicht hoffen |
-| **Wiederholen** | nächster Durchlauf, bis das Ziel erreicht ist | so lange, bis es passt |
+| **Wiederholen** | nächster Durchlauf, bis das Ziel geprüft erreicht ist oder eine vereinbarte Grenze greift | bei Erfolg aufhören, bei fehlendem Fortschritt stoppen und neu entscheiden |
 
-Genau deshalb gilt hier **„Teach the loop, not the buttons"**: Tool-Features (Knöpfe, Befehle) verfallen, der Loop bleibt — er ist auf Claude Code, Codex, Cursor & Co. derselbe.
+Diese Schritte helfen in Claude Code, Codex und anderen Agententools. Die genauen Befehle unterscheiden sich; du kannst sie später nachschlagen.
 
 ### Mindset-Anker: der Agent ist ein fehlbarer Junior
 
-Das LLM hinter dem Agenten ist eine **„jagged intelligence"** — übermenschlicher Recall **plus** Halluzination. Konkret heißt das:
+Das Bild vom Junior soll an nötige Prüfung erinnern. Ein Agent ist jedoch kein Mensch: Er kann eine schwierige Aufgabe lösen und kurz danach eine einfache Angabe erfinden. Dieses ungleichmäßige Können heißt **„jagged intelligence"**.
 
-- **kein persistentes Gedächtnis** — was nicht im aktuellen Context steht, ist „weg";
-- **Context-Limits** — es passt nur eine begrenzte Menge rein (siehe unten);
-- **scheitert besonders** bei seltenen APIs, ungewohnten Dependencies und Pfaden, die es selten gesehen hat.
+- Sein Context-Window ist begrenzt. Frühere Informationen helfen nur, wenn sie im aktuellen Kontext oder als nachgeladenes Wissen verfügbar sind.
+- Er kann APIs, Abhängigkeiten und Dateipfade nennen, die nicht existieren. Prüfe solche Angaben im Projekt oder in der offiziellen Dokumentation.
+- Lass dir zeigen, **was geändert wurde und welcher Check funktioniert hat**. Eine Aussage wie „fertig" reicht dafür nicht.
 
-> **Merksatz für Nicht-Devs:** Behandle den Agenten wie eine:n **fehlbare:n Junior-Kolleg:in** — sehr schnell, sehr belesen, aber er rät auch mal überzeugend falsch. **Verlange Evidenz, vertraue nicht.** Verifizieren ist der Schlüssel-Skill, nicht blindes Vertrauen. Die Verantwortung bleibt beim Menschen.
-
-**Nuance bei aktuellen Modellen:** Der Junior-Anker gilt für die **Verifikation** — die Evidenz-Regel oben bleibt unverändert, glaub nichts ungeprüft. Beim **Aufgaben-Zuschnitt** gilt bei der aktuellen Modellgeneration eher das Gegenteil: lieber **leicht über** der vermuteten Fähigkeit ansetzen und **Outcome + Guardrails + Exit-Kriterien** vorgeben statt einer engen Schritt-für-Schritt-Anleitung *(YC-Video, Boris Cherny, 07/2026 — Cherny spricht von den „letzten ~6 Monaten" Modellfortschritt, keine exakte Modellfamilien-Schwelle)*. Kurz: beim Beauftragen weniger vorschreiben — beim Abnehmen genauso streng prüfen wie bisher.
+Beim Beauftragen musst du nicht jeden Arbeitsschritt vorschreiben. Beschreibe Ziel, Grenzen und die Prüfung. Boris Cherny empfiehlt, auch etwas anspruchsvollere Aufgaben begrenzt auszuprobieren; das ist ein Vorschlag zum Experimentieren, kein Grund, Ergebnisse ungeprüft zu übernehmen. *(YC-Video, Boris Cherny, 07/2026 — Cherny spricht von den „letzten ~6 Monaten" Modellfortschritt, keine exakte Modellfamilien-Schwelle.)*
 
 ### Der Rahmen: Vibe Engineering, nicht Vibe Coding
 
-Den benannten Frame dafür liefert Simon Willison: **„Vibe Coding"** heißt, dem Agenten blind zu folgen und ungelesen zu akzeptieren — okay für Wegwerf-Prototypen, riskant in Produktion. **„Vibe Engineering"** behält die Ingenieurs-Disziplin: planen, gegenprüfen, testen — **Accountability bleibt beim Menschen**. Genau diese Linie macht den Ansatz für Senior-Devs glaubwürdig und für Orgs sicher. Die schleichende Gefahr ist die **„Normalization of Deviance"**: Wenn ein ungeprüfter Agenten-Lauf einmal gutgeht, sinkt die Hürde, ihn beim nächsten Mal wieder ungeprüft durchzuwinken — bis das Überspringen der Verifikation zur Gewohnheit wird und irgendwann teuer einschlägt. *(Quelle: Willison, „Vibe engineering".)*
+Simon Willison verwendet **„Vibe Engineering"** für disziplinierte Arbeit mit Agenten: planen, Änderungen ansehen und Ergebnisse testen. **„Vibe Coding"** bezeichnet in dieser Gegenüberstellung das weitgehend ungeprüfte Übernehmen des erzeugten Codes. Du brauchst diese Begriffe für die Übung nicht; der praktische Unterschied ist die Prüfung.
 
-> **Merksatz für Nicht-Devs:** „Vibe Coding" = dem Agenten blind vertrauen. „Vibe Engineering" = ihn arbeiten lassen, aber die Verantwortung behalten. Pass auf, dass „lief letztes Mal ja gut" nicht zur Ausrede wird, das Gegenprüfen schleichend zu streichen.
+Wenn ein ungeprüfter Versuch einmal funktioniert, belegt das nicht die Zuverlässigkeit des nächsten. Das schrittweise Gewöhnen an übersprungene Kontrollen nennt man **„Normalization of Deviance"**. Behalte passende Checks bei, auch wenn mehrere Versuche gut liefen. *(Quelle: Willison, „Vibe engineering".)*
 
 ### Context ist die knappe Ressource
 
-Das **Context-Window** ist das Arbeitsgedächtnis des Agenten: jede Nachricht, jede gelesene Datei und jede Befehlsausgabe landen darin — und es **füllt sich schnell**. Anthropic formuliert es so: *„Claude's context window fills up fast, and performance degrades as it fills."* Je voller, desto eher „vergisst" der Agent frühe Anweisungen und macht Fehler („Context Rot").
+Das **Context-Window** enthält unter anderem Nachrichten, gelesene Dateien und Befehlsausgaben. Es hat eine feste Größe. Viel irrelevanter Text oder viele Korrekturen können es dem Modell erschweren, die wichtigen Informationen zu nutzen. Anthropic beschreibt abnehmende Leistung bei einem vollen Kontext; dafür begegnet dir auch der Begriff „Context Rot".
 
-> **Merksatz für Nicht-Devs:** Das Arbeitsgedächtnis des Agenten ist ein **kleiner Schreibtisch**, kein Aktenkeller. Lieber wenige, klare Unterlagen drauflegen — überladen macht ihn schludrig, nicht klüger.
-
-Wie man den Schreibtisch sauber hält — `/clear`, `/compact`, `/context`, Subagents — steht weiter unten unter [Werkzeugkasten](#7-werkzeugkasten--die-flüchtige-schicht) und [Context-Management](#9-context-management--wann-eine-neue-session). Das Skalieren über viele Agenten hinweg vertieft → Details in Modul 8.
+Lass den Agenten zunächst nur lesen, was er für die aktuelle Aufgabe braucht. Sichere vor einem Themenwechsel den Arbeitsstand und offene Fragen. Die Befehle `/clear`, `/compact` und `/context` stehen im [Werkzeugkasten](#7-werkzeugkasten--die-flüchtige-schicht), passende Vorgehensweisen im [Context-Management](#9-context-management--wann-eine-neue-session). Mehrere Agenten behandelt Modul 8.
 
 ---
 
@@ -74,10 +72,10 @@ Zwei Begriffe, die ständig fallen, aber selten erklärt werden. Beide beschreib
 
 ### Plain-language-Analogie
 
-- **CLI** (*Command-Line Interface*) = das **Terminal-Fenster**, in dem der Agent **lebt** und Text-Befehle tippt. Hier *läuft* der Agent. Beispiele: `claude` (Claude Code), `codex` (Codex CLI). In diesem Fenster kann der Agent auch fertige **CLI-Werkzeuge** benutzen, die ein Mensch genauso tippen würde — etwa `gh` (GitHub), `glab` (GitLab), `aws`.
-- **MCP** (*Model Context Protocol*) = eine **genormte Steckdose**, über die der Agent an *externe Systeme* andockt (Issue-Tracker, Datenbanken, Figma, Monitoring). Ein **MCP-Server** ist das „Gerät", das man einsteckt; es bringt dem Agenten neue Werkzeuge mit. Anthropic: *„With MCP servers, you can ask Claude to implement features from issue trackers, query databases, analyze monitoring data, integrate designs from Figma."*
+- **CLI** (*Command-Line Interface*) heißt: ein Programm mit Textbefehlen bedienen, zum Beispiel `gh issue list`. Das Terminal ist das Fenster dafür. Claude Code und Codex CLI laufen darin und können andere installierte Programme verwenden.
+- **MCP** (*Model Context Protocol*) ist ein gemeinsames Format, über das ein Agent Werkzeuge und Datenquellen anderer Systeme nutzen kann. Ein MCP-Server stellt diese Zugriffe bereit, etwa auf einen Issue-Tracker oder eine Datenbank.
 
-> **Merksatz für Nicht-Devs:** **CLI = die Werkstatt, in der der Agent steht** (und in der er normale Werkzeuge greift). **MCP = eine Steckdosenleiste, in die man Spezialgeräte einstöpselt**, damit er auch an fremde Systeme drankommt.
+Beispiel: Der Agent kann GitHub-Aufgaben mit dem CLI `gh` abfragen. Für ein anderes System könnte ein MCP-Server denselben Zweck erfüllen. Entscheidend ist, welcher Zugriff für die Aufgabe vorhanden und zugelassen ist.
 
 ### Präzise
 
@@ -86,7 +84,7 @@ Zwei Begriffe, die ständig fallen, aber selten erklärt werden. Beide beschreib
 
 ### MCP-Server hinzufügen — konkrete Syntax
 
-Zwei Haupt-Varianten je nach Server-Typ (**flüchtige Schicht — Stand 06/2026**; im Zweifel `claude mcp --help`):
+Dieser Abschnitt ist optional. Die Beispiele zeigen die Syntax; sie sind kein zusätzliches Setup für die erste Übung. Prüfe vor einer Installation Server, Paketquelle und benötigte Rechte in der Hersteller-Dokumentation. Ein lokal gestarteter MCP-Server kann ebenfalls Netzwerkzugriff haben. Zwei Varianten (**Stand 06/2026**; im Zweifel `claude mcp --help`):
 
 ```bash
 # Hosted HTTP-Server (z.B. ein Team-Server mit REST-Endpunkt)
@@ -122,7 +120,7 @@ claude mcp add --scope project --transport http team-server https://mcp.example.
 }
 ```
 
-> **Merksatz:** `local` = nur du hier, `user` = nur du überall, `project` = alle im Team. `.mcp.json` einchecken → Team-Sharing ohne extra Setup-Schritt.
+> **Merksatz:** `local` = nur du hier, `user` = nur du überall, `project` = alle im Team. Die Konfiguration lässt sich mit `.mcp.json` teilen; Anmeldung und lokale Voraussetzungen können trotzdem pro Person nötig sein. Keine Zugangswerte in diese Datei committen.
 
 ### CLI vs. MCP — Trade-off-Übersicht
 
@@ -146,7 +144,7 @@ Die wichtige Nuance für die tiefere Ebene: **CLI-Tools sind der context-effizie
 | Kein brauchbares CLI, aber strukturierter Zugriff nötig? | **MCP-Server** | bringt Tools/Live-Daten mit | DB-Queries, Figma, Monitoring-Dashboards |
 | Reine Datei-/Shell-Arbeit im Repo? | **CLI** (Default) | das ist der Kern des Agenten | Code lesen/ändern, Tests laufen lassen |
 
-> **Merksatz für Nicht-Devs:** **Erst nach einem CLI suchen, dann an MCP denken.** CLI ist der sparsame Default; MCP ist die Spezial-Steckdose für Systeme, die anders nicht erreichbar sind.
+> **Merksatz für Nicht-Devs:** **Erst nach einem CLI suchen, dann an MCP denken.** Nutze zunächst einen bereits passenden und zugelassenen Zugriff. MCP ist eine weitere Möglichkeit, externe Werkzeuge anzubinden.
 
 **MCP ist vertiefendes Wissen** und für den Einstieg nicht nötig.
 
@@ -162,7 +160,7 @@ Ein MCP-Server (oder ein CLI, das der Agent nutzt) bringt Tools mit — aber nic
 | **Überlappung** | jedes Tool hat einen **klaren, eigenen** Zweck | zwei Tools, die (fast) dasselbe tun — der Agent muss raten, welches „richtig" ist |
 | **Output** | knapp, nur die relevanten Felder (Namen statt UUIDs, gefilterte statt komplette Listen) | Rohdaten/alles auf einmal — flutet das Context-Window, das Modell muss selbst filtern |
 
-> **Merksatz für Nicht-Devs:** Ein Tool ist wie ein Formular, das der Agent **vor jeder Nutzung komplett vorgelesen** bekommt — je kürzer, klarer und einmaliger das Formular, desto seltener greift er daneben. Zehn ähnliche Formulare mit halb überlappenden Feldern verwirren ihn nur.
+Ein gutes Tool hat einen eindeutigen Zweck, verständliche Parameter und eine brauchbare Fehlermeldung. Mehrere fast gleiche Tools können die Auswahl erschweren.
 
 Auch ohne selbst Tools zu bauen gilt die Konsumenten-Seite: In Agenten ohne Tool Search legt jeder aktivierte MCP-Server alle seine Formulare dauerhaft auf deinen Schreibtisch. Claude Code holt MCP-Tools ab v2.1.232 per Tool Search erst bei Bedarf ([Quelle](https://code.claude.com/docs/en/mcp), abgerufen 2026-09-13). Aktiviere trotzdem nur, was du wirklich brauchst.
 
@@ -182,9 +180,7 @@ Beide sind **agentic coding CLIs** — Werkzeuge, in denen ein Agent denselben L
 | MCP | unterstützt MCP-Server (`claude mcp add`) | kann MCP-Tools nutzen (`codex mcp` zum Verwalten). Der frühere `codex mcp-server` wurde am 2026-08-24 deprecated und am 2026-09-05 entfernt (Codex CLI 0.154.0, 2026-09-09); Nachfolger ist der experimentelle Codex App Server, kein direkter MCP-Ersatz ([Changelog](https://learn.chatgpt.com/docs/changelog)) |
 | Rolle in diesem Material | **gleichwertiger Einstieg** | **gleichwertiger Einstieg** (gleiche Prinzipien, andere Tasten) |
 
-**Haltung dieses Materials:** Claude Code und Codex sind **gleichwertige Einstiege**. Die Prinzipien (Loop, Context-Knappheit, Verifikation) gelten für beide und lassen sich auf andere Coding-Agenten übertragen. Deshalb gibt es hier keine Konkurrenz-Matrix, sondern *„dieselben Loops, andere Tasten"*. Wo ein Beispiel Claude-Code-Befehle zeigt, gilt das Prinzip genauso für Codex.
-
-> **Merksatz für Nicht-Devs:** Claude Code und Codex sind wie **zwei Autos mit gleichem Fahrprinzip**: Wer das Fahren (den Loop) kann, steigt im anderen problemlos um. Welches der beiden du nimmst, entscheidest du; die Fähigkeit ist tool-übergreifend.
+Du kannst mit Claude Code oder Codex anfangen. Auftrag, begrenzte Zugriffe und Ergebnisprüfung brauchst du bei beiden. Claude-Code-Befehle lassen sich jedoch nicht unverändert in Codex eingeben; dafür stehen die jeweiligen Beispiele dabei.
 
 ### Modell-Stand (flüchtige Schicht)
 
@@ -208,15 +204,15 @@ Beide sind **agentic coding CLIs** — Werkzeuge, in denen ein Agent denselben L
 
 Claude Platform on AWS ist Anthropics eigenes Angebot innerhalb von AWS, getrennt vom AWS-Dienst Bedrock — welche Zeile für dich gilt, hängt davon ab, wie du oder deine Organisation den Zugang eingerichtet habt.
 
-Diese Zahlen ändern sich schnell: Für den **aktuellen Stand direkt beim jeweiligen Provider prüfen** statt auf Doku-Zahlen zu verlassen. Wer also „warum habe ich ein älteres Modell?" fragt, sitzt meist hinter Foundry (oder generell hinter einem Cloud-Provider statt der direkten API).
+Diese Zahlen ändern sich schnell: Für den **aktuellen Stand direkt beim jeweiligen Provider prüfen** statt auf Doku-Zahlen zu verlassen. Bei abweichenden Modellnamen prüfe, über welchen Anbieter dein Konto tatsächlich verbunden ist.
 
-> **Merksatz für Nicht-Devs:** Welches Modell „unter der Haube" läuft, ist wie die Motorvariante eines Autos — gut zu wissen, aber das Fahren (der Loop) bleibt gleich. Merk dir das Datum: Modellnamen sind ein Verfallsdatum-Produkt.
+Für den ersten Versuch brauchst du die Modellnamen nicht auswendig zu kennen. Prüfe die Tabelle erst, wenn du eine konkrete Modell- oder Zugangsfrage hast.
 
 *(Quellen: Claude Models Overview — `platform.claude.com/docs/en/about-claude/models/overview`; Model-Config & Provider-Defaults — `code.claude.com/docs/en/model-config`; Codex-Modelle und Changelog (GPT-6 Astra Default seit 2026-09-04, `gpt-5.4`/`gpt-5.4-mini` entfernt 2026-08-31) — `https://learn.chatgpt.com/docs/models` · `https://learn.chatgpt.com/docs/changelog`, abgerufen 2026-09-13; Codex CLI — https://learn.chatgpt.com/docs/codex/cli. Abgerufen 2026-07-30; Claude-Modellzeile re-verifiziert gegen `code.claude.com/docs/en/model-config` am 2026-07-30, Fable-Alias am 2026-09-13.)*
 
 ### `codex exec` — Beispiel-Syntax (Cross-Tool-Block)
 
-`codex exec` ist das **nicht-interaktive Pendant** zu `claude -p` — derselbe Loop, andere Tasten. Praktisch heißt das: `codex exec "prompt"` streamt Progress auf **stderr**, die finale Antwort auf **stdout**.
+`codex exec` ist das **nicht-interaktive Pendant** zu `claude -p` für Skripte. Praktisch heißt das: `codex exec "prompt"` streamt Progress auf **stderr**, die finale Antwort auf **stdout**.
 
 ```bash
 codex exec "Migriere foo.py auf die neue API. Antworte am Ende mit OK oder FAIL."
@@ -232,7 +228,7 @@ codex exec resume --last "Behebe jetzt die failenden Tests"
 
 Weitere nützliche Flags (**flüchtig — Stand 06/2026**): `-o` / `--output-last-message <path>` (finale Message in Datei), `--output-schema <schema.json>` (Schema-konforme Endausgabe für Pipelines), `--sandbox workspace-write` bzw. `--sandbox danger-full-access` (Schreibrechte steuern), `--ephemeral` (keine Rollout-Dateien auf Disk schreiben), `--skip-git-repo-check` (Codex verlangt sonst ein Git-Repo). **Veraltet:** `--full-auto` ist **deprecated** und wirft eine Warnung — stattdessen `--sandbox workspace-write` nutzen. *(Quelle: Codex Manual — https://learn.chatgpt.com/docs/codex-manual.md, abgerufen 06/2026.)*
 
-> **Merksatz:** `codex exec` verhält sich zu Codex wie `claude -p` zu Claude Code — ein Auftrag, der Agent erledigt ihn und beendet sich. Headless ist nur eine andere Verpackung desselben Loops. → Headless-Skalierung in Modul 8.
+> **Merksatz:** `codex exec` verhält sich zu Codex wie `claude -p` zu Claude Code — ein Auftrag ohne interaktive Unterhaltung. Prüfe Rückgabestatus und Ergebnis; ein beendeter Prozess kann auch fehlgeschlagen sein. → Headless-Skalierung in Modul 8.
 
 > **Codex-Auth und Windows (flüchtig, Stand 2026-09-13):** Codex CLI meldet sich entweder per **ChatGPT-Login (Browser-OAuth)** oder per **OpenAI API-Key** (`platform.openai.com/api-keys`) an, getrennt vom Anthropic-Zugang für Claude Code. Wer beide nutzt, verwaltet zwei Zugänge. Codex ist inzwischen auch in ChatGPT Free und Go enthalten. Unter Windows installieren sich beide nativ per PowerShell, WSL ist optional: Codex mit `irm https://chatgpt.com/codex/install.ps1 | iex` (https://learn.chatgpt.com/docs/codex/cli), Claude Code mit `irm https://claude.ai/install.ps1 | iex` (https://code.claude.com/docs/en/setup). Setup: [Ready to build](../../ready-to-build.md) (englisch), maßgeblich für die Anmeldung ist die Hersteller-Doku https://learn.chatgpt.com/docs/auth.
 
@@ -243,7 +239,7 @@ Weitere nützliche Flags (**flüchtig — Stand 06/2026**): `-o` / `--output-las
 Ein häufiges Missverständnis: man müsse programmieren können, um einen Agenten an einem Repo arbeiten zu lassen. Muss man nicht. Der Agent benutzt fertige **CLI-Tools stellvertretend für dich** — du sprichst in natürlicher Sprache, er ruft das Werkzeug im Hintergrund auf.
 
 - Für **GitHub** ist das `gh`, für **GitLab** `glab`.
-- Du sagst z.B. *„lies Issue 42 und fass mir zusammen, worum es geht"* oder *„öffne dafür einen MR"* — der Agent ruft `glab` bzw. `gh` auf und erledigt das. Anthropic beschreibt das so: Claude *„knows how to use [`gh`] for creating issues, opening pull requests, and reading comments"*.
+- Du sagst z.B. *„lies Issue 42 und fass mir zusammen, worum es geht"* oder *„öffne dafür einen MR"* — der Agent ruft `glab` bzw. `gh` auf und führt den angefragten Schritt aus. Prüfe bei Veröffentlichungen das Zielrepo und den Inhalt vorher. Anthropic beschreibt das so: Claude *„knows how to use [`gh`] for creating issues, opening pull requests, and reading comments"*.
 
 **Präzise:** Installiere das passende CLI (`gh` bzw. `glab`) und sag dem Agenten, es zu nutzen. Ohne CLI kann der Agent die API zwar direkt ansprechen, läuft aber leicht in (unauthentifizierte) Rate-Limits. Unbekannte CLIs lernt der Agent selbst über `<tool> --help`.
 
@@ -283,9 +279,9 @@ Mehr zu Schlüsseln und Tokens: [Secrets and keys](../../diy/07-secrets-and-keys
 "Nutze gh (bzw. glab), um die offenen Issues in diesem Repo aufzulisten und mir die drei aktivsten zusammenzufassen."
 ```
 
-Der Agent ruft `gh issue list` bzw. `glab issue list` selbst auf. Du diktierst die Absicht, er bedient das Werkzeug.
+Der Agent kann dafür `gh issue list` bzw. `glab issue list` aufrufen. Vergleiche seine Zusammenfassung mit einem der genannten Issues.
 
-> **Merksatz:** Zeig den **Weg** (Token anlegen, eng scopen, Ablaufdatum setzen), niemals den **Wert**. Ein kompromittierter Token mit reinen Leserechten und Ablaufdatum hat einen kleinen Blast Radius.
+> **Merksatz:** Zeig den **Weg** (Token anlegen, eng scopen, Ablaufdatum setzen), niemals den **Wert**. Begrenzte Rechte und Laufzeit verringern mögliche Folgen. Auch Leserechte können vertrauliche Inhalte offenlegen.
 
 ---
 
@@ -293,7 +289,7 @@ Der Agent ruft `gh issue list` bzw. `glab issue list` selbst auf. Du diktierst d
 
 **OpenCode** ist ein Open-Source-Coding-Agent fürs Terminal, der mit Modellen verschiedener Anbieter arbeitet, also ein weiteres **agentic CLI** im Feld. Es passt in dieselbe Cross-Tool-Logik: **gleiche Loops, anderes Tool.** Konkrete Funktionen und Befehle stehen in der Projekt-Doku: https://opencode.ai
 
-> **Merksatz für Nicht-Devs:** OpenCode ist **noch ein Terminal-Agent**. Wenn du den Loop verstanden hast, ist auch das „nur ein anderes Lenkrad“.
+Für diesen Kurs brauchst du kein zusätzliches Tool zu installieren, wenn du bereits Claude Code oder Codex nutzt.
 
 ---
 
@@ -301,9 +297,9 @@ Der Agent ruft `gh issue list` bzw. `glab issue list` selbst auf. Du diktierst d
 
 Bevor der Agent etwas ändert, kann man ihn im **Plan Mode** laufen lassen: Er recherchiert und plant **ohne** Änderungen vorzunehmen, du siehst den Plan und gibst ihn frei (oder editierst ihn). Mit **`Ctrl+G`** öffnet sich der vorgeschlagene Plan im **Default-Editor** zum direkten Bearbeiten (bestätigt — Quelle: `code.claude.com/docs/en/permission-modes`). Anthropic rahmt das als *„Explore first, then plan, then code"*.
 
-Das benannte Workflow-Pattern dahinter ist **`Explore → Plan → Code → Commit`**: erst erkunden, dann planen, dann bauen, dann committen. Bei größeren Aufgaben lohnt es, den Plan als **physisches Artefakt** festzuhalten — der Agent schreibt ihn in eine `PLAN.md`, die du prüfst, editierst und als Referenz im weiteren Lauf nutzt (verwandt mit dem Spec-first-Pattern (erst Spezifikation, dann Bauen), siehe [Context-Management](#9-context-management--wann-eine-neue-session)). So ist der Plan überprüfbar und überlebt auch ein `/clear`.
+Das benannte Workflow-Pattern dahinter ist **`Explore → Plan → Code → Commit`**: erst erkunden, dann planen, dann bauen, dann committen. Bei größeren Aufgaben lohnt es, den Plan in einer **Datei** festzuhalten — der Agent schreibt ihn in eine `PLAN.md`, die du prüfst, editierst und als Referenz im weiteren Lauf nutzt (verwandt mit dem Spec-first-Pattern (erst Spezifikation, dann Bauen), siehe [Context-Management](#9-context-management--wann-eine-neue-session)). So ist der Plan überprüfbar und überlebt auch ein `/clear`.
 
-**Für einen einzelnen Prompt** muss man nicht in den Modus wechseln: Stell dem Prompt einfach **`/plan`** voran (`/plan Refactor das Auth-Modul`), dann plant der Agent **nur diese eine** Aufgabe und fragt danach um Freigabe. Bei der Freigabe hat man die Wahl, **wie viel Leine** der Agent für die Umsetzung bekommt — von „Approve and start in auto mode" (durchlaufen lassen) über „accept edits" bis „review each edit" (jeden einzelnen Edit einzeln bestätigen). *(Bestätigt — Quelle: `code.claude.com/docs/en/permission-modes`, abgerufen 06/2026.)*
+**Für einen einzelnen Prompt** muss man nicht in den Modus wechseln: Stell dem Prompt einfach **`/plan`** voran (`/plan Refactor das Auth-Modul`), dann plant der Agent **nur diese eine** Aufgabe und fragt danach um Freigabe. Bei der Freigabe hat man die Wahl, **welche Aktionen** der Agent bei der Umsetzung ausführen darf — von „Approve and start in auto mode" (durchlaufen lassen) über „accept edits" bis „review each edit" (jeden einzelnen Edit einzeln bestätigen). *(Bestätigt — Quelle: `code.claude.com/docs/en/permission-modes`, abgerufen 06/2026.)*
 
 **Wichtig — nicht überdosieren:** Bei trivialen Änderungen ist Plan Mode Overhead. Faustregel von Anthropic: *„If you could describe the diff in one sentence, skip the plan."*
 
@@ -323,14 +319,14 @@ Das benannte Workflow-Pattern dahinter ist **`Explore → Plan → Code → Comm
 | **`/clear`** | setzt den Context komplett zurück | zwischen **unzusammenhängenden** Tasks |
 | **`/compact [Instruktionen]`** | verdichtet den bisherigen Verlauf; optional gezielt, z.B. `/compact Focus on the API changes` | wenn der Context voll wird, der Faden aber wichtig bleibt — **früh kompaktieren**, nicht erst wenn er überläuft |
 | **`/context`** | zeigt die aktuelle Auslastung des Context-Windows | um zu sehen, wie „voll der Schreibtisch" ist |
-| **`SKILL.md`** | lädt **on-demand** ein Stück Domänenwissen (z.B. ein internes Format, eine Konvention) nur dann in den Context, wenn die Aufgabe es braucht | für Spezialwissen, das **nicht** in jede Konversation gehört — entlastet die `CLAUDE.md` vom Bloat |
+| **`SKILL.md`** | lädt **on-demand** ein Stück Domänenwissen (z.B. ein internes Format, eine Konvention) nur dann in den Context, wenn die Aufgabe es braucht | für Spezialwissen, das **nicht** in jede Konversation gehört — entlastet die `CLAUDE.md` von unnötigen Details |
 | **Plan Mode / `Ctrl+G`** | Agent plant ohne zu ändern; `Ctrl+G` öffnet den Plan zum Editieren | bei größeren Änderungen; überspringen bei Ein-Satz-Diffs (siehe oben) |
 | **`Esc`** | stoppt den Agenten mitten in einer Aktion — **der Context bleibt erhalten** | sofort, wenn er abdriftet, um kurz zu korrigieren |
 | **`Esc Esc` / `/rewind`** | öffnet das Rewind-Menü → auf einen früheren **Checkpoint** zurückrollen (Conversation / Code / beides) oder „Summarize from/up to here" | wenn ein Versuch in die Sackgasse lief |
 
-**Zur `CLAUDE.md`-Faustregel:** Eine aufgeblähte `CLAUDE.md` führt dazu, dass Regeln **ignoriert** werden. Pruning-Test von Anthropic: *„Würde das Entfernen dieser Zeile Claude Fehler machen lassen? Wenn nein — raus."*
+**Zur `CLAUDE.md`-Faustregel:** Viele veraltete oder widersprüchliche Anweisungen können wichtige Regeln verdrängen. Geltende Daten-, Zugriffs- und Freigaberegeln bleiben bestehen. Pruning-Test von Anthropic: *„Würde das Entfernen dieser Zeile Claude Fehler machen lassen? Wenn nein — raus."*
 
-**`CLAUDE.md` vs. `SKILL.md` — wohin gehört Wissen?** Die `CLAUDE.md` lädt **immer** (= teurer, permanenter Context) — dort gehören nur Regeln, die in *jeder* Konversation gelten. Spezialwissen, das nur manche Aufgaben brauchen (ein internes Datenformat, eine seltene Konvention), gehört in eine **`SKILL.md`**: sie wird **on-demand** geladen, wenn die Aufgabe sie braucht, und entlastet so die `CLAUDE.md` vom Bloat. Faustregel: *gilt es immer → `CLAUDE.md`; gilt es nur manchmal → `SKILL.md`.*
+**`CLAUDE.md` vs. `SKILL.md` — wohin gehört Wissen?** Die `CLAUDE.md` lädt **immer** (= teurer, permanenter Context) — dort gehören nur Regeln, die in *jeder* Konversation gelten. Spezialwissen, das nur manche Aufgaben brauchen (ein internes Datenformat, eine seltene Konvention), gehört in eine **`SKILL.md`**: sie wird **on-demand** geladen, wenn die Aufgabe sie braucht, und entlastet so die `CLAUDE.md` von unnötigen Details. Faustregel: *gilt es immer → `CLAUDE.md`; gilt es nur manchmal → `SKILL.md`.*
 
 **Zu Checkpoints:** Jeder Prompt ist ein Checkpoint, und Checkpoints **persistieren über Sessions hinweg** (du kannst also auch in einer späteren Session noch zurückrollen). Erreichbar über **`/rewind`** oder **zweimal `Esc`** (bei leerem Input). **Wichtige Einschränkung:** Checkpoints tracken nur **Claudes eigene File-Edits** — sie sind ein **lokales Undo**, **kein Git-Ersatz** (Git ist die permanente History). **Scharfer Blindspot:** Was Claude per **Shell-Befehl** ändert (`rm`, `mv`, `cp` über Bash), wird **nicht** gecheckpointet und ist per `/rewind` **nicht** wiederherstellbar — ebenso wenig externe oder parallele Edits. Verlass dich also nicht darauf, dass `Esc Esc` ein gelöschtes File zurückholt. Für echte Versionierung bleibt Git zuständig (→ [Keep your work safe](../../tracks/06-keep-and-ship/01-keep-your-work-safe.md), englisch). Checkpoints werden zudem nach **30 Tagen** (konfigurierbar) automatisch aufgeräumt — wer länger zurückkönnen muss, committet in Git. *(Bestätigt — Quelle: `code.claude.com/docs/en/checkpointing`, abgerufen 06/2026.)*
 
@@ -340,52 +336,52 @@ Das benannte Workflow-Pattern dahinter ist **`Explore → Plan → Code → Comm
 
 ## 8. Wenn etwas schiefgeht — die Error-Handling-Trias
 
-Der Agent ist ein fehlbarer Junior (siehe oben). Drei typische Fehlerbilder, und was du jeweils tust:
+Wenn etwas falsch läuft, stoppe zunächst die betroffene Aktion. Sichere den aktuellen Stand und notiere den Fehler, bevor du eine Session leerst oder Änderungen zurücknimmst. Drei typische Fälle:
 
 | Fehlerbild | Symptom | Was tun |
 |---|---|---|
 | **Halluzination** | Agent erfindet eine Dependency, eine API oder einen Pfad, die es nicht gibt | Symptom + Ort + „so sieht behoben aus" präzise beschreiben; **Evidenz verlangen** (Test-Output, `git status`). LLMs scheitern v.a. bei seltenen APIs/Deps |
-| **Falsches Tool / Abdriften** | Agent macht etwas anderes als gewollt, läuft in die falsche Richtung | sofort **`Esc`**, kurz korrigieren. **Nach >2 Korrekturen am selben Punkt:** `/clear` + besser geschriebener Initial-Prompt |
-| **Crash / Sackgasse** | Versuch ist kaputt, Stand unbrauchbar | **`Esc Esc` / `/rewind`** auf den letzten Checkpoint, oder „Undo that" (Claude revertiert seine Änderungen) |
+| **Falsches Tool / Abdriften** | Agent macht etwas anderes als gewollt, läuft in die falsche Richtung | sofort **`Esc`**, kurz korrigieren. **Nach >2 Korrekturen am selben Punkt:** Stand und Fehlversuche sichern, dann `/clear` + klarerer Auftrag |
+| **Crash / Sackgasse** | Versuch ist kaputt, Stand unbrauchbar | erst Änderungen ansehen und sichern; dann gezielt **`Esc Esc` / `/rewind`** nutzen. Das stellt nur erfasste Claude-Edits wieder her, keine beliebigen Shell- oder fremden Änderungen |
 
 **Warum nicht ewig korrigieren?** Anthropic: *„A clean session with a better prompt almost always outperforms a long session with accumulated corrections."* Akkumulierte Korrekturen verstopfen den Context — ein sauberer Neustart mit besserem Prompt schlägt das fast immer.
 
-> **Merksatz für Nicht-Devs:** Wenn der Junior dreimal am selben Punkt danebenliegt, liegt es selten am Junior — meist war die Aufgabe unklar gestellt. Neu aufsetzen schlägt Nachbessern. **Verlange Evidenz, vertraue nicht.**
+Wiederholte Fehler bedeuten nicht automatisch, dass du schlecht gefragt hast. Es können Informationen fehlen, ein Tool kann nicht passen oder das Modell kann an seine Grenze kommen. Prüfe den Grund und ändere den nächsten Versuch gezielt.
 
 ### Die fünf benannten Failure-Patterns
 
-Die Trias oben sind die *technischen* Fehlerbilder. Daneben gibt es fünf benannte **Bedien-Antipattern** — sie erkennt man am eigenen Verhalten, nicht am Agenten:
+Diese fünf Muster helfen dir, Probleme im Arbeitsablauf zu erkennen. Die englischen Namen sind Suchbegriffe; merken musst du dir die Gegenmaßnahme:
 
 | Muster | Symptom | Gegenmittel |
 |---|---|---|
-| **Kitchen-Sink-Session** | mehrere unzusammenhängende Tasks in einer Session, Context überfüllt sich | `/clear` zwischen Tasks; eine Session = ein Gedankengang |
-| **Correcting over and over** | dieselbe Korrektur wieder und wieder, der Faden wird immer schlechter | nach **>2** Korrekturen am selben Punkt: `/clear` + besserer Initial-Prompt |
+| **Kitchen-Sink-Session** | mehrere unzusammenhängende Tasks in einer Session, Context überfüllt sich | erst Stand sichern, dann `/clear` zwischen unabhängigen Aufgaben |
+| **Correcting over and over** | dieselbe Korrektur wieder und wieder, der Faden wird immer schlechter | nach **>2** Korrekturen: Fehlversuche sichern, Ursache prüfen, frische Session mit klarerem Auftrag |
 | **Over-specified CLAUDE.md** | aufgeblähte `CLAUDE.md`, Regeln werden ignoriert | Pruning-Test anwenden; Spezialwissen in `SKILL.md` auslagern |
 | **Trust-then-verify-Lücke** | Output akzeptiert, *bevor* (oder ohne dass) verifiziert wurde | Verification-Leiter (unten) — Evidenz **vor** Akzeptanz |
 | **Infinite Exploration** | Agent recherchiert endlos, kommt nie ins Handeln/Committen | Plan Mode mit klarem Ziel; `Explore → Plan → Code → Commit` abschließen |
 
 ### Die Verification-Leiter
 
-Verifikation ist nicht alles-oder-nichts, sondern eine **Eskalations-Leiter**: je härter der Stopp gegated sein soll, desto mehr Setup. Jede Stufe tauscht **Setup gegen Aufmerksamkeit** — und **Stufe 1 funktioniert heute, ohne jedes Setup**, für jeden Task. Wähle die Stufe nach Risiko der Aufgabe:
+**Verifizieren heißt: prüfen, ob das Ergebnis die Aufgabe erfüllt.** Beginne mit einem passenden Check und sieh dir dessen tatsächliche Ausgabe an. Die Tabelle zeigt zusätzliche Möglichkeiten, diesen Check zu automatisieren oder eine zweite Meinung einzuholen. Du musst nicht alle einrichten.
 
 | Stufe | Mittel | Wann |
 |---|---|---|
-| **1 — Im Prompt** | gib dem Agenten gleich im Prompt einen Check, den er selbst laufen lässt (*„… und beende erst, wenn `pytest` grün ist"*) — und **verlange Evidenz** (Test-Output, `git status`/`git diff`), statt „ist erledigt" zu glauben | funktioniert für **jeden** Task — heute, ohne Setup |
+| **1 — Im Prompt** | gib dem Agenten gleich im Prompt einen Check, den er selbst laufen lässt (*„… und beende erst, wenn `pytest` grün ist"*) — und **verlange Evidenz** (Test-Output, `git status`/`git diff`), statt „ist erledigt" zu glauben | für eine Aufgabe mit vorhandenem, passendem Check; nötige Tools müssen eingerichtet sein |
 | **2 — Über eine Session** | denselben Check als **`/goal`-Condition** hinterlegen; ein Evaluator prüft nach jedem Turn automatisch | für einen **unbeaufsichtigten** Lauf (→ Modul 8) |
 | **3 — Deterministisches Gate** | den Check als **Stop-Hook-Skript** verdrahten | wenn er **exakt/reproduzierbar** sein muss (→ Modul 8) |
 | **4 — Zweite Meinung** | ein **Verifikations-Subagent** in eigenem Context-Window prüft Plan/Diff **gegen** das Ziel (Writer/Reviewer) | bei **riskanten** Änderungen — ein frisches Modell soll das Ergebnis widerlegen (→ Modul 8) |
 
-Das ist dieselbe 4-Stufen-Logik wie in [Modul 8](./08-agenten-skalierung.md) — Modul 7 zeigt die *Haltung*, Modul 8 die *Mechanik* (`/goal`, Stop-Hooks, Subagents) fürs Skalieren. **Evidenz verlangen** ist kein eigener Sprosse, sondern die Konstante, die durch alle Stufen zieht: auf jeder Stufe glaubst du dem belegten Ergebnis, nicht der Behauptung.
+Diese vier technischen Möglichkeiten werden in [Modul 8](./08-agenten-skalierung.md) vertieft. Die [englische Verification-Leiter](../../tracks/05-verify-and-loop/01-verification-ladder.md) fasst das Lernen in drei Schritte: Selbstprüfung des Agenten, eigene Prüfung und frische Gegenprüfung. Die Nummern sind deshalb nicht austauschbar.
 
-> **Merksatz:** Verifikation ist eine Leiter, kein Schalter: erst den Agenten sich selbst prüfen lassen (und Evidenz verlangen), dann den Check über eine Session bzw. ein Skript automatisieren, bei hohem Risiko einen zweiten Agenten gegenprüfen lassen. Mehr Autonomie ⇒ härteres Gating davor. Das ist die operative Form von „Vibe Engineering".
+Bei jeder Variante gilt: Ein grüner Check belegt nur, was er tatsächlich prüft. Menschen prüfen fachlichen Sinn und mögliche Folgen. Ein zweiter Agent kann Fehler finden, aber weder Richtigkeit noch dein persönliches Verständnis bestätigen.
 
 ---
 
 ## 9. Context-Management — wann eine neue Session?
 
-Der häufigste Anfängerfehler: alles in **eine** endlose Session kippen. Die Heuristik:
+Eine neue Session hilft bei einem Themenwechsel. Halte vorher Ziel, letzte Änderungen, durchgeführte Checks und offene Fragen in einer Datei fest. Dann kann der nächste Versuch daran anknüpfen:
 
-- **`/clear` zwischen unzusammenhängenden Tasks.** Neue, unabhängige Aufgabe → frischer Schreibtisch.
+- **`/clear` zwischen unabhängigen Aufgaben**, nachdem der Arbeitsstand gesichert ist.
 - **Bei einem tiefen Deep-Dive in *ein* komplexes Problem** darf der Context bewusst akkumulieren — hier ist das gesammelte Wissen wertvoll. Mit der Zeit entwickelt man ein Gefühl dafür (*„Develop your intuition"*).
 - **Subagents für lese-intensive Recherche/Verifikation:** Sie laufen in einem **eigenen Context-Window** und berichten nur eine Zusammenfassung zurück → der Haupt-Context bleibt sauber (eigener Mini-Abschnitt direkt unten).
 - **Spec-first-Pattern:** erst den Agenten *dich interviewen* lassen → das Ergebnis in eine `SPEC.md` schreiben → eine **frische Session** zum Implementieren öffnen. Trennt „Was wollen wir?" sauber von „Bauen wir es".
@@ -400,7 +396,7 @@ Ein **Subagent** ist ein **zweiter Agent**, den der Hauptagent für eine Teilauf
 
 Wichtig ist die **Lese- vs. Schreibrechte**-Unterscheidung:
 
-- **read-only** (der Normalfall): Der Subagent darf nur lesen/recherchieren/prüfen — er ändert nichts. Das ist der sichere Default für „schau dir das an und berichte".
+- **read-only** (für Recherche und Review passend): Der Subagent darf nur lesen/recherchieren/prüfen — er ändert nichts. Das ist der sichere Default für „schau dir das an und berichte".
 - **write-fähig:** Der Subagent darf auch Dateien ändern — mächtiger, aber mehr Aufsicht nötig (die Verantwortung bleibt beim Menschen).
 
 **Wann lohnt ein Subagent?** Drei typische Fälle:
@@ -408,7 +404,7 @@ Wichtig ist die **Lese- vs. Schreibrechte**-Unterscheidung:
 | Einsatz | Wozu | Lese-/Schreibmodus |
 |---|---|---|
 | **Recherche** | „Finde heraus, wie X im Repo funktioniert" — der Subagent durchforstet viele Dateien, der Hauptagent bekommt nur das Ergebnis | read-only |
-| **Review / Verifikation** | ein *frischer* Agent prüft Plan oder Diff **gegen** das Ziel (siehe [Verification-Leiter](#die-verification-leiter), Stufe 4) — unvoreingenommen, weil er das Reasoning des Autors nicht kennt | read-only |
+| **Review / Verifikation** | ein *frischer* Agent prüft Plan oder Diff **gegen** das Ziel (siehe [Verification-Leiter](#die-verification-leiter), Stufe 4) — mit einem frischen Blick, der trotzdem irren kann | read-only |
 | **Fan-out** | mehrere Subagents arbeiten **parallel** an unabhängigen Teilaufgaben → mehr Durchsatz | je nach Aufgabe |
 
 > **Merksatz:** Subagent = ausgelagerte Teilaufgabe in **eigenem Context**, die nur eine **Summary** zurückgibt. Genau dieser Baustein ist es, den [Modul 8](./08-agenten-skalierung.md) **multipliziert** — vom einen Subagent zu vielen parallelen Agenten (Fan-out, Writer/Reviewer). *(Quelle: Anthropic Claude-Code-Doku — `code.claude.com/docs/en/sub-agents`, Stand 06/2026.)*
@@ -457,10 +453,10 @@ Das ist die Grundlage für das Skalieren in [Modul 8](./08-agenten-skalierung.md
 ## Q&A
 
 **Ist ein Agent dasselbe wie ChatGPT/ein Chatbot?**  
-Nein. Ein Chatbot antwortet und wartet. Ein Coding-Agent **handelt** — liest Dateien, führt Befehle aus, ändert Code, verifiziert und macht weiter, während du zusiehst und lenkst. Das nennen wir den **Loop**.
+Ein Agent kann Werkzeuge nutzen und mehrere Arbeitsschritte ausführen. Eine einfache Chat-Aufgabe endet bei der Antwort. Manche Chat-Produkte bieten auch Agentenfunktionen; prüfe deshalb die tatsächlichen Zugriffe.
 
 **Was ist der Unterschied zwischen CLI und MCP — in einem Satz?**  
-**CLI** ist das Terminal, in dem der Agent läuft und normale Werkzeuge (`gh`, `glab`) bedient; **MCP** ist ein genormter Andock-Standard, um dem Agenten zusätzliche externe Tools/Datenquellen (DBs, Figma, Monitoring) einzustöpseln.
+Eine **CLI** bedienst du mit Textbefehlen im Terminal; **MCP** verbindet einen Agenten über ein gemeinsames Protokoll mit zusätzlichen Tools und Datenquellen.
 
 **Wann nehme ich CLI, wann MCP?**  
 **Gibt es ein CLI (`gh`, `glab`)? → CLI** — es ist context-effizient und der Agent kann es bereits. **Kein brauchbares CLI, aber strukturierter Zugriff nötig? → MCP-Server.** CLI ist der Default, MCP die Ausnahme für Spezialfälle.
@@ -490,10 +486,10 @@ Weil das **Context-Window** (sein Arbeitsgedächtnis) begrenzt ist und sich schn
 Fünf Posten: der System-Prompt des Tools, die Tool-Definitions (jedes verfügbare Tool inkl. seiner Description), `CLAUDE.md`/Regeln, der bisherige Gesprächsverlauf und die Tool-Outputs (was Befehle und Datei-Reads zurückliefern). `/context` zeigt dir, wie sich das aktuell auf diese fünf Posten aufteilt. Mehr dazu in Modul 10 (Kontext-Engineering).
 
 **Der Agent ist mitten in einer falschen Aktion — wie stoppe ich, ohne alles zu verlieren?**  
-Drück **`Esc`**: Das stoppt die laufende Aktion, der bisherige Context **bleibt erhalten**. Dann kurz korrigieren. Ist der ganze Versuch in die Sackgasse gelaufen, hilft **`Esc Esc` / `/rewind`** auf einen früheren Checkpoint.
+Drück **`Esc`**: Das stoppt die laufende Aktion, der bisherige Context **bleibt erhalten**. Prüfe, was bereits ausgeführt wurde. Sichere den Stand vor einem **`Esc Esc` / `/rewind`**; dieser Rücksprung erfasst nicht beliebige Shell- oder externe Änderungen.
 
 **Wann sollte ich eine neue Session starten statt weiterzumachen?**  
-Bei einem **Themenwechsel** immer (`/clear`). Auch wenn du dich am selben Punkt schon **mehr als zweimal** korrigiert hast: lieber neu aufsetzen mit besserem Prompt als endlos nachbessern. Bei einem zusammenhängenden Deep-Dive in *ein* Problem darf der Context dagegen bewusst wachsen.
+Bei einer unabhängigen neuen Aufgabe oder wiederholt erfolglosen Korrekturen kann eine frische Session helfen. Sichere vorher Stand und Fehlversuche. Geht es weiter um dasselbe Problem und liefert der Versuch Fortschritte, darf der Kontext erhalten bleiben.
 
 **Brauche ich Plan Mode immer?**  
 Nein. Plan Mode lohnt bei größeren Änderungen, in denen sich der Agent verlaufen könnte. Claude Code und Codex haben beide Plan-Mechaniken; wenn die konkrete Taste abweicht, bleibt das Prinzip gleich: erst verstehen und planen, dann ändern. Faustregel: *„If you could describe the diff in one sentence, skip the plan."* — bei Ein-Satz-Diffs direkt machen.

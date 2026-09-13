@@ -1,23 +1,23 @@
 # The adoption ladder: where are you today?
 
+Look at one task you recently did with AI. Use the five descriptions below to choose one habit to try next, such as deciding how to check a result before asking the agent to build it.
+
 | | |
 |---|---|
 | **Prerequisites** | [Model, context, agent](01-model-context-agent.md) · [Which tool for what](02-which-tool-for-what.md) |
 | **Time** | ~15 min |
-| **Outcome** | After this unit you can place yourself on a five-level ladder of working with AI tools, name what holds you back, and pick one move to the next level. You can repeat the self-check later and compare. |
+| **Outcome** | Describe how you use AI today, name a difficulty and choose one change to try. Keep a note so you can compare later. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-"Am I using this right?" is a question almost everyone asks and nobody can answer in general. A ladder makes it concrete. It shows where you are, what the next level looks like, and what actually gets you there.
+You might use AI for answers, build something together or hand over a task to check afterwards. These require different habits. A clear task and a way to test the result help you decide what to delegate.
 
-The surprising part: moving up is rarely about knowing more tool features. It is about trusting your checks. As long as you cannot verify a result, you have to watch every step. Once you can, you can look away.
-
-The ladder is a map, not a ranking. Level 1 is a fine place to be for many tasks. You do not need a technical background to move up: the steps are about checks and habits, not about code.
+There is no need to use more automation for every task. Level 1 is enough for many of them. Choose what helps your work; these descriptions are not a ranking of people.
 
 This is the **Build Sessions learner-habits ladder**, model ID `build-sessions-habits-v1` (defined on this page, checked 2026-09-13). It is a local reflection tool, not a published study or qualification.
 
-The [German adoption model](../../modules/de/08-agenten-skalierung.md) describes a different scale, from Gated to AI-native. Its numbers are not equivalent to these learner habits. Record the model ID with your reflection and never compare scores across those scales. Demonstrate individual skills with [learning checkpoints](../../learning/checkpoints.md), not a higher self-rating.
+The [German adoption model](../../modules/de/08-agenten-skalierung.md) uses a different scale, from Gated to AI-native. Keep the model ID with your note so the two are not confused. A self-rating does not show what you can do; use the [learning questions](../../learning/checkpoints.md) to practise explaining individual skills.
 
 ## Do it
 
@@ -40,11 +40,11 @@ The [German adoption model](../../modules/de/08-agenten-skalierung.md) describes
 | 2 | 3 | Write "done when" before you start, and ask for evidence instead of watching. See [Spec interview](../03-plan-first/01-spec-interview.md) and [Verification ladder](../05-verify-and-loop/01-verification-ladder.md). |
 | 3 | 4 | Turn your checks into something repeatable: a review prompt you reuse, a test the agent runs, a fixed [work cycle](../05-verify-and-loop/04-one-work-cycle.md). |
 
-On every level, agent work gets the same quality bar as human work. Moving up means the checks become automatic. It never means the checks get looser.
+Keep the same requirements for the result at every level. Making a check repeatable does not make it less necessary.
 
 ### 3. Self-check (5 min)
 
-Copy this into a note and fill it in. Keep the note. Repeat the check after a few weeks and compare.
+Use this short note to record an example and one change to try. Come back after a few weeks to see what changed.
 
 ```text
 Date:
@@ -58,7 +58,7 @@ Tasks where I am happy to stay on a lower level, and why:
 
 ### 4. Compare, if you are in a group (5 min)
 
-Share your level and your evidence with one other person. Not your score, your example. Ask each other one question: "What would you need to trust the result without watching?"
+Describe your example to one other person. Ask each other: "How would you check the result without watching every step?"
 
 ## Done when
 
@@ -69,10 +69,10 @@ Share your level and your evidence with one other person. Not your score, your e
 
 ## Data note
 
-Your evidence examples stay generic. Describe the kind of task ("sorted a table of invented orders"), not the real customer, colleague or file. The self-check note is yours; keep it out of shared tools if it mentions real work.
+Describe the task, for example "sorted a table of invented orders", without identifying customers, colleagues or files. Keep your note private if it mentions real work.
 
 ## Next
 
-[Role archetypes](04-role-archetypes.md): the ladder says how you work with agents, the archetypes say what kind of impact you have.
+[Role archetypes](04-role-archetypes.md): find the kinds of work your project needs and who will do them.
 
 Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

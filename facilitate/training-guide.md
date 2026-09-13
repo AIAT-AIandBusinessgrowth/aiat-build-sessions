@@ -12,7 +12,7 @@ Finish this sentence: “After this session, participants can ___.” For exampl
 | Has built a prototype | [Check an agent's work](../tracks/05-verify-and-loop/01-verification-ladder.md) | Do they try the feature themselves? |
 | Already uses several agents | [Parallel agents](../tracks/08-advanced/03-parallel-agents.md) | Can they divide the work and check that the pieces work together? |
 
-Ask what people have tried before. Let them change activities if one is too easy or too much. For more questions, use [checkpoints](../learning/checkpoints.md) B02, I02 and E01 respectively.
+Ask what people have tried before. Let them change activities if one is too easy or too much. For more practice, use the [room, export and parallel-work questions](../learning/checkpoints.md) (B02, I02 and E01). The codes just help you find a question; learners do not need to memorise them.
 
 ## Prepare a run someone else can repeat
 
@@ -40,7 +40,7 @@ The [personal-data search exercise](../exercises/find-the-personal-data/README.m
 
 Listen to how someone reached an answer. If they needed the solution, give them a different example to try themselves. A copied answer or attendance alone does not show that they can do it.
 
-For a practical task, watch the check or inspect its output. Say what you saw: “You tried nine people and spotted that one notebook was missing.” Avoid broad labels such as “expert”. The [coach criteria](../learning/tutor-criteria.md) help with formal checkpoint records; keep them out of the opening task.
+For a practical task, watch the check or inspect its output. Say what you saw: “You tried nine people and spotted that one notebook was missing.” Avoid broad labels such as “expert”. If you need to record individual attempts, the [coach criteria](../learning/tutor-criteria.md) explain what to look for. Keep them out of the opening task.
 
 These exercises do not certify a person or approve their app for real use. For that, use the [production checklist](../tracks/08-advanced/06-poc-to-production-checklist.md) and your organisation's process.
 

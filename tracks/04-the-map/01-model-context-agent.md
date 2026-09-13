@@ -1,37 +1,35 @@
 # Model, context, agent: three words that explain most surprises
 
+Check which model your tool uses, what information it can see and what actions it can take. You will learn when to look up a fact, give clearer instructions or start a fresh chat.
+
 | | |
 |---|---|
 | **Prerequisites** | [Your first build](../01-first-build/01-your-first-build.md) |
 | **Time** | ~15 min |
-| **Outcome** | After this unit you can explain what a model, a context window and an agent are in one sentence each, and use that to decide when to start a fresh chat. |
+| **Outcome** | Explain model, context window and agent in plain words, and start a fresh chat with the information it needs. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-Two people use the same tool on the same task. One gets something useful, the other gets nonsense. Most of the time the tool is not the reason. The reason is one of three things: which model was running, what was in its context, and whether it could act and check its own work.
-
-You do not need to know how any of this works inside. You need a working picture, so you know which lever to pull.
+The same tool can give different results when the model, supplied information or available actions change. Knowing these three parts helps you find what to change when an answer is wrong or a task gets stuck.
 
 ## Do it
 
 ### 1. The model: a text predictor with a cutoff date
 
-A language model predicts the next piece of text, over and over, based on patterns from a very large amount of training text. That is why it writes fluent answers. It is also why it can write fluent wrong answers.
+A language model generates text by predicting the next piece, based on patterns learned during training. A fluent answer can still be wrong.
 
 Three things follow from that:
 
-- **It has a knowledge cutoff.** It learned from text up to a certain date and knows nothing after it, unless a tool looks things up for it. Vendors publish the cutoff per model, for example on [Anthropic's model overview](https://platform.claude.com/docs/en/about-claude/models/overview) (checked 2026-09-13).
-- **Different models differ a lot.** Large and small, new and old, fast and careful. Inside one tool you can often switch models. Results change with them.
-- **It sounds equally sure when it is wrong.** Confidence in the wording tells you nothing.
+- **It has a knowledge cutoff.** Its training does not reliably cover events after that date. Newer facts need to come from information you provide or a tool that looks them up. Vendors publish the cutoff per model, for example on [Anthropic's model overview](https://platform.claude.com/docs/en/about-claude/models/overview) (checked 2026-09-13).
+- **Models differ.** They vary in speed and capabilities. Many tools let you switch models, which can change the result.
+- **Confident wording does not prove accuracy.** Check the answer itself.
 
-> Analogy: a very well-read colleague who has been off the grid since a certain date. Fast, helpful, and sometimes convincingly wrong.
-
-**The model gap.** When your results differ from a colleague's, compare the models first. Then compare the prompts. Blame the tool last.
+**The model gap.** If you and a colleague get different results, compare the models, prompts and supplied files.
 
 ### 2. The context window: finite working memory
 
-The context window is everything the model can see in one conversation at once:
+The context window holds the information available to the model for a response:
 
 - your messages and its replies
 - files, pages and screenshots you added
@@ -40,19 +38,17 @@ The context window is everything the model can see in one conversation at once:
 
 It is measured in tokens, which are pieces of words. It is large but finite. As of 2026-09-13, Anthropic lists 1M tokens for its larger current models (roughly 555k words) and 200K tokens for its smallest one (roughly 150k words) ([model overview](https://platform.claude.com/docs/en/about-claude/models/overview), checked 2026-09-13). Other vendors publish their own numbers.
 
-Size is not the whole story. Anthropic's own guide puts it this way: "Claude's context window fills up fast, and performance degrades as it fills" ([Claude Code best practices](https://code.claude.com/docs/en/best-practices), checked 2026-09-13). That matches what you will see in any tool:
+More room does not guarantee a better answer. Anthropic warns that performance can get worse as the context fills ([Claude Code best practices](https://code.claude.com/docs/en/best-practices), checked 2026-09-13). In a long chat, watch for:
 
-- early instructions get lost
-- old wrong attempts keep steering new answers
-- the agent mixes up things from two different topics
+- early instructions no longer being followed
+- new answers repeating an earlier mistake
+- the agent mixing up two different topics
 
-**So start fresh on purpose.** When the topic changes, or the chat feels muddled, write the current state into a short file or note (what it is, what is done, what is next). Open a new chat or session. Paste the state. Continue.
-
-> Analogy: the context window is a desk, not an archive. A few clear papers on the desk beat a pile where the important page is at the bottom.
+**Start fresh when needed.** When the topic changes or the chat mixes things up, write a short note: what the project is, what is done and what comes next. Paste it into a new chat or session.
 
 ### 3. The agent: model plus tools plus a loop
 
-A **chatbot** answers and waits. You ask, it writes, you do the rest.
+A **chatbot** can answer a question and wait for you to act. Some chat tools also offer agent features.
 
 An **agent** works in a loop:
 
@@ -63,14 +59,15 @@ An **agent** works in a loop:
 
 Browser app builders are agents too. They write code, run it, show you a preview and fix their own errors. CLI coding agents do the same with the files on your laptop.
 
-> Analogy: a chatbot is a help desk that gives advice. An agent is an intern with hands and a checklist. You still decide what "done" means, and you still check the work.
+You still decide what the result must do and check that it does it.
 
 ### 4. Try it (5 min)
 
 1. Ask your tool: "Which model are you, and what is your knowledge cutoff?"
-2. Compare the answer with the vendor's model page. If they disagree, you just saw point 1 in action.
-3. Open your longest chat or session. Find one early instruction the tool stopped following. That is point 2.
-4. Write one sentence each for model, context window and agent, in your own words, and say them to someone.
+2. Compare the answer with the model shown in the tool and the vendor's model page. If they disagree, do not rely on the model's claim about itself.
+3. In a long practice chat, look for an earlier instruction that is no longer followed. You may not find one; do not invent a failure.
+4. Save the current project state in a short note and use it to start a fresh chat.
+5. Explain model, context window and agent in one sentence each, using your own words.
 
 ## Done when
 

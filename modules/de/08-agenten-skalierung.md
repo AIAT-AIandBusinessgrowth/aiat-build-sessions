@@ -2,49 +2,50 @@
 
 > Deutsche Fassung · Stand 2026-09-13 · Englischer Lernpfad: [START-HERE](../../START-HERE.md)
 
-⏱ ~65 min · **Danach kannst du:** mit der 4-Wege-Matrix begründet zwischen `/loop`, `/goal`, Monitor-Tool und Cloud-Routines wählen, zwei Agenten in Git-Worktrees parallel arbeiten lassen, ohne dass sie sich in die Quere kommen, einen Writer/Reviewer-Durchgang aufsetzen und einen entlaufenen Lauf gezielt abbrechen.
+⏱ ~65 min mit allen Vertiefungen · **Danach kannst du:** für eine längere oder parallele Aufgabe passende Werkzeuge wählen, Zugriffe und Laufzeit begrenzen und die Ergebnisse getrennt prüfen.
 
-**Setzt voraus:** [Modul 7 — Agenten-Grundlagen](./07-agenten-grundlagen.md) — der Loop, Plan Mode und die Verification-Leiter.
+**Setzt voraus:** Du hast mit einem Agenten eine kleine Aufgabe bearbeitet und das Ergebnis selbst geprüft. Grundlagen und Plan Mode erklärt [Modul 7](./07-agenten-grundlagen.md).
 
 ## Worum es geht
 
-Modul 7 erklärt **einen** Agenten und seinen Loop (Context sammeln → planen → handeln → verifizieren → wiederholen). Dieses Modul fragt: **Wie multipliziert man einen Agenten zu vielen — ohne die Kontrolle zu verlieren?**
+Ein Agent bearbeitet eine Aufgabe. Nun möchtest du vielleicht eine längere Arbeit laufen lassen, auf ein Testergebnis warten oder eine zweite Aufgabe parallel erledigen. Dieses Modul hilft dir zu entscheiden, ob das nützt und wie du den Überblick behältst.
 
-Darum geht es: einen Agenten unbeaufsichtigt durchlaufen lassen (`/goal`, `/loop`, Stop-Hooks), mehrere parallel arbeiten lassen (Worktrees, Fan-out), Ergebnisse von einem zweiten Agenten gegenprüfen lassen (Writer/Reviewer) und das Ganze auf Team-/Org-Ebene heben (geteilte `CLAUDE.md`, Skills, Permission-Allowlists). Es betrifft alle, die Agenten ernsthaft im Team einsetzen — Devs wie Nicht-Devs, die verstehen wollen, **wo die Leitplanken sind**.
+**Ein kleiner erster Versuch:** Lass einen Agenten eine Änderung in deiner Übungskopie vorbereiten. Bitte eine frische Session, nur diese Änderung gegen den Auftrag zu prüfen und konkrete Fehlerstellen zu nennen. Vergleiche die Hinweise selbst mit dem Ergebnis. Das ist das Writer/Reviewer-Verfahren aus Abschnitt 5; zwei Sessions reichen dafür.
 
-**Roter Faden (gilt aus Modul 7 weiter):** „Teach the loop, not the buttons." Die konkreten Befehle unten sind die flüchtige Schicht; das Muster dahinter — **delegieren, dann Evidenz prüfen** — überlebt jeden Tool-Wechsel.
+Du musst nicht das ganze Modul durcharbeiten. Wähle den Abschnitt zu deiner nächsten Aufgabe:
 
-> **Merksatz:** Skalierung erhöht das Output-Volumen, nicht das Vertrauen. Je mehr ein Agent unbeaufsichtigt produziert, desto wichtiger wird Verifikation — Accountability bleibt beim Menschen.
+- **Auf etwas warten oder wiederholt prüfen:** Abschnitt 2.
+- **Zwei unabhängige Aufgaben gleichzeitig bearbeiten:** Abschnitt 4.
+- **Eine zweite Meinung einholen:** Abschnitt 5.
+- **Anweisungen und Zugriffe im Team teilen:** Abschnitt 7.
 
-> **Merksatz für Nicht-Devs:** Sie müssen hier nichts selbst tippen. Lesen Sie es als „Was wird möglich, wenn ein Team Agenten ernsthaft einsetzt — und wo sind die Leitplanken?" Spec-, Recherche- und Verifikations-Loops funktionieren auch ohne eine Zeile Code zu schreiben.
+Vor jedem längeren Lauf klärst du erlaubte Dateien und Aktionen, passende Checks, Kosten- oder Zeitgrenzen und wie du ihn stoppst. Im Kurs bleiben die Daten erfunden oder öffentlich ohne Personenbezug. Agenten dürfen Ergebnisse prüfen, aber nicht behaupten, ein Mensch habe dadurch etwas verstanden.
+
+Die folgenden Tabellen und Befehle sind zum Nachschlagen. Claude-spezifische Befehle funktionieren nicht automatisch in Codex; Codex-Beispiele sind ausdrücklich bezeichnet.
 
 ### Einordnung: Die Adoption-Leiter (0–4) — wo steht ein Team?
 
-Bevor es in die Mechanik geht, ein Orientierungsrahmen: AI-Adoption lässt sich als **Leiter mit fünf Stufen** beschreiben. Die Metrik ist die Zahl der Agents, die eine Person parallel beschäftigt — und der Engpass je Stufe ist **nie das Tool, sondern Vertrauen in Verifikation + Aufmerksamkeit**. Hier tool-agnostisch übersetzt (gilt für alle gängigen Coding-Agenten):
+Diese optionale Tabelle beschreibt ein mögliches Bild von Teamarbeit mit vielen Agenten. Die Zahlen sind **unbelegte Größenordnungen zur Illustration, keine Messwerte und keine Lernziele**. Ein Team mit einem gut eingesetzten Agenten kann passend arbeiten. Mehr Agenten bedeuten zunächst mehr Kosten, Koordination und Prüfaufwand.
+
+Die [englische Adoption-Leiter](../../tracks/04-the-map/03-adoption-ladder.md) beschreibt dagegen Arbeitsgewohnheiten beim Lernen. Ihre Nummern haben eine andere Bedeutung und sind nicht mit dieser Tabelle austauschbar.
 
 | Stufe | Name | Agents | Woran du's erkennst | Dein Engpass |
 |---|---|---|---|---|
-| 0 | Gated | 0 | Nur Chat-Zugang; Agents/CLI-Tools sind gesperrt oder nur über zähe Freigabe-Prozesse erreichbar. | Freigabe-Prozesse; Kosten-pro-Token-Denken statt Outcome-Denken. |
-| 1 | Assisted | ~1 | Du + ein Agent als Pair — du liest praktisch jede Änderung, bevor sie landet; die Arbeit ist synchron (du sitzt daneben). | Deine Aufmerksamkeit: wenig Vertrauen in den Output, keine Selbst-Verifikation — du kannst nie wegschauen. |
+| 0 | Gated | 0 | Nur Chat-Zugang; Agents/CLI-Tools sind nicht eingerichtet oder nicht freigegeben. | Klären, ob ein zusätzlicher Zugriff gebraucht wird und zulässig ist. |
+| 1 | Assisted | ~1 | Du + ein Agent als Pair — du liest praktisch jede Änderung, bevor sie landet; die Arbeit ist synchron (du sitzt daneben). | Aufmerksamkeit und passende Checks für die aktuelle Aufgabe. |
 | 2 | Parallel | ~10 | Mehrere Agents parallel, je eigener Worktree (→ Abschnitt 4); der Agent prüft sich selbst (Tests/Build/Lint), du liest finale Diffs statt Tastenanschläge. | Output-Review: du schreibst weniger selbst und prüfst dafür mehrere Ströme — Steering wird der Engpass. |
 | 3 | Supervised Autonomy | ~100 | Agents stoßen Arbeit proaktiv an; Wartung/Cleanup läuft kontinuierlich im Hintergrund (→ Abschnitte 1–2). | Vertrauen in den Loop + Entscheidungs-Durchsatz; Token-Effizienz wird zur Führungsaufgabe. |
 | 4 | AI-native | ~1.000+ | Der Loop ist geschlossen: die meisten Agents werden von Agents gestartet; du steuerst per Intent und schaust nur bei Ausnahmen hin. | Automatisierbare Arbeit im großen Stil identifizieren und je Arbeitstyp die richtigen Guardrails setzen. |
 
-**Der Sprung 1 → 2 ist der wichtigste**: mehr als ein Agent gleichzeitig · ein **Self-Verification-Loop, dem du traust** (Tests + Build + Lint + E2E) · Auto-Mode statt Permission-Klicks (→ Abschnitt 7) · Review automatisieren. Der Sprung 2 → 3 danach: der Agent holt sich Kontext selbst (Code, Wikis, Diskussionen), Arbeit wird in Loops/Routinen zerlegt (→ Abschnitte 1–2), Agents starten Agents (→ Abschnitt 4).
+Der nächste sinnvolle Versuch ist meist klein: zwei getrennte Aufgaben, ein bereits erprobter Check und Zeit für die Prüfung beider Ergebnisse. Passe Zugriffe und Modellwahl an die Aufgabe an. Auto Mode oder höhere Agentenzahlen sind keine Voraussetzung für Fortschritt.
 
-> **Merksatz:** Aufsteigen heißt nicht „mehr Agents anwerfen", sondern **Vertrauen bauen**: erst wenn der Self-Verification-Loop trägt, lohnt die nächste Stufe. Das ist derselbe Gedanke wie der Merksatz oben — Skalierung erhöht das Output-Volumen, nicht das Vertrauen.
-
-> **Guardrail (gilt auf jeder Stufe):** Für Agent-Code gilt **dieselbe Qualitätsmesslatte wie für Menschen-Code** — Review, Tests und Security-Blick werden beim Aufsteigen automatisiert, nicht gelockert.
-
-> **Mindset-Shift auf Stufe 3 (auch für Nicht-Devs das Mitnehm-Stück):** Aus „hast du den Code gelesen?" wird „**welcher Kontext hat dem Modell gefehlt — und wie lösen wir das dauerhaft?**". Fehlender Kontext wird persistiert (CLAUDE.md, Skills, Second Brain) statt jedes Mal neu erklärt — und die Qualitätsfrage lautet: „Hätte ein Engineer das so gemacht?"
-
-*(Die Agent-Zahlen je Stufe sind Größenordnungen zur Orientierung, keine Messwerte, ohne öffentliche Quelle.)*
+Review, Tests und Datenregeln gelten auch bei mehr Automatisierung. Wenn sich ein Fehler wiederholt, prüfe nicht nur den Prompt: Vielleicht fehlt Information, ein Check ist unzureichend oder das Tool passt nicht. Halte die bestätigte Erkenntnis in den Projektanweisungen fest, damit eine neue Session sie nachlesen kann.
 
 ---
 
 ## 1. Loops & Headless-Mode — ein Agent ohne Sitzung
 
-Im Normalfall arbeitet man mit einem Agenten **interaktiv**: man tippt, sieht zu, lenkt. Der **Headless-Mode** dreht das um — der Agent läuft **ohne UI/Session** durch, gesteuert von einem Skript statt von einem Menschen.
+Im Normalfall arbeitet man mit einem Agenten **interaktiv**: man tippt, sieht zu, lenkt. Im **Headless-Mode** erhält er einen Auftrag ohne interaktive Unterhaltung, etwa aus einem Skript. Das ist hilfreich für wiederkehrende, bereits erprobte Aufgaben.
 
 | | Interaktiv | Headless / non-interactive |
 |---|---|---|
@@ -65,7 +66,7 @@ Damit ein Skript die Agenten-Antwort weiterverarbeiten kann, braucht es ein **ma
 
 ### Codex-Pendant: `codex exec` im Detail
 
-`codex exec` ist 1:1 das Codex-Gegenstück zu `claude -p` — „dieselben Loops, andere Tasten". Es streamt Fortschritt auf **stderr**, die finale Message auf **stdout**:
+`codex exec` dient wie `claude -p` dazu, einen Auftrag ohne interaktive Unterhaltung auszuführen. Die Optionen und Ausgabeformate unterscheiden sich. Es streamt Fortschritt auf **stderr**, die finale Message auf **stdout**:
 
 ```bash
 codex exec "Migriere foo.py auf die neue API. Antworte mit OK oder FAIL."   # finale Message → stdout
@@ -88,7 +89,7 @@ codex exec --ephemeral "…"             # keine Rollout-Dateien auf Disk hinter
 
 ### Welches Werkzeug, wann? — die 4-Wege-Matrix (hier starten)
 
-Bevor wir in die Befehle einsteigen: Vier verwandte Primitive halten einen Agenten am Laufen — sie unterscheiden sich **nur darin, was die nächste Aktion auslöst**. Diese eine Achse beantwortet „wann nutze ich was":
+Bevor wir in die Befehle einsteigen: Vier Werkzeugtypen können Arbeit fortsetzen oder erneut starten. Die Tabelle unterscheidet zuerst, **was die nächste Aktion auslöst**; `/loop` steht mit seinen zwei Varianten darin. Laufzeitumgebung, Kosten und Zugriffsrechte sind weitere Unterschiede:
 
 | Werkzeug | Was triggert die nächste Aktion | Typischer Use-Case |
 |---|---|---|
@@ -100,9 +101,7 @@ Bevor wir in die Befehle einsteigen: Vier verwandte Primitive halten einen Agent
 
 > **Faustregel in einem Satz:** **`/loop`** pollt (fest oder self-paced), **Monitor** wird *benachrichtigt*, **Routines** laufen *auch ohne dich*, **`/goal`** wartet auf einen *Zustand*. Die Details zu jedem Werkzeug stehen unten; diese Matrix ist die Landkarte. *(Quelle: code.claude.com/docs/en/goal#compare-ways-to-keep-a-session-running · scheduled-tasks#compare-scheduling-options, Stand 06/2026)*
 
-> **Die volle Leiter (Merksatz):** **poll (`/loop`) → stream (Monitor) → push (Channels) → run-without-you (Routines/Cloud).** Jede Stufe spart die leeren Runden der vorigen. **Channels** (ein Dev-Detail: das Event wird von außen *hereingeschoben* — wer nicht selbst einrichtet, braucht das jetzt nicht zu vertiefen). *(Quelle: code.claude.com/docs/en/scheduled-tasks#compare-scheduling-options, Stand 2026-06-29)*
-
-> **Nicht-Devs — Lesehilfe:** Ab hier wird Abschnitt 2 zur Dev-Mechanik. Die folgenden Unterabschnitte (Versions-Anforderungen, Evaluator-Verhalten, „Mechanik (tiefere Ebene)" mit Stop-Hook) zählen erst, wenn man das selbst einrichtet. Fürs Tagesgeschäft genügt das Konzept aus der 4-Wege-Matrix oben — `/loop` pollt, Monitor wird benachrichtigt, Routines laufen ohne dich, `/goal` wartet auf einen Zustand. Wer nicht selbst tippt: Das Matrix-Konzept genügt — die Befehls- und Code-Details in den folgenden Abschnitten (auch in Abschnitt 4 Parallelität) sind für Devs gedacht und müssen dich nicht aufhalten.
+> **Bei Bedarf weiterlesen:** Die folgenden Details helfen beim eigenen Einrichten. Für die Auswahl genügt zunächst die Tabelle. **Channels** sind eine weitere Möglichkeit: Ein externes System schickt ein Ereignis an den Agenten. Das kann wiederholte Abfragen vermeiden, erfordert aber eine passende Anbindung. *(Quelle: code.claude.com/docs/en/scheduled-tasks#compare-scheduling-options, Stand 2026-06-29.)*
 
 > **Tool-Parität:** Claude Code und Codex haben beide ein `/goal`-Konzept. Die folgenden Detailangaben zu `/loop`, Stop-Hooks, Evaluator-Modell, Versionen und Routines sind **Claude-Code-spezifisch**, sofern Codex nicht ausdrücklich genannt ist. Für Codex gilt: `/goal` ist in App/IDE/CLI verfügbar — standardmäßig aktiv; falls deaktiviert, über `features.goals` wieder aktivierbar. Das Headless-Pendant zu `claude -p` heißt bei Codex `codex exec`. *(Quellen: code.claude.com/docs/en/goal · learn.chatgpt.com/docs/codex-manual.md, abgerufen 2026-07-08)*
 
@@ -116,7 +115,7 @@ Bevor wir in die Befehle einsteigen: Vier verwandte Primitive halten einen Agent
 
 > **Checkliste — tragfähige `/goal`-Condition (3 Punkte):** Eine Condition, die über viele Turns hält, hat meist (1) **einen messbaren Endzustand**, (2) **einen benannten Check**, mit dem Claude es beweisen soll (z.B. „`npm test` exits 0", „`git status` is clean"), und (3) **Constraints**, die unterwegs nicht verletzt werden dürfen (z.B. „no other test file is modified"). *(Quelle: code.claude.com/docs/en/goal, Stand 2026-07-07)*
 
-> **Best Practice (langlaufende autonome Sessions):** `/goal` synergiert mit **Auto Mode** und langer-Horizont-Modellen (Fable, Alias `fable`, ab Claude Code v2.1.257 Fable 5.1; kein Default, muss explizit per `/model` gewählt werden → [Modul 7](./07-agenten-grundlagen.md)) — beschreibe das **Outcome** (den Endzustand), nicht die einzelnen Schritte, setze das Ziel und lass den Agenten turn-über-turn zu Ende arbeiten. Die Arbeitsteilung dabei präzise: **Auto Mode entfernt die Per-Tool-Nachfragen, `/goal` die Per-Turn-Nachfragen** — die beiden sind komplementär, keins ersetzt das andere. *(Quelle: code.claude.com/docs/en/commands · https://code.claude.com/docs/en/model-config · https://code.claude.com/docs/en/goal, abgerufen 2026-07-06; Fable-Alias geprüft 2026-09-13)*
+> **Best Practice (langlaufende autonome Sessions):** `/goal` lässt sich mit **Auto Mode** und Modellen für längere Aufgaben kombinieren (Fable, Alias `fable`, ab Claude Code v2.1.257 Fable 5.1; kein Default, muss explizit per `/model` gewählt werden → [Modul 7](./07-agenten-grundlagen.md)) — beschreibe das **Outcome** (den Endzustand), nicht die einzelnen Schritte, setze das Ziel und lass den Agenten turn-über-turn zu Ende arbeiten. Die Arbeitsteilung dabei präzise: **Auto Mode entfernt die Per-Tool-Nachfragen, `/goal` die Per-Turn-Nachfragen** — die beiden sind komplementär, keins ersetzt das andere. *(Quelle: code.claude.com/docs/en/commands · https://code.claude.com/docs/en/model-config · https://code.claude.com/docs/en/goal, abgerufen 2026-07-06; Fable-Alias geprüft 2026-09-13)*
 
 `/loop` ist das **Takt-Geschwister**: statt „bis eine Condition hält" re-triggert es den Agenten **wiederkehrend**. **Faustregel: `/loop` = „prüfe alle N Minuten", `/goal` = „arbeite weiter, bis X stimmt".** `/loop` ist ein **bundled skill** mit drei Modi:
 
@@ -152,7 +151,7 @@ Bevor wir in die Befehle einsteigen: Vier verwandte Primitive halten einen Agent
 > Beende den Loop, wenn beide Befehle zweimal in Folge grün waren, spätestens nach 10 Durchläufen.
 > ```
 
-**Guards/Limits (kompakt):** max **50 scheduled tasks pro Session**; `CLAUDE_CODE_DISABLE_CRON=1` schaltet den Scheduler **und** `/loop` ganz ab. Typischer Einsatz: wiederkehrendes/intervallbasiertes **Polling während einer offenen Session** — einen Deploy beobachten, einen PR babysitten. *(Quelle: code.claude.com/docs/en/scheduled-tasks)*
+**Guards/Limits (kompakt):** max **50 scheduled tasks pro Session**; `CLAUDE_CODE_DISABLE_CRON=1` schaltet den Scheduler **und** `/loop` ganz ab. Typischer Einsatz: wiederkehrendes/intervallbasiertes **Polling während einer offenen Session** — einen Deploy beobachten, den Status eines PR prüfen. *(Quelle: code.claude.com/docs/en/scheduled-tasks)*
 
 > **Tasks per natürlicher Sprache verwalten:** Man muss keine IDs auswendig lernen — „what scheduled tasks do I have?" listet die laufenden Tasks, „cancel the deploy check job" bricht einen ab. Jeder Task trägt eine **8-Zeichen-ID**, mit der sich ein einzelner Task gezielt canceln lässt. (Intern heißen die Tools dafür `CronCreate` / `CronList` / `CronDelete` — fürs Bedienen genügt die natürliche Sprache.) *(Quelle: code.claude.com/docs/en/scheduled-tasks, Stand 2026-07-07)*
 
@@ -271,20 +270,20 @@ exit 0     # erlaubt: Claude darf stoppen
 - **Headless / `-p`-`/goal`:** `Ctrl+C`.
 - **Aktives Ziel löschen:** `/goal clear` (Aliase: `stop`, `off`, `reset`, `none`, `cancel`; auch `/clear` entfernt das Ziel).
 
-> **Hinweis — Runaway-Verhalten hängt vom Loop-Typ ab (fester Takt vs. self-paced):** Bei **festem Takt** (`/loop 5m`) gibt es keinen Low-Level-Runaway-Guard — der Loop läuft, bis man ihn stoppt oder die **7-Tage-Expiry** greift. Ein **self-paced** `/loop "<prompt>"` beendet sich dagegen selbst: Claude ruft `ScheduleWakeup` mit `stop: true` auf und bricht das anstehende Wakeup sofort ab; endet eine Iteration **ohne** neu zu planen oder zu stoppen, plant Claude Code **ein** Fallback-Wakeup (~20 min später) und beendet den Loop, wenn auch diese Iteration nicht neu plant. `Esc` unterbricht eine aktive Iteration bzw. stoppt einen wartenden Loop manuell. Trotzdem gilt: Schreib eine **Turn-Budget-Klausel in den Prompt selbst** („… oder nach N Iterationen") — endloses Iterieren ist fast immer ein **fehlendes Abschluss-Kriterium im Prompt**, kein Tooling-Bug. *(Quelle: code.claude.com/docs/en/scheduled-tasks, Stand 2026-07-07)*
+> **Hinweis — Runaway-Verhalten hängt vom Loop-Typ ab (fester Takt vs. self-paced):** Bei **festem Takt** (`/loop 5m`) gibt es keinen Low-Level-Runaway-Guard — der Loop läuft, bis man ihn stoppt oder die **7-Tage-Expiry** greift. Ein **self-paced** `/loop "<prompt>"` beendet sich dagegen selbst: Claude ruft `ScheduleWakeup` mit `stop: true` auf und bricht das anstehende Wakeup sofort ab; endet eine Iteration **ohne** neu zu planen oder zu stoppen, plant Claude Code **ein** Fallback-Wakeup (~20 min später) und beendet den Loop, wenn auch diese Iteration nicht neu plant. `Esc` unterbricht eine aktive Iteration bzw. stoppt einen wartenden Loop manuell. Trotzdem gilt: Schreib eine **Turn-Budget-Klausel in den Prompt selbst** („… oder nach N Iterationen") Ein Lauf kann auch durch unzureichende Checks, fehlenden Zugriff oder Toolfehler hängenbleiben. Prüfe die Ursache, statt nur weitere Durchläufe zu erlauben. *(Quelle: code.claude.com/docs/en/scheduled-tasks, Stand 2026-07-07)*
 
 ### Wann nutzen — die Verification-Leiter
 
-Anthropic ordnet das als **Eskalationsstufen** ein: je härter der Stopp gegated sein soll, desto mehr Setup. Jede Stufe tauscht **Setup gegen Aufmerksamkeit** — und Stufe 1 funktioniert **heute, ohne jedes Setup**, für jeden Task.
+Die Tabelle zeigt vier technische Möglichkeiten, Ergebnisse zu prüfen. Beginne mit einem passenden Check, dessen Ausgabe du selbst nachvollziehst. Zusätzliche Automatisierung braucht Einrichtung und muss ebenfalls getestet werden. Die drei Lernschritte der [englischen Verification-Leiter](../../tracks/05-verify-and-loop/01-verification-ladder.md) zählen anders; hier geht es um die technischen Werkzeuge.
 
 | Stufe | Mittel | Wann |
 |---|---|---|
-| 1 | **Im Prompt:** „lauf den Check und iteriere" | funktioniert für jeden Task — heute, ohne Setup |
+| 1 | **Im Prompt:** „lauf den Check und iteriere" | für Aufgaben mit einem vorhandenen, geeigneten Check |
 | 2 | **Über eine Session:** Check als `/goal`-Condition | Evaluator prüft nach jedem Turn; gut für einen unbeaufsichtigten Lauf |
 | 3 | **Deterministisches Gate:** Stop-Hook als Skript | wenn der Check exakt/reproduzierbar sein muss |
 | 4 | **Zweite Meinung:** Verifikations-Subagent | frisches Modell widerlegt das Ergebnis (siehe Abschnitt 5) |
 
-> **Merksatz:** `/goal` und Stop-Hook sind genau das, was einen unbeaufsichtigten Lauf korrekt zu Ende bringt, ohne dass du dabei sitzt.
+> `/goal` und Stop-Hooks können einen Lauf anhand eines Checks fortsetzen oder stoppen. Sie garantieren keine fachliche Richtigkeit: Ein unvollständiger Check kann einen Fehler übersehen.
 
 **Wann NICHT:** Für einen Ein-Satz-Fix oder einen Task, den man ohnehin live beobachtet, ist `/goal` Overkill — der Prompt-Level-Check (Stufe 1) reicht. Und: `/goal` setzt **CC v2.1.139+** voraus (Quelle: https://code.claude.com/docs/en/changelog, abgerufen 2026-09-13) — auf älteren Setups auf reine Stop-Hooks ausweichen.
 
@@ -306,7 +305,7 @@ Ein Agent kann auf dem **eigenen Laptop** laufen oder auf einer **entfernten/Clo
 
 - Wo ein Agent läuft (lokal oder Cloud) und wo das **Modell** rechnet, sind zwei getrennte Fragen.
 - Wenn du oder deine Organisation Vorgaben zum Datenstandort habt, gibt es Alternativen: Modelle, die in der EU gehostet werden, und **Open-Weight-Modelle**, die auf eigener oder EU-gehosteter Infrastruktur laufen können (Beispiele in der Q&A „Welches Modell nehme ich für eine konkrete Aufgabe?“).
-- Übungsmaterial ohne Personen- oder Kundendaten braucht keine Sonderregel. Sobald echte Daten ins Spiel kommen, gilt [Modul 11](./11-kundendaten-testdaten.md).
+- Im Kurs bleiben echte persönliche und vertrauliche Daten draußen. Für genehmigte echte Datenarbeit außerhalb des Kurses müssen zusätzlich Zweck, Verträge und Zugriffe geklärt werden; siehe [Modul 11](./11-kundendaten-testdaten.md).
 
 > **Merksatz:** Cloud ≠ automatisch US-Cloud. Datenstandort ist eine Frage des Modell-Hostings und der Verträge, nicht des Werkzeugs, das du bedienst.
 
@@ -353,7 +352,7 @@ Jede `claude`-Session läuft dann in ihrem eigenen Ordner (`cd ../feat-auth && c
 - **Vor dem Start committen oder stashen** — sonst zieht man ungesicherte Änderungen in den neuen Worktree.
 - Eine **steckengebliebene Session** (≈10 Min am selben Problem) killen und mit anderer Framing-Variante neu starten, statt sie weiterkämpfen zu lassen.
 
-> **Merksatz:** Worktrees geben jedem Agenten einen eigenen Schreibtisch — parallel arbeiten ohne sich gegenseitig die Dateien zu überschreiben. Aber: mehr Sessions = mehr Review-Last, nicht weniger.
+> Ein Worktree gibt jedem Agenten eine eigene Arbeitskopie. Teile auch die Aufgaben auf und prüfe vor dem Zusammenführen, ob die Änderungen zusammenpassen. Getrennte Ordner lösen inhaltliche Konflikte nicht automatisch.
 
 ### Fan-out at scale (Migrationen)
 
@@ -362,23 +361,23 @@ Das Muster für „dieselbe Änderung über sehr viele Dateien" (z.B. eine Frame
 1. Den Agenten **eine Task-Liste generieren** lassen (alle betroffenen Dateien).
 2. In einem **Skript über die Liste loopen** — pro Datei ein Headless-Aufruf (`claude -p` bei Claude Code, `codex exec` bei Codex; Abschnitt 1).
 3. **Erst an 2–3 Dateien verfeinern**, bis das Ergebnis stimmt — **dann** auf die volle Menge loslassen.
-4. Permissions für den unbeaufsichtigten Batch **scopen** mit `--allowedTools`, z.B. `--allowedTools "Edit,Bash(git commit *)"` — der Agent darf dann nur das, was der Job braucht. Ein verirrter Lauf kann so nur das Nötige anrichten.
+4. Permissions für den unbeaufsichtigten Batch **scopen** mit `--allowedTools`, z.B. `--allowedTools "Edit,Bash(git commit *)"` — der Agent darf dann nur das, was der Job braucht. Prüfe die tatsächlich erlaubten Aktionen; eine Tool-Allowlist ist allein noch keine Begrenzung auf bestimmte Dateien oder einen bestimmten Branch.
 
 ### Fehlerbehandlung im Fan-out (Datei 42/200 schlägt fehl)
 
-Bei 200 Aufrufen geht **irgendeiner** schief — das ist normal, nicht der Abbruchgrund. Der Trick ist ein **eingebauter Fehlerfilter**:
+Bei vielen Aufrufen musst du Fehler erkennen und betroffene Dateien wiederfinden können. Bereite die Erfassung vor dem großen Lauf vor:
 
-- Jede Invocation im Prompt anweisen, **„Return OK or FAIL"** zurückzugeben (eindeutiges Endwort statt Fließtext).
+- Jeden Aufruf anweisen, **„Return OK or FAIL"** auszugeben. Speichere zusätzlich Dateiname, Rückgabestatus und tatsächlichen Check-Output. Das Endwort allein ist nur eine Behauptung des Agenten.
 - Die fehlgeschlagenen Dateien filtern (`grep FAIL` über die gesammelten Outputs) und **gezielt nachfahren** — nicht den ganzen Batch wiederholen.
-- Weil man **erst an 2–3 Dateien verfeinert** hat, sind die FAILs meist Einzelfälle (seltene Sonderform einer Datei), nicht ein systematischer Prompt-Fehler.
+- Auch nach einem erfolgreichen Versuch an **2–3 Dateien** können systematische Fehler auftreten. Bei wiederholtem gleichen Fehler den Batch stoppen, Ursache prüfen und die betroffenen Ergebnisse erneut kontrollieren.
 
-> **Merksatz:** „Return OK or FAIL" macht aus 200 unbeobachteten Läufen eine filterbare Liste — du reviewst die 3 FAILs, nicht alle 200.
+> Nutze OK/FAIL zum Sortieren. Prüfe auch als OK gemeldete Änderungen anhand der tatsächlichen Checks und des gesamten Diffs; wenige FAILs beweisen nicht, dass der Rest korrekt ist.
 
 ### Dynamische Workflows — das Script hält den Plan
 
-Fan-out per Shell-Skript (oben) ist das Do-it-yourself-Muster. **Dynamic Workflows** sind die eingebaute Weiterentwicklung: ein **JavaScript-Script, das Subagents at scale orchestriert** — aber du schreibst es nicht selbst. **Claude schreibt das Script für die Aufgabe, die du beschreibst**, und eine **Laufzeitumgebung (Runtime)** führt es **im Hintergrund** aus, während deine Session frei bleibt. Der entscheidende Architektur-Unterschied: **Zwischenergebnisse leben in Script-Variablen statt im Context Window** — Claudes Context hält am Ende nur das Endergebnis, nicht die 200 Einzelbefunde. Jeder Run schreibt das generierte Script zudem als Datei ins Session-Verzeichnis (`~/.claude/projects/…`) — man kann es lesen, gegen einen früheren Run diffen oder editiert neu starten lassen. *(Quelle: https://code.claude.com/docs/en/workflows, abgerufen 2026-07-06)*
+Fan-out per Shell-Skript (oben) ist das Do-it-yourself-Muster. **Dynamic Workflows** sind die eingebaute Weiterentwicklung: ein **JavaScript-Script, das Aufgaben auf Subagents verteilt und Ergebnisse zusammenführt** — aber du schreibst es nicht selbst. **Claude schreibt das Script für die Aufgabe, die du beschreibst**, und eine **Laufzeitumgebung (Runtime)** führt es **im Hintergrund** aus, während deine Session frei bleibt. Der entscheidende Architektur-Unterschied: **Zwischenergebnisse leben in Script-Variablen statt im Context Window** — Claudes Context hält am Ende nur das Endergebnis, nicht die 200 Einzelbefunde. Jeder Run schreibt das generierte Script zudem als Datei ins Session-Verzeichnis (`~/.claude/projects/…`) — man kann es lesen, gegen einen früheren Run diffen oder editiert neu starten lassen. *(Quelle: https://code.claude.com/docs/en/workflows, abgerufen 2026-07-06)*
 
-**Wichtig zur Einordnung: Workflows laufen LOKAL** auf deinem Rechner — nicht in der Anthropic-Cloud (das ist der Unterschied zu Cloud-Routines, Abschnitt 2). Diese Laufzeitumgebung begrenzt auf **max. 16 gleichzeitige Agents** (weniger auf Maschinen mit wenigen CPU-Cores) und **1.000 Agents pro Run** (verhindert Runaway-Loops). Das Script selbst hat **keinen direkten Filesystem-/Shell-Zugriff** — lesen, schreiben und Befehle ausführen tun die Agents, das Script koordiniert nur. Mid-Run-User-Input gibt es nicht: Wer ein Sign-off zwischen Etappen will, fährt jede Etappe als eigenen Workflow.
+**Wichtig zur Einordnung: Workflows laufen LOKAL** auf deinem Rechner — nicht in der Anthropic-Cloud (das ist der Unterschied zu Cloud-Routines, Abschnitt 2). Diese Laufzeitumgebung begrenzt auf **max. 16 gleichzeitige Agents** (weniger auf Maschinen mit wenigen CPU-Cores) und **1.000 Agents pro Run** (begrenzt die Anzahl gestarteter Agents). Das Script selbst hat **keinen direkten Filesystem-/Shell-Zugriff** — lesen, schreiben und Befehle ausführen tun die Agents, das Script koordiniert nur. Mid-Run-User-Input gibt es nicht: Wer ein Sign-off zwischen Etappen will, fährt jede Etappe als eigenen Workflow.
 
 > **Merksatz für Nicht-Devs:** Ein Workflow ist ein **Arbeitsplan als Programm**: Claude schreibt den Plan einmal auf (welche Helfer, in welcher Reihenfolge, was mit den Ergebnissen passiert), und dann arbeitet eine Maschine den Plan ab — nachlesbar, wiederholbar, und ohne dass die vielen Zwischenschritte das Gespräch fluten.
 
@@ -413,7 +412,7 @@ Weil der Plan im Code liegt, kann ein Workflow auch ein **wiederholbares Qualit�
 
 - **Erst auf einem kleinen Slice testen** (ein Verzeichnis statt des ganzen Repos, eine enge Frage statt einer breiten) — dann erst die volle Menge. Der `/workflows`-View zeigt den Token-Verbrauch pro Agent live; Stoppen geht jederzeit, ohne fertige Arbeit zu verlieren.
 - **`/model` vor großen Runs prüfen:** Jeder Agent nutzt das Session-Modell, sofern das Script keine Stage anders routet.
-- Die **Agent-Caps** (16 concurrent / 1.000 pro Run) deckeln die Kosten eines Runaway-Scripts nach oben; Runs zählen normal gegen Plan-Usage und Rate-Limits.
+- Die **Agent-Caps** (16 concurrent / 1.000 pro Run) begrenzen die Anzahl der Agents, sind aber kein Geld- oder Zeitlimit. Runs zählen normal gegen Plan-Usage und Rate-Limits; lege Kosten- und Stoppgrenzen zusätzlich fest.
 - **Voraussetzungen (flüchtig, Stand 2026-07-06):** CC **v2.1.154+** (eingeführt mit v2.1.154, [Changelog](https://code.claude.com/docs/en/changelog)), alle **Paid-Plans** (auf **Pro** in `/config` unter „Dynamic workflows" einschalten); auch mit Anthropic-API-Zugang sowie auf Bedrock/Google Agent Platform/Microsoft Foundry.
 - **Abschalten:** Toggle in `/config`, `"disableWorkflows": true` in `~/.claude/settings.json`, Umgebungsvariable `CLAUDE_CODE_DISABLE_WORKFLOWS=1` — oder org-weit via Managed Settings. Abgeschaltet heißt: Bundled-Commands weg, `ultracode`-Keyword triggert nicht mehr, `ultracode` fehlt im `/effort`-Menü.
 
@@ -437,7 +436,7 @@ Weil der Plan im Code liegt, kann ein Workflow auch ein **wiederholbares Qualit�
 
 ## 5. Writer/Reviewer — Verifikation durch frischen Context
 
-**Kernidee:** Ein **frischer Context** macht das Review besser. Ein Reviewer-Agent, der den Code **nicht selbst geschrieben** hat, ist nicht zu seinem eigenen Werk biased — er sieht Fehler, die der Autor übersieht.
+**Kernidee:** Ein zweiter Agent prüft die Änderung mit einem frischen Blick. Er kann Fehler finden, die der ersten Session entgangen sind. Auch er kann sich irren oder dieselbe falsche Annahme treffen.
 
 **Writer/Reviewer (zwei Sessions):**
 
@@ -450,20 +449,20 @@ Weil der Plan im Code liegt, kann ein Workflow auch ein **wiederholbares Qualit�
 
 ### Reviewer-Kalibrierung (nicht überkritisch)
 
-Ein Reviewer, der nach Lücken sucht, *findet* welche — auch wenn die Arbeit sauber ist. Das ist kein Bug des Reviewers, sondern ein vorhersehbarer Bias: „A reviewer prompted to find gaps will usually report some, even when the work is sound." Gegenmittel:
+Ein Reviewer kann auch unbegründete Probleme melden, besonders wenn er ausdrücklich eine lange Liste von Lücken liefern soll. Gib ihm stattdessen einen begrenzten Prüfauftrag:
 
-- Den Reviewer explizit anweisen: **nur Gaps flaggen, die Korrektheit oder die genannten Anforderungen betreffen** — der Rest gilt als optional.
+- Den Reviewer explizit anweisen: **nur konkrete Probleme nennen, die Korrektheit oder die genannten Anforderungen betreffen** — der Rest gilt als optional.
 - So vermeidet man **Over-Engineering** als Folgeschaden: zusätzliche Abstraktionen, defensiver Code für unmögliche Fälle, Tests für Situationen, die nie eintreten.
 
-> **Merksatz:** Ein ungebremster Reviewer produziert Mehrarbeit, keine Mehrqualität. Kalibriere ihn auf „Korrektheit/Anforderungen", sonst skalierst du Over-Engineering mit.
+> Verlange Dateistelle, beobachtbares Problem und Begründung. „Keine weiteren Befunde" ist ein gültiges Ergebnis. Stilvorlieben sind kein Fehler.
 
-**Evidenz-Regel (zieht durch jedes Modul):** „Verlange Evidenz, vertraue nicht." Test-Output, ausgeführter Befehl + Rückgabewert, Screenshot. **Evidenz zu reviewen ist schneller, als selbst nachzuverifizieren** — und es funktioniert auch für Läufe, die man gar nicht beobachtet hat. Genau das macht unbeaufsichtigtes Skalieren überhaupt verantwortbar.
+Prüfe die tatsächlichen Änderungen und Ausgaben: ausgeführter Befehl, Rückgabewert, Test-Output oder Screenshot. Bei wichtigen Ergebnissen führe einen passenden Check selbst erneut aus. Dass zwei Agenten zustimmen, ersetzt diese Prüfung nicht.
 
 ---
 
 ## 6. Die Disziplinen dahinter (vertiefend)
 
-Skalieren ist weniger eine Frage der Befehle als der **Denkhaltung**, mit der man Agenten Leine gibt — dieser Stoff ist inzwischen umfangreich genug für ein eigenes Modul.
+Wenn lange Läufe unübersichtlich werden, hilft oft eine kleinere Aufgabe oder besser ausgewählte Information. Wie du Projektanweisungen pflegst und Arbeitsstände zwischen Sessions erhältst, erklärt das nächste Modul.
 
 → **Ausgelagert nach [Modul 10 — Kontext-Engineering](./10-kontext-engineering.md):** die vier Disziplinen Context Engineering, Autonomy-Slider, Long-horizon Memory und „Build for agents" — dazu, neu, Boris Chernys YC-Auftritt zum 80%-System-Prompt-Cut (Ablation, 6-Monats-Regel, Kontext-Budget, Eval-Halbwertszeit, Aufgaben-Kalibrierung, Verification als wichtigster Hebel).
 
@@ -486,7 +485,7 @@ Skalierung ist nicht nur „mehr Agenten", sondern **gemeinsame Standards**, dam
 
 - **Ins Git.** Das Team kuratiert die `./CLAUDE.md` gemeinsam; sie „compounds in value over time" — je länger gepflegt, desto wertvoller.
 
-> **Merksatz:** Eine ins Git eingecheckte `CLAUDE.md` ist kompoundierendes Team-Wissen — die Pflege-Disziplin dahinter (Pruning-Test, modulare Imports, Compaction-Tuning) steht in [Modul 10 — Kontext-Engineering](./10-kontext-engineering.md).
+> **Merksatz:** Eine gemeinsam gepflegte `CLAUDE.md` hält bestätigtes Projektwissen für neue Sessions fest — die Pflege-Disziplin dahinter (Pruning-Test, modulare Imports, Compaction-Tuning) steht in [Modul 10 — Kontext-Engineering](./10-kontext-engineering.md).
 
 ### Geteilte Bausteine & Agent Teams
 
@@ -529,7 +528,7 @@ Permissions sind der zentrale Sicherheitshebel beim Skalieren: Je mehr unbeaufsi
 
 **Ein allgemeines Prinzip:** Ein Assistent, der nur chatten soll, bekommt auch nur Chat: keine Shell-, Datei- oder Plugin-Operationen, kein Arbeitsverzeichnis, strenger Sandbox-Modus. Mehr Fähigkeiten bekommt er erst, wenn Review und Guardrails mitgewachsen sind.
 
-**Die Grenze (Glaubwürdigkeits-Anker):** Mehr Agent-Output verlangt eine **Review-Kultur, die aufs Volumen skaliert**, und **Security-Defaults als explizite Anforderung** (Hashing, Injection-Schutz, Sessions) — gegen das Failure-Pattern „unsichere Defaults".
+Je mehr Änderungen entstehen, desto mehr muss geprüft werden. Plane dafür Zeit und passende Checks ein. Anforderungen wie Passwort-Hashing, Schutz vor Injection und sichere Sessions gehören ausdrücklich in die Aufgabe, wenn das Produkt sie braucht.
 
 > **Merksatz:** „Vibe-Coding in Produktion ist riskant." Skalieren multipliziert auch Fehler — die Leitplanken sind kein Add-on, sondern Voraussetzung.
 
@@ -594,7 +593,7 @@ nimm die einfachere und effizientere Variante.
 
 **Wie begrenze ich teure oder lange Läufe, ohne sie permanent beobachten zu müssen?**
 
-Jeder größere Lauf bekommt vorab einen kleinen **Run-Vertrag**: klarer Scope, überprüfbare Done-Kriterien, erlaubte Aktionen, ein Zeit- oder Turn-Limit und konkrete Stop-Bedingungen. Ich teste das Vorgehen zuerst an einem repräsentativen Slice, bevor ich es auf das ganze Repo oder viele Dateien skaliere. Der Agent muss an Checkpoints belastbare Evidenz liefern, etwa grüne Tests, einen prüfbaren Diff oder ein aktualisiertes Fortschrittsdokument. Wenn sich der Scope unkontrolliert erweitert, derselbe Fehler wiederholt auftritt oder keine neuen verifizierbaren Ergebnisse entstehen, wird gestoppt und neu geplant. Das folgt demselben Muster wie Codex-Prompts mit **Goal, Context, Constraints und Done when**. *(Quelle: [Codex — Best Practices](https://learn.chatgpt.com/guides/best-practices))*
+Jeder größere Lauf bekommt vorab einen kurzen **Auftrag**: betroffene Dateien, überprüfbares Ergebnis, erlaubte Aktionen, ein Zeit- oder Turn-Limit und konkrete Stop-Bedingungen. Ich teste das Vorgehen zuerst an einem kleinen, repräsentativen Teil, bevor ich es auf das ganze Repo oder viele Dateien skaliere. Der Agent muss an vereinbarten Zwischenständen die Ergebnisse zeigen, etwa grüne Tests, einen prüfbaren Diff oder ein aktualisiertes Fortschrittsdokument. Wenn sich der Scope unkontrolliert erweitert, derselbe Fehler wiederholt auftritt oder keine neuen verifizierbaren Ergebnisse entstehen, wird gestoppt und neu geplant. Das folgt demselben Muster wie Codex-Prompts mit **Goal, Context, Constraints und Done when**. *(Quelle: [Codex — Best Practices](https://learn.chatgpt.com/guides/best-practices))*
 
 **Wiederverwendbarer Run-Vertrag:**
 
@@ -659,7 +658,7 @@ Beim **Scoping vorab**, nicht beim Zusehen: nur die nötigen Repos und Connector
 Nur eingeschränkt (Synthese, Stand 2026-07-06): Routines unterstützen **GitHub**-Repos. Liegt dein Code auf einer anderen Plattform als GitHub, sieht eine Routine ihn nur über eine Kopie auf GitHub, und ihre Commits oder PRs fließen **nicht** automatisch zurück. Für Schreib-Aufgaben ist das ungeeignet, für **Lese-, Analyse- und Report-Aufgaben** auf einer solchen Kopie brauchbar.
 
 **Wenn der Agent viel mehr Code produziert — wie behalte ich die Qualität?**  
-**Verifikation skaliert mit, nicht das Vertrauen.** Nutze das **Writer/Reviewer-Pattern** (ein zweiter Agent in frischem Context reviewt) und die **Evidenz-Regel** („Test-Output zeigen, nicht behaupten"). Kalibriere den Reviewer auf **Korrektheit/Anforderungen**, sonst meldet er auch bei sauberer Arbeit Pseudo-Lücken und treibt Over-Engineering. Evidenz zu prüfen ist schneller als selbst nachzubauen — das macht auch unbeobachtete Läufe verantwortbar. Accountability bleibt beim Menschen.
+Nutze einen zweiten Agenten zur Gegenprüfung und verlange konkrete Befunde mit Dateistelle und Begründung. Prüfe Diff und Check-Output selbst. Wiederhole wichtige Checks unabhängig; ein Reviewer kann Fehler übersehen oder unbegründete Änderungen verlangen. Die Entscheidung über die Nutzung bleibt beim Menschen.
 
 **Wann nutze ich `codex review`, `/review` oder Writer/Reviewer?**
 

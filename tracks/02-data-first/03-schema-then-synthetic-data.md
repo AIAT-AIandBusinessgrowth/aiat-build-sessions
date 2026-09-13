@@ -1,21 +1,23 @@
 # Schema first, then synthetic data
 
+List the spreadsheet's columns and the kind of value each one holds. This is a schema. Use it to generate invented (synthetic) rows for your app, without sending the source file.
+
 | | |
 |---|---|
 | **Prerequisites** | [Exercise: find the personal data](02-exercise-find-the-personal-data.md) |
 | **Time** | ~25 min |
-| **Outcome** | After this unit you can turn a spreadsheet into a schema without any values, give that schema to an agent, and build with synthetic rows that look like your data. |
+| **Outcome** | A list of columns and types, plus checked invented rows that your app can use. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-The exercise showed that cleaning a real file is slow and unreliable. So change the order instead of trying harder:
+To build and test the app without uploading the original records:
 
 1. Take only the structure: column names and types.
 2. Leave every value on your computer.
 3. Let the agent invent rows that fit the structure.
 
-The structure is all the agent needs to build ([Does the AI need this?](01-does-the-ai-need-this.md)). Invented rows can go into any tool.
+The agent can work from this structure and your app's rules ([Does the AI need this?](01-does-the-ai-need-this.md)). You may use the invented rows in your course tools.
 
 ## Do it
 
@@ -27,7 +29,7 @@ If your file is a spreadsheet (`.xlsx`, `.ods`), save it as CSV in the spreadshe
 
 ### Step 2: Extract the schema (5 min)
 
-Pick one way.
+Choose the script if you have Python 3, or follow the manual steps below.
 
 **With the script** (needs Python 3 on your computer). Open a terminal at the top of the downloaded course folder. Run the script yourself; it runs locally and sends nothing:
 
@@ -35,7 +37,7 @@ Pick one way.
 python3 exercises/find-the-personal-data/extract-schema.py exercises/find-the-personal-data/customers.csv
 ```
 
-The default output uses neutral names such as `column_1` and `column_2`, plus inferred types, counts and hints. It does not print the file's header or cell values. This also prevents an accidentally headerless file from printing its first data row as column names. The script cannot reliably decide whether the first row really is a header; check that yourself.
+The script uses neutral names such as `column_1` and `column_2`. It adds estimated types, counts and hints, but prints no original header or cell values. If the file has no header, this also keeps its first data row out of the output. Check the header yourself; the script cannot reliably recognise it.
 
 To include original column names, first inspect the header locally and remove names or sensitive details. Only then opt in:
 
@@ -43,7 +45,7 @@ To include original column names, first inspect the header locally and remove na
 python3 exercises/find-the-personal-data/extract-schema.py exercises/find-the-personal-data/customers.csv --include-column-names
 ```
 
-Add `--json` for JSON output. Invalid quoting, inconsistent row widths or duplicate headers stop with an error. Do not bypass an error by uploading the source to a converter. Counts and distinct-value statistics are **not** proof of anonymisation: for the agent, share only the generic column names and types you need. Rename neutral names by hand using your intended app structure.
+Add `--json` for JSON output. Invalid quoting, inconsistent row widths or duplicate headers stop with an error. Keep the file local if this happens; do not upload it to a converter. Share only the generic column names and types the agent needs. Counts and distinct-value statistics do not prove anonymisation. Rename neutral columns by hand to describe your intended app.
 
 **By hand** (no install):
 
@@ -54,7 +56,7 @@ Add `--json` for JSON output. Invalid quoting, inconsistent row widths or duplic
 
 **Check the column names themselves.** A header such as "Kim's clients" or "Notes on Dr Sample" is personal data. Rename it.
 
-**Drop what you do not need.** Ask the one question per column. If your app does not need `date_of_birth` or `last_login_ip`, delete them from the schema now.
+**Remove columns the app does not need.** For example, leave `date_of_birth` and `last_login_ip` out if they serve no purpose in your app.
 
 ### Step 3: Give the schema to the agent (5 min)
 
@@ -90,11 +92,11 @@ The IP ranges are reserved for documentation ([RFC 5737](https://www.rfc-editor.
 - **Browser lane:** paste the synthetic CSV into the chat with "Use this as the sample data in my app", or upload the generated file. It is invented, so that is allowed.
 - **CLI lane:** save it as `sample-data.csv` in your `playground` folder, ask the agent to load it, and commit.
 
-Open the preview and check that the app behaves with the edge cases.
+Open the preview and try the empty cell, long company name and future date. Check whether the app handles each as you intended.
 
 ### And the real data?
 
-Not in these tracks. If a tool should one day work with real data, your organisation decides where it may run: which approved tool, which contract, often only on a computer inside the organisation. Synthetic data makes practice possible; it does not prove that a real-data integration is ready. That can require new design, security and operational checks.
+Real data stays outside these tracks. Your organisation decides which tool, contract and place to run it are approved. An app working with invented rows may still need changes before it can handle real data, including security and operational checks.
 
 ## Done when
 

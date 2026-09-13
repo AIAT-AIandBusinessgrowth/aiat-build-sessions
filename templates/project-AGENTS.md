@@ -1,10 +1,12 @@
 # AGENTS.md
 
 <!--
-Starter for your own project. Copy this file to the top folder of your project
-and replace every <placeholder>. Keep it short: the agent reads every line at the
-start of every session. Add a rule only after a real mistake, and delete rules
-that no longer matter. Background in the Build Sessions material:
+Starter for your own project. Copy this file as AGENTS.md into your project's
+top folder and replace every <placeholder>. It tells the agent what to work on,
+which checks to run and which actions need permission. Keep instructions short
+and specific. Remove duplicated or outdated guidance; keep essential data,
+access and safety rules even if recent tasks did not exercise them.
+Background in the Build Sessions material:
 tracks/07-second-brain/01-vault-and-agents-md.md and
 tracks/08-advanced/01-context-engineering.md
 Delete this comment when you are done.
@@ -32,17 +34,18 @@ Delete this comment when you are done.
 
 ## Conventions
 
-- Work in small stages: one change, one check, one commit.
+- Work in small stages. Check each change and show the files it affects.
+- Commit only when explicitly authorised for this task; stage only reviewed files within its scope.
 - Show the command you ran and its output as evidence. Never write "should work".
 - Unfinished work goes into `TASKS.md`, each item with a line that says when it is due again.
 - Before a new session, read `SPEC.md` and the last state note.
-- <One project-specific rule, added after a real mistake, with the reason.>
+- <Optional project-specific rule: required behaviour or a repeated mistake to avoid, with the reason. Remove this line if none is needed.>
 
 ## The agent must never
 
 - Read, write or delete files outside this project folder.
 - Delete data or files without asking first.
-- Push, deploy, publish or send anything without asking first.
+- Commit, push, deploy, publish or send anything without explicit authorisation for this task. Existing authorisation within the agreed scope remains valid; ask only when it is missing or the scope changes.
 - Write a key or password into a source file, a log, a note or a commit.
 - Add a new dependency or a paid service without asking first.
 - Say "done" before the check has run.

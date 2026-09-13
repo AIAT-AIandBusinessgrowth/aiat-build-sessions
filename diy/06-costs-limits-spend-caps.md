@@ -1,5 +1,7 @@
 # Costs, limits and spend caps
 
+Find out how much use you have left and what happens when it runs out. Before a paid run, set a limit that actually stops spending. An e-mail warning alone is not a spending limit.
+
 | | |
 |---|---|
 | **Prerequisites** | [Plans and licences](02-plans-and-licences.md) |
@@ -9,7 +11,7 @@
 
 ## Why this matters
 
-Agents work in loops. One task can mean dozens of model calls, so limits run out faster than you expect, and pay-per-use bills grow while you are not looking. You pay your own bills. Setting the cap is your job, before the first run.
+An agent can make many requests while working on one task. Each request can use part of your allowance or add to a bill. Check the limit before a longer run, especially if the tool can buy more credits automatically.
 
 ## Do it
 
@@ -35,11 +37,11 @@ Browser builders count credits or tokens. What one message costs depends on the 
 | v0 | $5 of included monthly credits, 7 messages per day | [pricing](https://v0.app/pricing) |
 | Base44 | 25 message credits per month | [pricing](https://base44.com/pricing) |
 
-All checked 2026-09-13. Lovable notes that in Build mode, the cost depends on the complexity of the request and the work completed ([source](https://docs.lovable.dev/introduction/credits-and-usage), checked 2026-09-13). A request like "fix all the bugs" can cost many small ones.
+All checked 2026-09-13. Lovable notes that in Build mode, the cost depends on the complexity of the request and the work completed ([source](https://docs.lovable.dev/introduction/credits-and-usage), checked 2026-09-13). A broad request such as "fix all the bugs" can lead to many attempts and use more credits than a small change.
 
 ### 3. Set a spend cap
 
-Do this before you use an API key or add a card to a hosting platform.
+Check this before using an API key or adding a card to a hosting platform. A spend cap stops use at a limit; a budget alert only tells you about it. If the provider cannot enforce the limit you need, use a different plan or leave paid use off.
 
 - **Anthropic API:** spend limits set a maximum monthly cost for an organisation's API usage ([source](https://platform.claude.com/docs/en/api/rate-limits), checked 2026-09-13). Set it low in the Console billing settings.
 - **Google Cloud (for example AI Studio apps deployed to Cloud Run):** an alerts-only budget does not cap usage or spending, it only sends alerts. A spend cap budget exists as a preview for supported services ([source](https://docs.cloud.google.com/billing/docs/how-to/budgets), checked 2026-09-13).
@@ -52,7 +54,7 @@ Do this before you use an API key or add a card to a hosting platform.
 
 - [ ] I know when my usage window resets.
 - [ ] I know my free credits and roughly what one request costs.
-- [ ] Every API key and every platform with my card has a spend cap, not only an alert.
+- [ ] Paid use has a suitable enforced limit. Where that is unavailable, I have left paid use off or chosen a different plan.
 - [ ] I set a calendar reminder for renewal dates of paid plans.
 
 ## Watch out

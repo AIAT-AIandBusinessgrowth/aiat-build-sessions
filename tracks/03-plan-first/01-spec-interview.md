@@ -1,21 +1,19 @@
 # Spec interview: let the agent ask the questions
 
+Let the AI ask you about your idea before it starts building. Together, write a one-page plan, called a spec, so the next session knows what to build and how you will check it.
+
 | | |
 |---|---|
 | **Prerequisites** | [Your first build](../01-first-build/01-your-first-build.md) · [Schema first, then synthetic data](../02-data-first/03-schema-then-synthetic-data.md) |
 | **Time** | ~30 min |
-| **Outcome** | After this unit you can turn a vague idea into a one-page spec with IN and OUT lists, fake data, a "done when" line and three first tasks, before anything gets built. |
+| **Outcome** | A saved one-page spec with IN, OUT, invented data, a way to check the result and three first tasks. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-Most first builds start with a wish list typed into a prompt box. The tool builds something at once. Then you spend the next hour negotiating with the result.
+If you start with a vague request, the agent has to fill in the gaps. An interview lets you decide who the app is for, what it should do and what to leave out. Saving those decisions means you can use them again without repeating the conversation.
 
-Flip it. The agent asks, you answer. Good questions force decisions you did not know you had to make: who is this for, what is it not, how will you know it works. The written answer is a spec: a short file that you, a colleague or a fresh chat can pick up next week.
-
-This is often the moment an idea turns into a plan. And the most useful part of the spec is the OUT list. A spec that says what will not be built is worth more than ten feature lists.
-
-Anthropic recommends the same pattern for larger features in its Claude Code guide: let the agent interview you, write the result to a spec file, then start a fresh session to build it ([Claude Code best practices](https://code.claude.com/docs/en/best-practices), checked 2026-09-13). Nothing about it is specific to one tool. It works in any chat assistant, browser builder or CLI agent.
+Anthropic recommends an interview, a spec file and a fresh build session for larger features ([Claude Code best practices](https://code.claude.com/docs/en/best-practices), checked 2026-09-13). You can use the same approach in a chat assistant, browser builder or CLI agent.
 
 ## Do it
 
@@ -25,7 +23,7 @@ Take one real task from your own work or life. Small is fine: a form, a calculat
 
 ### 2. Stop the tool from building (1 min)
 
-- **Chat assistant** (Claude, ChatGPT, Gemini and similar): nothing to do. It only writes text.
+- **Chat assistant** (Claude, ChatGPT, Gemini and similar): ask for a written plan. Keep actions and file changes off during the interview.
 - **Browser app builder** (Lovable, Bolt, v0, Replit and similar): many start building on the first message. Use the tool's chat or planning option if it has one. Or run the interview in a chat assistant and paste the finished spec into the builder afterwards.
 - **CLI agent** (Claude Code, Codex and similar): switch to a planning or read-only mode. In Claude Code, press `Shift+Tab` until the status bar shows plan mode ([Claude Code best practices](https://code.claude.com/docs/en/best-practices), checked 2026-09-13). If your agent has no such mode, keep the line "Do not change any files" in the prompt.
 
@@ -54,21 +52,21 @@ Finally, suggest three first tasks. Each task must be small enough
 for one afternoon and have its own "done when" line.
 ```
 
-Answer in short sentences. "I don't know yet" is a valid answer. It goes into open questions, not into the bin.
+Answer in short sentences. If you do not know something yet, put it in open questions.
 
 ### 4. Read the spec like a critic (5 min)
 
 Check each point. If one fails, tell the agent which line is wrong and ask it to rewrite only that line.
 
 - The top sentence has this shape: "For *who*, *name* does *what*, instead of *what happens today*."
-- OUT has at least three items, and at least one of them hurts a little.
+- OUT has at least three items, including something useful that you are deliberately leaving for later.
 - The data section lists fields and types only. No real values.
-- "Done when" describes something you can see or click, not a feeling.
-- Open questions are honest. An empty list usually means the agent guessed.
+- "Done when" describes a result you can check yourself.
+- Open questions include anything still undecided. Check that the agent has not silently guessed an answer.
 
 ### 5. Save it and cut three tasks (5 min)
 
-Save the spec outside the chat window. A chat is gone when the tab closes. A file survives the week.
+Save the spec where you can find and reuse it without searching through the chat.
 
 - Put it where your project lives: a `SPEC.md` file, a note, or the project instructions or knowledge area of your builder.
 - Start from the [spec template](../../templates/SPEC.md) if you prefer filling in blanks.
@@ -76,7 +74,7 @@ Save the spec outside the chat window. A chat is gone when the tab closes. A fil
 
 ### 6. Optional: start task one today
 
-Open a fresh chat or session. Paste the spec. Ask for task one only, and ask the agent to tell you how it checked the result. Starting fresh keeps the interview chatter out of the build.
+Open a fresh chat or session and paste the spec. Ask for task one only, including how the agent checked the result. The new session starts from your decisions instead of the whole interview.
 
 ### What a good spec looks like
 
@@ -86,7 +84,7 @@ Open a fresh chat or session. Paste the spec. Ask for task one only, and ask the
 | Problem | What is annoying today, in two or three sentences. |
 | Users | The first real person or group who will use it. |
 | IN | The three things it must do. |
-| OUT | What you deliberately do not build. The more important list. |
+| OUT | What you deliberately do not build in this version. |
 | Data (fake) | Field names, types, value ranges. Sample rows are invented. |
 | Done when | What you can observe when it works. |
 | Open questions | What you do not know yet, written down honestly. |

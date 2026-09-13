@@ -1,19 +1,19 @@
 # Product sprint: six artefacts and a pitch in 75 minutes
 
+Work in a team of three or four to explain one product idea and build its first small part. You will leave with six things another person can read or see, plus a 60-second explanation of the idea.
+
 | | |
 |---|---|
 | **Prerequisites** | [Spec interview](01-spec-interview.md) · [Schema first, then synthetic data](../02-data-first/03-schema-then-synthetic-data.md) |
 | **Time** | ~75 min, team of 3 to 4 |
-| **Outcome** | After this unit you can, as a small mixed team, produce six artefacts that explain a product without you in the room, and pitch it in 60 seconds without scrolling through code. |
+| **Outcome** | A README, scope, sample data, picture, name and colour, and three tasks, presented in a 60-second pitch. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-A script solves your problem today. A product solves someone else's problem tomorrow, without that person having to ask you. The gap between the two is not more code. It is a sentence, a boundary, some data, a picture, a name and a next step.
+Someone else needs to understand what your app does, how to open it and what it cannot do yet. The six items below help you explain that. Each person takes a small part, including people who have not built with AI before.
 
-A sprint in a mixed team is also a good way to get started. People who have not built anything yet get a concrete piece to build, because the team needs it.
-
-Seventy-five minutes is short on purpose. There is no time to build everything, so the team has to decide what stays OUT.
+Use 75 minutes as a suggested budget. Decide what to leave out so you have time to show and discuss a first result.
 
 ## Do it
 
@@ -26,7 +26,7 @@ Seventy-five minutes is short on purpose. There is no time to build everything, 
 
 ### Roles in the team
 
-Roles are jobs for today, not titles. In a team of three, the picture person also pitches. Swap the driver halfway through.
+Assign the jobs below for this session. One person can take more than one: in a team of three, the picture person also pitches. Swap the driver halfway through.
 
 | Role | Does | Owns |
 |---|---|---|
@@ -56,10 +56,10 @@ At the end, these six things exist in the builder project, a shared document or 
 | # | Artefact | What is in it | Fast way to make it |
 |---|---|---|---|
 | 1 | One-sentence README | First line: "For *who*, *name* is *what*, instead of *what happens today*." Then up to 20 lines: what it does, for whom, how to open it, what it cannot do yet. | "Write a README, 20 lines, no marketing." Start from the [product README template](../../templates/README-product.md). |
-| 2 | Scope | Three points IN, three points deliberately OUT. The OUT list matters more. | The agent drafts it, the team cuts half of IN. Use the [MVP template](../../templates/MVP.md). |
+| 2 | Scope | Three points IN and three points deliberately OUT of this version. | The agent drafts it, the team cuts half of IN. Use the [MVP template](../../templates/MVP.md). |
 | 3 | Sample data | Field names with types, plus at least 30 invented rows. Include edge cases: an empty cell, one extreme value, a name with accents. | Ask the agent to invent the rows from your field list. See [Schema first, then synthetic data](../02-data-first/03-schema-then-synthetic-data.md). |
 | 4 | One picture | A screenshot, a mockup or a photographed paper sketch. Label anything not built yet as "mockup". | Pen, paper, phone camera. Or any drawing tool. |
-| 5 | Name and colour | One name and one accent colour as a hex value, written into the README. | Decide in two minutes. Do not debate it. |
+| 5 | Name and colour | One name and one accent colour as a hex value, written into the README. | Spend about two minutes choosing. You can change them later. |
 | 6 | Three tasks | The first one has a "done when" line and can be finished today. | Put them in the tool, a note, or an issue tracker such as GitHub Issues. |
 
 **Plus the pitch:** 60 seconds, three questions. Who is it for? What is IN, and what did you leave OUT on purpose? What can you show? No scrolling through code.
@@ -80,7 +80,7 @@ The times are approximate. The timekeeper calls each block.
 
 ### The outsider test
 
-Show your six artefacts to someone who was not in your team. Say nothing. If they can tell you who it is for and what it does not do, you have a product. If they first have to ask how to start it, you have a script with a name.
+Show the six items to someone outside your team without explaining them first. Can they tell who the app is for, how to open it and what it does not do? Use their questions to improve the instructions. This checks your explanation; it does not check whether the app itself works.
 
 ## Done when
 
@@ -94,10 +94,10 @@ Show your six artefacts to someone who was not in your team. Say nothing. If the
 
 ## Data note
 
-Hard rule for the sprint: no real personal data. No name from your address book, no real e-mail address, no record from your working day. Not "just to test", not "only on my laptop". The names of your team members do not go into the sample data either. Invented addresses use `example.com`, for example `alex.sample@example.com`. See [Rule one: no real data](../00-orientation/01-rule-one-no-real-data.md).
+Use invented data for every part of the sprint. Keep names from your address book, real e-mail addresses and work records out, including your teammates' names. Use `example.com` for invented addresses, for example `alex.sample@example.com`. See [Rule one: no real data](../00-orientation/01-rule-one-no-real-data.md).
 
 ## Next
 
-[Model, context, agent](../04-the-map/01-model-context-agent.md): the three words that explain why your sprint result looked the way it did.
+[Model, context, agent](../04-the-map/01-model-context-agent.md): understand what the AI can see and do, so you can give it a clearer next task.
 
 Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

@@ -1,5 +1,7 @@
 # Plans and licences
 
+Before buying a plan, check whether it includes the tool you need and what can cost extra. For your first exercise, you may already have enough access; use the tables only when choosing a tool or changing plans.
+
 | | |
 |---|---|
 | **Prerequisites** | [Accounts and 2FA](01-accounts-and-2fa.md) |
@@ -9,7 +11,7 @@
 
 ## Why this matters
 
-You pay for your own tools, or your employer does. Nobody hands out licences or seats, and if you attend a session, the session host does not either. Before you enter a card number, know what kind of plan you are buying, because the two kinds fail in opposite ways: a subscription stops when you hit the limit, an API key keeps going and keeps billing.
+A plan can charge a fixed subscription, charge for use, or combine both. Before entering a card number, check what is included and what happens when it runs out. You or your organisation arrange payment; the course does not provide licences.
 
 ## Do it
 
@@ -18,12 +20,12 @@ You pay for your own tools, or your employer does. Nobody hands out licences or 
 | | Subscription | API key |
 |---|---|---|
 | How you pay | Fixed monthly or yearly price | Pay per use (per token or per request) |
-| What happens at the limit | You wait until the limit resets, or upgrade | Nothing stops you, the bill grows |
+| What happens at the limit | Depends on the plan: wait, upgrade or use paid extra allowance | Depends on the provider and settings: a cap may stop use; an alert alone does not |
 | Good for | Learning, daily work with a coding agent | Apps that call a model, automation |
 | Main risk | Hitting the limit mid-task | A surprise invoice |
 
 - Example subscription limits: Claude Pro, Max and Team plans have a five-hour session limit and a weekly limit, shown under Settings > Usage ([source](https://support.claude.com/en/articles/9797557-usage-limit-best-practices), checked 2026-09-13). OpenAI publishes Codex usage estimates per five-hour period and says they are not fixed limits ([source](https://learn.chatgpt.com/docs/pricing), checked 2026-09-13).
-- An API key has no cap unless you set one. See [Costs, limits and spend caps](06-costs-limits-spend-caps.md) before you create one.
+- An API key does not tell you what spending limit applies. Check the provider’s actual limits in [Costs, limits and spend caps](06-costs-limits-spend-caps.md) before using one.
 
 ### 2. Ask criteria before brands
 
@@ -58,12 +60,12 @@ The Google AI Pro price depends on your country. The €21.99 figure is what the
 - GitHub Copilot Free and Cursor Hobby have small free allowances.
 - Browser app builders have free tiers too: see the [tool matrix](tool-matrix-2026-09.md).
 
-Free is enough to learn. It is not enough to depend on: free limits change without notice.
+You can start learning with a free allowance. Check how much is available before a longer task; the allowance and conditions can change.
 
 ### 5. Team and business plans
 
 - Team and business plans are bought by an organisation, not by you. They usually come with admin controls, a data processing agreement and different training defaults. Example: OpenAI states "No training on your business data by default" for ChatGPT Business ([source](https://learn.chatgpt.com/docs/pricing), checked 2026-09-13).
-- If you want to use company or customer data, a business plan is the minimum, and your employer decides. See [Data processing agreements](03-data-processing-agreements.md).
+- For real company or customer data, your organisation must approve the tool, contract and use. A plan called “Business” does not establish that approval. These exercises use invented data. See [Data processing agreements](03-data-processing-agreements.md).
 
 ## Done when
 

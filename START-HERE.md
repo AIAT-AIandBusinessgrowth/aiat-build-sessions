@@ -2,7 +2,7 @@
 
 **[Deutsch starten](learning/start-de.md)**
 
-For a first taste, try the [notebook calculator](exercises/verification-lab/README.md), in English or German. Allow about five minutes for a first try; fixing it can take longer. No account needed. You can use a browser or paper.
+For a first taste, try the [notebook calculator](https://build-sessions.apps.aiat-poc.at/), in English or German. Allow about five minutes for a first try; fixing it can take longer. It opens in your browser without an account or download. You learn how to check a tool instead of accepting its answer. [Paper option](exercises/verification-lab/README.md).
 
 Want to keep going? Choose a path below. You can stop after any lesson and come back another day; the times are only estimates.
 

@@ -1,17 +1,17 @@
 # Share and export
 
+Open your app as someone else would, then save a copy outside the builder. Check that your latest change is in that copy so you can recover your work later.
+
 | | |
 |---|---|
 | **Prerequisites** | [Your first build](01-your-first-build.md) |
 | **Time** | ~15 min |
-| **Outcome** | After this unit you can share a working link to your app, keep a copy of your project outside the tool, and check that your last change really arrived there. |
+| **Outcome** | A checked share link for a browser app, and a second project copy containing your latest change. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-Work that exists in exactly one place gets lost: a project is deleted by mistake, a free plan ends, a laptop breaks. A share link that only works while you are logged in is not a share link either.
-
-Fifteen minutes now make sure your work exists twice and that other people can open it.
+You could lose the only copy if a project is deleted, a plan ends or a laptop breaks. A second copy gives you a way back. Testing the share link separately checks whether someone else can open the app without your login.
 
 ## Do it
 
@@ -24,7 +24,7 @@ Fifteen minutes now make sure your work exists twice and that other people can o
    - Firefox: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)
    - Safari: `Cmd+Shift+N`
    - Private windows blocked, for example on a work browser your organisation manages? Open the link in another browser where you are not logged in to the builder, or send it to a colleague and ask what they see.
-4. Paste the link. A private window has no login and no stored data, so you see what other people see.
+4. Paste the link in a new private session without logging in. It does not use your normal browser login or saved app data.
 5. Check: does the app load, and does it look like your preview? Entries you saved in your own browser will not be there. That is expected.
 6. Check who can open it. Many share links work for anyone who has the link. Check that the code and settings contain no secrets before publishing, even with fake data.
 
@@ -56,13 +56,13 @@ GitHub Desktop works too: choose "Publish repository" and keep "Keep this code p
 
 ### Part C: The ritual, open it and look (5 min)
 
-A "synced" or "pushed" message is not proof. Look at the second copy yourself:
+Check the second copy yourself, even if the tool says "synced" or "pushed":
 
 1. Open your repository page on github.com, or unpack the downloaded file.
 2. Find the change from your third round: in the latest commit message and time, or in the file itself.
-3. Only when you can see it, you are done.
+3. Confirm that the copy contains that change.
 
-Do this at the end of every work session, from now on: **push or export, then open the repository and look.**
+At the end of each work session, push or export and check the saved copy.
 
 ## Done when
 
@@ -73,7 +73,7 @@ Do this at the end of every work session, from now on: **push or export, then op
 
 ## Data note
 
-A public link and a public repository are visible to anyone. That is one more reason for rule one: invented data reduces exposure, but a sharing mistake can still expose keys, private code or paid resources. Never put passwords or API keys into code you sync ([secrets and keys](../../diy/07-secrets-and-keys.md)).
+A public link or repository can expose keys, private code or paid resources even when the app uses invented data. Never put passwords or API keys into code you sync ([secrets and keys](../../diy/07-secrets-and-keys.md)).
 
 ## Next
 

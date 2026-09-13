@@ -1,5 +1,7 @@
 # Deploy and share
 
+Deploy means put an app online so someone else can open it. Start with your builder’s sharing option if it has one. This guide explains other hosting choices and what to check before sharing a link.
+
 | | |
 |---|---|
 | **Prerequisites** | [Code hosting and backup](04-code-hosting-and-backup.md), then [Secrets and keys](07-secrets-and-keys.md). Read Secrets and keys first |
@@ -9,11 +11,13 @@
 
 ## Why this matters
 
-An app on your laptop helps nobody else. To share it, it has to run somewhere with a public address. You choose and set up that place yourself, with your own account and your own card if needed. Nobody deploys for you, and if you attend a session, the session host does not either. This page does not recommend one provider as "the one to use".
+To let someone open your app through a link, you need a place that serves it online. Your builder may already provide that. For another host, you or your organisation arrange the account and any payment. Check the shared link yourself before sending it.
 
 ## Do it
 
 ### 1. Ask criteria before brands
+
+Choose the kind of hosting you need in section 2, then use these questions to compare providers:
 
 - Where does the app and its data run? Can you pick an EU region, and can you change it later?
 - Is there a free tier, and what happens when you exceed it: the app stops, or you get billed?
@@ -32,6 +36,8 @@ Lovable, Bolt, v0, Replit, Base44 and Google AI Studio can publish your app with
 
 **(b) Static hosting (HTML, CSS, JavaScript, no server of your own)**
 
+For files the browser can run directly, such as the course’s small HTML exercises. A private API key cannot be kept inside those browser files.
+
 | Provider | Free tier notes | Source |
 |---|---|---|
 | GitHub Pages | Public repositories on GitHub Free; not intended as free hosting for an online business or commercial software as a service; sites up to 1 GB, soft bandwidth limit 100 GB per month | [Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits) |
@@ -40,6 +46,8 @@ Lovable, Bolt, v0, Replit, Base44 and Google AI Studio can publish your app with
 | Cloudflare Pages | Free plan: 500 builds per month | [Pages limits](https://developers.cloudflare.com/pages/platform/limits/) |
 
 **(c) Platforms that run a server for you (PaaS)**
+
+For an app that also needs code running on a server, for example to use a private API key. PaaS means “platform as a service”: the provider runs the machines while you deploy the app.
 
 | Provider | Free tier notes | Source |
 |---|---|---|
@@ -83,7 +91,7 @@ If only your colleagues should use the app:
 - **Restrict access.** Use the login or password protection your host offers. Then open the link in a private browser window and check that you see a login, not the app.
 - **Do not publish internal code with GitHub Pages.** On GitHub Free, Pages works only from public repositories, so your code would be public too ([source](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits), checked 2026-09-13).
 - **"Personal, non-commercial" plans do not cover work use.** Vercel Hobby is one example (see the table in section 2).
-- **Ask first.** Before you host anything with work data, ask your employer's IT or data protection contact. Until they say yes, rule one applies: made-up data only.
+- **Ask first.** Real work data needs approval from your employer’s IT or data protection contact. The learning exercises here continue to use made-up data regardless of that separate approval.
 
 ## Done when
 
@@ -95,7 +103,7 @@ If only your colleagues should use the app:
 
 ## Watch out
 
-- A public link is public. Anyone who gets it can use your app, and your API quota.
+- Without access controls, anyone who gets the link can use the app. If it calls a paid API, visitors may also consume your quota.
 - Free tiers that sleep or pause (Render, Supabase) look broken to a first visitor. Say so when you share.
 - "Non-commercial" free tiers (Vercel Hobby, GitHub Pages) do not fit a product you sell.
 - Keep the code in your own repository, so you can move to another provider. See [From prototype to product](../tracks/06-keep-and-ship/02-prototype-to-product.md).

@@ -1,5 +1,7 @@
 # Secrets and keys
 
+Keep passwords and API keys out of code, prompts and screenshots. This guide shows where an app can read a key without publishing it, and what to do if one has already leaked. You can practise with a fake key.
+
 | | |
 |---|---|
 | **Prerequisites** | [Code hosting and backup](04-code-hosting-and-backup.md) |
@@ -9,15 +11,17 @@
 
 ## Why this matters
 
-An API key is a password that spends money. Whoever has it can use your account and your quota. Agents write code fast, and they write keys into files if you let them. Once a key is in a public repository or a prompt, you no longer control who has seen it.
+An API key lets software use a service through your account. Someone who gets the key may be able to use your quota or access data. Tell the agent the key’s name, such as `PAYMENT_API_KEY`, without giving it the secret value.
 
 ## Do it
 
 ### 1. Keep keys in a `.env` file
 
-1. In your project folder, create a file called `.env`:
+Practise with the fake value below. For a real project, enter the real key yourself in the approved local file or hosting settings, outside the agent conversation. `.gitignore` keeps a file out of ordinary Git staging; it does not stop an agent from reading it.
+
+1. In your own app folder, create a file called `.env`:
    ```
-   PAYMENT_API_KEY=paste-the-real-key-here
+   PAYMENT_API_KEY=example-only-not-a-real-key
    ```
 2. Add `.env` to `.gitignore` **before** your first commit:
    ```
@@ -30,9 +34,9 @@ An API key is a password that spends money. Whoever has it can use your account 
    PAYMENT_API_KEY=your-key-here
    ```
 4. Your code reads the value from the environment, it never contains the key itself.
-5. Check with `git status` that `.env` does not show up as a file to commit.
+5. Check with `git status` that `.env` does not show up as a file to commit. If it was committed before, adding it to `.gitignore` does not remove it from history; follow the leak steps below.
 
-Tell your agent the rule in plain words: "Read API keys from environment variables. Never write a key into a source file."
+Tell your agent: "Write code that reads API keys from environment variables. Do not read my .env file or print its values. Use .env.example to see the variable names."
 
 ### 2. Use the platform's environment variables when you deploy
 
@@ -44,14 +48,14 @@ Anything that runs in the browser is public. A key in front-end JavaScript can b
 
 - **Secret scanning** runs automatically and for free on public repositories. For organisation-owned private repositories it needs GitHub Secret Protection on GitHub Team or GitHub Enterprise Cloud, which is paid ([source](https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning), checked 2026-09-13).
 - **Push protection for users** is enabled by default and stops you from pushing secrets to public repositories on GitHub ([source](https://docs.github.com/en/code-security/concepts/secret-security/push-protection), checked 2026-09-13).
-- In a private repository on a free plan, you are the only safety net. Keep `.gitignore` right.
+- Check which protections your repository actually has. Keep `.gitignore` correct and inspect changes before committing; automated scanning does not replace that review.
 
 ### 4. If a key leaked
 
 1. **Revoke or rotate the key at the provider, right now.** Log in to the provider's dashboard, delete the key, create a new one.
 2. Put the new key in `.env` or the platform settings.
 3. Check the provider's usage page for calls you did not make.
-4. Then clean up the repository if you want to.
+4. Then arrange cleanup of the repository and other copies, following your project’s incident process.
 
 Deleting the commit is not enough. The key stays in the Git history, in every clone and fork, and in anything that already copied it. Only revoking makes the old key useless. More: [If something went wrong](../tracks/02-data-first/04-if-something-went-wrong.md).
 

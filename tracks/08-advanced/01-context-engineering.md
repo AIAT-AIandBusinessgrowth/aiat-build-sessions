@@ -4,22 +4,22 @@
 |---|---|
 | **Prerequisites** | [Model, context, agent](../04-the-map/01-model-context-agent.md), [A vault and AGENTS.md](../07-second-brain/01-vault-and-agents-md.md) |
 | **Time** | ~20 min |
-| **Outcome** | After this unit you can say what fills an agent's context, keep instruction files lean, choose between starting fresh and compacting, and set how much autonomy a task gets. |
+| **Outcome** | You can give an agent the files it needs, reduce unnecessary instructions and continue a task in a fresh session. |
 | **Last verified** | 2026-09-13 |
 
 This track is optional. It assumes you work with a command-line agent such as Claude Code or Codex.
 
 ## Why this matters
 
-The context window is the agent's desk. Everything on it is read again on every turn: the vendor's instructions, your instruction files, the conversation so far, every file and log the agent opened. A crowded desk has two effects. The agent follows your rules less reliably, and each turn costs more.
+Open one small project task. List the files an agent needs to answer it, then give it those paths. After its answer, check which files it actually opened.
 
-Commands change with every release. The habit of keeping the desk clean does not. Anthropic describes this discipline in [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents).
+The **context window** is the amount of text and other input a model can use for its next answer. It may contain instructions, conversation, files and tool output. Selecting useful input is called **context engineering**. It helps avoid unrelated material and unnecessary processing. Anthropic describes this in [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents).
 
 ## Do it
 
 ### 1. See what fills the context (5 min)
 
-| What is on the desk | Where it comes from | How to reduce it |
+| What uses context | Where it comes from | How to reduce it |
 |---|---|---|
 | System instructions and tool descriptions | The vendor, plus every connected tool or server | Disconnect tools you do not use |
 | Instruction files | `AGENTS.md`, `CLAUDE.md`, memory files | Keep them short (step 2) |
@@ -36,32 +36,37 @@ Commands change with every release. The habit of keeping the desk clean does not
 > - `/compact` summarizes a long chat. Codex also compacts chats automatically. `/fork` creates a new chat and keeps the original transcript. ([source](https://learn.chatgpt.com/docs/codex-manual.md))
 > - Codex reads only a limited amount of each `AGENTS.md`; the setting `project_doc_max_bytes` controls how much. ([source](https://learn.chatgpt.com/docs/codex-manual.md))
 
-Try it: run the context command in your tool (or ask the agent "what is in your context right now?") at the start of a session and again after an hour of work. Note the biggest item.
+In Claude Code, try `/context` now and again after some work; an hour is one possible comparison interval. Look for the largest category. If your tool has no context display, inspect the files and tool output in the conversation. Asking the agent may give a useful summary, but it cannot replace a measured usage display.
 
 ### 2. Keep instruction files lean (5 min)
 
-Instruction files grow. Each problem adds a line, and nobody removes one. Go through yours with one question per line:
+Open one instruction file and look for repeated or outdated guidance:
 
 > Would removing this line make the agent make mistakes?
 
-If the answer is no, delete the line.
+If a line seems unnecessary, test that in a copy. Keep essential data rules, permissions and project requirements; a small test cannot prove they are unnecessary.
 
 Three habits keep the file small:
 
-- **Rules are written-down mistakes.** A line earns its place because something went wrong without it. "Always be careful" is not a rule.
+- **Make rules specific.** "Always be careful" does not tell the agent what to do. State the required behaviour or the mistake to avoid.
 - **Move detail out.** Put long instructions into separate files (`rules/deploy.md`) and write one line in `AGENTS.md` that says when to open them. The agent loads them only when needed.
-- **Say what, not how.** Describe the task, the limits and what "done" means. Do not dictate every step.
+- **Explain the task and its limits.** Include exact steps when they are required for correctness or safety; leave routine choices open.
 
 ### 3. A rule comes back only when the agent stumbles repeatedly
 
-Boris Cherny, who created Claude Code, talks about this in a public interview titled [We Cut 80% of Claude Code's Prompt](https://www.youtube.com/watch?v=qyPCVqFUyDo) (checked 2026-09-13). When a newer model no longer needed many of the old corrections, the team removed them from the system prompt. His advice for users follows the same idea: from time to time (he suggests about every six months), delete your own instruction files, skills and hooks, and watch what the model does without them. A line comes back only when the model stumbles **repeatedly** at the same place, never "just in case".
+Try removing duplicate guidance from a copy of a small fictional-data project. Keep the original instructions available for comparison:
 
-Exercise, on a copy of a project:
+1. Rename the copy's `AGENTS.md` to `AGENTS.old.md`. Write a shorter `AGENTS.md` that still contains all data rules, permissions and required checks. Keep Claude Code's `CLAUDE.md` import pointing at `@AGENTS.md`.
+2. Give the agent the same small task twice in fresh sessions with restricted permissions.
+3. Compare the results with the requirements. Record any differences; it is possible to find none.
+4. Restore guidance that prevents a demonstrated problem. Do not generalise two successful attempts to tasks you did not test.
 
-1. Rename `AGENTS.md` to `AGENTS.old.md` (Claude Code: also the `CLAUDE.md` that imports it).
-2. Give the agent the same small task twice in fresh sessions.
-3. Write down where it went wrong.
-4. Bring back only the lines that prevent those mistakes.
+<details>
+<summary>Background: periodically reviewing instructions</summary>
+
+Boris Cherny discusses reducing instructions in [We Cut 80% of Claude Code's Prompt](https://www.youtube.com/watch?v=qyPCVqFUyDo) (checked 2026-09-13). The interview describes removing corrections a newer model no longer needed and suggests reviewing personal instructions, skills and hooks about every six months. The broader delete-and-observe suggestion is not permission to remove security controls. The exercise above tests optional guidance in a copy.
+
+</details>
 
 ### 4. Start fresh or compact?
 
@@ -70,13 +75,13 @@ Exercise, on a copy of a project:
 | The task changes | The same task continues |
 | The history is full of failed attempts | The history holds decisions you still need |
 | The agent keeps repeating a wrong approach | You are close to done and want to keep the thread |
-| You want an unbiased review of the result | |
+| You want a review without the building conversation | |
 
-Before you start fresh, let the agent write the state into a file: goal, what is done, what is open, next step. A new session reads that file. This is how work survives across days: memory in files, not in a full context window.
+Before starting fresh, save a short file: goal, checked results, open work and next step. Give the new session that file. After compacting, check that important requirements are still present; a summary can omit details.
 
 ### 5. Set the autonomy slider per task
 
-Andrej Karpathy uses the picture of an **autonomy slider** in his public talk [Software Is Changing (Again)](https://www.youtube.com/watch?v=LCEmiRjPEtQ) (checked 2026-09-13): for each task, you decide how much the agent may do without you.
+**Autonomy** means how much the agent may do without asking you. Choose it for each task. Andrej Karpathy calls this an "autonomy slider" in [Software Is Changing (Again)](https://www.youtube.com/watch?v=LCEmiRjPEtQ) (checked 2026-09-13).
 
 | Slider | What the agent may do | Good for |
 |---|---|---|
@@ -84,7 +89,7 @@ Andrej Karpathy uses the picture of an **autonomy slider** in his public talk [S
 | Middle | Edit files; you read the diff before it counts | Normal feature work with tests |
 | High | Run until a checked condition holds | Well-tested tasks, in a sandbox, with a stop condition |
 
-The rule: **more autonomy needs stronger checks before it.** Move the slider per task, not once per project. Verification is covered in [The verification ladder](../05-verify-and-loop/01-verification-ladder.md).
+Before allowing more actions, check that you can detect a wrong result and stop or undo the work. Tool permissions enforce access limits; a prompt alone does not. See [The verification ladder](../05-verify-and-loop/01-verification-ladder.md).
 
 > **As of 2026-09-13 in Claude Code** (checked 2026-09-13)
 > - Permission modes: **Manual** (config value `default`) asks before most edits, commands and network access. **Plan** is for analysis before changes. In **auto** mode, a second model (a classifier) reviews actions instead of you. On supported setups, the built-in default can start a session in auto mode, and Claude Code shows a notice the first time. ([source](https://code.claude.com/docs/en/permission-modes))
@@ -95,9 +100,9 @@ The rule: **more autonomy needs stronger checks before it.** Move the slider per
 
 ## Done when
 
-- [ ] You checked what fills your agent's context and named the biggest item.
+- [ ] You inspected the context display or the visible conversation and can name unnecessary material. If no usage display exists, you did not claim a measured size.
 - [ ] You applied the "would removing this line cause mistakes?" question to every line of one instruction file.
-- [ ] You ran the delete-and-observe exercise once and brought back only lines that prevented real mistakes.
+- [ ] You tried shorter optional instructions in a copy, kept essential rules and compared the actual results.
 - [ ] You wrote a state file before starting a fresh session.
 - [ ] For your current task, you can say where the autonomy slider stands and which check justifies it.
 

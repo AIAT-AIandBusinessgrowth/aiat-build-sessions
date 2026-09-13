@@ -1,17 +1,17 @@
 # Which tool for what
 
+Choose a tool for three tasks from your week. For each task, decide where the result should be and how you will check it, so you can choose without learning every tool first.
+
 | | |
 |---|---|
 | **Prerequisites** | [Model, context, agent](01-model-context-agent.md) · [Pick your lane](../00-orientation/02-pick-your-lane.md) |
 | **Time** | ~15 min |
-| **Outcome** | After this unit you can tell a chat assistant, a browser app builder, a CLI coding agent and an editor-based agent apart, and pick one for a given task with a one-line reason. |
+| **Outcome** | Recognise four types of AI tool and choose one for a task with a clear reason. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-There are four families of tools, and they overlap more every month. People lose hours because they pick by hype or by what a colleague uses, not by the task. A browser builder is great for a shareable form and poor for cleaning a spreadsheet that must stay on your laptop. A CLI agent is the other way round.
-
-One rule covers most choices: pick the tool by what you can check, not by what can do the most.
+A browser builder can give you an app to share by link. A CLI agent can help write a script that you later run on your computer. Choose for the result you need, the data rules and the checks you can do. The categories overlap; you do not need one tool from each.
 
 ## Do it
 
@@ -35,14 +35,14 @@ Prices, free tiers and data settings change often. They are in the [tool matrix]
 | "I need to transform files that must not leave my laptop" | CLI coding agent, with fake data while building | The finished script runs locally against your own files. |
 | "I want to automate a step I repeat every week" | CLI coding agent | Scripts and files stay, and you can run them again. |
 | "I want to understand and change existing code" | Editor-based agent or CLI coding agent | You see the files and each change. |
-| "I want someone to check a result" | A fresh chat assistant, ideally with a different model | Fresh context, no loyalty to the first answer. See [Verification ladder](../05-verify-and-loop/01-verification-ladder.md). |
-| "I am not sure" | The tool you already know, with the smallest possible task | Knowing how to check beats having more features. |
+| "I want someone to check a result" | A fresh chat assistant, ideally with a different model | It can inspect the result without the earlier conversation. See [Verification ladder](../05-verify-and-loop/01-verification-ladder.md). |
+| "I am not sure" | The tool you already know, with the smallest possible task | You can try a small task and check the result before switching tools. |
 
 Three questions settle most cases:
 
 1. **Where must the result live?** A link for others, or files on your computer.
 2. **Where may the data go?** If nothing may leave your laptop, a hosted builder is out for the real run. Build with fake data either way.
-3. **How will you check it?** Pick the tool where you can see the evidence: a preview you can click, output you can read, a file you can open.
+3. **How will you check it?** Use a preview you can click, output you can read or a file you can open.
 
 ### 3. Try it (5 min)
 
@@ -63,10 +63,10 @@ How I will check it:
 
 ## Data note
 
-The choice of tool does not change the data rule. Hosted builders and chat assistants send everything to the vendor. CLI and editor agents also send what they read to the model provider. Only the finished script, run by you, touches your real files. Build with made-up data in every family. See [Rule one: no real data](../00-orientation/01-rule-one-no-real-data.md).
+Build with made-up data in every tool. Hosted builders, chat assistants, CLI agents and editor agents send information to their model provider. A finished script can run locally without an AI tool; check that it does not send data elsewhere before using it in an approved real-data process. Real files stay outside this course. See [Rule one: no real data](../00-orientation/01-rule-one-no-real-data.md).
 
 ## Next
 
-[The adoption ladder](03-adoption-ladder.md): where you are with these tools today, and what moves you up.
+[The adoption ladder](03-adoption-ladder.md): choose a useful next habit from how you work with AI today.
 
 Following a chosen path? Return to [START-HERE](../../START-HERE.md); the link above is the default track order.

@@ -1,21 +1,21 @@
 # Rule one: no real data
 
+Use made-up data in every exercise. Practise spotting personal information so you can prepare examples without sharing real records.
+
 | | |
 |---|---|
 | **Prerequisites** | None. If you have not read it yet, start with [START-HERE](../../START-HERE.md). |
 | **Time** | ~10 min |
-| **Outcome** | After this unit you can tell which data may go into an AI tool on a personal plan, spot personal data that has no name on it, and ask the agent for fake data instead. |
+| **Outcome** | Choose data for a course exercise, spot personal information without a name, and ask the agent for invented sample rows. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-You will type things into AI tools from the first minute. Everything you type, paste or upload leaves your computer and goes to the vendor of the tool.
+The online AI tools in this course receive what you type, paste or upload. Check the data before you send it.
 
-Most people who learn with this material use a personal plan: a free or paid account in their own name. That account is a contract between you and the vendor. Your organisation is not part of it. So there is no data processing agreement between your organisation and the vendor that covers what you put in, and your organisation cannot allow you to put its customer, staff or partner data there. [Data processing agreements](../../diy/03-data-processing-agreements.md) explains what such an agreement is and which kinds of plans offer one.
+A personal plan is a free or paid account in your own name. It does not establish a data processing agreement between your organisation and the vendor. Do not put your organisation's customer, staff or partner data there. [Data processing agreements](../../diy/03-data-processing-agreements.md) explains these agreements and which plans offer them.
 
 Many consumer plans also use your input to improve their models unless you switch that off. Which tool does what, with sources, is in the [tool matrix](../../diy/tool-matrix-2026-09.md).
-
-That is why rule one comes before any tool.
 
 ## Do it
 
@@ -27,7 +27,7 @@ That is why rule one comes before any tool.
 - **Public data that is not about people.** Opening hours of a public library, published statistics, a public holiday calendar. A person's public profile is still personal data.
 - **For a personal example, invent it too.** A fictional shopping list teaches the same skill without sending your own personal details. A team holiday plan contains data about other people and stays out.
 
-Never names, e-mail addresses, customer files, contracts, health or HR data of other people. Not even "just to test".
+Keep real names, e-mail addresses, customer files, contracts, health and HR data out, including when testing.
 
 ### 2. Spot personal data, also without a name (3 min)
 
@@ -54,13 +54,13 @@ Some personal data gets extra protection. [GDPR Article 9](https://eur-lex.europ
 - health data
 - data about sex life or sexual orientation
 
-These rarely sit in a column called "religion". They hide in notes: "off sick after surgery", "union rep", "no meetings on Friday afternoons for prayers".
+Check notes too: "off sick after surgery", "union rep" and "no meetings on Friday afternoons for prayers" reveal information from these categories.
 
 Also keep out, even though they are not on that list: salaries and performance reviews, data about children, criminal records, bank and card details, passwords and API keys ([secrets and keys](../../diy/07-secrets-and-keys.md)).
 
 ### 4. Ask the agent for fake data (2 min)
 
-Generating fake data is part of the skill, not a workaround. Keep this prompt ready and paste it whenever you need sample data:
+Use this prompt when you need sample data:
 
 ```text
 Create 10 rows of sample data for <what your app is about>.
@@ -78,7 +78,7 @@ In every tool you use, look for the setting that lets the vendor use your chats 
 
 ### When your real work needs real data
 
-Not with a personal plan, and not in these tracks. Real data needs a tool your organisation has approved, usually with a business plan and a data processing agreement. Talk to your organisation's data protection contact before, not after.
+Real data stays outside these tracks. It needs a tool your organisation has approved, usually with a business plan and a data processing agreement. Ask your organisation's data protection contact before using it.
 
 > **Not legal advice.** This is a working rule for learning. The EU General Data Protection Regulation (GDPR) serves as the reference; many other countries have similar rules. When in doubt, ask your organisation's data protection contact, not an AI tool.
 
@@ -92,7 +92,7 @@ Not with a personal plan, and not in these tracks. Real data needs a tool your o
 
 ## Data note
 
-This unit is the data note for all other units. Each of them repeats it in a line or two, because the habit matters more than the rule.
+Apply this rule in every unit, including to screenshots, files and pasted text.
 
 ## Next
 

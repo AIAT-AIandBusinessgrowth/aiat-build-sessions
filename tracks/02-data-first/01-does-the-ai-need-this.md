@@ -1,17 +1,17 @@
 # Does the AI need this?
 
+Check the fields in your app before sending anything to an AI tool. You will learn to describe the data you need without sharing the real records behind it.
+
 | | |
 |---|---|
 | **Prerequisites** | [Rule one: no real data](../00-orientation/01-rule-one-no-real-data.md), [Share and export](../01-first-build/02-share-and-export.md) |
 | **Time** | ~15 min |
-| **Outcome** | After this unit you can ask one question before every paste or upload, explain data minimisation, and tell anonymous data from pseudonymous data. |
+| **Outcome** | Decide what the AI needs and explain why removing a name may still leave personal data. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-Rule one says what to keep out. This unit gives you the question that decides it case by case, and that still works later when you use tools your organisation has approved.
-
-Data that never reaches a tool cannot leak from it, cannot train a model and never has to be reported.
+An app builder usually needs column names, types and rules to work with. It can invent the example rows. This reduces what you send to the tool, including later when you use a tool your organisation has approved.
 
 ## Do it
 
@@ -19,7 +19,7 @@ Data that never reaches a tool cannot leak from it, cannot train a model and nev
 
 > **Does the AI really need this piece of data to do the task?**
 
-Ask it for every column, every field and every sentence you paste. Most of the time the answer is no. To build something, the AI needs the **structure** of your data, not the **values**.
+Ask this for every column, field and sentence you plan to paste. For these builds, give the AI the **structure** of the data and use invented **values**.
 
 This is called data minimisation. The GDPR makes it a principle: personal data must be "adequate, relevant and limited to what is necessary" for the purpose ([GDPR Article 5(1)(c)](https://eur-lex.europa.eu/eli/reg/2016/679/oj)).
 
@@ -48,13 +48,13 @@ Three traps:
 - **Hashing an e-mail address is pseudonymisation.** The same address always gives the same hash. Anyone with a list of addresses can compute the hashes and compare.
 - **Small groups give people away.** "The only person in team B on leave in May" is one person.
 
-Anonymisation is hard to do well and hard to prove. When you build with AI, you rarely need it. The easier path is to not use real data at all and invent rows from the structure. That is the unit after the exercise.
+Removing names does not prove that nobody can be identified. For this course, leave the real data out and invent rows from the structure. You will do that after the next exercise.
 
 ### 4. Apply it to your first build (4 min)
 
 List every field your app from [Your first build](../01-first-build/01-your-first-build.md) has. For each field, write: does the AI need real values to build this? Yes or no, and why.
 
-Expect "no" everywhere.
+For this practice app, replace real values with invented examples. If you think a field needs real data, revisit what the app must do before uploading anything.
 
 **CLI lane:** the same question applies to files. Before you start an agent in a folder, check what else is in that folder. The agent can read it.
 

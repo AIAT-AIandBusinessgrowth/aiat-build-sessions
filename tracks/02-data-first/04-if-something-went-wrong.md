@@ -1,17 +1,19 @@
 # If something went wrong
 
+If you sent real data to an AI tool, stop the chat and tell your data protection contact today. These five steps help you limit further sharing and give that person the facts needed to respond.
+
 | | |
 |---|---|
 | **Prerequisites** | [Schema first, then synthetic data](03-schema-then-synthetic-data.md) |
 | **Time** | ~10 min |
-| **Outcome** | After this unit you can take five steps on the same day when real data went into an AI tool, and explain why reporting is better than hiding. |
+| **Outcome** | Know what to stop, delete, record and report, and how to prevent the same mistake. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-It happens to careful people: a screenshot with a customer list in the background, a pasted e-mail thread, a spreadsheet dragged into the chat out of habit.
+Real data can be easy to send by accident: a customer list in a screenshot, a pasted e-mail thread or the wrong spreadsheet.
 
-How much damage follows often depends less on the mistake than on the next few hours. Organisations can have legal deadlines. In the EU, an organisation must as a rule notify its data protection authority of a personal data breach within 72 hours after becoming aware of it, unless the breach is unlikely to put people at risk ([GDPR Article 33](https://eur-lex.europa.eu/eli/reg/2016/679/oj), checked 2026-09-13). Your organisation can only decide what to do if it knows. If you stay silent, it cannot act.
+Report promptly because your organisation may have a legal deadline. In the EU, an organisation must as a rule notify its data protection authority of a personal data breach within 72 hours after becoming aware of it, unless the breach is unlikely to put people at risk ([GDPR Article 33](https://eur-lex.europa.eu/eli/reg/2016/679/oj), checked 2026-09-13). Your organisation needs the facts to decide what to do.
 
 ## Do it
 
@@ -26,7 +28,7 @@ Do not continue the chat. Do not ask the tool to "forget" what you sent: asking 
 - Check whether the tool has a memory or saved-files section, and remove the data there too.
 - **CLI lane or GitHub sync:** if the data went into a repository, make the repository private first. Deleting the file in a new commit does not remove it from the history. Say so in your report instead of trying to rewrite the history alone.
 
-Deleting may not remove every copy at the vendor right away. Delete anyway, and note the time.
+Deleting may not remove every vendor copy immediately. Note what you deleted and when.
 
 ### Step 3: Write down the facts, not the data
 
@@ -40,7 +42,7 @@ Your note describes the data. It never contains a copy of it.
 
 ### Step 4: Tell your data protection contact the same day
 
-Tell your organisation's data protection contact today, not after the weekend. If you do not know who that is, ask your manager or search your intranet for "data protection" or "privacy". If you work for yourself and the data belongs to a client, tell the client.
+Tell your organisation's data protection contact today. If you do not know who that is, ask your manager or search your intranet for "data protection" or "privacy". If you work for yourself and the data belongs to a client, tell the client.
 
 A message you can adapt:
 
@@ -65,9 +67,7 @@ Write one sentence for yourself: what made this easy to happen? For example: "Th
 
 ### Report instead of hide
 
-A report that turns out to be harmless costs your data protection contact ten minutes. An incident that someone finds months later costs trust, and it can cost the organisation much more.
-
-Nobody should be blamed for reporting. If someone reports to you, thank them first and ask questions second. People who get blamed for a report stop reporting, and the mistakes do not stop with them.
+A prompt report gives your organisation time to assess the incident. If someone reports to you, thank them and help gather the facts. Blaming them can discourage future reports.
 
 > **Not legal advice.** This is a first-aid routine. Your organisation's data protection contact decides what happens next, including whether anyone has to be notified.
 

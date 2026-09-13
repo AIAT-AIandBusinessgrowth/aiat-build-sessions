@@ -1,17 +1,19 @@
 # Pick your lane
 
+Choose an app builder in your browser or a coding agent on your computer. By the end, you will know which tool to use and what to set up.
+
 | | |
 |---|---|
 | **Prerequisites** | [Rule one: no real data](01-rule-one-no-real-data.md) |
 | **Time** | ~10 min |
-| **Outcome** | After this unit you can choose between the browser lane and the CLI lane for your situation and know what you need to set up for it. |
+| **Outcome** | Choose one tool and check that you can use it. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-There are two ways to build with AI in this material. Both teach the same habits. The difference is what you have to install and what can break.
+Both options teach you to describe a task and check the result. They differ in setup, access to files and how you share your app. This course calls them the browser lane and the CLI lane. CLI means command-line interface: you type commands in a terminal.
 
-A first session spent installing things usually ends with nothing built. Pick the lane that lets you build something today. You can switch later, and every unit gives the steps for both lanes.
+Choose the option you can use today. You can switch later; the build instructions cover both lanes.
 
 ## Do it
 
@@ -26,7 +28,7 @@ A first session spent installing things usually ends with nothing built. Pick th
 | **What can break** | Credits run out; the project exists only inside the tool | Installation, permissions, paths; the agent can change or delete files in the folder you start it in |
 | **Good for** | A small web app with a link, today | Working with files, scripts and data on your computer; more control |
 
-Prices, free tiers and data settings per tool are in the [tool matrix](../../diy/tool-matrix-2026-09.md). This unit repeats none of them, because they change.
+Compare current prices, free tiers and data settings in the [tool matrix](../../diy/tool-matrix-2026-09.md).
 
 ### 2. Answer five questions (3 min)
 
@@ -40,7 +42,7 @@ If two or more answers point to the browser lane, start there.
 
 ### 3. Set up only what your lane needs (3 min to plan, setup in your own time)
 
-You organise your own accounts, plans and hosting. Nobody sets them up for you. That is on purpose: everything stays yours when you finish these tracks.
+You or your organisation arrange accounts, plans and hosting. Use accounts you can keep accessing after the course.
 
 **Browser lane**
 
@@ -61,7 +63,7 @@ The full self-check for both lanes is in [Ready to build](../../ready-to-build.m
 
 ### 4. Write it down (1 min)
 
-One line each: lane, tool, whether access works, where to check remaining usage, training setting. Do not write an e-mail address, account identifier or credentials into the learning record.
+Keep a short note: your lane and tool, whether access works, where to check remaining usage, and the training setting. Leave out e-mail addresses, account identifiers and credentials.
 
 ## Done when
 

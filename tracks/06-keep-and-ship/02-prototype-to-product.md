@@ -4,16 +4,14 @@
 |---|---|
 | **Prerequisites** | [Keep your work safe](01-keep-your-work-safe.md), [Spec interview](../03-plan-first/01-spec-interview.md), or a three-line mini-spec (what, for whom, done when) |
 | **Time** | ~20 min |
-| **Outcome** | After this unit you can say who your prototype is for, cut its scope, write a README and a feedback path, and list what breaks when someone other than you uses it. |
+| **Outcome** | You can explain who your tool helps, write usable starting instructions and prepare to check it with someone else. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-A script solves your own problem today. A product solves someone else's problem tomorrow.
+Choose one person who could use your prototype, the first working version of your tool. Write what they should be able to do with it. Use their role in course files, such as "office assistant".
 
-That shift sounds small. In practice it costs a few concrete things: a sentence that says what it is, named people who use it, a clear edge, a README, and a way to tell you when it breaks. Without them, you explain the thing again every time, and it stops working the day you are not around.
-
-A useful test: **a product is a script someone else can use without asking you.**
+Someone else may lack your setup or know less about the app. You will write starting instructions, define what this version does and give users a way to report problems.
 
 ## Do it
 
@@ -23,7 +21,7 @@ Fill in:
 
 > For **who**, **name** does **what**, instead of **what happens today**.
 
-Do not write it alone. Let the agent interview you. This works in Claude Code, Codex, and the chat of a browser app builder:
+You can write it yourself or use this interview prompt in Claude Code, Codex or a browser app builder:
 
 ```text
 Ask me five questions about the tool I built: who uses it, what they do today,
@@ -32,11 +30,11 @@ Ask one question at a time. Then give me three versions of this sentence:
 "For <who>, <name> does <what>, instead of <what happens today>."
 ```
 
-Pick one version and cut words until it fits on one line.
+Pick a version that clearly says who uses the tool and what it helps them do.
 
 ### 2. Name your users (3 min)
 
-"Everyone in the team" is not a user. Write down real people who have the problem, and at least one person who is not you.
+Choose at least one person other than you who has this problem. A role and task, such as "office assistant booking rooms every Monday", is more useful for design than "everyone in the team".
 
 Keep the list where it belongs: names and contact details go into your private notes. In the repository, describe users by role, for example "office assistant, plans rooms every Monday".
 
@@ -44,15 +42,15 @@ Keep the list where it belongs: names and contact details go into your private n
 
 Write two short lists and a date:
 
-- **In:** three to five things the product does.
-- **Out:** at least three things it deliberately does not do. This list matters more than the first one. It stops the product from growing in every direction.
-- **Stop date:** when this version is finished, even if not everything is done.
+- **In:** the few things this version needs to do. Three to five is a useful starting range for this exercise.
+- **Out:** related things you will leave for another version, if any.
+- **Stop date:** when you review the version and decide what is ready or still open. The date does not make unfinished work complete.
 
-Use the [MVP template](../../templates/MVP.md). A good prompt: "Read my sentence and write MVP.md with In, Out, and a stop date. Then remove half of the In list and tell me why."
+An **MVP** is the smallest version with which users can try the intended job. Use the [MVP template](../../templates/MVP.md), adapting its example counts to your task. Prompt: "Read my sentence and draft MVP.md with In, Out, and a stop date. Suggest anything we could leave out while keeping the intended job possible. Explain why; do not remove requirements just to shorten the list."
 
 ### 4. Write the README (3 min)
 
-Four questions, about twenty lines, no marketing:
+A **README** is the file that explains how to use the project. Start with four questions; about twenty lines is a useful exercise target:
 
 1. What does it do, in one sentence?
 2. Who is it for?
@@ -69,7 +67,7 @@ Decide on exactly one place where a user reports a problem or an idea: an issue 
 - what to include ("what you tried, what happened, what you expected"),
 - who reads it, and how often.
 
-A feedback path nobody reads is worse than none, because users stop trying.
+Choose a place you can check regularly. Do not promise a response time you cannot keep.
 
 ### 6. Find what breaks when someone else uses it (2 min plus homework)
 
@@ -78,7 +76,7 @@ Things that work for you often fail for the second person:
 | What breaks | Why | What to do |
 |---|---|---|
 | "Works on my machine" | Hidden setup: installed tools, settings, file paths only you have | Start it once from a clean folder or a fresh account, following only the README |
-| Your login is built in | The app uses your account or your API key | Give users their own access, or a shared key with a spend cap (see [Costs, limits, spend caps](../../diy/06-costs-limits-spend-caps.md)) |
+| Your login is built in | The app uses your account or your API key | Give users their own login. Keep any app API key on the server, with a spend cap; do not send it to users or put it in browser code (see [Costs, limits, spend caps](../../diy/06-costs-limits-spend-caps.md) and [Secrets and keys](../../diy/07-secrets-and-keys.md)) |
 | Blank screen on error | Nobody wrote an error message | Show a sentence that says what went wrong and what to try |
 | Unexpected input | Empty fields, very long text, special characters, two people at once | Try each one yourself before users do |
 | Costs | Every use spends your credits | Set a cap before you share the link |
@@ -86,21 +84,21 @@ Things that work for you often fail for the second person:
 
 Two ways to find your own list:
 
-- Ask the agent: "Act as a first-time user who has never met me. Use only the README. List the first five places where you get stuck."
-- Watch one colleague use it without helping. Write down every question they ask. Each question is a missing README line or a missing message in the app.
+- Ask the agent: "Try following only the README. Report steps that fail or are unclear, with what you tried. Say what you could not run. If you find no problems, say so."
+- Watch a willing colleague use it without helping. Note where they stop or ask a question. Decide whether the instructions, the app or its setup needs a change. An agent's review does not replace this user observation.
 
 ## Done when
 
-- [ ] Your one sentence fits on one line.
+- [ ] Your opening sentence says who the tool helps and what it does.
 - [ ] You named at least one user who is not you (names in private notes, roles in the repository).
-- [ ] MVP.md has In, Out (at least three items), and a stop date.
+- [ ] MVP.md says what this version includes, what it leaves out and when you will review it.
 - [ ] The README answers the four questions.
 - [ ] The README says where to report problems and who reads the reports.
-- [ ] You have a list of what breaks for someone else, and the top three are fixed or noted.
+- [ ] You checked the starting instructions and recorded any problems or checks you could not complete. Fix the most serious confirmed problems before inviting users.
 
 ## Data note
 
-Feedback often arrives with screenshots, and screenshots often contain real data. Tell users up front: fake data only, and no screenshots that show real names, customers, or messages. When you paste feedback into an agent, remove names first. The agent's vendor sees everything you paste.
+Ask testers to use fictional data and keep real names, customers and messages out of screenshots. Before giving feedback to an agent, rewrite the problem with invented details; removing names alone may leave other personal data. The model service receives what you share with it.
 
 ## Next
 

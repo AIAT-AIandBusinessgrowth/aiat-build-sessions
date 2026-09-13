@@ -1,5 +1,7 @@
 # Accounts and two-factor authentication
 
+Set up one account you can sign in to and recover if you lose your phone. Two-factor authentication (2FA) adds a second sign-in check, such as a code from an app. You can add other tool accounts later.
+
 | | |
 |---|---|
 | **Prerequisites** | None |
@@ -9,15 +11,15 @@
 
 ## Why this matters
 
-Every tool in this material hangs off an e-mail address. Whoever controls that mailbox can reset your passwords, so it has to be yours alone. You set up these accounts yourself. Nobody creates or manages them for you, and if you attend a session, the session host does not either. That is on purpose: the accounts, and everything you build with them, stay with you.
+Your e-mail account is often how you recover access to other tools. Protect it first, then the tool you want to use. Use your own login or the individual account your organisation provides. The course does not provide accounts.
 
-A shared login also means shared history. If three people use one account, nobody can tell who asked the agent to do what.
+With a shared login, people can also see one another’s history. Separate accounts make it easier to keep access and work apart.
 
 ## Do it
 
 ### 1. One e-mail account that is yours
 
-- Use a personal mailbox that only you can read. Not a team inbox, not a shared family account.
+- Use a mailbox assigned to you, rather than a shared team or family inbox. Your organisation may manage a work mailbox; follow its access rules.
 - If you want to use your work address for tools, ask your employer first. Some organisations do not allow it, and they decide.
 - Before you use a personal AI account for work, or install a tool on a work laptop, check your employer's IT rules.
 
@@ -53,7 +55,7 @@ Since March 2023, GitHub requires users who contribute code on GitHub.com to ena
 
 ## Watch out
 
-- "Sign in with Google" or "Sign in with GitHub" moves all the risk to that one account. That is fine if that account has 2FA, and bad if it does not.
+- If you use "Sign in with Google" or "Sign in with GitHub", losing access to that account can also lock you out of connected tools. Protect that account with 2FA and save its recovery options.
 - Never share a login with a colleague, not even for a quick test. Invite them to the project instead, if the tool allows it.
 - A new phone: move your authenticator codes before you wipe the old one.
 

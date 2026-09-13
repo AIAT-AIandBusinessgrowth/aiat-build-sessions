@@ -1,17 +1,19 @@
 # Exercise: find the personal data
 
+Inspect an invented customer file yourself, without AI, then compare your findings with the solution. You will practise spotting personal information that a quick glance can miss.
+
 | | |
 |---|---|
 | **Prerequisites** | [Does the AI need this?](01-does-the-ai-need-this.md) |
 | **Time** | ~30 min |
-| **Outcome** | After this unit you can find personal data hidden in an ordinary-looking customer file, and explain why the safest upload is no upload. |
+| **Outcome** | Identify personal information in a file and explain why you would keep the source file out of an AI tool. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
 Names are easy to spot. Personal data also hides in free-text notes, ID numbers, file names, and in combinations of columns that look harmless on their own.
 
-Most people find about half of it on the first try. That is the point of the exercise. If a careful person with thirty minutes finds half, a quick look before an upload finds less.
+Comparing your own list with the solution shows what you missed. The exercise does not give you a pass to upload a real file after a quick check.
 
 ## Do it
 
@@ -24,7 +26,7 @@ Open `customers.csv` in a way that involves no AI:
 - **Browser lane:** read it on GitHub (the file page shows it as a table), or download it with the "Download raw file" button and open it in a spreadsheet app on your computer.
 - **CLI lane:** open it in a text editor or spreadsheet app. Do not start your coding agent in the exercise folder: it would read the file into its context.
 
-**Do not upload or paste the file into any AI tool**, not even to "help find" things. The data is invented, so nothing bad would happen. You are practising the habit: with a real file, asking an AI to find the personal data is already the leak.
+**Do not upload or paste the file into any AI tool**, including to ask it to find personal data. The file is invented, but this exercise is for you to practise. With a real file, the AI would receive the personal data before it could identify it for you.
 
 ### 2. Search (15 min)
 
@@ -44,7 +46,7 @@ Working in a pair? Search alone for ten minutes, then merge your lists.
 
 Open [solution-short.md](../../exercises/find-the-personal-data/solution-short.md) first and tick off what you found. Then read [solution.md](../../exercises/find-the-personal-data/solution.md) for the reason and the fix for each trap.
 
-Write down your count: found out of total.
+Write down how many items you found out of the total. Use the count to find gaps in your search, not to judge whether real data is safe to upload.
 
 ### 4. Reflect (5 min)
 
@@ -54,7 +56,7 @@ Answer three questions on paper:
 2. How long would this take on a real file with 2,000 rows and five tabs?
 3. What would I have to do before every single prompt, every time, to be safe with a real file?
 
-The honest answer to question 3 is the lesson: you would not do it reliably. So the fix is not "clean the file better". The fix is to not upload the file at all, take only its structure, and invent the rows. That is the next unit.
+For this course, you do not need to make a real file safe to upload. Keep it out of the tool. In the next unit, you will describe the columns and ask the agent to invent rows.
 
 ## Done when
 

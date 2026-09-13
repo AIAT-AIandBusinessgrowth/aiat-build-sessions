@@ -1,6 +1,6 @@
 # Loop prompt
 
-Copy-paste prompts for working with any agent: a chat assistant, a browser builder, a CLI agent or an editor. They come from [Seven sentences](../tracks/05-verify-and-loop/03-seven-sentences.md) and [One work cycle](../tracks/05-verify-and-loop/04-one-work-cycle.md). Read those units once; the prompts only work if you do the checks yourself.
+Choose one small change and paste the first prompt into your tool. It asks for a plan, checked steps and a note you can use next time. You still need to inspect the result. These prompts accompany [Seven sentences](../tracks/05-verify-and-loop/03-seven-sentences.md) and [One work cycle](../tracks/05-verify-and-loop/04-one-work-cycle.md).
 
 ## 1. The loop prompt
 
@@ -17,6 +17,9 @@ Do not claim anything you have not actually run or checked.
 At the end: list everything that is unfinished. Turn each item into a task
 with one line that says how we will know it is due again.
 Put the list where I can find it next week (a file, a note, or an issue tracker).
+Do not commit, push, deploy, publish or send messages unless I explicitly
+authorised that action for this task. Existing authorisation within the
+agreed scope remains valid; ask only if it is missing or the scope changes.
 ```
 
 - **Browser builder:** "read the project" means look at the current app and its instructions.
@@ -24,7 +27,10 @@ Put the list where I can find it next week (a file, a note, or an issue tracker)
 
 ## 2. One work cycle, step by step
 
-Use these when you want to run the four steps one at a time. Keep the cycle log next to your tool.
+Use these when you want to run the four steps one at a time. A short note of the task, checks and open work is enough.
+
+<details>
+<summary>Optional log for a longer work session</summary>
 
 ```text
 Cycle log
@@ -42,6 +48,8 @@ Task:
 4. Done (checked):
    Open (each with a date or a trigger):
 ```
+
+</details>
 
 **Step 1: check the state.** Use a planning or read-only mode if your tool has one.
 
@@ -80,17 +88,22 @@ Then put the open items where you will see them again, save the state note next 
 
 ## 3. Compact loop for CLI agents
 
-For Claude Code, Codex and similar agents that can write files and commit. From [Loop engineering](../tracks/08-advanced/02-loop-engineering.md). Adapt the file paths to your project.
+For Claude Code, Codex and similar agents that can work with files. From [Loop engineering](../tracks/08-advanced/02-loop-engineering.md). Adapt the paths and decide whether you authorise commits before using it. The separate note files are optional; one project note can hold the same information.
 
 ```text
 Work in this loop until the plan is done or you are blocked.
 1. Research: read what you need. Do not edit yet. Write findings to notes/findings.md.
 2. Plan: write notes/plan.md with steps, files and a "done when" line per step.
    Stop and wait for my approval.
-3. Build: do one step. Run the check for that step. Commit with a clear message.
+3. Build: do one step. Run its check and review the diff.
+   If I authorised commits, stage only this task's reviewed files and commit
+   with a clear message. Otherwise leave the changes for my review.
 4. Verify: show me the command you ran and its output. Do not say "should work".
-5. Close: update notes/plan.md (done / open), and add one learning to learnings/.
+5. Close: update notes/plan.md (done / open). Add a useful lesson to learnings/
+   if there is one. Do not invent a lesson or push without my permission.
 Stop after 5 steps or when a check fails twice in a row, and tell me why.
+Do not deploy, publish or send messages unless I explicitly authorised that
+action for this task. Keep completed checks separate from untested claims.
 ```
 
 In a browser app builder, run the loop by hand: one change per message, check the preview, save a version before the next change.

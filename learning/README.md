@@ -1,5 +1,9 @@
 # Try one small thing
 
+**[Start with the calculator](https://build-sessions.apps.aiat-poc.at/)** — work out an answer yourself, then see what the AI-made tool says. You learn to spot a mistake and explain it. No account or download needed.
+
+Prefer paper? Try the room example below.
+
 [Deutsch](start-de.md)
 
 Set aside about five minutes to start. Paper is enough; you do not need an account.

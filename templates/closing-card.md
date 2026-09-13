@@ -1,5 +1,7 @@
 # Closing card
 
+Use this optional note to choose what to continue after a project phase or a series of sessions. A few lines are enough. Keep completed notes private; do not add them to the public course repository.
+
 <!--
 For the end of a series of sessions, or the end of a project phase.
 About ten minutes. The adoption ladder is explained in
@@ -18,7 +20,9 @@ Where it lives (a public link, a repository, or "on my laptop"): _______________
 
 ## Adoption ladder: before and after
 
-Tick one level for **before** and one for **today**.
+Optional: describe how you used the tool before and how you use it now. The [adoption ladder](../tracks/04-the-map/03-adoption-ladder.md) names working habits; this self-description is not a passed skill check. Different tasks may need different levels.
+
+Tick one level for **before** and one for **today**, if this comparison helps.
 
 | Level | Name | Before | Today |
 |---|---|---|---|
@@ -28,7 +32,7 @@ Tick one level for **before** and one for **today**.
 | 3 | Delegating with checks: I hand over a scoped task and review evidence | [ ] | [ ] |
 | 4 | Delegating whole tasks with verification: checks are built in | [ ] | [ ] |
 
-One piece of evidence for today's level (the kind of task, no real names or files):
+One example of a task you tried and how you checked it (no personal data or private files):
 
 ________________________________________________
 
@@ -44,7 +48,7 @@ One or two sentences about what changed for you.
 
 ________________________________________________
 
-Your quote stays private unless you tick a box.
+Your quote stays private unless you choose a publication option. Choose one only. The host must confirm any unclear or conflicting choice before publication and store consent privately.
 
 - [ ] You may publish this quote **without** my name.
 - [ ] You may publish this quote **with** my first name: ________

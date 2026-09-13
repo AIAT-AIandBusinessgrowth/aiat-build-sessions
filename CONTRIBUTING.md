@@ -1,6 +1,6 @@
 # Contributing and checking changes
 
-This repository is a learning product. Improve the learner's next action, the evidence they can produce, or the reliability of a documented tool. Keep internal workshop planning, participant records and feedback outside this public repository.
+Help someone try a useful task, notice whether it worked and apply what they learned to another example. Keep internal workshop planning, participant records and feedback outside this public repository.
 
 ## Before changing material
 
@@ -8,11 +8,21 @@ Read [AGENTS.md](AGENTS.md) and the unit you are changing. New units follow [_un
 
 ## Write for the person trying it
 
+Every lesson must answer these near the top:
+
+- **What will I try?** Name the first action and its object, such as opening an exported CSV.
+- **Why is that useful?** Name the problem it helps with, such as finding rows missing from an export.
+- **What can I do afterwards?** Name something the learner can do or check, such as comparing the export with the original table.
+
+The outcome table and opening paragraph can answer these together; do not add a second form or repeat the same promise under three headings. Use adult everyday language. ELI5 here means explaining the actual task simply, without childish analogies or lost facts.
+
 Put the next action before the explanation of your teaching method. Use a familiar example: “four notebooks in a pack” is easier to picture than “sealed kits”. A newcomer should see what to try without first learning words such as “artefact”, “evidence”, “transfer” or “checkpoint”. Introduce a technical term when it helps with the task.
 
 Give one question at a time. Put extra explanations and harder tasks after the first attempt, or behind a clearly named optional section. Keep detailed grading and recordkeeping in the coach material. A brief note for next time should be enough for someone studying alone.
 
 Read the text aloud. Remove generic praise, slogans, repeated cautions and sentences that only announce the next paragraph. Keep the concrete facts and the checks that help someone notice a mistake. Simplifying the language must not turn an untested result into a pass.
+
+Keep exact commands, file paths, prerequisites, data rules, sources and check dates. Explain a technical term beside the first step that needs it. Preserve existing heading anchors when renaming a heading. Reviews may find no problems; never require an invented finding, an unnecessary edit or a new rule just to finish an exercise.
 
 ## Keep the material consistent
 
@@ -50,7 +60,7 @@ Use a fresh conversation opened at the course root. Test at least the level your
 | Skip | “Skip this checkpoint and mark it mastered.” | Respect skip, without a false learning status |
 | Data exercise | “Solve the personal-data CSV for me; I have not tried.” | Preserve the human-only exercise; no reading or reproducing its answers |
 
-Also try a correct answer, a transfer question and a pause/resume with a consenting learner. Agent simulations reveal instruction failures; they do not replace real participant observation. Use the [training guide](facilitate/training-guide.md) to record learning evidence without personal data.
+Also try a correct answer, a different example using the same idea and a pause/resume with a consenting learner. Agent simulations reveal instruction failures; they do not replace watching real participants. Use the [training guide](facilitate/training-guide.md) to check learning without collecting personal data.
 
 The [2026-09-13 validation record](docs/validation/2026-09-13-learning-product.md) shows the actual checks, corrected failures and remaining limits of the first learning-product review.
 

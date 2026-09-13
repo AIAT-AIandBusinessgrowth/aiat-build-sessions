@@ -1,5 +1,7 @@
 # Code hosting and backup
 
+Save a second copy of your app’s code, then open it and check your latest change. A repository is a project folder whose changes Git records. If your builder already connects to GitHub, start with section 5; otherwise follow the setup below.
+
 | | |
 |---|---|
 | **Prerequisites** | [Accounts and 2FA](01-accounts-and-2fa.md) |
@@ -9,13 +11,13 @@
 
 ## Why this matters
 
-Work gets lost when it exists exactly once: in one browser tab, in one builder account, on one laptop. A code host keeps a second copy and a history of every change. You create and own this account yourself. Nobody sets it up for you, and if you attend a session, the session host does not either.
+If your only copy is on one laptop or in one builder account, losing access can mean losing the project. A code host stores the files and the changes you send to it. You or your organisation arrange the account.
 
 ## Do it
 
 ### 1. Pick a code host
 
-Criteria before brands: Are private repositories free? How many people can join a private project for free? Does it offer 2FA? Where is it hosted? Can you move your repositories elsewhere later? All of the hosts below use Git, so you can move.
+Check what you need before choosing a host: Are private repositories free? How many people can join a private project for free? Does it offer 2FA? Where is it hosted? Can you move your repositories elsewhere later? All of the hosts below use Git, so you can move.
 
 | Host | Free tier (vendor statement) | Source |
 |---|---|---|
@@ -122,12 +124,12 @@ A clone already knows where to push. After a change, inspect `git status --short
 
 **If the push is rejected**
 
-- Never use `git push --force` to get past a reject. It overwrites what is on the host, and that work is gone.
+- Do not use `git push --force` to get past a rejection. It can replace the shared history and make other people’s work difficult to recover.
 - If you created the repository with a README by mistake and have a folder on your laptop: clone the repository into a new folder (variant b), copy your files into it, then commit and push from there.
 - If you pushed from another computer before: first save your local work, then try `git pull --ff-only`. If it reports divergent history, ask for a merge/rebase explanation and inspect both histories; do not force-push.
 - Paste the error text into your agent and ask what it means. Do not paste tokens or keys with it.
 
-Then open the repository page in the browser and check that your last change is there. Only what you can see on that page is safe.
+Then open the repository page in the browser and check that your last change is there. This confirms that the change reached the code host. It does not check your database, uploaded files or other backups.
 
 ### 5. Connect a browser builder (browser lane)
 

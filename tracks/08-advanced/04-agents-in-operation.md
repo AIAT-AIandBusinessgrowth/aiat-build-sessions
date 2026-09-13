@@ -4,30 +4,30 @@
 |---|---|
 | **Prerequisites** | [Loop engineering](02-loop-engineering.md), [Keep your work safe](../06-keep-and-ship/01-keep-your-work-safe.md) |
 | **Time** | ~25 min |
-| **Outcome** | After this unit you can design a recurring agent job with a ticket, a backup before every write, verification, a change log, a rollback plan and an audit, and start it safely in read-only mode. |
+| **Outcome** | You can try one recurring job in read-only mode and show how a person would check, undo and stop its changes. |
 | **Last verified** | 2026-09-13 |
 
 ## Why this matters
 
-Sooner or later an agent does a job again and again: updating website content, triaging incoming requests, writing a weekly report from a spreadsheet. At that point it is no longer an experiment. It is operations.
+Use the fictional bakery example below. Ask an agent to propose a change to Saturday's opening hours without editing the page. Compare its proposed change with the request.
 
-In operations, mistakes repeat automatically. Nobody reads each run. The questions change from "can the agent do this?" to "what happens when it gets it wrong on a Friday night, and how do we notice and undo it?"
+A recurring job runs again on a schedule or when an event occurs. If it makes a mistake, that mistake can repeat. You will practise checking a proposed change, saving a copy before applying it and restoring that copy if the check fails.
 
 ## Do it
 
 ### 1. The operating loop (10 min)
 
-Every run of an operational agent follows the same seven steps:
+Use these seven parts to set up this job. The request and results can live in one project note; a separate ticket system is optional.
 
 | Step | What it means | Evidence |
 |---|---|---|
-| **Ticket** | Every job starts from a written request: what, why, done when, who approved it. No ticket, no run. | Ticket link |
+| **Ticket** | A written request: what, why, done when, who approved it. It may be an issue or a note. | Request link |
 | **Agent** | The agent reads the ticket, plans, and prepares the change as a diff or preview. | Plan and diff |
 | **Backup before write** | Before changing anything, the agent saves the exact thing it will change, in a different place, named with date and ticket. | Backup file name |
 | **Verify** | After the change, check against "done when": the page loads, the value shows, the count matches. | Command and output, or screenshot |
 | **Change log** | One line per run, append only: when, ticket, what changed, backup location, verify result. | The log line |
-| **Rollback plan** | Written before the first run: how to restore the backup, who can do it, how long it takes. | The plan, tested once |
-| **Audit** | Regularly, a person reads the change log and checks a few runs in detail. | Audit note with date |
+| **Rollback plan** | How to undo a change by restoring the backup, who can do it and how long it takes. Write and test this before the first run. | A successful restore check |
+| **Audit** | A person regularly reads the log and checks a few runs against their requests. | Date and what was checked |
 
 A change-log line can be this simple:
 
@@ -37,7 +37,7 @@ A change-log line can be this simple:
 
 ### 2. Walk through a fake example (5 min)
 
-A small website for a fictional bakery at `bakery.example.com`. The agent's job: update opening hours when a ticket arrives.
+The example is a small website for a fictional bakery at `bakery.example.com`; that address is a placeholder. Create a separate exercise folder with an `hours.html` file containing `Saturday: 9-13`. Use this local file for the practice run. The agent's job is to propose new hours when a request arrives.
 
 1. **Ticket:** "Change Saturday hours to 9-14 from next week. Approved by: shop owner role."
 2. **Agent:** reads the ticket, finds the file, shows the diff. Nothing is changed yet.
@@ -47,19 +47,19 @@ A small website for a fictional bakery at `bakery.example.com`. The agent's job:
 6. **Change log:** appends one line.
 7. **If verify fails:** restores the backup, writes the failure to the log, comments on the ticket, and stops. It does not retry on its own.
 
-The rollback plan for this job is one sentence plus a tested command: "Copy the backup file named in the change log back over the page."
+The rollback plan says: "Copy the backup file named in the change log back over the page." In your own exercise folder, try the copy and check the restored hours. A written instruction does not prove the restore works.
 
 ### 3. Start read-only, then widen (5 min)
 
-Do not give an operational agent write access on day one. Widen in stages, and only after clean runs you checked yourself:
+Start with read-only access. In the first stage, you apply the proposed change and restore it yourself. Allow more access only after you have checked the results and can undo them:
 
 | Stage | The agent may | You do |
 |---|---|---|
 | 1. Read-only | Read, analyse, propose the change as a text or diff | Apply the change yourself |
 | 2. Draft | Write to a copy or staging version | Compare and publish |
-| 3. Live with gate | Write live, with backup before write and verify after | Read the change log, audit samples |
+| 3. Live with gate | Write to the running service after the required approval, with backup before and a check after | Approve the action, then inspect the log and sample results |
 
-Decide beforehand how many clean runs move a job to the next stage, and write that number into the rollback plan. Move back one stage after any incident.
+Decide beforehand which successful checks and how many observed runs are required to move up. Write this alongside the rollback plan. A count alone does not prove readiness. After an incident, reduce access and investigate before resuming.
 
 > **As of 2026-09-13 in Claude Code** (checked 2026-09-13)
 > - Plan mode is for analysing before making changes, a good fit for stage 1. ([source](https://code.claude.com/docs/en/permission-modes))
@@ -73,16 +73,16 @@ Decide beforehand how many clean runs move a job to the next stage, and write th
 - **Its own account**, not yours. It should have only the rights this job needs.
 - **Its own API key** with a spend cap, stored as a secret, never in the repository. See [Secrets and keys](../../diy/07-secrets-and-keys.md) and [Costs, limits, spend caps](../../diy/06-costs-limits-spend-caps.md).
 - **Not on your main computer.** Run it in a separate environment, such as a container or a small separate machine.
-- **A kill switch:** one documented step that stops it now (disable the schedule, revoke the key). Test it once.
+- **A stop procedure**, often called a kill switch: document how to stop the active run, disable its schedule and revoke its key when needed. Disabling a schedule alone may leave a current run active. Test the procedure on your own job.
 
 ## Done when
 
 - [ ] You picked one recurring job and wrote the seven steps for it.
 - [ ] The backup location is outside the place the agent changes.
 - [ ] The rollback plan exists, and you restored a backup once.
-- [ ] The change log format is defined, and one real (fake-data) run produced a line.
+- [ ] One actual run on the fictional example produced a log line. In read-only mode, you applied and checked the change yourself.
 - [ ] The job starts in stage 1 (read-only), with a written rule for moving up.
-- [ ] The agent has its own account and key, and the kill switch was tested.
+- [ ] Before scheduling the job, it has its own limited account and key, and you tested how to stop it. If you only tried it manually, scheduling remains untested.
 
 ## Data note
 

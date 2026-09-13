@@ -1,27 +1,27 @@
 # Session skeleton
 
-A fill-in agenda for one Build Session. Times are approximate and marked with "~". The format is explained in [run-a-build-session.md](run-a-build-session.md).
+Copy this agenda to prepare one session. Fill in the task people will try, the help available and what you will do if a tool fails. Choose the 60 or 75 minute version and keep it next to you while hosting.
 
-Copy this page, fill in the blanks, and keep it next to you during the session.
+Times marked "~" are approximate. [Run a Build Session](run-a-build-session.md) explains the format; you do not need to use every optional activity.
 
 ## Basics
 
-- **Topic:** ________________
+- **Task people will try:** ________________
 - **Date and start time:** ________________
 - **Length:** ~60 min / ~75 min
 - **Unit for the input:** `tracks/________________`
 - **The one prompt people start with:** ________________
 - **Host (role):** ________________
-- **Table anchors (roles, one per table):** ________________ (none: host plus pairs)
+- **People helping at tables (one per table):** ________________ (none: host plus pairs)
 
 ## Before
 
 - [ ] Use of personal AI plans cleared with the organisation's IT or data protection contact (before the first session)
-- [ ] Invitation sent with topic, time, what to bring and the link to `ready-to-build.md` ([invitation template](../templates/invitation.md))
+- [ ] Invitation sent with topic, time, what to bring and only the necessary steps from `ready-to-build.md` ([invitation template](../templates/invitation.md))
 - [ ] Unit done once by the host, in the tools people will use
 - [ ] Starter prompt in a shared place
 - [ ] Anchors briefed with [table-anchor.md](table-anchor.md), or pairs planned
-- [ ] Retro cards printed, pens ready
+- [ ] Feedback cards printed, pens ready ([retro card](../templates/retro-card.md))
 - [ ] Fallbacks decided: if the builder fails ________, if the network fails ________
 
 ## Agenda for ~60 minutes
@@ -31,7 +31,7 @@ Copy this page, fill in the blanks, and keep it next to you during the session.
 - ~0:13 Build at tables of 4 to 5 (~34 min)
   - ~0:18 Check: everyone has a task
   - ~0:42 Reminder: export or push, then open the second copy and look
-- ~0:47 Round: show and tell, ____ people, three minutes each (~8 min)
+- ~0:47 Round: show and tell, up to 2 people, three minutes each including a question (~8 min)
 - ~0:55 Retro card (~5 min)
 - ~1:00 End
 
@@ -42,7 +42,7 @@ Copy this page, fill in the blanks, and keep it next to you during the session.
 - ~0:13 Build at tables of 4 to 5 (~45 min)
   - ~0:18 Check: everyone has a task
   - ~0:53 Reminder: export or push, then open the second copy and look
-- ~0:58 Round: show and tell, ____ people, three minutes each (~12 min)
+- ~0:58 Round: show and tell, up to 4 people, three minutes each including a question (~12 min)
 - ~1:10 Retro card (~5 min)
 - ~1:15 End
 

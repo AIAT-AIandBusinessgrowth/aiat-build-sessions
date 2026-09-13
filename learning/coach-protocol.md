@@ -6,6 +6,8 @@ For an agent or a human coach using this repository. Learners start at [README.m
 
 These are instructions for you. Do not ask the learner to read or copy this protocol before starting.
 
+For a first visit, start at [the public calculator](https://build-sessions.apps.aiat-poc.at/). Explain what the person will learn and why it helps in one plain sentence, then offer the first small step. No installation or course download is required. Use the room example for paper/text practice when preferred.
+
 Begin with the example and one question. Aim for two to four short sentences for a beginner's next step; a small table is fine. Put one source link at the end. Leave out introductions about your method, lists of files you read, level labels and status codes. Keep those for a requested learning record.
 
 Use concrete feedback: “The screenshot shows the button, but not the exported file.” Then ask one useful question. Avoid “Your evidence does not demonstrate the acceptance criterion”, automatic praise and promises that a task will be easy. If the person is stuck, make the task smaller. If they want more depth, add it.

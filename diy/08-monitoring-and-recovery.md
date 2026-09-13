@@ -1,5 +1,7 @@
 # Monitoring and recovery: practise a failure before users find it
 
+Find out how you will notice a failure and get the app working again. Monitoring means checking it regularly and alerting someone when a check fails. Start on a spare copy, where nobody’s work depends on it.
+
 | | |
 |---|---|
 | **Prerequisites** | [Deploy and share](05-deploy-and-share.md), [Keep your work safe](../tracks/06-keep-and-ship/01-keep-your-work-safe.md) |
@@ -9,13 +11,13 @@
 
 ## Why this matters
 
-An app being reachable does not prove its main task works. A monitor being configured does not prove anybody receives an alert. Practise both failure and recovery with a disposable copy using fictional data.
+Your app may open while its main feature is broken. An alert setting may exist without reaching anyone. Try one failure and recovery in a separate practice copy using invented data, so you can see which checks work.
 
 ## Do it
 
 ### 1. Define health before choosing a service
 
-Write one expected observation for each layer that your app needs:
+For each check your app needs, write what you expect to see:
 
 | Layer | Example check | What it does not prove |
 |---|---|---|
@@ -24,7 +26,7 @@ Write one expected observation for each layer that your app needs:
 | Recoverable | A backup restores the latest known synthetic record into a separate copy | Future backups will keep succeeding |
 | Noticed | A test alert reaches the responsible person through the agreed route | They can recover the service without instructions |
 
-For a local-only HTML file, a remote uptime monitor is not applicable. Record that reason. The checks for behaviour, saved copies and a responsible owner still matter.
+If you only open an HTML file on your laptop, skip the online uptime monitor. You can still check what the file does and whether you can restore a saved copy.
 
 ### 2. Rehearse one failure in a disposable copy
 
@@ -51,6 +53,8 @@ Check that the response is your expected app. Stop **the server you just started
 This is a manual local rehearsal, not an installed monitor or a delivered alert. For operational use, configure an approved periodic check and alert route and run the same failure-and-recovery drill. Record those as pending until tested. The commands use [Python's local HTTP server](https://docs.python.org/3/library/http.server.html) and [curl's failure and timeout options](https://curl.se/docs/manpage.html), checked 2026-09-13. Python's development server is not production hosting.
 
 ### 3. Record what actually happened
+
+Start with what failed, how you noticed and what restored it. Use the fuller note below when setting up regular monitoring; leave anything you have not tested marked that way.
 
 ```text
 Target and expected application:

@@ -1,10 +1,12 @@
 # Data processing agreements
 
+This page helps you prepare a question for your organisation’s data protection contact: may this tool handle these data for this purpose? A data processing agreement (DPA) sets terms for a vendor processing personal data on an organisation’s behalf. Use invented data while learning here.
+
 | | |
 |---|---|
 | **Prerequisites** | [Rule one: no real data](../tracks/00-orientation/01-rule-one-no-real-data.md). Optional background: [Plans and licences](02-plans-and-licences.md) |
 | **Time** | ~20 min |
-| **Outcome** | After this you can tell whether a tool and plan may see personal data, and who has to decide that |
+| **Outcome** | After this you know what to check with your organisation before a tool handles personal data |
 | **Last verified** | 2026-09-13 |
 
 This page explains the principle. It is not legal advice. For real decisions, ask your organisation's data protection contact.
@@ -13,7 +15,7 @@ This page explains the principle. It is not legal advice. For real decisions, as
 
 When you type into an AI tool, the vendor processes what you type. If that text contains personal data about other people (names, e-mail addresses, customer records, health or HR information), the law cares who the vendor is, what contract exists and what the vendor does with the data.
 
-Most people learning here are on a personal plan. A personal plan is a contract between you and the vendor. Your organisation is not part of it.
+A personal plan and an organisation’s approved account can have different contracts and settings. Check the actual agreement; the price or plan name alone does not answer the data question.
 
 ## Do it
 
@@ -21,7 +23,7 @@ Most people learning here are on a personal plan. A personal plan is a contract 
 
 Under the GDPR, the organisation that decides why personal data is processed is the controller. A vendor that processes the data on its behalf is a processor. Article 28 says the controller "shall use only processors providing sufficient guarantees", and that the processing "shall be governed by a contract or other legal act" ([GDPR Art. 28](https://gdpr-info.eu/art-28-gdpr/), checked 2026-09-13). That contract is usually called a data processing agreement (DPA).
 
-In practice: if a tool will see your company's or your customers' personal data, your organisation needs a DPA with that vendor. You cannot sign that for them on a personal plan.
+If the vendor processes personal data on your organisation’s behalf, the organisation needs the agreement required by Article 28. Have the responsible person check the arrangement before using real data. A personal subscription does not by itself authorise you to agree terms for your organisation.
 
 ### 2. Know the difference between personal and business plans
 
@@ -52,8 +54,8 @@ Vendor statements on 2026-09-13:
 
 ### 5. Apply the rule of thumb
 
-- **Personal plan = practice with made-up data.** Your own harmless data is fine too.
-- **Company or customer personal data only in a plan with a DPA**, and only if your employer says yes. That decision belongs to your organisation, usually the data protection contact, not to you and not to anyone who runs a session.
+- **In this course, every plan uses made-up data.** Keep real personal data out, including your own details.
+- **Real work data needs a separate decision by your organisation.** Ask its data protection contact about the purpose, legal basis, contract and settings. A DPA alone does not approve every use.
 - If you are unsure whether something counts as personal data, treat it as personal data.
 
 Before you ask a vendor or your employer, collect the answers to these questions:
@@ -71,7 +73,7 @@ Before you ask a vendor or your employer, collect the answers to these questions
 - [ ] I checked the training setting in my tool and switched it off where possible.
 - [ ] I know where my tool stores data, or I wrote down "unknown" and asked the vendor or checked its privacy page.
 - [ ] I know who in my organisation decides about real data.
-- [ ] I will build with made-up data on a personal plan.
+- [ ] I will use made-up data throughout these exercises, whatever plan I have.
 
 ## Watch out
 
