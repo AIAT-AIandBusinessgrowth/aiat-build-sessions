@@ -25,8 +25,10 @@ als Referenz für die Runden-Idee liegen.
 - [x] 2. Keine Abhängigkeiten: Szene in SVG, Schrift als eigene Dateien unter
       `assets/fonts/` (SIL OFL 1.1, Lizenz liegt daneben).
 - [x] 3. Englische Fassung über `?lang=en`, auch in der Reparaturdatei.
-- [x] 4. Deployment: Allowlist im Infra-Repo ohne das Slide-Deck, Fonts und
-      Reparaturdatei aufgenommen; Live-Stand steht in `/version.json`.
+- [x] 4. Deployment: Fonts und Reparaturdatei in die Allowlist des Infra-Repos
+      aufgenommen; Live-Stand steht in `/version.json`. Das Slide-Deck bleibt
+      unter `/build-sessions-slides-1309/` online (Entscheidung 2026-09-14); die
+      ausgelieferten Dateien liegen dafür unter `presentations/`.
 - [x] 5. Einheit „Choose test values" in Track 05, Schritt in den Pfaden B, C, D.
 - [x] 6. Fünf Vorbedingungen in `START-HERE.md` abgefangen.
 - [x] 7. Stufe 1 und 2 der Übungsentwürfe als „Harder tasks" in der README der
@@ -43,6 +45,9 @@ als Referenz für die Runden-Idee liegen.
 - [ ] `scripts/check_content.py` prüft keine Links in HTML-Dateien; als
       Erweiterung erfassen.
 - [ ] Stufe 3 und 4 der Übungsentwürfe (Zustandsfehler, Prüfbericht).
+- [ ] Die ConfigMap der Live-Seite hat nur noch rund 29 KB Luft. Vor dem
+      nächsten Bild die Deck-Fotos in eine zweite ConfigMap auslagern
+      (Runbook `docs/build-sessions-public-start.md` im Infra-Repo).
 
 ## Prüfliste vor dem Abnehmen
 
