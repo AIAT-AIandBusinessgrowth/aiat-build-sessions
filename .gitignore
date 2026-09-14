@@ -12,5 +12,7 @@ learning/local/
 __pycache__/
 *.py[cod]
 
-# Maintainer audit notes from orchestrated sessions; never published.
+# Maintainer notes and prototypes; the public mirror stays course material only.
 docs/audits/
+docs/next-session-todo.md
+docs/prototypes/
