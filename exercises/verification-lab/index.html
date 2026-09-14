@@ -34,22 +34,80 @@ a{color:var(--primary);text-underline-offset:.2em}
 
 /* ---------- Kopf ---------- */
 .site-head{display:flex;align-items:center;gap:12px;max-width:960px;margin:0 auto;padding:14px 20px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;padding:5px 6px;margin-left:-6px;border-radius:6px;color:#000;text-decoration:none}
-.brand svg{width:34px;height:34px;flex:none}
-.brand-word{font:400 11px/1.25 var(--font-mono);letter-spacing:.04em;color:#000;text-transform:uppercase}
+.site-head .brand{align-self:center}
+.brand{display:flex;align-items:flex-start;gap:10px;padding:5px 6px;margin-left:-6px;border-radius:6px;color:#000;text-decoration:none}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.brand .mark{width:33px;height:44px;flex:none;fill:var(--primary)}
+.brand-word{font:400 11px/1.25 var(--font-mono);letter-spacing:.04em;color:#000;text-transform:uppercase;padding-top:2px}
 .brand-sub{font:400 15px/1 var(--font-sans);color:var(--muted);padding-left:12px;border-left:1px solid var(--hairline)}
 .lang{margin-left:auto;display:flex;gap:4px}
 .lang a{font:400 15px/1 var(--font-sans);min-height:44px;min-width:44px;padding:0 12px;border-radius:4px;background:var(--band);color:#000;text-decoration:none;display:grid;place-items:center}
 .lang a[aria-current="page"]{background:#000;color:#fff}
 
+/* ---------- Einstieg ---------- */
+.lede{font-size:19px;max-width:36em;color:#000;margin-bottom:18px}
+.facts{display:flex;flex-wrap:wrap;gap:6px 10px;margin:0 0 22px;padding:0;list-style:none}
+.facts li{font:400 13px/1 var(--font-mono);letter-spacing:.02em;text-transform:uppercase;color:var(--muted);background:var(--band);border-radius:20px;padding:8px 12px}
+.onboard{background:var(--primary-light);border-radius:22px;padding:22px 22px 24px;margin:0 0 30px}
+.onboard h2{margin-bottom:16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 18px;padding:0;list-style:none;counter-reset:step}
+.steps li{display:grid;grid-template-rows:auto auto 1fr;gap:8px}
+.steps svg{display:block;width:100%;max-width:120px;height:auto}
+.steps b{display:block;font-weight:500;font-size:17px}
+.steps b::before{counter-increment:step;content:counter(step);display:inline-grid;place-items:center;width:26px;height:26px;margin-right:8px;border-radius:50%;background:var(--primary);color:#fff;font:500 15px/1 var(--font-sans);vertical-align:-5px}
+.steps p{margin:0;font-size:15px;color:var(--muted)}
+.why{max-width:44em;margin:0 0 18px;font-size:17px}
+.why b{font-weight:500}
+.onboard .actions{margin:0}
+
+/* ---------- Was sich ändert ---------- */
+/* Die Seite läuft in drei Abschnitten: erst die Einführung, nach "Los geht's"
+   die Aufgabe, nach der fünften Runde die Einordnung und der nächste Schritt.
+   Ohne JavaScript steht alles von Anfang an da. Die Klasse setzt der Kopf, bevor
+   der Körper gerendert wird, sonst blitzen die Abschnitte kurz auf. */
+html.js.intro .after-start{display:none}
+section.after-start{margin-top:24px}
+html.js:not(.intro) .only-intro{display:none}
+html.js .after-rounds{display:none}
+html.js.done .after-rounds{display:block}
+.role{margin:30px 0 38px}
+.myths{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 18px;padding:0;list-style:none}
+.myths li{background:var(--band);border-radius:18px;padding:16px 18px}
+.myths q{display:block;font:400 17px/1.4 var(--font-sans);margin-bottom:8px}
+.myths p{margin:0;font-size:15px;color:#000}
+.job{background:var(--primary-light);border-left:4px solid var(--primary);border-radius:0 14px 14px 0;padding:16px 18px;max-width:52em}
+.job h3{font:500 17px/1.3 var(--font-sans);margin:0 0 8px}
+.job ol{margin:0;padding-left:1.3em}
+.job li{margin:6px 0}
+.job .ex{display:block;margin-top:6px;font-family:var(--font-mono);font-size:14px}
+
+/* ---------- Wie es weitergeht ---------- */
+.lede-2{font-size:17px;max-width:44em;margin-bottom:20px}
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.way{background:var(--band);border-radius:22px;padding:20px 22px 24px}
+.way h3{font:400 21px/1.3 var(--font-sans);margin:0 0 8px}
+.way-lede{margin:0 0 14px;font-size:15px;color:var(--muted)}
+.way-lede b{font-weight:500;color:#000;font-family:var(--font-mono);font-size:14px}
+.way-steps{margin:0;padding-left:1.35em}
+.way-steps>li{margin:0 0 14px}
+.way-steps>li:last-child{margin-bottom:0}
+.way-steps b{font-weight:500}
+.way-foot{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--hairline);font-size:14px;color:var(--muted)}
+.cmd{display:block;margin:8px 0 0;padding:10px 12px;background:#fff;border-radius:10px;font:400 13px/1.5 var(--font-mono);overflow-wrap:anywhere;white-space:pre-line}
+.acts{display:flex;align-items:center;gap:10px;margin-top:8px}
+.btn-s{font-size:15px;min-height:40px;padding:6px 14px}
+
 /* ---------- Aufgabe ---------- */
-.lede{font-size:19px;max-width:36em;color:#000;margin-bottom:22px}
 .task-line{font-size:19px;max-width:36em}
-.task-line b{font-weight:500}
+/* Die Aufgabe steht und fällt mit zwei Zahlen: wie viele Personen kommen und
+   wie viele Notizbücher in einer Packung sind. Im Fließtext gingen beide unter. */
+.key{font-weight:500;background:var(--primary-soft);border-radius:5px;padding:1px 5px;margin:0 -2px;white-space:nowrap}
 .rule{display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted);margin:12px 0 0}
 .rule svg{flex:none}
-.progress{display:flex;align-items:center;gap:12px;margin:18px 0 4px;font:400 14px/1 var(--font-mono);color:var(--muted)}
+.progress{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin:18px 0 4px;font:400 14px/1 var(--font-mono);color:var(--muted)}
+#round-label,.score{white-space:nowrap}
 .pips{display:flex;gap:5px}
+#round-label,.score{padding-left:12px;border-left:1px solid var(--hairline)}
 .pips i{display:block;width:26px;height:5px;border-radius:3px;background:var(--pip)}
 .pips i.now{background:var(--primary)}
 .pips i.ok{background:var(--ok)}
@@ -79,7 +137,7 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
 .btn-2{background:var(--accent);border-color:var(--accent);color:#000}
 .btn-2:hover{background:#B4EAA2;border-color:#B4EAA2}
 .mini{font-size:14px;color:var(--muted);max-width:46em}
-#download-line a{display:inline-flex;align-items:center;min-height:24px}
+#download-step a{display:inline-flex;align-items:center;min-height:24px}
 .err{font-size:15px;font-weight:500;color:var(--bad);margin:10px 0 0;max-width:46em}
 .err[hidden]{display:none}
 
@@ -107,9 +165,9 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
 /* ---------- Fuß ---------- */
 .site-foot{background:var(--primary);color:#fff;margin-top:40px;padding:30px 0 34px}
 .site-foot .wrap{display:grid;gap:14px}
-.foot-brand{display:flex;align-items:center;gap:10px}
-.foot-brand svg{width:40px;height:40px}
-.foot-brand span{font:400 11px/1.25 var(--font-mono);letter-spacing:.04em;text-transform:uppercase}
+.foot-brand{display:flex;align-items:flex-start;gap:10px}
+.foot-brand .mark{width:39px;height:52px;fill:#fff}
+.foot-brand span{font:400 11px/1.25 var(--font-mono);letter-spacing:.04em;text-transform:uppercase;padding-top:2px}
 .foot-links{display:flex;flex-wrap:wrap;gap:6px 18px}
 .foot-links a{color:#fff;font-size:15px;min-height:24px;display:inline-flex;align-items:center}
 .foot-fine{margin:0;font:400 12px/16px var(--font-sans);color:#fff}
@@ -131,8 +189,16 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
   .pop{animation:none;opacity:1;transform:none}
 }
 
+@media (max-width:760px){
+  .steps{grid-template-columns:1fr;gap:20px}
+  .steps li{grid-template-columns:64px 1fr;grid-template-rows:auto auto;gap:4px 14px;align-items:start}
+  .steps svg{grid-row:span 2;max-width:64px;margin-top:4px}
+  .myths{grid-template-columns:1fr}
+  .ways{grid-template-columns:1fr}
+}
 @media (max-width:600px){
   .wrap{padding:0 12px}
+  .onboard{padding:18px 16px 20px;margin-left:-4px;margin-right:-4px}
   .site-head{padding:12px}
   .card{padding:16px 12px}
   .stage{margin-left:-12px;margin-right:-12px}
@@ -146,23 +212,22 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
 @media print{
   .site-foot{background:#fff;color:#000;margin-top:24px;padding:14px 0 0;border-top:1px solid var(--hairline)}
   .site-foot a,.foot-fine{color:#000}
-  .foot-brand svg g{fill:#000}
+  .foot-brand .mark{fill:#000}
   .pips i{border:1px solid #000}
-  #copy-btn{display:none}
+  [data-copies]{display:none}
 }
 </style>
+<script>document.documentElement.className = 'js intro';</script>
 </head>
 <body>
+<!-- Die Wort-Bild-Marke, Pfad für Pfad aus dem offiziellen AI-AT_blau_rgb.svg
+     (viewBox und Formen unverändert). Nicht nachzeichnen: eine frühere Fassung
+     war eine Näherung aus drei Pillen und sah dem Logo nicht ähnlich. -->
+<svg class="sprite" aria-hidden="true" focusable="false"><symbol id="aiat-mark" viewBox="0 0 574.26 763.2817"><polygon points="124.3704 101.0222 104.5186 169.7083 144.2224 169.7083 124.3704 101.0222"/><polygon points="452.5417 326.6104 432.6899 395.2964 472.3938 395.2964 452.5417 326.6104"/><path d="M574.26,334.6602c0-52.74-42.75-95.5-95.49-95.5h-196.95c-21.8801,0-39.6301-17.74-39.6301-39.6301v-78.4399C242.1899,54.2202,187.98,0,121.1001,0h-.01C54.22,0,0,54.2202,0,121.0901v320.134c0,52.74,42.76,95.49,95.5,95.49h196.95c21.8901,0,39.6301,17.75,39.6301,39.6301v65.8477c0,33.4399,13.55,63.71,35.47,85.6196,21.9099,21.9204,52.1799,35.4702,85.6199,35.4702,66.8801,0,121.0901-54.21,121.0901-121.0898v-307.5317ZM112.8579,85.5376h23.0271l42.8772,140.9448h-18.2625l-11.5144-40.0994h-49.2297l-11.5144,40.0994h-18.2625l42.8792-140.9448ZM168.0425,452.0337h-87.344v-16.6748h35.137v-107.5952h-35.137v-16.6748h87.344v16.6748h-35.135v107.5952h35.135v16.6748ZM302.6692,342.8994c0,8.2842-6.7158,15-15,15s-15-6.7158-15-15,6.7156-15,15-15,15,6.7158,15,15ZM272.6692,420.3823c0-8.2844,6.7156-15,15-15s15,6.7156,15,15-6.7158,15-15,15-15-6.7158-15-15ZM504.1538,553.3889h-43.0769v124.27h-17.0701v-124.27h-43.0789v-16.6748h103.2258v16.6748ZM488.6711,452.0706l-11.5144-40.0994h-49.2317l-11.5127,40.0994h-18.2622l42.8792-140.9448h23.0251l42.8792,140.9448h-18.2625Z"/></symbol></svg>
 
 <header class="site-head">
   <a class="brand" href="https://ai-at.eu/" aria-label="AI:AT – AI Factory Austria">
-    <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false">
-      <g fill="#005AF0">
-        <path d="M7,0 H8 A7,7 0 0 1 15,7 V13 A2,2 0 0 1 13,15 H7 A7,7 0 0 1 0,8 V7 A7,7 0 0 1 7,0 Z"/>
-        <path d="M2,13 H17 A7,7 0 0 1 24,20 V21 A7,7 0 0 1 17,28 H7 A7,7 0 0 1 0,21 V15 A2,2 0 0 1 2,13 Z"/>
-        <path d="M26,11 H27 A7,7 0 0 1 34,18 V27 A7,7 0 0 1 27,34 H21 A2,2 0 0 1 19,32 V18 A7,7 0 0 1 26,11 Z"/>
-      </g>
-    </svg>
+    <svg class="mark" viewBox="0 0 574.26 763.2817" aria-hidden="true" focusable="false"><use href="#aiat-mark"></use></svg>
     <span class="brand-word">AI Factory<br>Austria</span>
   </a>
   <span class="brand-sub">Build Sessions</span>
@@ -174,11 +239,52 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
 <main>
 <div class="wrap">
   <h1 data-copy="title">Reicht es für alle?</h1>
-  <p class="lede" data-copy="lede">Hier prüfst du eine KI-Arbeit mit einem eigenen Beispiel: erst selbst rechnen, dann mit der Zahl der KI vergleichen.</p>
+  <p class="lede only-intro" data-copy="lede">Eine KI hat den kleinen Rechner auf dieser Seite gebaut. Er sieht richtig aus. In fünf kurzen Runden findest du heraus, wo er danebenliegt.</p>
+  <ul class="facts only-intro">
+    <li data-copy="fact-time">10 Minuten</li>
+    <li data-copy="fact-account">Kein Konto</li>
+    <li data-copy="fact-install">Nichts zu installieren</li>
+  </ul>
 
-  <section aria-labelledby="h-task">
+  <section class="onboard only-intro" aria-labelledby="h-how">
+    <h2 id="h-how" data-copy="h-how">So läuft jede Runde</h2>
+    <ol class="steps">
+      <li>
+        <svg viewBox="0 0 120 64" role="img" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="14" width="66" height="36" rx="8" fill="#fff" stroke="#000" stroke-width="3"/>
+          <text x="34" y="40" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#000">?</text>
+          <rect x="76" y="20" width="42" height="24" rx="12" fill="#005AF0"/>
+          <path d="M90 32 h13 m-5 -5 l5 5 l-5 5" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <b data-copy="step-1-t">Du schätzt</b>
+        <p data-copy="step-1-p">Du trägst deine Zahl ein und legst dich fest.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 120 64" role="img" aria-hidden="true" focusable="false">
+          <path d="M14 12 h92 a6 6 0 0 1 6 6 v24 a6 6 0 0 1 -6 6 h-62 l-14 12 v-12 h-16 a6 6 0 0 1 -6 -6 v-24 a6 6 0 0 1 6 -6 z" fill="#005AF0"/>
+          <circle cx="44" cy="30" r="4.5" fill="#fff"/><circle cx="60" cy="30" r="4.5" fill="#fff"/><circle cx="76" cy="30" r="4.5" fill="#fff"/>
+        </svg>
+        <b data-copy="step-2-t">Dann antwortet die KI</b>
+        <p data-copy="step-2-p">Ihre Zahl siehst du erst danach. Sonst übernimmst du sie einfach.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 120 64" role="img" aria-hidden="true" focusable="false">
+          <rect x="2" y="12" width="52" height="40" rx="8" fill="#EFF8EC" stroke="#0E7A3C" stroke-width="3"/>
+          <path d="M16 33 l8 8 l16 -18" stroke="#0E7A3C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="66" y="12" width="52" height="40" rx="8" fill="#FDF0EA" stroke="#C9330A" stroke-width="3"/>
+          <path d="M80 21 l24 24 m0 -24 l-24 24" stroke="#C9330A" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+        <b data-copy="step-3-t">Du vergleichst</b>
+        <p data-copy="step-3-p">Das Bild zeigt sofort, wer ein Notizbuch bekommt und wer leer ausgeht.</p>
+      </li>
+    </ol>
+    <p class="why"><b data-copy="why-b">Darum geht es:</b> <span data-copy="why">Die KI erledigt die Arbeit. Ob das Ergebnis stimmt, entscheidest du. Das Prüfen bleibt bei dir — hier übst du es an einem sehr kleinen Beispiel.</span></p>
+    <p class="actions"><button type="button" class="btn" id="start"><span data-copy="start">Los geht's</span><span class="arrow" aria-hidden="true">→</span></button></p>
+  </section>
+
+  <section class="after-start" aria-labelledby="h-task">
     <h2 id="h-task" data-copy="h-task">Die Aufgabe</h2>
-    <p class="task-line" id="task-line">Für den Workshop kommen <b>8 Personen</b>. Jede Person soll ein Notizbuch bekommen.</p>
+    <p class="task-line" id="task-line">Für den Workshop kommen <b class="key">8 Personen</b>. Jede Person soll ein Notizbuch bekommen.</p>
     <p class="rule">
       <svg width="112" height="46" viewBox="0 0 130 54" aria-hidden="true" focusable="false">
         <path d="M0 18 L110 18 L110 50 L0 50 Z" fill="#E6E0D4" stroke="#8E8574" stroke-width="2" stroke-linejoin="round"/>
@@ -186,16 +292,18 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
         <g fill="#005AF0"><rect x="13" y="22" width="22" height="24" rx="2"/><rect x="35" y="22" width="22" height="24" rx="2"/><rect x="57" y="22" width="22" height="24" rx="2"/><rect x="79" y="22" width="22" height="24" rx="2"/></g>
         <g fill="#003FA8"><rect x="13" y="22" width="6" height="24" rx="2"/><rect x="35" y="22" width="6" height="24" rx="2"/><rect x="57" y="22" width="6" height="24" rx="2"/><rect x="79" y="22" width="6" height="24" rx="2"/></g>
       </svg>
-      <span data-copy="rule">Notizbücher gibt es nur in Packungen zu vier Stück.</span>
+      <span data-copy="rule">Notizbücher gibt es nur in Packungen zu <b class="key">vier Stück</b>.</span>
     </p>
     <p class="progress">
       <span class="pips" id="pips" role="img" aria-label="Runde 1 von 5"><i class="now"></i><i></i><i></i><i></i><i></i></span>
+      <span id="round-label">Runde 1 von 5</span>
       <span class="score"><b id="score">0</b> <span data-copy="points">Punkte</span></span>
     </p>
+    <p class="mini" data-copy="points-note">10 Punkte, wenn deine Schätzung stimmt. 25 extra, wenn sie stimmt und die KI danebenliegt.</p>
   </section>
 </div>
 
-<div class="band">
+<div class="band after-start">
 <div class="wrap">
 <div class="card">
 
@@ -204,7 +312,7 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
     <div class="stage">
       <svg class="scene" id="scene" role="img" aria-labelledby="scene-title" focusable="false"><title id="scene-title">8 Personen warten. Noch ist nichts geliefert.</title></svg>
     </div>
-    <p class="scene-note mini" id="scene-note" data-copy="scene-note" hidden>Ab 25 Personen wird das Bild unübersichtlich. Die Zahlen darunter gelten trotzdem.</p>
+    <p class="scene-note mini" id="scene-note" data-copy="scene-note" hidden>Ab 25 Personen zeichnen wir das Bild nicht mehr — zu viele Figuren. Die drei Zahlen unter „Die Antwort der KI“ stimmen weiterhin.</p>
     <p class="caption" id="caption">8 Personen warten · noch nichts geliefert</p>
   </section>
 
@@ -233,7 +341,7 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
         <button type="submit" class="btn"><span data-copy="submit-free">Ausrechnen</span><span class="arrow" aria-hidden="true">→</span></button>
       </div>
       <p class="err" id="free-error" hidden></p>
-      <p class="mini" id="free-hint" data-copy="free-hint">Eine Zahl von 0 bis 1000. Probiere auch 1, 4 und 13.</p>
+      <p class="mini" id="free-hint" data-copy="free-hint">Eine Zahl von 0 bis 1000. Probiere 1, 5, 9 und 13. Zum Vergleich: 8, 12 und 16.</p>
     </form>
     <p id="locked" hidden></p>
   </section>
@@ -251,10 +359,10 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
       <p data-copy="say-lead">So sagst du es der KI:</p>
       <p class="quote" id="say-text"></p>
       <p class="acts">
-        <button type="button" class="btn btn-2" id="copy-btn"><span data-copy="copy-btn">Kopieren</span></button>
+        <button type="button" class="btn btn-2" data-copies="say-text"><span data-copy="copy-btn">Kopieren</span></button>
         <span class="copied" id="copied"></span>
       </p>
-      <p class="mini" data-copy="say-note">Füge den Satz in Claude Code oder Codex ein und bitte darum, nur die Berechnung in deiner heruntergeladenen Datei notebook-calculator.html zu ändern. Prüfe danach diese Zahl noch einmal und eine, die vorher richtig war.</p>
+      <p class="mini" data-copy="say-note">So ein Satz ist alles, was eine KI zum Reparieren braucht: eine Zahl, ein erwartetes Ergebnis, ein tatsächliches. „Der Rechner ist kaputt“ reicht nicht. Am Ende der fünf Runden zeigt dir die Seite, wie du damit den Rechner reparierst.</p>
     </div>
     <p class="actions"><button type="button" class="btn" id="next" hidden><span id="next-label">Nächste Runde</span><span class="arrow" aria-hidden="true">→</span></button></p>
   </section>
@@ -264,18 +372,81 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
 </div>
 
 <div class="wrap">
-  <section aria-labelledby="h-next">
-    <h2 id="h-next" data-copy="h-next">Nächster Schritt</h2>
-    <p data-copy="download-intro">Die Datei unten ist der reine Rechner mit demselben Fehler, ohne alles andere auf dieser Seite. Lade sie in einen eigenen Ordner, öffne diesen Ordner in Claude Code oder Codex und repariere den Rechner dort.</p>
-    <p id="download-line"><a href="notebook-calculator.html" download data-copy="download-link">notebook-calculator.html herunterladen</a></p>
-    <p data-copy="prompt-line">Nimm den Satz von oben als Auftrag. Lass danach dieselbe Zahl noch einmal rechnen und dazu eine, die vorher schon richtig war.</p>
+  <section class="role after-rounds" aria-labelledby="h-role">
+    <h2 id="h-role" data-copy="h-role">Was das für deine Arbeit heißt</h2>
+    <ul class="myths">
+      <li>
+        <q data-copy="myth-1-q">Die KI macht das schon alles.</q>
+        <p data-copy="myth-1-p">Sie macht viel. Nur merkt sie nicht, wenn das Ergebnis falsch ist. Der Rechner hier hat in keiner Runde gewarnt.</p>
+      </li>
+      <li>
+        <q data-copy="myth-2-q">Die KI macht alles kaputt.</q>
+        <p data-copy="myth-2-p">Das Gefährliche ist nicht der Absturz — den siehst du sofort. Gefährlich ist die Zahl, die fast stimmt.</p>
+      </li>
+    </ul>
+    <div class="job">
+      <h3 data-copy="job-h">Damit ändert sich, was du tust</h3>
+      <ol>
+        <li data-copy="job-1">Sag vorher, was du erwartest. Danach ist es zu spät: Dann liest du die Zahl der KI und findest sie plausibel.</li>
+        <li data-copy="job-2">Prüfe mit Beispielen, deren Antwort du kennst. Ein Treffer beweist nichts — hier stimmten drei von fünf Runden.</li>
+        <li><span data-copy="job-3">Benenne den Fehler mit Zahlen. „Geht nicht“ kann niemand reparieren, ein Beispiel schon:</span>
+          <span class="ex" data-copy="job-3-ex">Bei 9 Personen kauft der Rechner 2 Packungen, nötig wären 3.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="after-rounds" aria-labelledby="h-next">
+    <h2 id="h-next" data-copy="h-next">Wie es weitergeht</h2>
+    <p class="lede-2" data-copy="next-lede">Für beide Wege brauchst du Claude Code oder Codex auf deinem Rechner — für die fünf Runden oben brauchtest du nichts davon. Den Download und die Kontrollrechnung machst du selbst, alles andere macht der Agent.</p>
+    <div class="ways">
+
+      <section class="way" aria-labelledby="h-way-a">
+        <h3 id="h-way-a" data-copy="way-a-h">Weiterlernen mit deinem Agenten</h3>
+        <p class="way-lede" data-copy="way-a-lede">Der Kurs erklärt deinem Agenten, wie er dich anleitet: Er sucht die nächste Übung aus, erklärt sie und stellt eine Frage nach der anderen. Du kannst ihm auch nur die Kurs-Links schicken — mit den Dateien vor Ort geht es bequemer:</p>
+        <ol class="way-steps">
+          <li>
+            <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions" data-copy="way-a-1-link">Kursseite bei GitHub öffnen</a>
+            <span data-copy="way-a-1"> — dort auf die grüne Schaltfläche <b>Code</b> klicken, dann <b>Download ZIP</b>. Die Datei entpacken. Wer Git kennt, nimmt stattdessen diese Zeile:</span>
+            <span class="cmd" id="cmd-clone">git clone https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions.git</span>
+            <span class="acts"><button type="button" class="btn btn-2 btn-s" data-copies="cmd-clone"><span data-copy="copy-btn">Kopieren</span></button><span class="copied"></span></span>
+          </li>
+          <li><span data-copy="way-a-2">Den entpackten Ordner in Claude Code oder Codex öffnen.</span></li>
+          <li>
+            <span data-copy="way-a-3">Diesen Text in Claude Code oder Codex eintippen:</span>
+            <span class="cmd" id="cmd-learn">Lerne mit mir aus diesem Kurs. Starte mit einer kleinen Übung.
+Lass mich es zuerst selbst versuchen, bevor du Hinweise oder die Lösung gibst.</span>
+            <span class="acts"><button type="button" class="btn btn-2 btn-s" data-copies="cmd-learn"><span data-copy="copy-btn">Kopieren</span></button><span class="copied"></span></span>
+          </li>
+        </ol>
+        <p class="way-foot"><span data-copy="way-a-foot">Weder Claude Code noch Codex? Es geht auch in einem KI-Chat im Browser — ohne Kursdateien:</span> <a href="agent-guide.md" data-copy="way-a-foot-link">Anleitung für den Chat</a></p>
+      </section>
+
+      <section class="way" aria-labelledby="h-way-b">
+        <h3 id="h-way-b" data-copy="way-b-h">Diesen Rechner reparieren</h3>
+        <p class="way-lede" data-copy="way-b-lede">Derselbe Fehler wie eben, allein in einer Datei: <b>notebook-calculator.html</b>. Der Kurs hier bleibt, wie er ist.</p>
+        <ol class="way-steps">
+          <li id="download-step"><a href="notebook-calculator.html" download data-copy="download-link">notebook-calculator.html herunterladen</a></li>
+          <li id="move-step"><span data-copy="way-b-2">Der Browser legt sie in deinen Download-Ordner. Lege dort einen neuen, leeren Ordner an und verschiebe die Datei hinein — so kann der Agent nichts anderes verändern.</span></li>
+          <li><span data-copy="way-b-2b">Diesen Ordner in Claude Code oder Codex öffnen.</span></li>
+          <li>
+            <span data-copy="way-b-3">Genau diesen Auftrag geben:</span>
+            <span class="cmd" id="cmd-fix">Bei 9 Personen kauft der Rechner 2 Packungen, nötig wären 3. Ändere nur die Berechnung in notebook-calculator.html.</span>
+            <span class="acts"><button type="button" class="btn btn-2 btn-s" data-copies="cmd-fix"><span data-copy="copy-btn">Kopieren</span></button><span class="copied"></span></span>
+          </li>
+          <li><span data-copy="way-b-4">Die Datei im Browser neu laden und selbst nachrechnen — das ist der eigentliche Schritt: 9 Personen müssen jetzt 3 Packungen ergeben, <b>und 8 Personen weiterhin 2</b>. Für eigene Zahlen: durch 4 teilen und immer aufrunden.</span></li>
+          <li><span data-copy="way-b-5">Stimmt eine der beiden Zahlen nicht, sag es genauso konkret wie vorher: „Bei 8 Personen kommen jetzt 3 Packungen heraus, es müssen 2 sein.“</span></li>
+        </ol>
+        <p class="way-foot" data-copy="way-b-foot">Kein Agent zur Hand? Schreib auf, was du ändern würdest, und probier es später aus.</p>
+      </section>
+
+    </div>
   </section>
 </div>
 
 <noscript>
   <div class="wrap">
-    <p>Ohne JavaScript: Rechne auf Papier, wie viele Viererpackungen du für 8, 9 und 12 Personen brauchst, und schreib deine drei Zahlen auf. Vergleiche sie später mit dem, was der Rechner vorschlägt.</p>
-    <p lang="en">Without JavaScript: work out on paper how many packs of four you need for 8, 9 and 12 people, and write your three numbers down. Compare them later with what the calculator suggests.</p>
+    <p>Ohne JavaScript rechnet diese Seite nicht. Rechne auf Papier, wie viele Viererpackungen du für 8, 9, 12, 5 und 15 Personen brauchst, und schreib die fünf Zahlen auf. Zum Vergleichen brauchst du JavaScript.</p>
+    <p lang="en">This page does not calculate without JavaScript. On paper, work out how many packs of four you need for 8, 9, 12, 5 and 15 people, and write the five numbers down. Comparing them needs JavaScript.</p>
   </div>
 </noscript>
 
@@ -285,18 +456,12 @@ input[type=number]{font:500 20px/1 var(--font-sans);width:6.5rem;min-height:48px
 <footer class="site-foot">
   <div class="wrap">
     <span class="foot-brand">
-      <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false">
-        <g fill="#fff">
-          <path d="M7,0 H8 A7,7 0 0 1 15,7 V13 A2,2 0 0 1 13,15 H7 A7,7 0 0 1 0,8 V7 A7,7 0 0 1 7,0 Z"/>
-          <path d="M2,13 H17 A7,7 0 0 1 24,20 V21 A7,7 0 0 1 17,28 H7 A7,7 0 0 1 0,21 V15 A2,2 0 0 1 2,13 Z"/>
-          <path d="M26,11 H27 A7,7 0 0 1 34,18 V27 A7,7 0 0 1 27,34 H21 A2,2 0 0 1 19,32 V18 A7,7 0 0 1 26,11 Z"/>
-        </g>
-      </svg>
+      <svg class="mark" viewBox="0 0 574.26 763.2817" aria-hidden="true" focusable="false"><use href="#aiat-mark"></use></svg>
       <span>AI Factory<br>Austria</span>
     </span>
     <nav class="foot-links" aria-label="Footer">
-      <a href="https://build-sessions.apps.aiat-poc.at/agent-guide.md" data-copy="foot-guide">Anleitung für Codex und Claude</a>
-      <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/tree/main/learning" data-copy="foot-more">Mehr ausprobieren</a>
+      <a href="https://build-sessions.apps.aiat-poc.at/agent-guide.md" data-copy="foot-guide">Anleitung für Codex und Claude (englisch)</a>
+      <a id="foot-more" href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/learning/start-de.md" data-copy="foot-more">Mehr ausprobieren</a>
       <a href="https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/LICENSE">CC BY-SA 4.0</a>
       <a href="https://ai-at.eu/impressum/" lang="de">Impressum</a>
     </nav>
@@ -313,12 +478,36 @@ var english = new URLSearchParams(location.search).get('lang') === 'en';
 /* ---------- Statische Texte: Deutsch steht im Markup, Englisch hier ---------- */
 var copy = {
   title: 'Enough notebooks for everyone?',
-  lede: 'Here you check an AI result with your own example: work it out yourself first, then compare it with the AI’s number.',
+  lede: 'An AI built the small calculator on this page. It looks right. In five short rounds you find out where it gets things wrong.',
+  'fact-time': '10 minutes',
+  'fact-account': 'No account',
+  'fact-install': 'Nothing to install',
+  'h-how': 'How each round works',
+  'step-1-t': 'You estimate',
+  'step-1-p': 'You enter your number and lock it in.',
+  'step-2-t': 'Then the AI answers',
+  'step-2-p': 'You only see its number afterwards. Otherwise you would simply adopt it.',
+  'step-3-t': 'You compare',
+  'step-3-p': 'The picture shows at once who gets a notebook and who goes without.',
+  'why-b': 'The point:',
+  why: 'The AI does the work. Whether the result is right is your call. That part stays with you — here you practise it on a very small example.',
+  start: 'Start',
   'h-task': 'The task',
-  rule: 'Notebooks only come in packs of four.',
+  'points-note': '10 points when your estimate is right. 25 more when it is right and the AI is wrong.',
+  'h-role': 'What this means for your work',
+  'myth-1-q': 'The AI takes care of everything.',
+  'myth-1-p': 'It does a lot. It just does not notice when the result is wrong. The calculator here never warned you once.',
+  'myth-2-q': 'The AI will break everything.',
+  'myth-2-p': 'The dangerous part is not the crash — you see that immediately. The dangerous part is the number that is almost right.',
+  'job-h': 'So this is what changes for you',
+  'job-1': 'Say what you expect before you look. Afterwards it is too late: you read the AI’s number and it seems plausible.',
+  'job-2': 'Check with examples whose answer you know. One hit proves nothing — three of the five rounds here were correct.',
+  'job-3': 'Name the mistake with numbers. Nobody can fix “it does not work”, but an example they can:',
+  'job-3-ex': 'For 9 people the calculator buys 2 packs, 3 would be needed.',
+  rule: 'Notebooks only come in packs of [four].',
   points: 'points',
   'h-scene': 'Who gets a notebook?',
-  'scene-note': 'From 25 people on, the picture gets crowded. The numbers below still hold.',
+  'scene-note': 'From 25 people on we stop drawing the picture — too many figures. The three numbers under “The AI’s answer” still hold.',
   'h-sum': 'What you saw',
   restart: 'Play again',
   'h-you': 'Your answer',
@@ -327,17 +516,33 @@ var copy = {
   'guess-hint': 'Your number first, then the AI’s. In that order — otherwise you just adopt its answer.',
   'label-free': 'How many people are coming?',
   'submit-free': 'Calculate',
-  'free-hint': 'Any number from 0 to 1000. Try 1, 4 and 13 as well.',
+  'free-hint': 'Any number from 0 to 1000. Try 1, 5, 9 and 13. For comparison: 8, 12 and 16.',
   'h-ai': 'The AI’s answer',
   'tally-2': 'The AI buys',
   'tally-3': 'Actually needed',
   'say-lead': 'Say it to the AI like this:',
   'copy-btn': 'Copy',
-  'say-note': 'Paste the sentence into Claude Code or Codex and ask it to change only the calculation in your downloaded copy of notebook-calculator.html. Then check this number again, and one that was right before.',
-  'h-next': 'Next step',
-  'download-intro': 'The file below is the plain calculator with the same mistake, without anything else from this page. Download it into a folder of your own, open that folder in Claude Code or Codex and fix the calculator there.',
+  'say-note': 'A sentence like this is all an AI needs in order to repair something: a number, the result you expect, the result you got. “The calculator is broken” is not enough. After the five rounds, the page shows you how to use it.',
+  'h-next': 'Where to go next',
+  'next-lede': 'Both ways need Claude Code or Codex on your machine — the five rounds above needed none of that. You do the download and the check yourself; your agent does the rest.',
+  'way-a-h': 'Keep learning with your agent',
+  'way-a-lede': 'The course tells your agent how to guide you: it picks the next exercise, explains it and asks one question at a time. You can also just send it the course links — having the files locally is simply more convenient:',
+
+  'way-a-1-link': 'Open the course page on GitHub',
+  'way-a-1': ' — click the green Code button there, then Download ZIP, and unpack the file. If you know Git, use this line instead:',
+  'way-a-2': 'Open the unpacked folder in Claude Code or Codex.',
+  'way-a-foot': 'Neither Claude Code nor Codex? It also works in a browser AI chat, with no course files:',
+  'way-a-foot-link': 'Guide for the chat',
+  'way-a-3': 'Type this into Claude Code or Codex:',
+  'way-b-h': 'Repair this calculator',
+  'way-b-lede': 'The same mistake on its own, in one file: notebook-calculator.html. The course page itself stays as it is. The saved file opens in German — its own DE/EN switch is at the top.',
   'download-link': 'Download notebook-calculator.html',
-  'prompt-line': 'Use the sentence above as your instruction. Then run the same number again, plus one that was already right before.',
+  'way-b-2': 'Your browser puts it into your downloads folder. Create a new, empty folder there and move the file into it — then the agent cannot change anything else.',
+  'way-b-2b': 'Open that folder in Claude Code or Codex.',
+  'way-b-3': 'Give exactly this instruction:',
+  'way-b-4': 'Reload the file in your browser and check it yourself — that is the real step: 9 people must now give 3 packs, and 8 people must still give 2. For your own numbers: divide by 4 and always round up.',
+  'way-b-5': 'If either number is wrong, say so just as concretely as before: “For 8 people it now gives 3 packs, it must be 2.”',
+  'way-b-foot': 'No agent at hand? Write down the change you would make and try it later.',
   'foot-guide': 'Guide for Codex and Claude',
   'foot-more': 'Try another exercise'
 };
@@ -349,7 +554,7 @@ var LANG = {
     people: function (n) { return count(n, 'Person', 'Personen'); },
     packs: function (n) { return count(n, 'Packung', 'Packungen'); },
     books: function (n) { return count(n, 'Notizbuch', 'Notizbücher'); },
-    task: function (n) { return 'Für den Workshop ' + (n === 1 ? 'kommt ' : 'kommen ') + this.people(n) + '. Jede Person soll ein Notizbuch bekommen.'; },
+    task: function (n) { return 'Für den Workshop ' + (n === 1 ? 'kommt ' : 'kommen ') + '[' + this.people(n) + ']. Jede Person soll ein Notizbuch bekommen.'; },
     taskFree: 'Jetzt bestimmst du die Zahl. Der Rechner rechnet weiter wie bisher.',
     waiting: function (n) { return n === 0 ? 'Niemand kommt.' : this.people(n) + (n === 1 ? ' wartet' : ' warten') + '. Noch ist nichts geliefert.'; },
     waitCaption: function (n) { return n === 0 ? 'niemand wartet · noch nichts geliefert' : this.people(n) + (n === 1 ? ' wartet' : ' warten') + ' · noch nichts geliefert'; },
@@ -364,7 +569,7 @@ var LANG = {
     },
     sentence: function (n, packs, need, missing) {
       return 'Bei ' + this.people(n) + ' brauche ich ' + this.packs(need) + '. Der Rechner kauft ' + packs +
-        ', damit ' + (missing === 1 ? 'fehlt eines' : 'fehlen ' + missing) + '.';
+        ', damit ' + (missing === 1 ? 'fehlt 1 Notizbuch' : 'fehlen ' + missing + ' Notizbücher') + '.';
     },
     locked: function (n) { return 'Du hast dich festgelegt: ' + this.packs(n) + '.'; },
     aiWait: 'Sie erscheint, sobald du deine Zahl festgelegt hast.',
@@ -387,14 +592,14 @@ var LANG = {
     hitNone: 'Die KI lag daneben, deine Zahl auch.',
     summary: function (wrong) {
       return 'Der Rechner war nicht kaputt, er war nur manchmal falsch. Bei ' + wrong.join(' und ') +
-        ' Personen hat er zu wenig gekauft, in den anderen Runden genau richtig. Genau das macht solche Fehler gefährlich: Wer zwei richtige Antworten sieht, hört auf zu prüfen. Ein Treffer beweist nichts.';
+        ' Personen hat er zu wenig gekauft, in den anderen drei Runden genau richtig. Genau das macht solche Fehler gefährlich: Wer die ersten Treffer sieht, hört auf zu prüfen. Ein Treffer beweist nichts.';
     },
     summaryScore: function (p) { return 'Dein Ergebnis: ' + p + (p === 1 ? ' Punkt' : ' Punkte') + ' aus fünf Runden.'; },
     copied: 'Kopiert',
     copyFail: 'Nicht kopiert — der Satz ist jetzt markiert.',
-    errEmpty: 'Trag zuerst eine Zahl ein. Auch eine falsche Zahl zählt, geschätzt wird vorher.',
+    errEmpty: 'Trag zuerst eine Zahl ein. Auch eine falsche zählt — geschätzt wird, bevor die KI antwortet.',
     errEmptyFree: 'Trag eine Zahl ein, zum Beispiel 9.',
-    errWhole: 'Bitte eine ganze Zahl ohne Komma eintragen.',
+    errWhole: 'Bitte eine ganze Zahl eintragen, ohne Komma und ohne Punkt.',
     errLow: 'Bitte eine Zahl ab 0 eintragen.',
     errHigh: function (max) { return 'Bitte eine Zahl bis ' + max + ' eintragen. Größere Zahlen rechnet diese Übung nicht.'; }
   },
@@ -402,7 +607,7 @@ var LANG = {
     people: function (n) { return count(n, 'person', 'people'); },
     packs: function (n) { return count(n, 'pack', 'packs'); },
     books: function (n) { return count(n, 'notebook', 'notebooks'); },
-    task: function (n) { return this.people(n) + (n === 1 ? ' is' : ' are') + ' coming to the workshop. Each of them needs a notebook.'; },
+    task: function (n) { return '[' + this.people(n) + ']' + (n === 1 ? ' is' : ' are') + ' coming to the workshop. Each of them needs a notebook.'; },
     taskFree: 'Now you choose the number. The calculator works exactly as before.',
     waiting: function (n) { return n === 0 ? 'Nobody is coming.' : this.people(n) + ' waiting. Nothing has been delivered yet.'; },
     waitCaption: function (n) { return n === 0 ? 'nobody waiting · nothing delivered yet' : this.people(n) + ' waiting · nothing delivered yet'; },
@@ -440,31 +645,62 @@ var LANG = {
     hitNone: 'The AI was wrong, and so was your number.',
     summary: function (wrong) {
       return 'The calculator was not broken, it was only sometimes wrong. For ' + wrong.join(' and ') +
-        ' people it bought too few packs; in the other rounds it was exactly right. That is what makes this kind of mistake dangerous: after two right answers people stop checking. One hit proves nothing.';
+        ' people it bought too few packs; in the other three rounds it was exactly right. That is what makes this kind of mistake dangerous: once the first answers come out right, people stop checking. One hit proves nothing.';
     },
     summaryScore: function (p) { return 'Your result: ' + p + (p === 1 ? ' point' : ' points') + ' out of five rounds.'; },
     copied: 'Copied',
     copyFail: 'Not copied — the sentence is selected now.',
     errEmpty: 'Enter a number first. Even a wrong number counts — the guess comes before the answer.',
     errEmptyFree: 'Enter a number, for example 9.',
-    errWhole: 'Please enter a whole number, without a decimal point.',
+    errWhole: 'Please enter a whole number, with no decimal point.',
     errLow: 'Please enter 0 or more.',
     errHigh: function (max) { return 'Please enter a number up to ' + max + '. This exercise does not calculate larger numbers.'; }
   }
 };
 var T = english ? LANG.en : LANG.de;
 
+/* Die Schlüsselstelle eines Satzes steht in eckigen Klammern. Beide Sprachen
+   setzen sie an eine andere Stelle im Satz, darum markiert jede Fassung sie
+   selbst und hier entsteht daraus genau ein hervorgehobener Knoten. */
+function setSentence(node, text) {
+  node.textContent = '';
+  text.split(/[\[\]]/).forEach(function (part, index) {
+    if (part === '') return;
+    if (index % 2 === 0) { node.appendChild(document.createTextNode(part)); return; }
+    var mark = document.createElement('b');
+    mark.className = 'key';
+    mark.textContent = part;
+    node.appendChild(mark);
+  });
+}
+
+/* Die beiden Aufträge zum Kopieren sind kein Fließtext: sie werden wörtlich in
+   einen Agenten eingefügt und stehen darum als ganze Sätze hier. */
+var COMMANDS = {
+  'cmd-learn': 'Help me learn from this course. Start with a small exercise.\nLet me try before you give me hints or the answer.',
+  'cmd-fix': 'For 9 people the calculator buys 2 packs, 3 would be needed. Change only the calculation in notebook-calculator.html.'
+};
+
 if (english) {
   document.documentElement.lang = 'en';
   document.title = copy.title + ' · AI:AT Build Sessions';
   document.querySelectorAll('[data-copy]').forEach(function (node) {
-    if (copy[node.dataset.copy] !== undefined) node.textContent = copy[node.dataset.copy];
+    var text = copy[node.dataset.copy];
+    if (text === undefined) return;
+    if (text.indexOf('[') >= 0) setSentence(node, text); else node.textContent = text;
   });
+  /* Nicht $() benutzen: die Abkürzung wird erst weiter unten zugewiesen, und ein
+     Fehler an dieser Stelle bricht das ganze Skript ab — die Seite bliebe in der
+     englischen Fassung ohne Runden stehen. */
+  Object.keys(COMMANDS).forEach(function (id) { document.getElementById(id).textContent = COMMANDS[id]; });
   document.querySelector('nav.lang a[lang="de"]').removeAttribute('aria-current');
   document.querySelector('nav.lang a[lang="en"]').setAttribute('aria-current', 'page');
   /* Die gespeicherte Datei trägt keine Abfrage mehr — sie hat oben eigene
      Sprachschalter. Die Abfrage hier hilft, wer den Rechner erst im Tab öffnet. */
-  document.querySelector('#download-line a').setAttribute('href', 'notebook-calculator.html?lang=en');
+  document.querySelector('#download-step a').setAttribute('href', 'notebook-calculator.html?lang=en');
+  /* Die deutsche Einstiegsseite des Kurses hat ein englisches Gegenstück. */
+  document.getElementById('foot-more').setAttribute('href',
+    'https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions/blob/main/learning/README.md');
 }
 
 /* ---------- Der Fehler, den die Lernenden finden sollen ---------- */
@@ -604,8 +840,13 @@ var el = {
   l1: $('tally-l1'), v1: $('tally-v1'), v2: $('tally-v2'), v3: $('tally-v3'),
   verdict: $('verdict'), verdictText: $('verdict-text'), verdictPoints: $('verdict-points'),
   say: $('say'), sayText: $('say-text'), copyBtn: $('copy-btn'), copied: $('copied'),
-  next: $('next'), nextLabel: $('next-label'), restart: $('restart'), announce: $('announce')
+  next: $('next'), nextLabel: $('next-label'), restart: $('restart'), announce: $('announce'),
+  start: $('start'), scene: $('h-scene'), roundLabel: $('round-label')
 };
+/* Die Rundenzahl steht doppelt: sichtbar neben den Balken und im Namen des
+   Balken-Bildes, wo auch die schon gespielten Runden stehen. Vorgelesen wird
+   nur das Bild, sonst hört man dieselbe Runde zweimal. */
+el.roundLabel.setAttribute('aria-hidden', 'true');
 
 var round = 0, score = 0, phase = 'guess';
 
@@ -669,7 +910,7 @@ function showTally() {
 function showRound() {
   var n = ROUNDS[round];
   phase = 'guess';
-  el.taskLine.textContent = T.task(n);
+  setSentence(el.taskLine, T.task(n));
   el.guess.value = '';
   clearError(el.guess, el.guessError);
   hideResult();
@@ -683,6 +924,7 @@ function showRound() {
     pip.className = i < round ? (pip.dataset.done || '') : (i === round ? 'now' : '');
   });
   setPipsLabel();
+  el.roundLabel.textContent = T.round(round + 1, ROUNDS.length);
   el.caption.textContent = T.waitCaption(n);
   drawScene(n, null);
 }
@@ -745,7 +987,7 @@ function toFreeMode() {
   el.locked.hidden = true;
   el.next.hidden = true;
   el.youHead.textContent = english ? 'Try your own number' : 'Selbst ausprobieren';
-  el.taskLine.textContent = T.taskFree;
+  setSentence(el.taskLine, T.taskFree);
   el.l1.textContent = T.tallyPeople;
   el.free.value = '';
   clearError(el.free, el.freeError);
@@ -757,6 +999,10 @@ function toFreeMode() {
   setValue(el.v1, '–'); setValue(el.v2, '–'); setValue(el.v3, '–');
   [].forEach.call(el.pips.children, function (pip) { pip.className = pip.dataset.done || ''; });
   el.pips.setAttribute('aria-label', T.pipsFree);
+  el.roundLabel.textContent = T.pipsFree;
+  /* Erst jetzt stehen "Was das für deine Arbeit heißt" und der nächste Schritt
+     da: vorher zieht ein Download die Aufmerksamkeit aus der Aufgabe. */
+  document.documentElement.classList.add('done');
   phase = 'free';
   el.sumHead.focus();
   announce(el.sumText.textContent + ' ' + el.sumScore.textContent);
@@ -787,6 +1033,13 @@ function freeRun() {
   announce(result);
 }
 
+/* Die Einführung weicht der Aufgabe. Weil sie dabei verschwindet, rückt die
+   Aufgabe von selbst an den Anfang der Seite — es wird nichts gescrollt. */
+el.start.addEventListener('click', function () {
+  document.documentElement.classList.remove('intro');
+  el.guess.focus({ preventScroll: true });
+  scrollTo(0, 0);
+});
 el.roundForm.addEventListener('submit', function (event) { event.preventDefault(); if (phase === 'guess') reveal(); });
 el.freeForm.addEventListener('submit', function (event) { event.preventDefault(); freeRun(); });
 el.guess.addEventListener('input', function () { clearError(el.guess, el.guessError); });
@@ -810,6 +1063,7 @@ el.next.addEventListener('click', function () {
 });
 el.restart.addEventListener('click', function () {
   round = 0; score = 0;
+  document.documentElement.classList.remove('done');
   el.score.textContent = '0';
   [].forEach.call(el.pips.children, function (pip) { pip.className = ''; delete pip.dataset.done; });
   el.sumSec.hidden = true;
@@ -820,27 +1074,47 @@ el.restart.addEventListener('click', function () {
   announce(T.again + ' ' + T.roundNews(1, ROUNDS.length, ROUNDS[0]));
   el.guess.focus();
 });
-el.copyBtn.addEventListener('click', function () {
-  var text = el.sayText.textContent;
-  var done = function () { el.copied.textContent = T.copied; announce(T.copied + '.'); setTimeout(function () { el.copied.textContent = ''; }, 4000); };
-  var fallback = function () {
-    var range = document.createRange();
-    range.selectNodeContents(el.sayText);
-    var selection = getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-    var ok = false;
-    try { ok = document.execCommand('copy'); } catch (error) { ok = false; }
-    if (ok) { done(); return; }
-    el.copied.textContent = T.copyFail;
-    announce(T.copyFail);
-  };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(done, fallback);
-  } else fallback();
+/* Ein Handler für jeden Kopier-Knopf: er nennt in data-copies das Element, dessen
+   Text er kopiert, und meldet in das .copied daneben zurück. */
+document.querySelectorAll('[data-copies]').forEach(function (button) {
+  var source = $(button.dataset.copies);
+  var note = button.parentNode.querySelector('.copied');
+  button.addEventListener('click', function () {
+    var done = function () {
+      note.textContent = T.copied;
+      announce(T.copied + '.');
+      setTimeout(function () { note.textContent = ''; }, 4000);
+    };
+    var fallback = function () {
+      var range = document.createRange();
+      range.selectNodeContents(source);
+      var selection = getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (error) { ok = false; }
+      if (ok) { done(); return; }
+      note.textContent = T.copyFail;
+      announce(T.copyFail);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(source.textContent).then(done, fallback);
+    } else fallback();
+  });
 });
 
-if (location.protocol === 'file:') $('download-line').hidden = true;
+/* Wird die Seite als Datei geöffnet, liegt der Rechner schon im selben Ordner —
+   ein Download-Link zeigte dann auf die Datei neben sich selbst. Der Schritt
+   verschwindet nicht, er sagt, wo die Datei liegt: sonst nennt der Text darüber
+   eine Datei, die die Leserin nirgends sieht. */
+if (location.protocol === 'file:') {
+  $('download-step').textContent = english
+    ? 'notebook-calculator.html is already next to this page, in the same folder.'
+    : 'notebook-calculator.html liegt schon neben dieser Seite, im selben Ordner.';
+  $('move-step').textContent = english
+    ? 'Copy it into a new, empty folder — then the agent cannot change anything else, and the course copy stays untouched.'
+    : 'Kopiere sie in einen neuen, leeren Ordner — so kann der Agent nichts anderes verändern, und die Kursdatei bleibt unberührt.';
+}
 showRound();
 })();
 </script>

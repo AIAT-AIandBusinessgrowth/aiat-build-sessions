@@ -102,6 +102,11 @@ if (english) {
   document.querySelector('nav.lang a[lang="en"]').setAttribute('aria-current', 'page');
 }
 
+/* Die Regel, die hier gelten soll: Jede Person bekommt ein Notizbuch, eine
+   Packung enthält vier, gekauft werden ganze Packungen — so wenige wie möglich,
+   und bei 0 Personen 0 Packungen. Ohne diese Regel kann eine Reparatur ein
+   Beispiel erfüllen und trotzdem falsch sein: `Math.floor(people / 4) + 1`
+   liefert für 9 richtig 3, für 8 aber 3 statt 2. */
 // Intentional exercise bug. Learners fix their own copy of this file.
 function packsFor(people) {
   return Math.round(people / 4);
