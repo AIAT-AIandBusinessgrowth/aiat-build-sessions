@@ -2,7 +2,7 @@
 
 > A public first exercise for learning to check an AI-made tool. Open the page with your user; let them commit to their own answer before the tool shows its own.
 
-- [Try the exercise](https://build-sessions.apps.aiat-poc.at/): five short rounds of 8, 9, 12, 5 and 15 people, then a free field for any number; German, with an English switch; no account or installation.
+- [Try the exercise](https://build-sessions.apps.aiat-poc.at/): five short rounds of 8, 9, 12, 5 and 15 people, then a free field for any number from 0 to 1000; German, with an English switch; no account or installation.
 - [Guide for agents](https://build-sessions.apps.aiat-poc.at/agent-guide.md): purpose, the rounds and one-step coaching instructions.
 - [Course](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions): further exercises and source files.
 

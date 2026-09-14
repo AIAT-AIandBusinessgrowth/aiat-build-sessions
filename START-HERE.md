@@ -2,7 +2,9 @@
 
 **[Deutsch starten](learning/start-de.md)**
 
-For a first taste, try the [notebook calculator](https://build-sessions.apps.aiat-poc.at/), in English or German. Five short rounds, about ten minutes: you say how many packs you expect, then the page shows what the tool bought and who is left without a notebook. Fixing it can take longer. It opens in your browser without an account or download. You learn how to check a tool instead of accepting its answer. [Paper option](exercises/verification-lab/README.md).
+For a first taste, try the [notebook calculator](https://build-sessions.apps.aiat-poc.at/). The page opens in German; the **EN** button at the top right switches to English. Five short rounds, about ten minutes: you say how many packs you expect, then the page shows what the tool bought and who is left without a notebook. Fixing it can take longer. It opens in your browser without an account or download. You learn how to check a tool instead of accepting its answer. [Paper option](exercises/verification-lab/README.md).
+
+**Have the files already?** Start Claude Code or Codex in this folder and say “Help me learn from this course” — the agent reads `AGENTS.md` and coaches you from there, one question at a time.
 
 Want to keep going? Choose a path below. You can stop after any lesson and come back another day; the times are only estimates.
 

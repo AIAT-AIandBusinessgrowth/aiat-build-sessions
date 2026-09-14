@@ -10,13 +10,22 @@ These exercises work with Claude Code, Codex or an AI app builder. You do not ne
 
 An AI-made tool can look finished and still give a wrong answer. Try this small calculator: in five short rounds you say how many packs a group needs, then see what the tool bought and whether everyone gets a notebook. You learn to spot a mistake and explain what needs to change.
 
-**[Open the notebook calculator](https://build-sessions.apps.aiat-poc.at/)** — in English or German. Allow about ten minutes for the five rounds, longer if you want to fix it. After the rounds you can try any group size you like. Try it directly in your browser. No account, installation or download needed. [Paper and offline options](exercises/verification-lab/README.md).
+**[Open the notebook calculator](https://build-sessions.apps.aiat-poc.at/)** — the page opens in German; the **EN** button at the top right switches to English. Allow about ten minutes for the five rounds, longer if you want to fix it. After the rounds you can try any group size you like. Try it directly in your browser. No account, installation or download needed. [Paper and offline options](exercises/verification-lab/README.md).
 
 Use invented examples throughout the course. Keep real personal and customer data, including your own details, out of prompts, uploads and screenshots. [More about this rule](tracks/00-orientation/01-rule-one-no-real-data.md).
 
 ## Use it with an agent
 
-Already have Codex, Claude Code or a browser chat? Give it this prompt:
+**Already cloned or downloaded this repository?** Start Claude Code or Codex inside the course folder and say:
+
+```text
+Help me learn from this course. Start with a small exercise.
+Let me try before you give me hints or the answer.
+```
+
+A greeting or “help me start” works just as well: the agent reads `AGENTS.md`, picks a first exercise and coaches you one question at a time. German or English, whichever you prefer.
+
+**No files, just a chat?** Give Codex, Claude Code or a browser chat this prompt:
 
 ```text
 Help me try https://build-sessions.apps.aiat-poc.at/ and read https://build-sessions.apps.aiat-poc.at/agent-guide.md first.
@@ -30,16 +39,11 @@ If the AI asks too much at once, say: “Please ask only one question and wait f
 
 You can follow the rest of the course on GitHub and share each lesson link with your agent. No course download is required. Use your current AI chat or app builder for planning and discussion; each lesson names any extra tool it needs.
 
-If you prefer to give a coding agent the whole course as local files:
+Don't have the files yet, but want the agent to work from them?
 
-1. Download this course: on GitHub, choose **Code → Download ZIP** and extract it. If you use Git, you can clone the repository instead.
-2. Open the course folder in Codex, or start Claude Code inside it.
-3. Say:
-
-```text
-Help me learn from this course. Start with a small exercise.
-Let me try before you give me hints or the answer.
-```
+1. Download this course: on the [course page on GitHub](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions), choose **Code → Download ZIP** and extract it. If you use Git, `git clone https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions.git` does the same.
+2. Open the course folder in Codex, or start Claude Code inside it. Neither installed yet? [Set one up first](ready-to-build.md).
+3. Say the sentence from the top of this section.
 
 You can speak German or English. Later, try “Quiz me on what we just did.” The [learning guide](learning/README.md) has more ways to practise.
 

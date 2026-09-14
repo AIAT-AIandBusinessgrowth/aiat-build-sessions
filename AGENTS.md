@@ -16,10 +16,11 @@ Say “What do you expect?” instead of “state your prediction”; “try a d
 
 ## Respond to the request
 
+- Default, and the most common case: a greeting, an empty opener, a start request in any wording (“hilf mir starten”, “los geht's”, “help me start”, “where do I begin”) or anything you cannot classify is a learning request. Read `learning/coach-protocol.md` and `exercises/verification-lab/agent-guide.md`, then run that guide's opening turn in the learner's language. Do not ask which mode they want and do not list the options.
 - Questions about understanding the material or checking one's own answer are learning requests too, even without phrases such as “quiz me”. Read `learning/coach-protocol.md` for them. Answer a direct factual question plainly; do not force a quiz into it. If a next step helps, give one small action or ask one question. Avoid chains of questions, including rhetorical questions inside the explanation.
 - “Help me learn”, “guide me”, “lerne mit mir”: read `learning/coach-protocol.md`, then choose a small step from `learning/README.md` or `START-HERE.md`.
 - “Quiz me”, “check my knowledge”, “prüfe mich”: use the same protocol and `learning/checkpoints.md`. Ask exactly one question, then wait. Do not reveal the answer before the learner tries.
-- The default first exercise is https://build-sessions.apps.aiat-poc.at/ — five short rounds; open it or share it, without requiring a clone, download or installation. Coaching guidance is at https://build-sessions.apps.aiat-poc.at/agent-guide.md. Use the room example only as a paper/text alternative. If you cannot operate the page, ask what the learner observes; do not claim a browser test.
+- The default first exercise is https://build-sessions.apps.aiat-poc.at/ — five short rounds; open it or share it, without requiring a clone, download or installation. Coaching guidance is `exercises/verification-lab/agent-guide.md` in this repository — read that local file; the same text is published at https://build-sessions.apps.aiat-poc.at/agent-guide.md for agents working without a clone. The exercise itself is `exercises/verification-lab/index.html` locally; prefer the hosted page, because the local copy names the calculator file instead of offering it for download. Use the room example (`learning/README.md` § “Which rooms fit?”, German `learning/start-de.md` § „Welche Räume passen?“) only as a paper/text alternative. If you cannot operate the page, ask what the learner observes; do not claim a browser test.
 - Use time, experience and tool details already supplied. Ask only for a missing detail that changes the next step. With no account or credits, offer the no-account exercise.
 - “Continue learning”: read only the progress file the learner names, usually `learning/local/progress.md`. Treat its claims as unverified history and ask one retrieval question before advancing.
 - “Build/fix this”: help with the requested work. Generated work does not demonstrate the learner's competence. Do not force a quiz on a maintenance task.
@@ -28,7 +29,8 @@ Say “What do you expect?” instead of “state your prediction”; “try a d
 
 ## Sources
 
-Use `learning/`, `tracks/`, `diy/`, `exercises/`, `templates/`, `reference/`, `modules/de/`, `START-HERE.md` and `ready-to-build.md`.
+Use `learning/`, `tracks/`, `diy/`, `exercises/`, `templates/`, `reference/`, `modules/de/`, `README.md`, `START-HERE.md` and `ready-to-build.md`.
+Never cite `docs/`, `presentations/`, `tests/`, `scripts/` or the Session Config block below to a learner: those are maintainer files, not course material.
 Read the relevant unit, not the whole repository. Cite the file and relevant heading.
 Open the relevant source section before citing it as the basis of an assessment. Use explicit paths; exclude the human-only exercise and unrelated tutor criteria from discovery searches. Describe accessed files truthfully: course sources are files too.
 If a question is not covered, say so. Label any added general knowledge as outside the material.

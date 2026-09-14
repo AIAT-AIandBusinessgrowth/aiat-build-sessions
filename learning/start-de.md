@@ -20,7 +20,12 @@ Falls die KI zu viel auf einmal fragt: „Bitte nur eine Frage und warte auf mei
 
 Dafür brauchst du keine Kursdateien. Kann dein Chat den Link nicht öffnen, kopiere den Text aus dem [Agent-Guide](https://build-sessions.apps.aiat-poc.at/agent-guide.md) hinein.
 
-**Optional:** Wenn du den Kurs lieber als lokale Dateien nutzt, lade ihn auf der [GitHub-Startseite](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions) unter **Code → Download ZIP** herunter und entpacke ihn. Öffne den Kursordner in Codex oder starte Claude Code darin.
+**Optional:** Wenn du den Kurs lieber als lokale Dateien nutzt, lade ihn auf der [GitHub-Startseite](https://github.com/AIAT-AIandBusinessgrowth/aiat-build-sessions) unter **Code → Download ZIP** herunter und entpacke ihn. Öffne den Kursordner in Codex oder starte Claude Code darin und schreibe:
+
+```text
+Lerne mit mir aus diesem Kurs. Starte mit einer kleinen Übung.
+Lass mich es zuerst selbst versuchen, bevor du Hinweise oder die Lösung gibst.
+```
 
 ## Welche Räume passen?
 

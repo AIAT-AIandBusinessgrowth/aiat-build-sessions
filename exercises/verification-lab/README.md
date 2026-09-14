@@ -17,7 +17,7 @@ Using Codex, Claude or another agent? Share the link and the [agent guide](https
 
 The page has a download link for `notebook-calculator.html`, a plain copy of the calculator with the same mistake and none of the course text. Save it in a folder of your own; you can open it in your browser any time, and it is the file you repair.
 
-You can also download the whole course from GitHub: **Code → Download ZIP**, unzip it, then open `exercises/verification-lab/index.html`. Opened from a folder this way the page hides its download link, but `notebook-calculator.html` is already in that same folder. GitHub itself displays HTML as code.
+You can also download the whole course from GitHub: **Code → Download ZIP**, unzip it, then open `exercises/verification-lab/index.html`. Opened from a folder this way the page replaces its download step with a note that `notebook-calculator.html` is already in that same folder. GitHub itself displays HTML as code.
 
 </details>
 
@@ -41,7 +41,7 @@ Every round the calculator gets wrong produces a sentence you can copy, for exam
 
 That sentence gives an agent something specific to act on. "It is broken" does not.
 
-To repair the calculator, download `notebook-calculator.html` from the page into a folder of your own and open that folder in Codex or Claude Code. Leave the course example as it is, so the next person can still try it. If you are starting a new project, use the [project instructions](../../templates/project-AGENTS.md).
+To repair the calculator, put `notebook-calculator.html` into a folder of its own — download it from the page, or copy it out of this folder if you already have the course files and open that folder in Codex or Claude Code. Leave the course example as it is, so the next person can still try it. If you are starting a new project, use the [project instructions](../../templates/project-AGENTS.md).
 
 Paste your sentence and ask the agent to **change only the calculation**. Then check two numbers yourself: the one that failed, and one that was right before. Read the results yourself — a confident "fixed" is not a result.
 
